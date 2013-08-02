@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd" version="2.0">
+
+
+	<named-query name="TestVariation.getAllLanguageTypesForTest">
+		<query>
+			<![CDATA[
+			select distinct languageType
+			from org.ets.ereg.domain.test.TestVariationImpl testVariation, org.ets.ereg.domain.common.LanguageTypeImpl  languageType, org.ets.ereg.domain.test.TestImpl test
+			where testVariation.languageType = languageType and test.programType.code = :programCode and test.testId = :testId and testVariation.test = test
+			]]>
+		</query>
+
+	</named-query>
+
+	<named-query name="TestVariation.getAllDeliveryModesForTest">
+		<query>
+			<![CDATA[
+			select distinct deliveryModeType
+			from org.ets.ereg.domain.test.TestVariationImpl testVariation, org.ets.ereg.domain.common.DeliveryModeTypeImpl  deliveryModeType, org.ets.ereg.domain.test.TestImpl test
+			where testVariation.deliveryModeType = deliveryModeType and test.programType.code = :programCode and test.testId = :testId and  testVariation.test = test
+			]]>
+		</query>
+	</named-query>
+
+	<named-query name="TestVariation.getTestVariationForTest">
+		<query>
+			<![CDATA[
+			select testVariation
+			from org.ets.ereg.domain.test.TestVariationImpl testVariation, org.ets.ereg.domain.common.DeliveryModeTypeImpl  deliveryModeType,
+			org.ets.ereg.domain.test.TestImpl test, org.ets.ereg.domain.common.LanguageTypeImpl  languageType
+			where testVariation.deliveryModeType = deliveryModeType and testVariation.languageType = languageType and
+			testVariation.test = test and test.programType.code = :programCode and testVariation.id.languageCode = :languageCode
+			and testVariation.id.deliveryModeCode = :deliveryModeCode and testVariation.id.testId = :testId
+			]]>
+		</query>
+	</named-query>
+
+</entity-mappings>

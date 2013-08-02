@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:sec="http://www.springframework.org/schema/security"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    	http://www.springframework.org/schema/context
+    	http://www.springframework.org/schema/context/spring-context-3.1.xsd
+    	http://www.springframework.org/schema/security
+    	http://www.springframework.org/schema/security/spring-security-3.1.xsd
+    	http://www.springframework.org/schema/util
+    	http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+     <context:component-scan base-package="org.broadleafcommerce.core.web.order.security"/>
+    <context:component-scan base-package="org.broadleafcommerce.profile.web.core.security"/>
+    <context:component-scan base-package="org.broadleafcommerce.openadmin.server.security" />
+    <context:component-scan base-package="org.ets.ereg.csr.web.filter" />
+    <context:component-scan base-package="org.ets.ereg.csr.core.web.order.security"/>
+    <context:component-scan base-package="org.ets.ereg.csr.web.listener"/>
+    <context:component-scan base-package="org.ets.ereg.csr.web.security"/>
+    
+
+
+    <!-- Resources do not need security -->
+	<sec:http pattern="/css/**" security="none" />
+	<sec:http pattern="/fonts/**" security="none" />
+	<sec:http pattern="/img/**" security="none" />
+	<sec:http pattern="/js/**" security="none" />
+	<sec:http pattern="/favicon.png" security="none" />
+	<sec:http pattern="/apple-touch-icon-144-precomposed.png" security="none" />
+	<sec:http pattern="/apple-touch-icon-114-precomposed.png" security="none" />
+	<sec:http pattern="/apple-touch-icon-72-precomposed.png" security="none" />
+	<sec:http pattern="/apple-touch-icon-57-precomposed.png" security="none" />
+	<sec:http pattern="/assets/**" security="none" />
+	<sec:http pattern="/error/**" security="none" />
+
+
+	<!-- Set up Spring security for the application -->
+	<sec:http auto-config="false" authentication-manager-ref="adminAuthenticationManager" entry-point-ref="adminAuthenticationEntryPoint" use-expressions="true">
+		<!-- We handle session fixation protection ourselves  -->
+	     <sec:session-management session-fixation-protection="none" />
+		<sec:intercept-url pattern="/" requires-channel="any" />
+		<sec:intercept-url pattern="/**" requires-channel="any" />
+		<sec:intercept-url pattern="/error/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<!-- Define the login form along with the success and failure handlers '/signin?error=true' login-processing-url="/login_post.htm" -->
+	 <sec:form-login
+			authentication-success-handler-ref="etsAuthenticationSuccessHandler"
+			authentication-failure-handler-ref="etsAuthenticationFailureHandler"
+		/>
+		<!-- <sec:access-denied-handler ref="accessDeniedHandler" /> -->
+		<sec:access-denied-handler error-page="/customErrorPage" />
+    	<!-- Provide the logout handler -->
+		<sec:logout delete-cookies="ActiveID"  invalidate-session="true"  logout-url="/public/logout" success-handler-ref="etsLogout"/>
+
+		<!-- Specify our custom filters -->
+		<!--
+		<sec:custom-filter ref="blCsrfFilter" before="FORM_LOGIN_FILTER"/>
+		-->
+
+<!-- 				<sec:port-mappings>
+			<sec:port-mapping http="80" https="443"/>
+			<sec:port-mapping http="8080" https="8443"/>
+			<sec:port-mapping http="8081" https="8444"/>
+		</sec:port-mappings> -->
+
+
+		<sec:remember-me user-service-ref="adminUserDetailsService"/>
+		<sec:custom-filter ref="auditFilter " after="LAST"/>
+		<sec:custom-filter ref="OAMPreAuthFilter" position="PRE_AUTH_FILTER"/>
+		<sec:custom-filter ref="eRegCustStateFilter" after="REMEMBER_ME_FILTER"/>
+		<sec:custom-filter ref="estAdminCartStateFilter" before="ANONYMOUS_FILTER"/>
+		<sec:custom-filter ref="blSessionFixationProtectionFilter" before="SESSION_MANAGEMENT_FILTER"/>
+		<sec:custom-filter ref="adminFilterSecurityInterceptor" after="EXCEPTION_TRANSLATION_FILTER"/>
+	</sec:http>
+
+
+ 	<bean id="adminAuthenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+        <constructor-arg value="/public/signin"/>
+        <property name="useForward" value="true"/>
+    </bean>
+
+<!-- 	<bean id="accessDeniedHandler" class="org.ets.ereg.security.handler.CustomAccessDeniedHandler">
+    	<property name="accessDeniedUrl" value="/customErrorPage" />
+	</bean> -->
+
+	<bean id="adminFilterSecurityInterceptor"
+		class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
+		<property name="accessDecisionManager" ref="accessDecisionManager"/>
+		<property name="authenticationManager" ref="adminAuthenticationManager" />
+		<property name="securityMetadataSource">
+			<sec:filter-security-metadata-source>
+				<sec:intercept-url pattern="/secure/customersearch/**" access="PERMISSION_SEARCH_CUSTOMER" />
+				<sec:intercept-url pattern="/secure/profile" access="PERMISSION_CREATE_CUSTOMER" />
+				<sec:intercept-url pattern="/secure/profile/edit" access="PERMISSION_UPDATE_CUSTOMER" />
+				<sec:intercept-url pattern="/secure/testtaker/accommodation/add/**" access="PERMISSION_ADD_ACCOMMODATION" />
+				<sec:intercept-url pattern="/secure/testtaker/accommodation/edit" access="PERMISSION_MODIFY_ACCOMMODATION" />
+				<sec:intercept-url pattern="/secure/testtaker/accommodation/remove/**" access="PERMISSION_DELETE_ACCOMMODATION" />
+				<sec:intercept-url pattern="/secure/**" access="PERMISSION_ACCESS_DEFAULT" />
+			</sec:filter-security-metadata-source>
+		</property>
+	</bean>
+
+	<bean id="accessDecisionManager" class="org.springframework.security.access.vote.UnanimousBased">
+		<property name="decisionVoters">
+			<list>
+				<bean class="org.springframework.security.access.vote.RoleVoter">
+					<property name="rolePrefix" value="PERMISSION_" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+
+
+	<!--  The Authentication manager.   -->
+	<sec:authentication-manager alias="adminAuthenticationManager">
+		<sec:authentication-provider ref="OAMPreAuthProvider"/>
+		<sec:authentication-provider user-service-ref="adminUserDetailsService">
+			<sec:password-encoder  hash="plaintext" />
+		</sec:authentication-provider>
+	</sec:authentication-manager>
+
+
+
+  	<bean id="adminUserDetailsService" class="org.ets.ereg.common.user.details.service.impl.AdminERegUserDetailsDBServiceImpl"/>
+  	<bean id="etsLogout" class="org.ets.ereg.csr.web.security.ETSAdminLogoutSuccessHandler"/>
+	<bean id="adminPreAuthUserDetailsService" class="org.ets.ereg.common.user.details.service.impl.AdminERegUserDetailsOAMPreAuthServiceImpl"/>
+
+	<bean id="OAMPreAuthFilter" class="org.ets.ereg.csr.web.security.ETSAdminRequestHeaderAuthenticationFilter">
+		<property name="authenticationManager" ref="adminAuthenticationManager"/>
+		<property name="principalRequestHeader" value="EIASUSERNAME"/>
+		<property name="exceptionIfHeaderMissing" value="false"/>
+		<property name="continueFilterChainOnUnsuccessfulAuthentication" value="true"/>
+	</bean>
+
+	<bean id="OAMPreAuthProvider" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
+	    <property name="preAuthenticatedUserDetailsService" ref="adminPreAuthUserDetailsService"/>
+    </bean>
+
+<!-- 	<bean id="blCsrfFilter" class="org.broadleafcommerce.common.security.handler.CsrfFilter">
+        <property name="excludedRequestPatterns">
+            <list>
+                <value>/api/**</value>
+            </list>
+        </property>
+    </bean> -->
+
+    <!-- Sets the login failure URL -->
+	<bean id="etsAuthenticationFailureHandler" class="org.ets.ereg.security.handler.ETSAuthenticationFailureHandler">
+		<constructor-arg value="/public/signin?error=true" />
+	</bean>
+
+
+
+    <!-- Sets the login success URL -->
+	<bean id="etsAuthenticationSuccessHandler" class="org.ets.ereg.security.handler.ETSAuthenticationSuccessHandler">
+		<property name="defaultTargetUrl" value="/secure/home" />
+		<property name="alwaysUseDefaultTargetUrl" value="false" />
+	</bean>
+
+	<sec:global-method-security access-decision-manager-ref="accessDecisionManager" secured-annotations="enabled">
+		<sec:expression-handler ref="expressionHandler"/>
+	</sec:global-method-security>
+
+	 <bean id="expressionHandler"
+      class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler"/>
+
+      <bean id="adminLoginService" class="org.ets.ereg.profile.service.impl.AdminLoginServiceImpl"/>
+
+
+</beans>

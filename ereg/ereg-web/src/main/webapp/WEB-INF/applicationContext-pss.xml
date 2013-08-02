@@ -1,0 +1,62 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:jee="http://www.springframework.org/schema/jee"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                     http://www.springframework.org/schema/beans/spring-beans.xsd 
+                     http://www.springframework.org/schema/tx 
+                        http://www.springframework.org/schema/aop 
+                        http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+                        http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+                        http://www.springframework.org/schema/context 
+                        http://www.springframework.org/schema/context/spring-context-2.5.xsd
+                        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd">
+
+  <context:annotation-config />
+  
+  <context:component-scan base-package="org.ets.pss" />
+
+
+
+	<jee:jndi-lookup id="pssDataSource" jndi-name="jdbc/pss"/>
+  <bean id="pssEntityManagerFactory"
+    class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <property name="dataSource" ref="pssDataSource" />
+    <property name="jpaVendorAdapter" ref="pssJpaAdapter" />
+    <property name="persistenceXmlLocation" value="classpath:/META-INF/pss-persistence.xml"/>
+  </bean>
+
+  <bean id="pssTransactionManager"
+    class="org.springframework.orm.jpa.JpaTransactionManager">
+    <property name="entityManagerFactory" ref="pssEntityManagerFactory" />
+  </bean>
+
+
+	<tx:annotation-driven mode="aspectj" transaction-manager="pssTransactionManager" />
+
+
+<!-- 
+  <tx:advice id="pssTxAdvice" transaction-manager="pssTransactionManager">
+    <tx:attributes>
+      <tx:method name="*" read-only="true"/>
+    </tx:attributes>
+  </tx:advice>
+  
+  <aop:config>
+    <aop:pointcut id="pssTxPointcut" expression="execution(* org.ets.pss.*.*(..))"/>
+    <aop:advisor advice-ref="pssTxAdvice" pointcut-ref="pssTxPointcut"/>
+  </aop:config>
+
+ -->
+ 
+ 
+ 
+  <bean id="pssJpaAdapter"
+    class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+    <property name="database" value="ORACLE" />
+    <property name="showSql" value="true" />
+  </bean>
+
+</beans>

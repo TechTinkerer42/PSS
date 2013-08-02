@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	   http://www.springframework.org/schema/aop 
+	   http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<context:component-scan base-package="org.ets.ereg.commerce.order.vo"/>    
+	<context:component-scan base-package="com.broadleafcommerce.vendor.cybersource"/>
+	<context:component-scan base-package="org.ets.ereg.commerce.order.dao"/>
+	<context:component-scan base-package="org.ets.ereg.commerce.catalog.dao"/>
+	<context:component-scan base-package="org.ets.ereg.commerce.order.service"/>
+	<context:component-scan base-package="org.ets.ereg.commerce.catalog.service"/>
+	<context:component-scan base-package="org.ets.ereg.shared.scheduling.service"/>	
+	<context:component-scan base-package="org.ets.ereg.scheduling.service"/>
+	<context:component-scan base-package="org.ets.ereg.scheduling.request"/>
+	<context:component-scan base-package="org.ets.ereg.scheduling.response"/>
+	<context:component-scan base-package="org.ets.ereg.shared.service"/>	
+	<context:component-scan base-package="org.ets.ereg.shared.dao"/>
+	<context:component-scan base-package="org.ets.ereg.scheduling.dao"/>
+	<context:component-scan base-package="org.ets.ereg.booking.service"/>
+	<context:component-scan base-package="org.ets.ereg.booking.dao"/>
+	    
+    <bean id="blOrderItemService" class="org.ets.ereg.commerce.order.service.ETSOrderItemServiceImpl"/>
+
+    <bean id="blPromotableItemFactory" class="org.ets.ereg.commerce.order.service.discount.ETSPromotableItemFactoryImpl">
+    	<property name="batterySubscriptionService" ref="etsBatterySubscriptionService"/>
+    </bean>
+    
+    <bean id="blPricingWorkflow" class="org.broadleafcommerce.core.workflow.SequenceProcessor">
+        <property name="processContextFactory">
+            <bean class="org.broadleafcommerce.core.pricing.service.workflow.PricingProcessContextFactory"/>
+        </property>
+        <property name="activities">
+            <list>
+            	<bean class="org.ets.ereg.commerce.order.service.workflow.CustomerBatteryOfferActivity">
+            		<property name="batterySubscriptionService" ref="etsBatterySubscriptionService"/>
+            	</bean>
+                <bean class="org.broadleafcommerce.core.pricing.service.workflow.OfferActivity" />                
+                <bean class="org.broadleafcommerce.core.pricing.service.workflow.ConsolidateFulfillmentFeesActivity" />
+                <bean class="org.broadleafcommerce.core.pricing.service.workflow.FulfillmentItemPricingActivity" />                                       
+                <bean class="org.broadleafcommerce.core.pricing.service.workflow.FulfillmentGroupMerchandiseTotalActivity"/>
+                <bean class="org.broadleafcommerce.core.pricing.service.workflow.FulfillmentGroupPricingActivity" />
+                <bean class="org.broadleafcommerce.core.pricing.service.workflow.ShippingOfferActivity"/>
+                <bean class="org.broadleafcommerce.core.pricing.service.workflow.TaxActivity">
+                    <property name="taxModule" ref="blTaxModule"/>
+                </bean>
+                <bean class="org.broadleafcommerce.core.pricing.service.workflow.TotalActivity"/>
+            </list>
+        </property>
+        <property name="defaultErrorHandler">
+            <bean class="org.broadleafcommerce.core.workflow.DefaultErrorHandler">
+                <property name="unloggedExceptionClasses">
+                    <list>
+                        <value>org.hibernate.exception.LockAcquisitionException</value>
+                    </list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="blAddItemWorkflow" class="org.broadleafcommerce.core.workflow.SequenceProcessor">
+        <property name="processContextFactory">
+            <bean class="org.broadleafcommerce.core.order.service.workflow.CartOperationProcessContextFactory"/>
+        </property>
+        <property name="activities">
+            <list>            
+                <bean class="org.broadleafcommerce.core.order.service.workflow.add.ValidateAddRequestActivity"/>
+                <bean class="org.ets.ereg.commerce.order.service.workflow.ClearMembershipOrderItemsActivity"/>
+                <bean class="org.ets.ereg.commerce.order.service.workflow.ETSAddOrderItemActivity"/>
+                <bean class="org.broadleafcommerce.core.order.service.workflow.add.AddFulfillmentGroupItemActivity"/>
+                <bean class="org.ets.ereg.commerce.order.service.workflow.PersistBookingActivity"/>
+                <bean class="org.ets.ereg.commerce.order.service.workflow.UpdateMembershipOrderItemsActivity"/>
+                <bean class="org.broadleafcommerce.core.order.service.workflow.PriceOrderIfNecessaryActivity"/>
+                <bean class="org.broadleafcommerce.core.order.service.workflow.VerifyFulfillmentGroupItemsActivity"/>
+            </list>
+        </property>
+        <property name="defaultErrorHandler" ref="blDefaultErrorHandler"/>
+    </bean>
+
+	<bean id="blFulfillmentGroupItemStrategy" class="org.ets.ereg.commerce.order.strategy.ETSFulfillmentGroupItemStrategyImpl"/>
+	
+    <bean id="blRemoveItemWorkflow" class="org.broadleafcommerce.core.workflow.SequenceProcessor">
+        <property name="processContextFactory">
+            <bean class="org.broadleafcommerce.core.order.service.workflow.CartOperationProcessContextFactory"/>
+        </property>
+        <property name="activities">
+            <list>
+                <bean class="org.broadleafcommerce.core.order.service.workflow.remove.ValidateRemoveRequestActivity"/>
+                <bean class="org.ets.ereg.commerce.order.service.workflow.ReleaseSeatActivity"/>
+                <bean class="org.broadleafcommerce.core.order.service.workflow.remove.RemoveOrderMultishipOptionActivity"/>
+                <bean class="org.broadleafcommerce.core.order.service.workflow.remove.RemoveFulfillmentGroupItemActivity"/>
+                <bean class="org.ets.ereg.commerce.order.service.workflow.ClearMembershipOrderItemsActivity"/>
+                <bean class="org.ets.ereg.commerce.order.service.workflow.ETSRemoveOrderItemActivity"/>               
+                <bean class="org.ets.ereg.commerce.order.service.workflow.UpdateMembershipOrderItemsActivity"/>
+                <bean class="org.broadleafcommerce.core.order.service.workflow.PriceOrderIfNecessaryActivity"/>
+                <bean class="org.broadleafcommerce.core.order.service.workflow.VerifyFulfillmentGroupItemsActivity"/>
+            </list>
+        </property>
+        <property name="defaultErrorHandler" ref="blDefaultErrorHandler"/>
+    </bean>
+    
+     <bean id="blCheckoutWorkflow" class="org.broadleafcommerce.core.workflow.SequenceProcessor">
+        <property name="processContextFactory">
+            <bean class="org.broadleafcommerce.core.checkout.service.workflow.CheckoutProcessContextFactory"/>
+        </property>
+        <property name="activities">
+            <list>
+                <bean class="org.broadleafcommerce.core.offer.service.workflow.VerifyCustomerMaxOfferUsesActivity"/>
+                <bean class="org.broadleafcommerce.core.checkout.service.workflow.PaymentServiceActivity"/>
+                <bean class="org.broadleafcommerce.core.offer.service.workflow.RecordOfferUsageActivity"/>
+                <bean class="org.ets.ereg.commerce.order.service.workflow.RecordBatterySubscriptionPurchaseActivity">
+                	<property name="batterySubscriptionService" ref="etsBatterySubscriptionService"/>
+                </bean>
+                <bean class="org.ets.ereg.commerce.order.service.workflow.RecordBatteryScheduledTestActivity">
+                	<property name="batterySubscriptionService" ref="etsBatterySubscriptionService"/>
+                </bean>
+                <bean class="org.ets.ereg.commerce.order.service.workflow.ETSCompleteOrderActivity"/>
+                <bean class="com.broadleafcommerce.oms.fulfillment.service.workflow.activity.CreateFulfillmentOrderActivity"/>
+                <bean class="org.ets.ereg.commerce.order.service.workflow.ETSOrderConfirmationEmailActivity"/>
+            </list>
+        </property>
+        <property name="defaultErrorHandler" ref="blDefaultErrorHandler"/>
+    </bean>
+
+    <bean id="blAuthorizeAndDebitWorkflow" class="org.broadleafcommerce.core.workflow.SequenceProcessor">
+        <property name="processContextFactory">
+            <bean class="org.broadleafcommerce.core.payment.service.workflow.PaymentProcessContextFactory">
+                <property name="paymentActionType" value="AUTHORIZEANDDEBIT"/>
+            </bean>
+        </property>
+        <property name="activities">
+            <list>
+                <bean class="org.broadleafcommerce.core.payment.service.workflow.PaymentActivity">
+                    <property name="paymentService" ref="etsZeroAmountPaymentService"/>
+                    <property name="userName" value="web"/>
+                </bean>
+                <bean class="org.broadleafcommerce.core.payment.service.workflow.PaymentActivity">
+                    <property name="paymentService" ref="blAccountCreditPaymentService"/>
+                    <property name="userName" value="web"/>
+                </bean>
+                <bean class="org.broadleafcommerce.core.payment.service.workflow.PaymentActivity">
+                    <property name="paymentService" ref="blCustomerCreditPaymentService"/>
+                    <property name="userName" value="web"/>
+                </bean>
+                <bean class="org.broadleafcommerce.core.payment.service.workflow.PaymentActivity">
+                    <property name="paymentService" ref="blAccountPaymentService"/>
+                    <property name="userName" value="web"/>
+                </bean>
+                <bean class="org.broadleafcommerce.core.payment.service.workflow.PaymentActivity">
+                    <property name="paymentService" ref="blGiftCardService"/>
+                    <property name="userName" value="web"/>
+                </bean>
+                <bean class="org.broadleafcommerce.core.payment.service.workflow.PaymentActivity">
+                    <property name="paymentService" ref="blCreditCardService"/>
+                    <property name="userName" value="web"/>
+                </bean>
+                <bean class="org.broadleafcommerce.core.payment.service.workflow.PaymentActivity">
+                    <property name="paymentService" ref="blBankAccountService"/>
+                    <property name="userName" value="web"/>
+                </bean>
+                <bean class="org.broadleafcommerce.core.payment.service.workflow.PaymentActivity">
+                    <property name="paymentService" ref="blCheckPaymentService"/>
+                    <property name="userName" value="web"/>
+                </bean>
+                <bean class="org.broadleafcommerce.core.payment.service.workflow.PaymentActivity">
+                    <property name="paymentService" ref="blElectronicCheckPaymentService"/>
+                    <property name="userName" value="web"/>
+                </bean>
+                <bean class="org.broadleafcommerce.core.payment.service.workflow.PaymentActivity">
+                    <property name="paymentService" ref="blWirePaymentService"/>
+                    <property name="userName" value="web"/>
+                </bean>
+                <bean class="org.broadleafcommerce.core.payment.service.workflow.PaymentActivity">
+                    <property name="paymentService" ref="blMoneyOrderPaymentService"/>
+                    <property name="userName" value="web"/>
+                </bean>
+            </list>
+        </property>
+        <property name="defaultErrorHandler" ref="blDefaultErrorHandler"/>
+    </bean>
+
+    <!-- Override the default Broadleaf Credit Card Service with Cybersource Silent Post -->
+    <bean id="blCreditCardService" class="org.broadleafcommerce.core.payment.service.PaymentServiceImpl">
+        <property name="paymentModule" ref="blCybersourceSilentPostModule"/>
+    </bean>
+
+    <bean id="blElectronicCheckPaymentService" class="org.broadleafcommerce.core.payment.service.PaymentServiceImpl">
+        <property name="paymentModule" ref="blCybersourceSilentPostModule"/>
+    </bean>
+
+    <bean id="etsZeroAmountPaymentService" class="org.broadleafcommerce.core.payment.service.PaymentServiceImpl">
+        <property name="paymentModule" ref="etsZeroAmountPaymentModule"/>
+    </bean>
+
+    <!-- Redefine the Cybersource Beans with ETS Overrides -->
+    <bean id="etsCybersourceHOPPaymentService" class="org.ets.ereg.commerce.order.service.ETSCybersourceHOPPaymentServiceImpl">
+        <property name="referenceService" ref="referenceEntityService"/>
+        <property name="phoneService" ref="blPhoneService"/>
+    </bean>
+
+    <bean id="blCybersourceSilentPostCheckoutService" class="org.ets.ereg.commerce.order.service.ETSCybersourceHOPCheckoutServiceImpl">
+        <property name="silentPostPaymentService" ref="etsCybersourceHOPPaymentService"/>
+    </bean>
+
+    <bean id="blCybersourceSilentPostModule" class="org.ets.ereg.commerce.order.service.ETSCybersourceHOPPaymentModule">
+        <property name="paymentService" ref="etsCybersourceHOPPaymentService"/>
+        <property name="stateService" ref="blStateService"/>
+        <property name="countryService" ref="blCountryService"/>
+    </bean>
+
+    <bean id="etsZeroAmountPaymentModule" class="org.ets.ereg.commerce.order.service.ETSZeroAmountPaymentModule" scope="prototype">
+        <property name="validPaymentInfoType" value="ZERO_AMOUNT"/>
+    </bean>
+    <bean id="etsCancellationService" class="org.ets.ereg.commerce.order.service.ETSCancellationServiceImpl"></bean>
+
+</beans>

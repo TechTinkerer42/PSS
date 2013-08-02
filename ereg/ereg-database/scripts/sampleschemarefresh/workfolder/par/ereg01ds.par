@@ -1,0 +1,8 @@
+userid=EREG01DS_BATCH/ere$7654@HALN05-WEBDBS2.ets.org:1529/OD70 
+buffer=50000000 
+file=C:\dev\eREG\multitenant\ereg\ereg-database\scripts\sampleschemarefresh\workfolder\dmp\exp_ereg01ds.dmp 
+compress=n 
+grants=N 
+log=C:\dev\eREG\multitenant\ereg\ereg-database\scripts\sampleschemarefresh\workfolder\log\exp_ereg01ds.log 
+statistics=none 
+owner=ereg01ds 

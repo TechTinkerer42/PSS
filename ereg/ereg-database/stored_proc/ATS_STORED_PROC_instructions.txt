@@ -1,0 +1,29 @@
+
+
+To run the UPD_ATS_TRNSCTN_LOG_PR stored proc exec the following:
+
+SET serveroutput on;
+DECLARE 
+    P_TRNSCTN_STS_TYP_CDE  varchar2(5);
+    P_ATS_SNT_DTE  DATE;
+    P_ATS_RPT_ND_FLG  VARCHAR2(1);
+    P_ERR_MSG_DSC    varchar2(175);
+    P_ERR_MSG_TXT  varchar2(256);
+    P_ATS_TRNSCTN_LOG_ID number;
+    P_SUCCESS_MSG VARCHAR2(10);
+BEGIN
+    P_TRNSCTN_STS_TYP_CDE := 'SUCSS';
+    P_ATS_SNT_DTE := sysdate;
+    P_ATS_RPT_ND_FLG := 'Y';
+    P_ERR_MSG_DSC := 'Sucess';
+    P_ERR_MSG_TXT := 'Sucess';
+    P_ATS_TRNSCTN_LOG_ID := 129;
+    UPD_ATS_TRNSCTN_LOG_PR(
+    P_TRNSCTN_STS_TYP_CDE,
+    P_ATS_SNT_DTE,
+    P_ATS_RPT_ND_FLG,
+    P_ERR_MSG_DSC  ,
+    P_ERR_MSG_TXT,
+    P_ATS_TRNSCTN_LOG_ID, P_SUCCESS_MSG);
+END;
+

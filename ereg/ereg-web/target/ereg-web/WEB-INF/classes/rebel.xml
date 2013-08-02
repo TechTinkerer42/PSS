@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.zeroturnaround.com" xsi:schemaLocation="http://www.zeroturnaround.com http://www.zeroturnaround.com/alderaan/rebel-2_0.xsd">
+
+	<classpath>
+		<dir name="C:/development/git/pssereg/ereg/ereg-web/target/ereg-web/WEB-INF/classes">
+		</dir>
+	</classpath>
+
+	<web>
+		<link target="/">
+			<dir name="C:/development/git/pssereg/ereg/ereg-web/target/ereg-web/">
+				<include name="resources/jquery-ui-1.10.3/demos/autocomplete/london.xml"/>
+				<include name="WEB-INF/applicationContext-datasource.xml"/>
+				<include name="WEB-INF/applicationContext-email.xml"/>
+				<include name="WEB-INF/applicationContext-pss.xml"/>
+				<include name="WEB-INF/applicationContext-security.xml"/>
+				<include name="WEB-INF/applicationContext-servlet.xml"/>
+				<include name="WEB-INF/applicationContext.xml"/>
+				<include name="WEB-INF/ereg-web.xml"/>
+				<include name="WEB-INF/jetty-env.xml"/>
+				<include name="WEB-INF/jetty-web.xml"/>
+				<include name="WEB-INF/log4j.xml"/>
+				<include name="WEB-INF/pss-web.xml"/>
+				<include name="WEB-INF/spring/app/controllers.xml"/>
+				<include name="WEB-INF/spring/app/servlet-context.xml"/>
+				<include name="WEB-INF/spring/db.xml"/>
+				<include name="WEB-INF/spring/root-context.xml"/>
+				<include name="WEB-INF/tiles.xml"/>
+				<include name="WEB-INF/views.xml"/>
+				<include name="WEB-INF/web.xml"/>
+			</dir>
+		</link>
+		<link target="/">
+			<dir name="C:/development/git/pssereg/ereg/ereg-web/src/main/webapp">
+			</dir>
+		</link>
+	</web>
+
+</application>

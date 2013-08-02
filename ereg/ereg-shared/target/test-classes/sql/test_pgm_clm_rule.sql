@@ -1,0 +1,2 @@
+insert into pgm_clmn_rul(enty_nam,pgm_cde,prprty_nam,regex_txt,pgm_clmn_rul_typ_cde) values ('org.ets.ereg.domain.profile.ETSCustomerImpl','GRE','Race','ETSCustomerImpl.sourceId=NET','DISP');
+insert into pgm_clmn_rul(enty_nam,pgm_cde,prprty_nam,regex_txt,pgm_clmn_rul_typ_cde) values ('org.ets.ereg.domain.profile.ETSCustomerImpl','GRE','Ethnicity','ETSCustomerImpl.middleInitial=M','RQVLD');

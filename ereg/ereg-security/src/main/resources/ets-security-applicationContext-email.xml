@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<bean id="blEmailInfo" class="org.broadleafcommerce.common.email.service.info.EmailInfo">
+		<property name="fromAddress"><value>eReg_Developers@ets.org</value></property>
+		<property name="sendAsyncPriority"><value>2</value></property>
+		<property name="sendEmailReliableAsync"><value>false</value></property>
+	</bean>
+
+	<bean id="blSendAdminResetPasswordEmail" parent="blEmailInfo">
+		<property name="emailTemplate" value="adminResetPassword.emailTemplate" />
+		<property name="subject" value="Your password has been reset successfully" />
+	</bean>
+
+	<bean id="blSendAdminUsernameEmailInfo" parent="blEmailInfo">
+		<property name="emailTemplate" value="adminUserNameEmail.emailTemplate" />
+		<property name="subject" value="Request username" />
+	</bean>
+</beans>

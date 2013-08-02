@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservice.eias.ets.org" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice.eias.ets.org" xmlns:intf="http://webservice.eias.ets.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservice.eias.ets.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="createUser">
+    <complexType>
+     <sequence>
+      <element name="userObj" type="impl:User"/>
+      <element name="appSysIdDetails" type="impl:AppSysIDDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="BaseVO">
+    <sequence/>
+   </complexType>
+   <complexType name="Security">
+    <complexContent>
+     <extension base="impl:BaseVO">
+      <sequence>
+       <element name="challengeA" nillable="true" type="xsd:string"/>
+       <element name="challengeQ" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOfSecurity">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Security"/>
+    </sequence>
+   </complexType>
+   <complexType name="ChallengeQuestions">
+    <complexContent>
+     <extension base="impl:BaseVO">
+      <sequence>
+       <element name="security" nillable="true" type="impl:ArrayOfSecurity"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOf_xsd_string">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ADGroups">
+    <complexContent>
+     <extension base="impl:BaseVO">
+      <sequence>
+       <element name="groups" nillable="true" type="impl:ArrayOf_xsd_string"/>
+       <element name="operation" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOfADGroups">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:ADGroups"/>
+    </sequence>
+   </complexType>
+   <complexType name="UserADGroups">
+    <complexContent>
+     <extension base="impl:BaseVO">
+      <sequence>
+       <element name="adGroups" nillable="true" type="impl:ArrayOfADGroups"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="Attribute">
+    <complexContent>
+     <extension base="impl:BaseVO">
+      <sequence>
+       <element name="name" nillable="true" type="xsd:string"/>
+       <element name="value" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ArrayOfAttribute">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:Attribute"/>
+    </sequence>
+   </complexType>
+   <complexType name="UserAttributes">
+    <complexContent>
+     <extension base="impl:BaseVO">
+      <sequence>
+       <element name="attribute" nillable="true" type="impl:ArrayOfAttribute"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="User">
+    <complexContent>
+     <extension base="impl:BaseVO">
+      <sequence>
+       <element name="challengeQuestions" nillable="true" type="impl:ChallengeQuestions"/>
+       <element name="emailAddress" nillable="true" type="xsd:string"/>
+       <element name="firstName" nillable="true" type="xsd:string"/>
+       <element name="lastName" nillable="true" type="xsd:string"/>
+       <element name="objectGUID" nillable="true" type="xsd:string"/>
+       <element name="userADGroups" nillable="true" type="impl:UserADGroups"/>
+       <element name="userAttributes" nillable="true" type="impl:UserAttributes"/>
+       <element name="userId" nillable="true" type="xsd:string"/>
+       <element name="userType" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AppSysIDDetails">
+    <complexContent>
+     <extension base="impl:BaseVO">
+      <sequence>
+       <element name="appSysID" nillable="true" type="xsd:string"/>
+       <element name="appSysIDPassword" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="createUserResponse">
+    <complexType>
+     <sequence>
+      <element name="createUserReturn" type="impl:ResponseObject"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ResponseObject">
+    <complexContent>
+     <extension base="impl:BaseVO">
+      <sequence>
+       <element name="respCode" nillable="true" type="xsd:string"/>
+       <element name="respMessage" nillable="true" type="xsd:string"/>
+       <element name="respResult" nillable="true" type="xsd:string"/>
+       <element name="returnAttribute" nillable="true" type="xsd:string"/>
+       <element name="userADObjGUID" nillable="true" type="xsd:string"/>
+       <element name="userIdSuggestions" nillable="true" type="impl:ArrayOf_xsd_string"/>
+       <element name="userObj" nillable="true" type="impl:User"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="registerUser">
+    <complexType>
+     <sequence>
+      <element name="userObj" type="impl:User"/>
+      <element name="appSysIdDetails" type="impl:AppSysIDDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="registerUserResponse">
+    <complexType>
+     <sequence>
+      <element name="registerUserReturn" type="impl:ResponseObject"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modifyUser">
+    <complexType>
+     <sequence>
+      <element name="userObj" type="impl:User"/>
+      <element name="appSysIdDetails" type="impl:AppSysIDDetails"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modifyUserResponse">
+    <complexType>
+     <sequence>
+      <element name="modifyUserReturn" type="impl:ResponseObject"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addUserToADGroups">
+    <complexType>
+     <sequence>
+      <element name="appSysIdDetails" type="impl:AppSysIDDetails"/>
+      <element name="userId" type="xsd:string"/>
+      <element name="objectGUID" type="xsd:string"/>
+      <element name="userADGrps" type="impl:UserADGroups"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addUserToADGroupsResponse">
+    <complexType>
+     <sequence>
+      <element name="addUserToADGroupsReturn" type="impl:ResponseObject"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="removeUserFromADGroups">
+    <complexType>
+     <sequence>
+      <element name="appSysIdDetails" type="impl:AppSysIDDetails"/>
+      <element name="userId" type="xsd:string"/>
+      <element name="objectGUID" type="xsd:string"/>
+      <element name="userADGrps" type="impl:UserADGroups"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="removeUserFromADGroupsResponse">
+    <complexType>
+     <sequence>
+      <element name="removeUserFromADGroupsReturn" type="impl:ResponseObject"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="resetPassword">
+    <complexType>
+     <sequence>
+      <element name="appSysIDDetails" type="impl:AppSysIDDetails"/>
+      <element name="userId" type="xsd:string"/>
+      <element name="objectGUID" type="xsd:string"/>
+      <element name="tempPassword" type="xsd:string"/>
+      <element name="emailNotificationFlag" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="resetPasswordResponse">
+    <complexType>
+     <sequence>
+      <element name="resetPasswordReturn" type="impl:ResponseObject"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchUser">
+    <complexType>
+     <sequence>
+      <element name="appSysIDDetails" type="impl:AppSysIDDetails"/>
+      <element name="attributeName" type="xsd:string"/>
+      <element name="attributeValue" type="xsd:string"/>
+      <element name="ldapQuery" type="xsd:string"/>
+      <element name="searchBase" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchUserResponse">
+    <complexType>
+     <sequence>
+      <element name="searchUserReturn" type="impl:ExtendedResponseObject"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOfUser">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="impl:User"/>
+    </sequence>
+   </complexType>
+   <complexType name="ExtendedResponseObject">
+    <complexContent>
+     <extension base="impl:ResponseObject">
+      <sequence>
+       <element name="userArray" nillable="true" type="impl:ArrayOfUser"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <element name="modifyUserId">
+    <complexType>
+     <sequence>
+      <element name="appSysIDDetails" type="impl:AppSysIDDetails"/>
+      <element name="objectGuid" type="xsd:string"/>
+      <element name="existingUserId" type="xsd:string"/>
+      <element name="newUserId" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modifyUserIdResponse">
+    <complexType>
+     <sequence>
+      <element name="modifyUserIdReturn" type="impl:ResponseObject"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="modifyUserIdResponse">
+
+      <wsdl:part element="impl:modifyUserIdResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifyUserResponse">
+
+      <wsdl:part element="impl:modifyUserResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifyUserIdRequest">
+
+      <wsdl:part element="impl:modifyUserId" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifyUserRequest">
+
+      <wsdl:part element="impl:modifyUser" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="resetPasswordRequest">
+
+      <wsdl:part element="impl:resetPassword" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createUserResponse">
+
+      <wsdl:part element="impl:createUserResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createUserRequest">
+
+      <wsdl:part element="impl:createUser" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="registerUserRequest">
+
+      <wsdl:part element="impl:registerUser" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchUserResponse">
+
+      <wsdl:part element="impl:searchUserResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="removeUserFromADGroupsResponse">
+
+      <wsdl:part element="impl:removeUserFromADGroupsResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="registerUserResponse">
+
+      <wsdl:part element="impl:registerUserResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="removeUserFromADGroupsRequest">
+
+      <wsdl:part element="impl:removeUserFromADGroups" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="addUserToADGroupsResponse">
+
+      <wsdl:part element="impl:addUserToADGroupsResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="resetPasswordResponse">
+
+      <wsdl:part element="impl:resetPasswordResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchUserRequest">
+
+      <wsdl:part element="impl:searchUser" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="addUserToADGroupsRequest">
+
+      <wsdl:part element="impl:addUserToADGroups" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="EIASWebService">
+
+      <wsdl:operation name="createUser">
+
+         <wsdl:input message="impl:createUserRequest" name="createUserRequest"/>
+
+         <wsdl:output message="impl:createUserResponse" name="createUserResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="registerUser">
+
+         <wsdl:input message="impl:registerUserRequest" name="registerUserRequest"/>
+
+         <wsdl:output message="impl:registerUserResponse" name="registerUserResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyUser">
+
+         <wsdl:input message="impl:modifyUserRequest" name="modifyUserRequest"/>
+
+         <wsdl:output message="impl:modifyUserResponse" name="modifyUserResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addUserToADGroups">
+
+         <wsdl:input message="impl:addUserToADGroupsRequest" name="addUserToADGroupsRequest"/>
+
+         <wsdl:output message="impl:addUserToADGroupsResponse" name="addUserToADGroupsResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="removeUserFromADGroups">
+
+         <wsdl:input message="impl:removeUserFromADGroupsRequest" name="removeUserFromADGroupsRequest"/>
+
+         <wsdl:output message="impl:removeUserFromADGroupsResponse" name="removeUserFromADGroupsResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="resetPassword">
+
+         <wsdl:input message="impl:resetPasswordRequest" name="resetPasswordRequest"/>
+
+         <wsdl:output message="impl:resetPasswordResponse" name="resetPasswordResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchUser">
+
+         <wsdl:input message="impl:searchUserRequest" name="searchUserRequest"/>
+
+         <wsdl:output message="impl:searchUserResponse" name="searchUserResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyUserId">
+
+         <wsdl:input message="impl:modifyUserIdRequest" name="modifyUserIdRequest"/>
+
+         <wsdl:output message="impl:modifyUserIdResponse" name="modifyUserIdResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="EIASWebServiceSoapBinding" type="impl:EIASWebService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="createUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="registerUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="registerUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="registerUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modifyUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modifyUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addUserToADGroups">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addUserToADGroupsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addUserToADGroupsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="removeUserFromADGroups">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="removeUserFromADGroupsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="removeUserFromADGroupsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="resetPassword">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="resetPasswordRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="resetPasswordResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyUserId">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modifyUserIdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modifyUserIdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="EIASWebServiceService">
+
+      <wsdl:port binding="impl:EIASWebServiceSoapBinding" name="EIASWebService">
+
+         <wsdlsoap:address location="http://eias-dvi.ets.org/ETSEIASWebSvc/services/EIASWebService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

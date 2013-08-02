@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+      http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+
+	<persistence-unit name="pss" transaction-type="RESOURCE_LOCAL">
+		<non-jta-data-source>jdbc/webSecure</non-jta-data-source>
+		<!--  <mapping-file>jpql/PSSCustomerPrompt.jpql.xml</mapping-file> -->
+		<class>org.ets.pss.persistence.model.Adm</class>
+		<class>org.ets.pss.persistence.model.AdmPK</class>
+		<class>org.ets.pss.persistence.model.AsgndTsk</class>
+		<class>org.ets.pss.persistence.model.AsgndTskPK</class>
+		<class>org.ets.pss.persistence.model.BlcAdminUser</class>
+		<class>org.ets.pss.persistence.model.BlcCustomer</class>
+		<class>org.ets.pss.persistence.model.CrBlb</class>
+		<class>org.ets.pss.persistence.model.CrCmnt</class>
+		<class>org.ets.pss.persistence.model.CrCmntPK</class>
+		<class>org.ets.pss.persistence.model.CustCr</class>
+		<class>org.ets.pss.persistence.model.CustCrAsgndTskDoc</class>
+		<class>org.ets.pss.persistence.model.CustCrAsgndTskDocPK</class>
+		<class>org.ets.pss.persistence.model.CustCrPK</class>
+		<class>org.ets.pss.persistence.model.DlvyMde</class>
+		<class>org.ets.pss.persistence.model.Doc</class>
+		<class>org.ets.pss.persistence.model.EtsAdmUsr</class>
+		<class>org.ets.pss.persistence.model.EtsCust</class>
+		<class>org.ets.pss.persistence.model.Frm</class>
+		<class>org.ets.pss.persistence.model.FrmTyp</class>
+		<class>org.ets.pss.persistence.model.Lang</class>
+		<class>org.ets.pss.persistence.model.MdaMimeTyp</class>
+		<class>org.ets.pss.persistence.model.Pgm</class>
+		<class>org.ets.pss.persistence.model.Pkg</class>
+		<class>org.ets.pss.persistence.model.PkgPK</class>
+		<class>org.ets.pss.persistence.model.PrmptCntnt</class>
+		<class>org.ets.pss.persistence.model.Prompt</class>
+		<class>org.ets.pss.persistence.model.PromptGuide</class>
+		<class>org.ets.pss.persistence.model.PSSTask</class>
+		<class>org.ets.pss.persistence.model.Task</class>
+		<class>org.ets.pss.persistence.model.TaskStatusType</class>
+		<class>org.ets.pss.persistence.model.TaskStep</class>
+		<class>org.ets.pss.persistence.model.Test</class>
+		<class>org.ets.pss.persistence.model.UploadItem</class>
+		<class>org.ets.pss.persistence.model.UserTask</class>
+		<!-- <class>org.ets.pss.persistence.model.CustomerPrompt</class>  -->
+		<!-- <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode> -->
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="none" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.use_sql_comments" value="true" />
+			<property name="hibernate.transaction.flush_before_completion" value="true" />
+			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider" />
+			<property name="eclipselink.query-results-cache" value="false"/>
+			<!-- 
+			<property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory"/>
+			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.SingletonEhCacheProvider"/>
+      		<property name="hibernate.cache.use_second_level_cache" value="true"/>
+      		<property name="hibernate.cache.use_query_cache" value="true"/>
+      		 -->
+		</properties>
+		
+		<exclude-unlisted-classes />		
+	</persistence-unit>
+
+</persistence>

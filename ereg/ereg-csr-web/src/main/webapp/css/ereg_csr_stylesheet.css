@@ -1,0 +1,490 @@
+/* Start - CLEAR */
+.clear{clear:both; content:"";}
+/* End - CLEAR */
+
+/* Start - FORMS */
+.view_profile span{
+	color:#2E2E2E;
+	font-family:chicago;
+	font-size:16px;
+	font-weight:bold;
+	}
+.view_profile label {
+	float:left;
+	width:280px;
+	font-family:chicago;
+	font-size:16px;
+	font-weight:normal;
+	margin:5px 0 0 50px;
+	color:#2A0A0A;
+	}
+/* End - FORMS */
+
+/* Start - Roster Styles */
+	.rosterSpan {
+	font-family:arial,helvetica,sans-serif;
+	font-size:0.91em;
+	}
+/* Start - Roster Styles */
+
+/* Start - BUTTONS */
+.ets_button input {
+	background-color:#B9BEC1;
+	font-weight:bold;
+	color:white;
+	margin:30px 0 0 50px;
+	}
+
+.ets_button button {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: solid 1px #20538D;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+	}
+	
+.ets_button img{
+	vertical-align:middle;
+	margin:0 0 1.5px 0;
+}
+
+.ets_button:hover{
+	background:#B9BEC1;
+	}
+
+	.create_form h2, h2 {
+    color: #333333;
+    display: block;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 1.4em;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+}
+	
+#displaySequenceIdSearch{
+	margin:0 20px;
+}
+
+#search{
+	margin:0 20px;
+}
+	
+	
+	/* End - BUTTONS */
+
+.sectionDiv{
+	height:150px;
+}
+
+	
+/* Start - SUB HEADER */
+.header_sub .ets_header_logo {
+	display:block; 
+	float:left;
+	}
+.header_sub .ets_header_text{
+	display:inline; 
+	color:#000; 
+	float:right; 
+	margin:35px 20px 0 0;
+	font-size:30px;
+	color:#666;
+	}	
+/* End - SUB HEADER */
+
+/* Start - STYLES FOR CANDIDATE SEARCH */
+.hidden{
+display:none;
+}
+
+.ball {
+	background-color: rgba(0,0,0,0);
+	border:5px solid rgba(0,183,229,0.9);
+	opacity:.9;
+	border-top:5px solid rgba(0,0,0,0);
+	border-left:5px solid rgba(0,0,0,0);
+	border-radius:50px;
+	box-shadow: 0 0 35px #2187e7;
+	width:50px;
+	height:50px;
+	margin:0 auto;
+	-moz-animation:spin .5s infinite linear;
+	-webkit-animation:spin .5s infinite linear;
+}
+.ball1 {
+	background-color: rgba(0,0,0,0);
+	border:5px solid rgba(0,183,229,0.9);
+	opacity:.9;
+	border-top:5px solid rgba(0,0,0,0);
+	border-left:5px solid rgba(0,0,0,0);
+	border-radius:50px;
+	box-shadow: 0 0 15px #2187e7; 
+	width:30px;
+	height:30px;
+	margin:0 auto;
+	position:relative;
+	top:-50px;
+	-moz-animation:spinoff .5s infinite linear;
+	-webkit-animation:spinoff .5s infinite linear;
+}
+@-moz-keyframes spin {
+	0% { -moz-transform:rotate(0deg); }
+	100% { -moz-transform:rotate(360deg); }
+}
+@-moz-keyframes spinoff {
+	0% { -moz-transform:rotate(0deg); }
+	100% { -moz-transform:rotate(-360deg); }
+}
+@-webkit-keyframes spin {
+	0% { -webkit-transform:rotate(0deg); }
+	100% { -webkit-transform:rotate(360deg); }
+}
+@-webkit-keyframes spinoff {
+	0% { -webkit-transform:rotate(0deg); }
+	100% { -webkit-transform:rotate(-360deg); }
+}
+/* End - STYLES FOR CANDIDATE SEARCH */
+
+/* Button */
+
+a.dtbtn, button.dtbtn {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: transparent;
+    border-color: none;
+    border-image: none;
+    border-radius: 0 0 0 0;
+    border-style: none;
+    border-width: 0px;
+    color: black;
+	font-size:12px;
+    font-weight: normal;
+    padding: 6px 20px;
+    text-align: center;
+    text-shadow: 0 -1px 0 #396715;
+	margin:5px 0 0 0;
+}
+
+/* Button */
+
+/* Start - DATATABLES */
+table.test 
+{
+border:1px solid #424242;
+vertical-align:center;
+text-align:left;
+width:875px !important;
+}
+.test th
+{
+border:1px solid #424242;
+color:black;
+}
+.test td
+{
+border:1px solid #424242;
+color:black;
+}
+/* End - DATATABLES */
+
+/* Start - UPDATE PROFILE */
+table, td, th #table2
+{
+/*border:1px solid #424242;*/
+vertical-align:center;
+text-align:left;
+width:330px;
+height:35px;
+}
+th
+{
+background-color:#E1DADA;
+color:black;
+}
+li
+{
+line-height:21px;
+}
+
+/* Start - EMAIL TEMPLATE */
+.email_temp {
+margin:20px 0 20px 0;
+color:red;
+width:920px;
+}
+
+.email_temp hr {
+margin:10px 0 0 0;
+color:blue;
+}
+
+/* Start - EMAIL TEMPLATE */
+
+
+/* Start - APPOINTMENT SCHEDULED TABLES */
+.apt-sch-table table{
+	width:100%;
+}
+
+.apt-sch-table tr, td, th{
+	border: 1px solid #C0C0C0;
+}
+
+#updteProfile tr, td, th{
+	border: 0px solid #C0C0C0;
+}
+/* End - APPOINTMENT SCHEDULED TABLES */
+
+/* TEMP */
+
+
+
+.review_form label {
+	max-width:150px;
+	width:150px; font-family:Arial, Helvetica, sans-serif; font-size:0.91em;
+	margin:0 0 0 0;
+	display:inline-block;
+	float:left;
+	padding:0 3px 14px 0;
+	margin:1px 0 0 0;
+}
+
+
+
+
+.review_form ul {
+    list-style-position: outside;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+
+
+
+
+
+.ereg_date {
+	margin:40px 0 0 40px;
+}
+.ereg_date img{
+	vertical-align:middle;
+	margin:0 0 1.5px 0;
+}
+
+button #datepick{
+	background-color:red;
+}
+
+button.ui-datepicker-current { display: none; }
+
+/* Start - Modal Window for Date */
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+	width: 275px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #999);
+	background: -webkit-linear-gradient(#fff, #999);
+	background: -o-linear-gradient(#fff, #999);
+}
+
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover { background: #00d9ff; }
+/* End - Modal Window for Date */
+
+/* Start - Img Hover for Add Another Appointment */
+
+#addAnotherAppointment .img:hover {
+	opacity:4.0;
+	background-color:red;
+}
+
+/* Start - Img Hover for Add Another Appointment */
+
+
+
+/* Start - ALL FORM ELEMENTS */
+
+.lblDate {
+	max-width:75px;
+	min-width:0px;
+	width:150px; font-family:Arial, Helvetica, sans-serif; font-size:0.91em;
+	margin-top: 3px;
+	display:inline-block;
+	float:left;
+	padding:3px;
+}
+
+.create_form select {max-width:260px;
+	width:100%; }
+
+.create_form option {max-width:260px;
+	width:100%; }
+
+.create_form select.smalltext, .smalltext {
+	height:20px;
+	max-width:100px;
+	width:80%;
+	padding:5px 8px;
+}
+
+.create_form input.supersmalltext, .supersmalltext {
+	height:20px;
+	max-width:28px;
+	width:80%;
+	padding:5px 8px;
+}
+
+.create_form select.supersmalltext, .supersmalltext {
+	height:20px;
+	max-width:70px;
+	width:80%;
+	padding:5px 8px;
+}
+
+	.create_form input[type="radio"] { width:30px;}
+
+
+.formRow input[type="checkbox"]
+    {
+    border-radius: 2px 2px 2px 2px;
+    color: #555555;
+    display:inline-block;
+    font-size: 14px;
+    /*height: 20px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    padding: 4px 6px;*/
+    vertical-align: bottom;
+	width:30px;
+	}
+
+
+
+	a.othbutton, button.othbutton {
+	background-color: #68b12f;
+	background: -webkit-gradient(linear, left top, left bottom, from(#68b12f), to(#50911e));
+	background: -webkit-linear-gradient(top, #68b12f, #50911e);
+	background: -moz-linear-gradient(top, #68b12f, #50911e);
+	background: -ms-linear-gradient(top, #68b12f, #50911e);
+	background: -o-linear-gradient(top, #68b12f, #50911e);
+	background: linear-gradient(top, #68b12f, #50911e);
+	border: 1px solid #509111;
+	border-bottom: 1px solid #5b992b;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	box-shadow: inset 0 1px 0 0 #9fd574;
+	-webkit-box-shadow: 0 1px 0 0 #9fd574 inset ;
+	-moz-box-shadow: 0 1px 0 0 #9fd574 inset;
+	-ms-box-shadow: 0 1px 0 0 #9fd574 inset;
+	-o-box-shadow: 0 1px 0 0 #9fd574 inset;
+	color: white;
+	font-weight: bold;
+	padding: 9px 20px;
+	text-align: center;
+	text-shadow: 0 -1px 0 #396715;
+}
+a.othbutton:hover, button.othbutton:hover {
+	opacity:.85; text-decoration:none;
+	cursor: pointer;
+}
+a.othbutton:active, button.othbutton:active {
+	border: 1px solid #20911e;
+	box-shadow: 0 0 10px 5px #356b0b inset;
+	-webkit-box-shadow:0 0 10px 5px #356b0b inset ;
+	-moz-box-shadow: 0 0 10px 5px #356b0b inset;
+	-ms-box-shadow: 0 0 10px 5px #356b0b inset;
+	-o-box-shadow: 0 0 10px 5px #356b0b inset;
+
+}
+
+#buttonAlign{
+margin:15px 20px 0 0 !important;
+}
+
+ereg_span_01.row-fluid {
+	width:0;
+	
+}
+
+.create_form select.dobMonth {max-width:120px; width:100%;}
+.create_form select.dobMonth:required {padding-right:15px;}
+
+.create_form select.dobDay {max-width:70px; width:100%;}
+.create_form select.dobDay:required {padding-right:15px;}
+
+.create_form input.dobYear, .dobYear {
+	height:20px;
+	max-width:50px;
+	width:100%;
+	padding:5px 8px;
+}
+
+.testMedia { background: #fff url(../img/red_asterisk.png) no-repeat 2px 3px; width:20px; height:19px; display:inline-block;}
+
+.testLang { background: #fff url(../img/red_asterisk.png) no-repeat 2px 3px; width:20px; height:19px; display:inline-block;}
+
+.prefLang { background: #fff url(/img/red_asterisk.png) no-repeat 2px 3px; width:20px; height:19px; display:inline-block;}
+
+.militarySts { background: #fff url(/img/red_asterisk.png) no-repeat 2px 3px; width:20px; height:19px; display:inline-block;}
+
+/* End - ALL FORM ELEMENTS */
+
+/* Start - Headings and their alignment */
+.testCenterAdd {
+font-family: arial,Verdana,Geneva,sans-serif;
+font-size: 0.91em;
+}
+/* End - Headings and their alignment */

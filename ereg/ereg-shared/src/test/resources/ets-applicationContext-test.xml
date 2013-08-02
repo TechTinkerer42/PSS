@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<bean id="blEntityConfiguration" class="org.broadleafcommerce.common.persistence.EntityConfiguration"/>
+
+	<bean id="generateUniqueCode" class="org.ets.ereg.common.business.util.GenerateUniqueCode"/>
+
+	<bean id="blMergedEntityContexts" class="org.springframework.beans.factory.config.ListFactoryBean">
+        <property name="sourceList">
+            <list>
+                <value>classpath:ets-domain-applicationContext-entity.xml</value>
+            </list>
+        </property>
+    </bean>
+
+	<!-- <import resource="ets-shared-applicationContext.xml"/>
+ -->
+ <context:component-scan base-package="org.ets.ereg.common.business.dao,org.ets.ereg.common.business.biq.dao"/>
+        <context:component-scan base-package="org.ets.ereg.common.business.service"/>
+
+	<bean id="blPersistenceUnitManager" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceXmlLocation" value="classpath*:/META-INF/ets-persistence-test.xml"/>
+		<property name="dataSource" ref="blDS"/>
+	</bean>
+
+
+    <bean id="blDS" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:mem:broadleaf" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+	</bean>
+	
+    
+   <bean id="blCacheManager" class="org.broadleafcommerce.common.extensibility.cache.ehcache.MergeEhCacheManagerFactoryBean">
+        <property name="shared" value="true"/>
+    </bean>
+
+    <bean id="blMergedCacheConfigLocations" class="org.springframework.beans.factory.config.ListFactoryBean">
+        <property name="sourceList">
+            <list>
+                <value>classpath:bl-ehcache.xml</value>
+                <value>classpath:ets-override-ehcache-test.xml</value>
+            </list>
+        </property>
+    </bean>
+    
+   <bean id="blCountryService" class="org.broadleafcommerce.profile.core.service.CountryServiceImpl"/>
+   <bean id="blCountryDao" class="org.broadleafcommerce.profile.core.dao.CountryDaoImpl"/>
+
+
+</beans>

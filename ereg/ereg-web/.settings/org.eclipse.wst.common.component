@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ereg-web">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="ereg-common-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ereg-common/ereg-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ereg-business-services-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ereg-business-services/ereg-business-services">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ereg-ada-module-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ereg-ada-module/ereg-ada-module">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ereg-cms-module-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ereg-cms-module/ereg-cms-module">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ereg-score-recepient-module-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ereg-score-recepient-module/ereg-score-recepient-module">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ereg-voucher-module-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ereg-voucher-module/ereg-voucher-module">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ereg-shared-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ereg-shared/ereg-shared">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ereg-security-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ereg-security/ereg-security">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ereg-common-web-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ereg-common-web/ereg-common-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ereg-commerce-module-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ereg-commerce-module/ereg-commerce-module">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ereg-domain-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ereg-domain/ereg-domain">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ereg-scheduling-module-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ereg-scheduling-module/ereg-scheduling-module">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ereg-domain-interfaces-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ereg-domain-interfaces/ereg-domain-interfaces">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ereg-profile-module-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ereg-profile-module/ereg-profile-module">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ereg-eias-client-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ereg-eias-client/ereg-eias-client">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="ereg-web"/>
+        <property name="java-output-path" value="/ereg-web/target/ereg-web/WEB-INF/classes"/>
+    </wb-module>
+</project-modules>

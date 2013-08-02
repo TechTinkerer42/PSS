@@ -1,0 +1,55 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+ 
+	<bean id="extendHoldSeatStore" class="org.ets.ereg.common.web.scheduling.ExtendHoldSeatStoreImpl" />
+ 
+	<!-- Spring Quartz -->
+	<bean name="extendHoldJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+ 
+		<property name="jobClass" value="org.ets.ereg.common.web.scheduler.jobs.ExtendHoldJob" />
+ 
+		<property name="jobDataAsMap">
+		  <map>
+			<entry key="extendHoldSeatStore" value-ref="extendHoldSeatStore" />
+			<entry key="schedulingService" value-ref="schedulingService" />
+		  </map>
+		</property>
+ 
+	</bean>
+ 
+	<!-- Simple Trigger, run every 5 seconds -->
+	<bean id="simpleTrigger" 
+                class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+ 
+		<property name="jobDetail" ref="extendHoldJob" />
+		<property name="repeatInterval" value="5000" />
+		<property name="startDelay" value="1000" />
+ 
+	</bean>
+ 
+	<!-- Cron Trigger, run every 5 minutes -->
+	<bean id="cronTrigger" 
+                class="org.springframework.scheduling.quartz.CronTriggerBean">
+ 
+		<property name="jobDetail" ref="extendHoldJob" />
+		<property name="cronExpression" value="0 0/5 * * * ?" />
+ 
+	</bean>
+ 
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+			<list>
+				<ref bean="extendHoldJob" />
+			</list>
+		</property>
+ 
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger" />
+			</list>
+		</property>
+	</bean>
+ 
+</beans>

@@ -1,0 +1,335 @@
+
+Connected to: Oracle Database 11g Enterprise Edition Release 11.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+Export done in WE8MSWIN1252 character set and AL16UTF16 NCHAR character set
+server uses AL32UTF8 character set (possible charset conversion)
+Note: grants on tables/views/sequences/roles will not be exported
+
+About to export specified users ...
+. exporting pre-schema procedural objects and actions
+. exporting foreign function library names for user EREG01DS 
+. exporting PUBLIC type synonyms
+. exporting private type synonyms
+. exporting object type definitions for user EREG01DS 
+About to export EREG01DS's objects ...
+. exporting database links
+. exporting sequence numbers
+. exporting cluster definitions
+. about to export EREG01DS's tables via Conventional Path ...
+. . exporting table                     ACMDTN_GRP          5 rows exported
+. . exporting table                 ACMDTN_GRP_REL          0 rows exported
+. . exporting table                     ACMDTN_TYP         11 rows exported
+. . exporting table                 ACMDTN_TYP_GRP         11 rows exported
+. . exporting table                 ACMDTN_TYP_VAL          2 rows exported
+. . exporting table                ADMIN_USR_PHONE          0 rows exported
+. . exporting table               ADM_USR_LGN_HIST          0 rows exported
+. . exporting table                       ADR_PRPS          1 rows exported
+. . exporting table                          AGNCY          4 rows exported
+. . exporting table                      AGNCY_PGM          4 rows exported
+. . exporting table                AGNCY_SCRG_VNDR          0 rows exported
+. . exporting table                ATS_TRNSCTN_LOG          0 rows exported
+. . exporting table                           BKNG          8 rows exported
+. . exporting table                    BKNG_ACMDTN          0 rows exported
+. . exporting table                       BKNG_HLD          0 rows exported
+. . exporting table                   BKNG_STS_TYP          5 rows exported
+. . exporting table      BLC_ADDITIONAL_OFFER_INFO          0 rows exported
+. . exporting table                    BLC_ADDRESS         53 rows exported
+. . exporting table               BLC_ADMIN_MODULE          0 rows exported
+. . exporting table       BLC_ADMIN_PASSWORD_TOKEN          0 rows exported
+. . exporting table           BLC_ADMIN_PERMISSION         85 rows exported
+. . exporting table    BLC_ADMIN_PERMISSION_ENTITY        174 rows exported
+. . exporting table                 BLC_ADMIN_ROLE         13 rows exported
+. . exporting table BLC_ADMIN_ROLE_PERMISSION_XREF        170 rows exported
+. . exporting table              BLC_ADMIN_SECTION          0 rows exported
+. . exporting table        BLC_ADMIN_SEC_PERM_XREF          0 rows exported
+. . exporting table                 BLC_ADMIN_USER         16 rows exported
+. . exporting table BLC_ADMIN_USER_PERMISSION_XREF          0 rows exported
+. . exporting table       BLC_ADMIN_USER_ROLE_XREF         16 rows exported
+. . exporting table         BLC_ADMIN_USER_SANDBOX          0 rows exported
+. . exporting table                BLC_AMOUNT_ITEM          0 rows exported
+. . exporting table             BLC_ASSET_DESC_MAP          0 rows exported
+. . exporting table       BLC_BANK_ACCOUNT_PAYMENT          0 rows exported
+. . exporting table          BLC_BUNDLE_ORDER_ITEM          0 rows exported
+. . exporting table        BLC_BUND_ITEM_FEE_PRICE          0 rows exported
+. . exporting table         BLC_CANDIDATE_FG_OFFER          0 rows exported
+. . exporting table       BLC_CANDIDATE_ITEM_OFFER          0 rows exported
+. . exporting table      BLC_CANDIDATE_ORDER_OFFER          0 rows exported
+. . exporting table                   BLC_CATEGORY          5 rows exported
+. . exporting table         BLC_CATEGORY_ATTRIBUTE          0 rows exported
+. . exporting table             BLC_CATEGORY_IMAGE          0 rows exported
+. . exporting table         BLC_CATEGORY_MEDIA_MAP          0 rows exported
+. . exporting table      BLC_CATEGORY_PRODUCT_XREF          5 rows exported
+. . exporting table              BLC_CATEGORY_XREF          4 rows exported
+. . exporting table BLC_CAT_SEARCH_FACET_EXCL_XREF          0 rows exported
+. . exporting table      BLC_CAT_SEARCH_FACET_XREF          0 rows exported
+. . exporting table         BLC_CHALLENGE_QUESTION         12 rows exported
+. . exporting table                 BLC_CODE_TYPES          3 rows exported
+. . exporting table                    BLC_CONTENT          0 rows exported
+. . exporting table            BLC_CONTENT_DETAILS          0 rows exported
+. . exporting table                    BLC_COUNTRY          1 rows exported
+. . exporting table        BLC_CREDIT_CARD_PAYMENT          0 rows exported
+. . exporting table                   BLC_CURRENCY          1 rows exported
+. . exporting table                   BLC_CUSTOMER         12 rows exported
+. . exporting table           BLC_CUSTOMER_ADDRESS         12 rows exported
+. . exporting table         BLC_CUSTOMER_ATTRIBUTE          0 rows exported
+. . exporting table        BLC_CUSTOMER_OFFER_XREF          0 rows exported
+. . exporting table    BLC_CUSTOMER_PASSWORD_TOKEN          0 rows exported
+. . exporting table           BLC_CUSTOMER_PAYMENT          0 rows exported
+. . exporting table    BLC_CUSTOMER_PAYMENT_FIELDS          0 rows exported
+. . exporting table             BLC_CUSTOMER_PHONE         22 rows exported
+. . exporting table              BLC_CUSTOMER_ROLE         12 rows exported
+. . exporting table             BLC_DATA_DRVN_ENUM          0 rows exported
+. . exporting table         BLC_DATA_DRVN_ENUM_VAL          0 rows exported
+. . exporting table        BLC_DISCRETE_ORDER_ITEM          0 rows exported
+. . exporting table        BLC_DISC_ITEM_FEE_PRICE          0 rows exported
+. . exporting table    BLC_DYN_DISCRETE_ORDER_ITEM          0 rows exported
+. . exporting table             BLC_EMAIL_TRACKING          0 rows exported
+. . exporting table      BLC_EMAIL_TRACKING_CLICKS          0 rows exported
+. . exporting table       BLC_EMAIL_TRACKING_OPENS          0 rows exported
+. . exporting table              BLC_FG_ADJUSTMENT          0 rows exported
+. . exporting table            BLC_FG_FEE_TAX_XREF          0 rows exported
+. . exporting table             BLC_FG_FG_TAX_XREF          0 rows exported
+. . exporting table           BLC_FG_ITEM_TAX_XREF          0 rows exported
+. . exporting table                      BLC_FIELD          0 rows exported
+. . exporting table         BLC_FIELD_SEARCH_TYPES          0 rows exported
+. . exporting table                    BLC_FLD_DEF          0 rows exported
+. . exporting table                   BLC_FLD_ENUM          0 rows exported
+. . exporting table              BLC_FLD_ENUM_ITEM          0 rows exported
+. . exporting table                  BLC_FLD_GROUP          0 rows exported
+. . exporting table          BLC_FULFILLMENT_GROUP          0 rows exported
+. . exporting table      BLC_FULFILLMENT_GROUP_FEE          0 rows exported
+. . exporting table     BLC_FULFILLMENT_GROUP_ITEM          0 rows exported
+. . exporting table         BLC_FULFILLMENT_OPTION          0 rows exported
+. . exporting table   BLC_FULFILLMENT_OPTION_FIXED          0 rows exported
+. . exporting table BLC_FULFILLMENT_OPT_BANDED_PRC          0 rows exported
+. . exporting table BLC_FULFILLMENT_OPT_BANDED_WGT          0 rows exported
+. . exporting table          BLC_FULFILLMENT_ORDER          0 rows exported
+. . exporting table     BLC_FULFILLMENT_ORDER_ITEM          0 rows exported
+. . exporting table     BLC_FULFILLMENT_PRICE_BAND          0 rows exported
+. . exporting table    BLC_FULFILLMENT_WEIGHT_BAND          0 rows exported
+. . exporting table         BLC_FULFILL_ORDER_NOTE          0 rows exported
+. . exporting table        BLC_GIFTWRAP_ORDER_ITEM          0 rows exported
+. . exporting table          BLC_GIFT_CARD_PAYMENT          0 rows exported
+. . exporting table              BLC_ID_GENERATION          2 rows exported
+. . exporting table           BLC_IMG_STATIC_ASSET          0 rows exported
+. . exporting table       BLC_ITEM_OFFER_QUALIFIER          0 rows exported
+. . exporting table                     BLC_LOCALE          2 rows exported
+. . exporting table                      BLC_MEDIA          0 rows exported
+. . exporting table                      BLC_OFFER          2 rows exported
+. . exporting table                BLC_OFFER_AUDIT          0 rows exported
+. . exporting table                 BLC_OFFER_CODE          0 rows exported
+. . exporting table                 BLC_OFFER_INFO          0 rows exported
+. . exporting table          BLC_OFFER_INFO_FIELDS          0 rows exported
+. . exporting table        BLC_OFFER_ITEM_CRITERIA          2 rows exported
+. . exporting table                 BLC_OFFER_RULE          2 rows exported
+. . exporting table             BLC_OFFER_RULE_MAP          2 rows exported
+. . exporting table                      BLC_ORDER          0 rows exported
+. . exporting table           BLC_ORDER_ADJUSTMENT          0 rows exported
+. . exporting table            BLC_ORDER_ATTRIBUTE          0 rows exported
+. . exporting table                 BLC_ORDER_ITEM          0 rows exported
+. . exporting table        BLC_ORDER_ITEM_ADD_ATTR          0 rows exported
+. . exporting table      BLC_ORDER_ITEM_ADJUSTMENT          0 rows exported
+. . exporting table       BLC_ORDER_ITEM_ATTRIBUTE          0 rows exported
+. . exporting table         BLC_ORDER_ITEM_DTL_ADJ          0 rows exported
+. . exporting table       BLC_ORDER_ITEM_PRICE_DTL          0 rows exported
+. . exporting table     BLC_ORDER_MULTISHIP_OPTION          0 rows exported
+. . exporting table      BLC_ORDER_OFFER_CODE_XREF          0 rows exported
+. . exporting table              BLC_ORDER_PAYMENT          0 rows exported
+. . exporting table      BLC_ORDER_PAYMENT_DETAILS          0 rows exported
+. . exporting table                       BLC_PAGE          0 rows exported
+. . exporting table                   BLC_PAGE_FLD          0 rows exported
+. . exporting table               BLC_PAGE_FLD_MAP          0 rows exported
+. . exporting table         BLC_PAGE_ITEM_CRITERIA          0 rows exported
+. . exporting table                  BLC_PAGE_RULE          0 rows exported
+. . exporting table              BLC_PAGE_RULE_MAP          0 rows exported
+. . exporting table                 BLC_PAGE_TMPLT          0 rows exported
+. . exporting table  BLC_PAYINFO_ADDITIONAL_FIELDS          0 rows exported
+. . exporting table  BLC_PAYMENT_ADDITIONAL_FIELDS          0 rows exported
+. . exporting table                BLC_PAYMENT_LOG          0 rows exported
+. . exporting table      BLC_PAYMENT_RESPONSE_ITEM          0 rows exported
+. . exporting table           BLC_PERSONAL_MESSAGE          0 rows exported
+. . exporting table        BLC_PGTMPLT_FLDGRP_XREF          0 rows exported
+. . exporting table                      BLC_PHONE         53 rows exported
+. . exporting table                    BLC_PRODUCT          8 rows exported
+. . exporting table          BLC_PRODUCT_ATTRIBUTE          0 rows exported
+. . exporting table             BLC_PRODUCT_BUNDLE          0 rows exported
+. . exporting table         BLC_PRODUCT_CROSS_SALE          0 rows exported
+. . exporting table           BLC_PRODUCT_FEATURED          0 rows exported
+. . exporting table             BLC_PRODUCT_OPTION          1 rows exported
+. . exporting table       BLC_PRODUCT_OPTION_VALUE          2 rows exported
+. . exporting table        BLC_PRODUCT_OPTION_XREF          5 rows exported
+. . exporting table           BLC_PRODUCT_SKU_XREF         20 rows exported
+. . exporting table            BLC_PRODUCT_UP_SALE          0 rows exported
+. . exporting table       BLC_QUAL_CRIT_OFFER_XREF          0 rows exported
+. . exporting table        BLC_QUAL_CRIT_PAGE_XREF          0 rows exported
+. . exporting table          BLC_QUAL_CRIT_SC_XREF          0 rows exported
+. . exporting table              BLC_RATING_DETAIL          0 rows exported
+. . exporting table             BLC_RATING_SUMMARY          0 rows exported
+. . exporting table       BLC_RETURN_AUTHORIZATION          0 rows exported
+. . exporting table  BLC_RETURN_AUTHORIZATION_ITEM          0 rows exported
+. . exporting table           BLC_RETURN_AUTH_NOTE          0 rows exported
+. . exporting table        BLC_RETURN_CONFIRMATION          0 rows exported
+. . exporting table              BLC_REVIEW_DETAIL          0 rows exported
+. . exporting table            BLC_REVIEW_FEEDBACK          0 rows exported
+. . exporting table                       BLC_ROLE          1 rows exported
+. . exporting table                    BLC_SANDBOX          0 rows exported
+. . exporting table             BLC_SANDBOX_ACTION          0 rows exported
+. . exporting table               BLC_SANDBOX_ITEM          0 rows exported
+. . exporting table                         BLC_SC          0 rows exported
+. . exporting table                     BLC_SC_FLD          0 rows exported
+. . exporting table             BLC_SC_FLDGRP_XREF          0 rows exported
+. . exporting table                 BLC_SC_FLD_MAP          0 rows exported
+. . exporting table               BLC_SC_FLD_TMPLT          0 rows exported
+. . exporting table           BLC_SC_ITEM_CRITERIA          0 rows exported
+. . exporting table                    BLC_SC_RULE          0 rows exported
+. . exporting table                BLC_SC_RULE_MAP          0 rows exported
+. . exporting table                    BLC_SC_TYPE          0 rows exported
+. . exporting table               BLC_SEARCH_FACET          0 rows exported
+. . exporting table         BLC_SEARCH_FACET_RANGE          0 rows exported
+. . exporting table          BLC_SEARCH_FACET_XREF          0 rows exported
+. . exporting table           BLC_SEARCH_INTERCEPT          0 rows exported
+. . exporting table             BLC_SEARCH_SYNONYM          0 rows exported
+. . exporting table              BLC_SHIPPING_RATE          0 rows exported
+. . exporting table                       BLC_SITE          0 rows exported
+. . exporting table               BLC_SITE_SANDBOX          0 rows exported
+. . exporting table                        BLC_SKU         28 rows exported
+. . exporting table              BLC_SKU_ATTRIBUTE          2 rows exported
+. . exporting table           BLC_SKU_AVAILABILITY          0 rows exported
+. . exporting table            BLC_SKU_BUNDLE_ITEM          0 rows exported
+. . exporting table                    BLC_SKU_FEE          0 rows exported
+. . exporting table               BLC_SKU_FEE_XREF          0 rows exported
+. . exporting table   BLC_SKU_FULFILLMENT_EXCLUDED          0 rows exported
+. . exporting table BLC_SKU_FULFILLMENT_FLAT_RATES          0 rows exported
+. . exporting table              BLC_SKU_MEDIA_MAP          0 rows exported
+. . exporting table      BLC_SKU_OPTION_VALUE_XREF         20 rows exported
+. . exporting table                      BLC_STATE         59 rows exported
+. . exporting table               BLC_STATIC_ASSET          0 rows exported
+. . exporting table          BLC_STATIC_ASSET_DESC          0 rows exported
+. . exporting table          BLC_STATIC_ASSET_STRG          0 rows exported
+. . exporting table                      BLC_STORE          0 rows exported
+. . exporting table            BLC_SYSTEM_PROPERTY          0 rows exported
+. . exporting table             BLC_TARGET_CONTENT          0 rows exported
+. . exporting table        BLC_TAR_CRIT_OFFER_XREF          2 rows exported
+. . exporting table                 BLC_TAX_DETAIL          0 rows exported
+. . exporting table                BLC_URL_HANDLER          0 rows exported
+. . exporting table             BLC_USERCONNECTION          0 rows exported
+. . exporting table                   BLC_ZIP_CODE          0 rows exported
+. . exporting table            BTTRY_DSCRT_ORD_ITM          0 rows exported
+. . exporting table                     BTTRY_PROD          1 rows exported
+. . exporting table                 BTTRY_PROD_ITM          5 rows exported
+. . exporting table                 BTTRY_SBSCRPTN          0 rows exported
+. . exporting table               BTTRY_SCHDLD_TST          0 rows exported
+. . exporting table                       CART_RUL          2 rows exported
+. . exporting table              CART_RUL_DEP_PROD          2 rows exported
+. . exporting table                  CART_RUL_PROD          0 rows exported
+. . exporting table                   CART_RUL_SKU         38 rows exported
+. . exporting table                   CART_RUL_TYP          1 rows exported
+. . exporting table                      CNTNT_TYP          2 rows exported
+. . exporting table                CUST_ACMDTN_TST         11 rows exported
+. . exporting table                CUST_DMGRPH_RSP          0 rows exported
+. . exporting table                  CUST_LGN_HIST          0 rows exported
+. . exporting table                CUST_PGM_INTRST          0 rows exported
+. . exporting table                       DEP_PROD          2 rows exported
+. . exporting table                       DLVY_MDE          4 rows exported
+. . exporting table                    DMGRPH_QSTN          8 rows exported
+. . exporting table            DMGRPH_QSTN_RSP_TYP          4 rows exported
+. . exporting table                DMGRPH_QSTN_SET          4 rows exported
+. . exporting table          DMGRPH_QSTN_SET_ENTRY          8 rows exported
+. . exporting table            DMGRPH_QSTN_SET_TYP          2 rows exported
+. . exporting table               DMGRPH_QSTN_TRGR          5 rows exported
+. . exporting table                     DMGRPH_RSP         62 rows exported
+. . exporting table                      EREG_HIER          3 rows exported
+. . exporting table        EREG_HIER_RUL_SET_CNFGN          2 rows exported
+. . exporting table                         ETNCTY          8 rows exported
+. . exporting table                    ETS_ADM_USR         16 rows exported
+. . exporting table                        ETS_ADR         53 rows exported
+. . exporting table               ETS_APLCTN_CNFGN         80 rows exported
+. . exporting table                 ETS_APLCTN_USR          1 rows exported
+. . exporting table                      ETS_CNTRY          1 rows exported
+. . exporting table                       ETS_CUST         12 rows exported
+. . exporting table                  ETS_CUST_LNKG         12 rows exported
+. . exporting table                   ETS_CUST_TYP          5 rows exported
+. . exporting table              ETS_DSCRT_ORD_ITM          0 rows exported
+. . exporting table                      ETS_PHONE         53 rows exported
+. . exporting table                       ETS_PROD          8 rows exported
+. . exporting table                        ETS_SKU         28 rows exported
+. . exporting table              EVNT_OTCM_STS_TYP          4 rows exported
+. . exporting table                            FRM        239 rows exported
+. . exporting table                        FRM_TYP          3 rows exported
+. . exporting table                     GLBL_TM_ZN          4 rows exported
+. . exporting table                           GNDR          2 rows exported
+. . exporting table                       HIER_TYP          3 rows exported
+. . exporting table                        HLD_TYP          0 rows exported
+. . exporting table                     INTL_CNTNT         70 rows exported
+. . exporting table                           LANG          8 rows exported
+. . exporting table                       LNKG_TYP          1 rows exported
+. . exporting table                 LOGOUT_RSN_TYP          2 rows exported
+. . exporting table           MBRSHP_DSCRT_ORD_ITM          0 rows exported
+. . exporting table                        MIL_STS          8 rows exported
+. . exporting table                            ORG         58 rows exported
+. . exporting table                        ORG_ADR         54 rows exported
+. . exporting table                      ORG_CNTCT          0 rows exported
+. . exporting table                    ORG_HLD_STS          0 rows exported
+. . exporting table                       ORG_LNKG          0 rows exported
+. . exporting table                      ORG_PHONE         54 rows exported
+. . exporting table                   ORG_REL_HIER          0 rows exported
+. . exporting table                    ORG_REL_TYP          0 rows exported
+. . exporting table                    ORG_RLE_TYP          2 rows exported
+. . exporting table                            PGM          9 rows exported
+. . exporting table            PGM_ACMDTN_DLVY_MDE         15 rows exported
+. . exporting table                   PGM_CLMN_RUL          0 rows exported
+. . exporting table               PGM_CLMN_RUL_TYP          0 rows exported
+. . exporting table            PGM_DMGRPH_QSTN_SET          1 rows exported
+. . exporting table                      PHONE_TYP          4 rows exported
+. . exporting table       RSCHDL_TST_DSCRT_ORD_ITM          0 rows exported
+. . exporting table                 RSTRCT_ACS_RSN          1 rows exported
+. . exporting table                            RUL          4 rows exported
+. . exporting table                 RUL_ALWBL_PARM          4 rows exported
+. . exporting table                       RUL_PARM          4 rows exported
+. . exporting table                  RUL_PARM_DFLT          0 rows exported
+. . exporting table                        RUL_SET          4 rows exported
+. . exporting table                  RUL_SET_CNFGN          2 rows exported
+. . exporting table              RUL_SET_CNFGN_DTL          4 rows exported
+. . exporting table         RUL_SET_CNFGN_PARM_VAL          4 rows exported
+. . exporting table                    RUL_SET_TYP          2 rows exported
+. . exporting table            SANDBOX_ITEM_ACTION          0 rows exported
+. . exporting table                     SCHDLG_TYP          2 rows exported
+. . exporting table                      SCRG_VNDR          0 rows exported
+. . exporting table             SEQUENCE_GENERATOR         58 rows exported
+. . exporting table              SVC_DSCRT_ORD_ITM          0 rows exported
+. . exporting table                        SVC_SKU          0 rows exported
+. . exporting table                TRNSCTN_STS_TYP          0 rows exported
+. . exporting table                    TRNSCTN_TYP          0 rows exported
+. . exporting table                        TRNSLTN         70 rows exported
+. . exporting table                            TST          5 rows exported
+. . exporting table                       TST_CNTR         54 rows exported
+. . exporting table                 TST_CNTR_ADMIN         11 rows exported
+. . exporting table              TST_CNTR_DLVY_MDE         98 rows exported
+. . exporting table                   TST_CNTR_PGM         54 rows exported
+. . exporting table                   TST_CNTR_TYP          1 rows exported
+. . exporting table                 TST_DMGRPH_RSP          0 rows exported
+. . exporting table              TST_DSCRT_ORD_ITM          0 rows exported
+. . exporting table         TST_DSCRT_ORD_ITM_BKNG          0 rows exported
+. . exporting table                        TST_SKU          0 rows exported
+. . exporting table                    TST_STS_TYP          3 rows exported
+. . exporting table        TST_TKR_SCR_STS_RSN_TYP          0 rows exported
+. . exporting table            TST_TKR_SCR_STS_TYP          0 rows exported
+. . exporting table                    TST_TKR_TST          8 rows exported
+. . exporting table                      TST_VARTN         20 rows exported
+. exporting synonyms
+. exporting views
+. exporting stored procedures
+. exporting operators
+. exporting referential integrity constraints
+. exporting triggers
+. exporting indextypes
+. exporting bitmap, functional and extensible indexes
+. exporting posttables actions
+. exporting materialized views
+. exporting snapshot logs
+. exporting job queues
+. exporting refresh groups and children
+. exporting dimensions
+. exporting post-schema procedural objects and actions
+. exporting statistics
+Export terminated successfully without warnings.

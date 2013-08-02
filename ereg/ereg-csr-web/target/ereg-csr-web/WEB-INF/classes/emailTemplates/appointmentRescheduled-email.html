@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Your Have HSET Appointment(s) Scheduled.</title>
+</head>
+<body>
+	<p>One of your appointments has been rescheduled. Please see the detail as followed.</p>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>Appointment Number</th>
+				<th>Test Title</th>
+				<th>Date</th>
+				<th>Test Center</th>
+				<th>Time</th>
+				<th>Test Type</th>
+				<th>Test Language</th>
+				<th>Comments</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cancelled Appointment</td>
+				<td th:text="${oldBooking.etsApptID}"></td>
+				<td></td>
+				<td th:text="${#dates.format(oldBooking.appointmentDateTime, 'MMM dd, yyyy')}"></td>
+				<td th:text="${oldBooking.testCenter.name}"></td>
+				<td th:text="${#dates.format(oldBooking.appointmentDateTime, 'HH:mm')}"></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Rescheduled Appointment</td>
+				<td th:text="${newBooking.etsApptID}"></td>
+				<td></td>
+				<td th:text="${#dates.format(newBooking.appointmentDateTime, 'MMM dd, yyyy')}"></td>
+				<td th:text="${newBooking.testCenter.name}"></td>
+				<td th:text="${#dates.format(newBooking.appointmentDateTime, 'HH:mm')}"></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,65 @@
+XE=
+  (DESCRIPTION=
+    (ADDRESS=
+      (PROTOCOL=TCP)
+      (HOST=L-AF391334.etslan.org)
+      (PORT=1521)
+    )
+    (CONNECT_DATA=
+      (SERVER=dedicated)
+      (SERVICE_NAME=XE)
+    )
+  )
+
+OD70.WORLD,OD70=
+  (DESCRIPTION=
+    (ADDRESS=
+      (PROTOCOL=TCP)
+      (HOST=HALN05-WEBDBS2.ets.org)
+      (PORT=1529)
+    )
+    (CONNECT_DATA=
+      (SERVER=dedicated)
+      (SERVICE_NAME=OD70)
+    )
+  )
+
+EXTPROC_CONNECTION_DATA=
+  (DESCRIPTION=
+    (ADDRESS=
+      (PROTOCOL=IPC)
+      (KEY=EXTPROC1)
+    )
+    (CONNECT_DATA=
+      (PRESENTATION=RO)
+      (SID=PLSExtProc)
+    )
+  )
+
+
+ORACLR_CONNECTION_DATA=
+  (DESCRIPTION=
+    (ADDRESS=
+      (PROTOCOL=IPC)
+      (KEY=EXTPROC1)
+    )
+    (CONNECT_DATA=
+      (PRESENTATION=RO)
+      (SID=CLRExtProc)
+    )
+  )
+  ONEI.WORLD,ONEI= (DESCRIPTION= (LOAD_BALANCE=yes) (ADDRESS= (PROTOCOL=TCP)
+(HOST=oco07-crs-scan)
+(PORT=1526)
+)
+(CONNECT_DATA=
+(FAILOVER_MODE=
+(TYPE=select)
+(METHOD=basic)
+(RETRIES=180)
+(DELAY=5)
+)
+(SERVER=dedicated)
+(SERVICE_NAME=ONEI)
+)
+)

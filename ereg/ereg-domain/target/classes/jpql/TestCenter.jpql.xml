@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd" version="2.0">
+
+	<named-query name="TestCenter.findById">
+		<query>
+			<![CDATA[
+			select testCenter from org.ets.ereg.domain.interfaces.model.scheduling.TestCenter testCenter
+			where
+			testCenter.id = :id
+			]]>
+		</query>
+	</named-query>
+	<named-query name="TestCenter.findTestCentersByAdminId">
+			<query>
+				<![CDATA[
+				select tc from org.ets.ereg.domain.interfaces.model.scheduling.TestCenter tc 
+				, org.ets.ereg.domain.interfaces.model.profile.TestCenterAdmin tca
+				where tc.id=tca.testCenterAdminUserId.testCenterId and 
+				tca.testCenterAdminUserId.etsAdminUserId = :adminId
+				]]>
+			</query>
+	</named-query>
+	<named-query name="TestCenter.findTestCentersByAgency">
+		<query>
+			<![CDATA[
+				select tc 
+				from 
+					org.ets.ereg.domain.interfaces.model.scheduling.TestCenter tc,
+					org.ets.ereg.domain.interfaces.model.scheduling.TestCenterProgram tcp
+				where
+					tc.id = tcp.testCenterProgramId.testCenterId and
+					tcp.agencyProgram.agencyProgramId.programCode = :programCode and
+					tcp.agencyProgram.agencyProgramId.agencyId = :agencyId and
+					tc.isActive = :isActive
+				order by
+					tc.name
+			]]>
+		</query>
+	</named-query>
+</entity-mappings>

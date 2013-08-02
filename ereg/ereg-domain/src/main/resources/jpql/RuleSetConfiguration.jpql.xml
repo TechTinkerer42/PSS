@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd" version="2.0">
+	<named-query name="RuleSetConfiguration.getConfigurationDetails">
+		<query>
+			<![CDATA[
+			select rs.ruleSetConfigurationDetails from org.ets.ereg.domain.interfaces.model.rule.RuleSet rs
+			where rs.ruleSetType.code= :ruleSetTypeCode
+			]]>
+		</query>
+	</named-query>
+	<named-query name="RuleSetConfiguration.getAdminRoleId">
+		<query>
+			<![CDATA[
+			select adminRole from org.broadleafcommerce.openadmin.server.security.domain.AdminRole adminRole
+			where adminRole.name= :adminRoleCd
+			]]>
+		</query>
+	</named-query>
+	
+	<named-query name="RuleSetConfiguration.getEregHierarchyId">
+		<query>
+			<![CDATA[
+			select eregHierarchy from org.ets.ereg.domain.interfaces.domain.hierarchy.EregHierarchy eregHierarchy
+			where eregHierarchy.hierarchyName= :hierarchyName 
+			]]>
+		</query>
+	</named-query>
+	
+	
+		<named-query name="RuleSetConfiguration.getChildren">
+		<query>
+			<![CDATA[
+			select eregHierarchy from org.ets.ereg.domain.interfaces.domain.hierarchy.EregHierarchy eregHierarchy
+			where eregHierarchy.parentHierarchy.eregHierarchyIdentifier= :parentHierarchy 
+			]]>
+		</query>
+	</named-query>
+	
+	<named-query name="RuleSetConfiguration.getRuleSetConfigurationParameterValue">
+		<query>
+			<![CDATA[
+			select ruleSetConfParamVal from org.ets.ereg.domain.interfaces.model.rule.RuleSetConfigurationParameterValue ruleSetConfParamVal
+			where ruleSetConfParamVal.ruleAllowableParameter.rule.ruleCode= :ruleCode 
+			]]>
+		</query>
+	</named-query>
+	
+	
+	<named-query name="RuleSetConfiguration.getRuleAllowableParameter">
+		<query>
+			<![CDATA[
+			select ruleAllowableParameter from org.ets.ereg.domain.interfaces.model.rule.RuleAllowableParameter ruleAllowableParameter
+			where ruleAllowableParameter.rule.ruleCode= :ruleCode 
+			]]>
+		</query>
+	</named-query>
+	
+	<named-query name="RuleSetConfiguration.getRuleSetByCode">
+		<query>
+			<![CDATA[
+			select ruleSet from org.ets.ereg.domain.interfaces.model.rule.RuleSet ruleSet
+			where ruleSet.id.ruleSetTypeCode= :ruleSetCd 
+			]]>
+		</query>
+	</named-query>
+	
+	<named-query name="RuleSetConfiguration.getEregHierarchyRuleSetConfig">
+		<query>
+			<![CDATA[
+			select eregHierRSConfig from org.ets.ereg.domain.interfaces.domain.hierarchy.EregHierarchyRuleSetConfiguration eregHierRSConfig
+			where eregHierRSConfig.ruleSetConfiguration.ruleSetType.code= :ruleSetCd 
+			]]>
+		</query>
+	</named-query>
+		<named-query name="RuleSetConfiguration.getEregHierarchyRoles">
+		<query>
+			<![CDATA[
+			select eregHierRSConfig.adminRole from org.ets.ereg.domain.interfaces.domain.hierarchy.EregHierarchyRuleSetConfiguration eregHierRSConfig
+			where eregHierRSConfig.id.eregHierarchyIdentifier= :eregHierarchyIdentifier and  eregHierRSConfig.ruleSetConfiguration.ruleSetType.code= :ruleSetTypeCode
+			]]>
+		</query>
+	</named-query>
+	
+	
+	
+</entity-mappings>

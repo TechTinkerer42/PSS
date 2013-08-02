@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd" version="2.0">
+	<named-query name="Customer.findCustomerProgramInterest">
+		<query>
+			<![CDATA[
+			select cpi from org.ets.ereg.domain.interfaces.model.common.CustomerProgramInterest cpi
+			where cpi.id.customerId = :customerId and cpi.id.programCode = :programCode
+			]]>
+		</query>
+	</named-query>
+	<named-query name="Customer.findCustomerLinkage">
+		<query>
+			<![CDATA[
+			select cl from org.ets.ereg.domain.interfaces.model.common.CustomerLinkage cl
+			where cl.id.customerId = :customerId and cl.id.linkTypeCode = :linkTypeCode
+			]]>
+		</query>
+	</named-query>
+	<named-query name="Customer.findCustomerByUsernameAndIntFlg">
+		<query>
+			<![CDATA[
+			select ecus from org.ets.ereg.domain.profile.ETSCustomerImpl ecus
+			where
+			ecus.internalUserFlag = :internalUserFlag and LOWER(ecus.username)=:username
+			]]>
+		</query>
+	</named-query>
+	<named-query name="Customer.findCustomerProgramInterests">
+		<query>
+			<![CDATA[
+			select cpi.id.programCode from org.ets.ereg.domain.interfaces.model.common.CustomerProgramInterest cpi
+			where cpi.id.customerId = :customerId
+			]]>
+		</query>
+	</named-query>	
+</entity-mappings>

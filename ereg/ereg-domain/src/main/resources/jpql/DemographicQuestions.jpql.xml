@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd" version="2.0">
+	<named-query name="DemographicQuestions.getDemographicQuestionsOrderByQstnDsplySeq">
+		<query>
+			<![CDATA[	
+		select distinct dmgrphQstnSetEntry from org.ets.ereg.domain.biq.DemographicQuestionSetEntryImpl dmgrphQstnSetEntry
+			left join fetch dmgrphQstnSetEntry.demographicQstn dmgrphQstn
+			left join fetch dmgrphQstn.demographicResps dmgRsps
+			left join fetch dmgRsps.internationalContentId		
+			left join fetch dmgRsps.demographicQstnTriggers dmgrphQstnTrgrs,
+			org.ets.ereg.domain.biq.DemographicQuestionSetImpl dmgrphQstnSet,
+			org.ets.ereg.domain.biq.DemographicQuestionSetTypeImpl dmgrphQstnSetTyp,
+			org.ets.ereg.domain.biq.ProgramDemographicQuestionSetImpl prgmDmgrphQstnSet			
+			where 
+			prgmDmgrphQstnSet.programDemographicQuestionSetId.programCode = :programCode
+			and prgmDmgrphQstnSet.demographicQstnSetType.code = :typeCode
+			and  CURRENT_TIMESTAMP BETWEEN prgmDmgrphQstnSet.programDemographicQuestionSetId.effectiveDate
+			and  prgmDmgrphQstnSet.expirationDate			
+			and dmgrphQstn.demographicQuestionNo = dmgrphQstnSetEntry.id.demographicQuestionNo
+			and  dmgrphQstnSet.setId = prgmDmgrphQstnSet.programDemographicQuestionSetId.setId 
+			and  dmgrphQstnSet.setId = 	dmgrphQstnSetEntry.id.setId ORDER BY dmgrphQstnSetEntry.questionDisplaySeqNo	
+			]]>
+		</query>
+	</named-query>
+	<named-query name="DemographicQuestions.getDemographicQuestionsOrderByAdminDsplySeq">
+		<query>
+			<![CDATA[			
+			select distinct dmgrphQstnSetEntry from org.ets.ereg.domain.biq.DemographicQuestionSetEntryImpl dmgrphQstnSetEntry
+			left join fetch dmgrphQstnSetEntry.demographicQstn dmgrphQstn
+			left join fetch dmgrphQstn.demographicResps dmgRsps 
+			left join fetch dmgRsps.internationalContentId
+			left join fetch dmgRsps.demographicQstnTriggers dmgrphQstnTrgrs,
+			org.ets.ereg.domain.biq.DemographicQuestionSetImpl dmgrphQstnSet,
+			org.ets.ereg.domain.biq.DemographicQuestionSetTypeImpl dmgrphQstnSetTyp,
+			org.ets.ereg.domain.biq.ProgramDemographicQuestionSetImpl prgmDmgrphQstnSet			
+			where 
+			prgmDmgrphQstnSet.programDemographicQuestionSetId.programCode = :programCode
+			and prgmDmgrphQstnSet.demographicQstnSetType.code = :typeCode
+			and  CURRENT_TIMESTAMP BETWEEN prgmDmgrphQstnSet.programDemographicQuestionSetId.effectiveDate
+			and  prgmDmgrphQstnSet.expirationDate			
+			and dmgrphQstn.demographicQuestionNo = dmgrphQstnSetEntry.id.demographicQuestionNo
+			and  dmgrphQstnSet.setId = prgmDmgrphQstnSet.programDemographicQuestionSetId.setId 
+			and  dmgrphQstnSet.setId = 	dmgrphQstnSetEntry.id.setId ORDER BY dmgrphQstnSetEntry.adminDisplaySeqNo
+			]]>
+		</query>
+	</named-query>
+	<named-query name="DemographicQuestions.doesDemographicQstnSetExists">
+		<query>
+			<![CDATA[
+			select prgmDmgrphQstnSet from org.ets.ereg.domain.biq.ProgramDemographicQuestionSetImpl prgmDmgrphQstnSet
+			where prgmDmgrphQstnSet.programDemographicQuestionSetId.programCode = :programCode
+			and prgmDmgrphQstnSet.demographicQstnSetType.code = :typeCode										
+			]]>
+		</query>
+	</named-query>
+	<named-query name="DemographicQuestions.getCustomerDemographicResponses">
+		<query>
+			<![CDATA[
+				select customerDmgrphResp from org.ets.ereg.domain.biq.CustomerDemographicResponseImpl customerDmgrphResp,				
+				org.ets.ereg.domain.biq.DemographicQuestionSetEntryImpl dmgrphQstnSetEntry
+				where customerDmgrphResp.customerDemographicRespId.customerId = :customerId
+				and dmgrphQstnSetEntry.id.demographicQuestionNo = customerDmgrphResp.customerDemographicRespId.demographicQstnNo	
+				and dmgrphQstnSetEntry.id.setId = :setId 
+				order by customerDmgrphResp.customerDemographicRespId.demographicQstnNo												
+			]]>
+		</query>
+	</named-query>
+	<named-query name="DemographicQuestions.getTranslationText">
+		<query>
+			<![CDATA[
+				select translationTxt from org.ets.ereg.domain.i18n.TranslationImpl translationTxt
+				where translationTxt.translationId.languageCode = :languageCode
+				and translationTxt.translationId.internationalConentId = :internationalConentId	
+			]]>
+		</query>
+	</named-query>	
+</entity-mappings>

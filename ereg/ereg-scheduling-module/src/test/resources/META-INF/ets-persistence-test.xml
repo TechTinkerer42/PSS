@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+	<persistence-unit name="blPU" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<non-jta-data-source>jdbc/test</non-jta-data-source>
+		<mapping-file>jpql/ApplicationConfiguration.jpql.xml</mapping-file>
+		<mapping-file>jpql/TestCenter.jpql.xml</mapping-file>
+		<mapping-file>jpql/Booking.jpql.xml</mapping-file>
+		<mapping-file>jpql/Agency.jpql.xml</mapping-file>
+		<class>org.ets.ereg.domain.profile.ETSCustomerImpl</class>
+		<class>org.ets.ereg.domain.audit.ETSAuditable</class>
+        <class>org.ets.ereg.domain.common.AddressTypeImpl</class>
+        <class>org.ets.ereg.domain.common.ApplicationConfigurationImpl</class>
+        <class>org.ets.ereg.domain.common.CustomerTypeImpl</class>
+        <class>org.ets.ereg.domain.common.DeliveryModeTypeImpl</class>
+        <class>org.ets.ereg.domain.common.EthnicityTypeImpl</class>
+        <class>org.ets.ereg.domain.common.ETSAddressImpl</class>
+		<class>org.ets.ereg.domain.common.ETSCountryImpl</class>
+        <class>org.ets.ereg.domain.common.ETSPhoneImpl</class>
+        <class>org.ets.ereg.domain.common.GenderImpl</class>
+        <class>org.ets.ereg.domain.common.LanguageTypeImpl</class>
+        <class>org.ets.ereg.domain.common.MilitaryStatusTypeImpl</class>
+        <class>org.ets.ereg.domain.common.PhoneTypeImpl</class>
+        <class>org.ets.ereg.domain.common.ProgramTypeImpl</class>
+        <class>org.ets.ereg.domain.common.LinkageTypeImpl</class>
+        <class>org.ets.ereg.domain.profile.ETSCustomerImpl</class>
+        <class>org.ets.ereg.domain.profile.CustomerLinkageImpl</class>
+        <class>org.ets.ereg.domain.profile.CustomerProgramInterestImpl</class>
+		<class>org.ets.ereg.domain.profile.CustomerLogonHistoryImpl</class>
+        <class>org.broadleafcommerce.profile.core.domain.StateImpl</class>
+        <class>org.broadleafcommerce.profile.core.domain.ChallengeQuestionImpl</class>
+		<class>org.broadleafcommerce.common.locale.domain.LocaleImpl</class>
+        <class>org.broadleafcommerce.common.currency.domain.BroadleafCurrencyImpl</class>
+		<class>org.broadleafcommerce.profile.core.domain.CustomerAttributeImpl</class>
+		<class>org.broadleafcommerce.profile.core.domain.CustomerAddressImpl</class>
+		<class>org.broadleafcommerce.profile.core.domain.CustomerPhoneImpl</class>
+        <class>org.broadleafcommerce.profile.core.domain.CustomerPaymentImpl</class>
+        <class>org.ets.ereg.domain.profile.LogoutReasonTypeImpl</class> 
+		<!-- Organization -->
+        <class>org.ets.ereg.domain.common.HoldTypeImpl</class>
+        <class>org.ets.ereg.domain.organization.OrganizationRoleTypeImpl</class>
+        <class>org.ets.ereg.domain.organization.OrganizationImpl</class>
+        <class>org.ets.ereg.domain.organization.OrganizationHierarchyImpl</class>
+        <class>org.ets.ereg.domain.organization.OrganizationContactImpl</class>
+        <class>org.ets.ereg.domain.organization.OrganizationAddressImpl</class>
+        <class>org.ets.ereg.domain.organization.OrganizationPhoneImpl</class>
+        <class>org.ets.ereg.domain.organization.OrganizationLinkageImpl</class>
+        <class>org.ets.ereg.domain.organization.OrganizationHoldStatusImpl</class>
+        <class>org.ets.ereg.domain.profile.admin.TestCenterAdminImpl</class>
+        <class>org.ets.ereg.domain.profile.ETSAdminUserImpl</class>
+        <!-- Test Center -->
+        <class>org.ets.ereg.domain.common.GlobalTimeZoneImpl</class>
+        <class>org.ets.ereg.domain.scheduling.AgencyImpl</class>
+        <class>org.ets.ereg.domain.scheduling.AgencyProgramImpl</class>
+        <class>org.ets.ereg.domain.scheduling.RestrictedAccessReasonImpl</class>
+        <class>org.ets.ereg.domain.scheduling.SchedulingTypeImpl</class>
+        <class>org.ets.ereg.domain.scheduling.TestCenterDeliveryModeImpl</class>
+        <class>org.ets.ereg.domain.scheduling.TestCenterProgramImpl</class>
+        <class>org.ets.ereg.domain.scheduling.TestCenterImpl</class>
+        <class>org.broadleafcommerce.common.sandbox.domain.SandBoxImpl</class>
+		<class>org.broadleafcommerce.common.site.domain.SiteImpl</class>
+		<class>org.broadleafcommerce.openadmin.server.security.domain.AdminRoleImpl</class>
+		<class>org.broadleafcommerce.openadmin.server.security.domain.AdminPermissionImpl</class>
+		<class>org.broadleafcommerce.openadmin.server.security.domain.AdminPermissionQualifiedEntityImpl</class>
+		<class>org.ets.ereg.domain.scheduling.TestCenterTypeImpl</class>
+		<!-- Scheduling -->
+		<class>org.ets.ereg.domain.accommodation.AccommodationTypeImpl</class>
+		<class>org.ets.ereg.domain.accommodation.AccommodationTypeValueImpl</class>
+		<class>org.ets.ereg.domain.booking.BookingImpl</class>
+		<class>org.ets.ereg.domain.booking.BookingStatusTypeImpl</class>
+		<class>org.ets.ereg.domain.booking.BookingAccommodationImpl</class>
+		<class>org.ets.ereg.domain.booking.EventOutComeStatusImpl</class>
+		<class>org.ets.ereg.domain.test.TestImpl</class>
+		<class>org.ets.ereg.domain.test.TestStatusTypeImpl</class>
+		<class>org.ets.ereg.domain.scheduling.TestTakerTestImpl</class>
+		<class>org.ets.ereg.domain.form.FormImpl</class>
+		<class>org.ets.ereg.domain.form.FormTypeImpl</class>
+		<class>org.ets.ereg.domain.profile.admin.AdminUserPhoneImpl</class>
+		<class>org.ets.ereg.domain.accommodation.group.AccommodationGroupRelationImpl</class>
+        <class>org.ets.ereg.domain.accommodation.group.AccommodationGroupImpl</class>
+        <class>org.ets.ereg.domain.accommodation.group.AccommodationTypeGroupImpl</class>
+        <class>org.ets.ereg.domain.booking.HeldBookingImpl</class>        
+        
+        <!-- Rules related -->
+		<!-- Hierarchy related -->
+		<class>org.ets.ereg.domain.hierarchy.EregHierarchyImpl</class>
+		<class>org.ets.ereg.domain.hierarchy.EregHierarchyRuleSetConfigurationImpl</class>
+		<class>org.ets.ereg.domain.hierarchy.HierarchyTypeImpl</class>
+		<!-- Hierarchy related -->
+		
+		<!-- Role -->
+		<class>org.broadleafcommerce.profile.core.domain.RoleImpl</class>
+			<!-- Rules related -->
+		<class>org.ets.ereg.domain.rule.RuleSetTypeImpl</class>
+		<class>org.ets.ereg.domain.rule.RuleSetImpl</class>
+		<class>org.ets.ereg.domain.rule.RuleSetConfigurationParameterValueImpl</class>
+		<class>org.ets.ereg.domain.rule.RuleSetConfigurationImpl</class>
+		<class>org.ets.ereg.domain.rule.RuleSetConfigurationDetailImpl</class>
+		<class>org.ets.ereg.domain.rule.RuleParameterImpl</class>
+		<class>org.ets.ereg.domain.rule.RuleImpl</class>
+		<class>org.ets.ereg.domain.rule.RuleAllowableParameterImpl</class>
+		<class>org.ets.ereg.domain.test.TestVariationImpl</class>
+		   
+		<exclude-unlisted-classes/>
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
+            <property name="hibernate.hbm2ddl.import_files" value="/sql/test_testcentersearch_data.sql"/>
+            <property name="hibernate.cache.region.factory_class" value="net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory"/>
+        	<property name="hibernate.cache.use_second_level_cache" value="true"/>
+        	<property name="hibernate.cache.use_query_cache" value="true"/>
+        </properties>
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,8 @@
+.noprint
+{
+    display: none;
+}
+.doprint
+{
+	display:block  !important;
+}

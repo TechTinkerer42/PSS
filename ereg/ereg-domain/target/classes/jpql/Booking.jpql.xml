@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd" version="2.0">
+	<named-query name="Booking.availableForms">
+		<query>
+			<![CDATA[
+			select form from org.ets.ereg.domain.form.FormImpl form,
+			org.ets.ereg.domain.form.FormTypeImpl formType
+			where form.formType.formTypeCode = formType.formTypeCode
+			and form.formType.formTypeCode ='BASE'
+			and form.test.testId = :suppliedTestId
+			and form.effDate <= :suppliedDate
+			and form.expiryDate >= :suppliedDate
+			and form.id NOT IN (
+			select form.id from org.ets.ereg.domain.form.FormImpl form,
+				org.ets.ereg.domain.booking.BookingImpl booking,
+				org.ets.ereg.domain.scheduling.TestTakerTestImpl TestTakerTest
+				where   form.id= booking.form.id
+  				and booking.testTakerTest.TTTid = TestTakerTest.TTTid
+  				and TestTakerTest.customer.id =:customerid
+				and (TestTakerTest.code.code='RSCDL' or TestTakerTest.code.code='SCDL')
+				and booking.bookingStatusType.code='RSRVD'
+				and booking.evntOutComeStatus.formUsedFlag ='Y')
+			]]>
+		</query>
+	</named-query>
+
+
+	<named-query name="Booking.availableFormsByTestId">
+		<query>
+			<![CDATA[
+			select form from org.ets.ereg.domain.form.FormImpl form,
+			org.ets.ereg.domain.form.FormTypeImpl formType
+			where form.formType.formTypeCode = formType.formTypeCode
+			and form.formType.formTypeCode ='BASE'
+			and form.test.testId = :suppliedTestId
+			]]>
+		</query>
+	</named-query>
+
+	<named-query name="Booking.availableTest">
+		<query>
+			<![CDATA[
+				select test from org.ets.ereg.domain.test.TestImpl test
+				where test.programType.code = :programcode
+				and (test.testId) not in
+				(select booking.testVariation.id.testId from
+				  org.ets.ereg.domain.booking.BookingImpl booking,
+				  org.ets.ereg.domain.scheduling.TestTakerTestImpl TestTakerTest
+				  where booking.testTakerTest.TTTid = TestTakerTest.TTTid
+				  and TestTakerTest.customer.id =:customerid
+				  and booking.testVariation.test.programType.code = :programcode
+				  and (TestTakerTest.code.code='RSCDL' or TestTakerTest.code.code='SCDL')
+				  and booking.bookingStatusType.code='RSRVD'
+				  and booking.evntOutComeStatus.code = 'NCI')
+			]]>
+		</query>
+	</named-query>
+
+	<named-query name="Booking.getHeldTest">
+		<query>
+			<![CDATA[
+				select test from
+				org.ets.ereg.domain.test.TestImpl test,
+				org.ets.ereg.domain.booking.BookingImpl booking,
+				org.ets.ereg.domain.scheduling.TestTakerTestImpl TestTakerTest
+				where booking.testTakerTest.TTTid = TestTakerTest.TTTid
+				and booking.testVariation.test.programType.code = :programcode
+				and booking.testVariation.id.testId = test.id
+				and test.programType.code = :programcode
+				and TestTakerTest.customer.id =:customerid
+				and booking.bookingStatusType.code = 'HELD'
+			]]>
+		</query>
+	</named-query>
+
+	<named-query name="Booking.allTestByProgram">
+		<query>
+			<![CDATA[
+				select test from org.ets.ereg.domain.test.TestImpl test
+				where test.programType.code = :programcode
+			]]>
+		</query>
+	</named-query>
+	<named-query name="Booking.allTestByPrgmTstCode">
+		<query>
+			<![CDATA[
+				select test from org.ets.ereg.domain.test.TestImpl test
+				where test.programType.code = :programcode
+				and test.testId = :testId
+			]]>
+		</query>
+	</named-query>
+	<named-query name="Booking.allFormById">
+		<query>
+			<![CDATA[
+				select form from org.ets.ereg.domain.form.FormImpl form
+				where form.id = :formid
+			]]>
+		</query>
+	</named-query>
+	<named-query name="Booking.subFormQuery">
+		<query>
+			<![CDATA[
+			select form from org.ets.ereg.domain.form.FormImpl form
+			where form.parentForm.id =:formID
+			and form.lang.code =:langCode
+			and form.test.testId = :testId
+			and form.dlvyMode.code = :delvryMode
+			and form.accommodation.code is null
+			]]>
+		</query>
+	</named-query>
+	<named-query name="Booking.getSubForms">
+		<query>
+			<![CDATA[
+			select form from org.ets.ereg.domain.form.FormImpl form
+			where form.parentForm.id =:formID
+			and form.lang.code =:langCode
+			and form.test.testId = :testId
+			and form.dlvyMode.code = :delvryMode
+			and (form.accommodation.code in :accommodations or form.accommodation.code is null)
+			]]>
+		</query>
+	</named-query>
+	<named-query name="Booking.bookingById">
+		<query>
+			<![CDATA[
+				select booking from org.ets.ereg.domain.booking.BookingImpl booking
+				where booking.id = :bookingid
+			]]>
+		</query>
+	</named-query>
+	<named-query name="Booking.bookingByAppointNumber">
+		<query>
+			<![CDATA[
+			select booking from org.ets.ereg.domain.booking.BookingImpl booking
+			where booking.etsApptID = :appointNumber
+			]]>
+		</query>
+	</named-query>
+	<named-query name="Booking.getBookingByCustomerId">
+		<query>
+			<![CDATA[
+			select booking from org.ets.ereg.domain.booking.BookingImpl booking
+			where booking.testTakerTest.customer.id = :customerId
+			and booking.testVariation.test.programType.code = :productCode
+			and booking.apptDate >= :date
+			and booking.bookingStatusType.code = 'RSRVD'
+			ORDER BY booking.apptDate
+			]]>
+		</query>
+	</named-query>
+
+	<named-query name="Booking.getBookingsWithAccommodation">
+		<query>
+			<![CDATA[
+			select booking from org.ets.ereg.domain.booking.BookingImpl booking
+			left join fetch booking.bookingAccommodations bookingAccommodations
+			where booking.testTakerTest.customer.id = :customerId
+			and bookingAccommodations.bookingAccommodationId.accommodationTypeCode = :accommodationTypeCode
+			and booking.apptDate BETWEEN :fromDate and :toDate
+			]]>
+		</query>
+	</named-query>
+
+	<named-query name="Booking.getTestTakerTestByBookingId">
+		<query>
+			<![CDATA[
+			select booking.testTakerTest from org.ets.ereg.domain.booking.BookingImpl booking
+			where booking.id = :bookingId
+			]]>
+		</query>
+	</named-query>
+	<named-query name="Booking.updateBookingStatus">
+		<query>
+			<![CDATA[
+			update org.ets.ereg.domain.booking.BookingImpl booking set booking.bookingStatusType.code = :bookingStatus
+			where booking.id = :bookingId
+			]]>
+		</query>
+	</named-query>
+	
+	<named-query name="Booking.getRescheduleCountForBooking">
+		<query>
+			<![CDATA[
+			select count(b.id) 
+			from 
+				org.ets.ereg.domain.booking.BookingImpl b,
+				org.ets.ereg.domain.scheduling.TestTakerTestImpl t
+			where
+				b.testTakerTest.TTTid = t.TTTid
+				and t.TTTid = :testTakerTestId
+				and t.code.code = :testStatusTypeCode
+				and b.bookingStatusType.code = :bookingStatusTypeCode
+			]]>
+		</query>
+	</named-query>
+
+</entity-mappings>

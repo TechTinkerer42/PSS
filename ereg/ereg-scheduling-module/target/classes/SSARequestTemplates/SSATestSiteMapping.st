@@ -1,0 +1,21 @@
+<SSA_SOA_Message> 
+ <requestHeader> 
+	<action>SSA.GetSitesAndExams</action>
+	<transactionID>0000000012345678</transactionID>
+	<userRoleType>tca</userRoleType>
+	<source>$source$</source>
+	<programCode>$programCode$</programCode>
+		<requestsData>
+			<dataElements>
+				<name>GetSitesAndExams.Status</name>
+			<data><string>O</string></data>
+			</dataElements>
+			<dataElements>
+			 <name>Requesting.System</name>
+			 <data>
+			 <string>ISER</string>
+			 </data>
+			 </dataElements>
+		</requestsData> 
+  </requestHeader>
+</SSA_SOA_Message>

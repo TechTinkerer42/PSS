@@ -1,0 +1,7 @@
+1)run the programs first
+2)run the test
+3)language
+4)blc admin
+5)blc customer
+6)est admin
+7)ets customer

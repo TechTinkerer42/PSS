@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="base"
+        template="/WEB-INF/jsp/templates/base.jsp">
+        <put-attribute name="title" value="ETS Prototype" />
+        <put-attribute name="navbar" value="/WEB-INF/jsp/templates/navbar.jsp" />
+        <put-attribute name="subnav" value="/WEB-INF/jsp/templates/subnav.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="head" value="" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/templates/footer.jsp" />
+    </definition>
+ 
+    <definition name="plainBase"
+        template="/WEB-INF/jsp/templates/plainBase.jsp">
+        <put-attribute name="body" value="" />
+    </definition>
+
+    <definition name="home" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/home.jsp" />
+    </definition>
+
+    <definition name="catalog" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/catalog/catalog.jsp" />
+    </definition>
+    
+    <definition name="catalog_test" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/catalog/catalog_test.jsp" />
+    </definition>
+    
+    <definition name="product" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/catalog/product.jsp" />
+    </definition>
+    
+    <definition name="product_bundle" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/catalog/product_bundle.jsp" />
+    </definition>
+    
+    <definition name="register_customer" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/account/registration/register.jsp" />
+    </definition>
+    
+    <definition name="register_customer_success" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/account/registration/success.jsp" />
+    </definition>
+    
+    <definition name="cart" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/cart/cart.jsp" />
+        <put-attribute name="head" value="/WEB-INF/jsp/rescheduleUtils/reschedule_header.jsp" />
+    </definition>
+    
+    <definition name="fulfillmentGroups" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/checkout/fg.jsp" />
+    </definition>
+    
+    <definition name="payment" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/checkout/payment.jsp" />
+    </definition>    
+
+    <definition name="verify" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/checkout/verify.jsp" />
+    </definition>    
+
+    <definition name="order_confirmation" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/orders/order_confirmation.jsp" />
+    </definition> 
+    
+    <definition name="order_history" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/orders/order_history.jsp" />
+        <put-attribute name="head" value="/WEB-INF/jsp/rescheduleUtils/reschedule_header.jsp" />
+    </definition> 
+    
+    <definition name="order_details" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/orders/order_details.jsp" />
+        <put-attribute name="head" value="/WEB-INF/jsp/rescheduleUtils/reschedule_header.jsp" />
+    </definition>
+    
+    <definition name="aidi" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/aidi/aidi.jsp" />
+        <put-attribute name="head" value="/WEB-INF/jsp/aidi/aidi_header.jsp" />
+    </definition>
+       
+    <!-- 
+         Broadleaf allows you to set Display Templates for each Category.
+         This allows each category page to have a different look and feel
+    	 Below are the top level categories that have their own templates 
+    -->
+    <definition name="praxis_tiles_view" extends="base">
+    	<put-attribute name="subnav" value="/WEB-INF/jsp/catalog/templates/praxis/praxis_subnav.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/catalog/templates/praxis/praxis.jsp" />
+    </definition>
+    
+    <definition name="gre_tiles_view" extends="base">
+    	<put-attribute name="subnav" value="/WEB-INF/jsp/catalog/templates/gre/gre_subnav.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/catalog/templates/gre/gre.jsp" />
+    </definition>
+    
+    <definition name="toefl_tiles_view" extends="base">
+    	<put-attribute name="subnav" value="/WEB-INF/jsp/catalog/templates/toefl/toefl_subnav.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/catalog/templates/toefl/toefl.jsp" />
+    </definition>
+    
+    
+    <definition name="findSeat" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/findSeat/testingCenterSearch.jsp" />
+        <put-attribute name="head" value="/WEB-INF/jsp/findSeat/searchHeader.jsp" />
+    </definition>
+    
+    <definition name="test_cancel" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/test/cancel.jsp" />
+    </definition>
+
+    <definition name="search" extends="base">
+        <put-attribute name="body" value="/WEB-INF/jsp/search.jsp" />
+    </definition>
+     
+    <definition name="searchAjax" extends="plainBase">
+        <put-attribute name="body" value="/WEB-INF/jsp/searchAjax.jsp" />
+    </definition>
+</tiles-definitions>

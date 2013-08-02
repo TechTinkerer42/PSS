@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Your HiSET Appointment(s) Has Been Confirmed.</title>
+</head>
+<body>
+
+ <span th:text="'Dear ' + ${customer.firstName} +' '+  ${customer.lastName} +','"></span>
+ <p>Thank you for completing the following order with ETS.</p>
+	<p>HiSET Appointment(s).</p>
+	<table>
+		<thead>
+			<tr>
+				
+				<th>Test Title</th>			
+				<th>Test Type</th>
+				<th>Test Language</th>
+				<th>Test Center</th>
+				<th>Date and Time</th>
+				<th>Appointment Number</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="test : ${cart.tests}">				
+				<td th:text="${test.booking.testVariation.test.testName}"></td>
+				<td th:text="${test.booking.testVariation.deliveryModeType.description}"></td>
+				<td th:text="${test.booking.testVariation.languageType.description}"></td>
+				<td th:text="${test.booking.testCenter.name}"></td>
+				<td th:text="${#dates.format(test.booking.appointmentDateTime, 'MMM dd, yyyy HH:mm')}"></td>
+				<td th:text="${test.booking.etsApptID}"></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+	<br> </br>
+	To view your order details and appointment information (including what to bring to the test center),sign in to your HiSET account at http://etsvcln165.etslan.org:9080/ereg-web/secure/orderdetails/view/<span th:text="${encodeUrl}"></span><br> </br>
+	For general information about the HiSET tests,visit http://hiset.ets.org
+	<br> </br>
+	
+	
+</body>
+</html>

@@ -1,0 +1,9 @@
+userid="sys/admin as sysdba" 
+buffer=50000000 
+file=C:\dev\eREG\multitenant\ereg\ereg-database\scripts\sampleschemarefresh\workfolder\dmp\exp_ereg01ds.dmp 
+grants=N 
+log=C:\dev\eREG\multitenant\ereg\ereg-database\scripts\sampleschemarefresh\workfolder\log\imp_EREG01DS.log 
+commit=Y 
+ignore=Y 
+fromuser=ereg01ds 
+touser=EREG01DS 

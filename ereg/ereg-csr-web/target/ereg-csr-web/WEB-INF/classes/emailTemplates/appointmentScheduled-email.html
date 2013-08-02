@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>Your Have HSET Appointment(s) Scheduled.</title>
+</head>
+<body>
+	<p>Here is your scheduled appointment(s).</p>
+	<table>
+		<thead>
+			<tr>
+				<th>Appointment Number</th>
+				<th>Test Title</th>
+				<th>Date</th>
+				<th>Test Center</th>
+				<th>Time</th>
+				<th>Test Type</th>
+				<th>Test Language</th>
+				<th>Accommodation</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="booking : ${bookings}">
+				<td th:text="${booking.etsApptID}"></td>
+				<td th:text="${booking.testVariation.test.testName}"></td>
+				<td th:text="${#dates.format(booking.appointmentDateTime, 'MMM dd, yyyy')}"></td>
+				<td th:text="${booking.testCenter.name}"></td>
+				<td th:text="${#dates.format(booking.appointmentDateTime, 'HH:mm')}"></td>
+				<td th:text="${booking.testVariation.deliveryModeType.description}"></td>
+				<td th:text="${booking.testVariation.languageType.description}"></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

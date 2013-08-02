@@ -1,0 +1,766 @@
+/*
+ * mo.v1.css
+ *
+ *
+ * top solid bar: #439639; Mo Color
+ */
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+/* reset */
+	html, body, div, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, /*  ol, ul, li, */ form, legend, label, table, header, footer, nav, section {
+		margin: 0;
+		padding: 0;
+		}
+
+	ol, ul {
+		list-style: none;
+		}
+	table {
+		border-collapse: collapse;
+		}
+
+	fieldset, legend {
+		border: 0;
+		margin: 0;
+		padding: 0;
+		}
+
+	header, footer, nav, section, article, hgroup, figure {
+		display: block;
+		}
+
+	h1, h2,  h3,  h4,  h5, h6 {
+		line-height: 1.2;
+		display: block;
+		margin: 0.5em 0;
+		}
+
+	h1 {
+		margin-top: 0;
+		}
+
+	.like-h2 {
+		font-weight: bold;
+		font-size: 150%;
+		line-height: 1.2;
+		display: block;
+		margin: 0.5em 0;
+		}
+
+	.like-h3 {
+		font-weight: bold;
+		font-size: 115%;
+		line-height: 1.2;
+		display: block;
+		margin: 0.5em 0;
+		}
+
+	p, ul {
+		margin: 0 0 1em 0;
+		}
+
+
+	ol { list-style-type: decimal; }
+	ol.upper-roman { list-style-type: upper-roman; }
+	ol.decimal { list-style-type: decimal; }
+	ol.upper-alpha { list-style-type: upper-alpha; }
+	ol.lower-alpha { list-style-type: lower-alpha; }
+
+	button {
+		}
+
+	hr {
+		display: none;
+		}
+	div.hr {
+		margin: 1em 0;
+		border-top: 1px solid #999;
+		}
+
+
+	/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	/* start: anchor rules */
+
+		a {
+			color: #003082;
+			white-space: normal;
+			}
+		a:link {}
+		a:visited { color: #003082; }
+		a:active {}
+		a:hover {
+			}
+
+		a img {
+			border: 0;
+			}
+
+		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+			color: #003082;
+			text-decoration: none;
+			}
+		h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+			text-decoration: underline;
+			}
+
+	/* end: anchor rules */
+	/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+/* reset */
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+/* helpful rules */
+
+.clearboth { clear: both; }
+.donottransform { text-transform: none !important; }
+.nowrap { white-space: nowrap; }
+.donotwrap { white-space: nowrap; }
+
+.indented {
+	margin-left: 2.5em;
+	}
+
+.spacer-height1em { height: 1em; }
+
+.parent {
+   width: 423px; /* I took the width from your post and placed it in css */
+   height: 61px;
+}
+
+
+/* end: helpful rules */
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+/* accessibility styles */
+
+.hide {
+	position: absolute;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	}
+/* end: accessibility styles */
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+	html {
+		height: 100.1%;     /* always have a vertical */
+		min-height: 100.1%; /* scrollbar */
+		}
+
+	body {
+		min-height: 100.1%; /* force the background to the bottom */
+		height: 100.1%;	  /* and have vertical scrollbar */
+		background: #e1dada url(../img/wrap/background.gif) repeat-y center center;
+
+		font-family: arial, helvetica, sans-serif;
+		color: #363636;
+		line-height: 1.5;
+		font-size: 87.5%; /* 14px main body font */
+		-webkit-font-smoothing: none;
+
+		}
+
+	#wrapper-center {
+		margin: 0 auto;
+		width: 980px;
+		min-width: 980px; /* 77.8 = 980px at the current font-size (set in the body)*/
+		background: #fff;
+		height: 100%;     /* background to the bottom on short pages */
+		min-height: 100%;
+		}
+	#wrapper-content {
+		background: #fff; /* background for longer pages */
+		}
+
+	#top-navigation {
+		border-top: 6px solid #439639; /* mo color */
+		}
+
+	div.graydottedbar { /* bluedottedbar is depreciated */
+		/* used in several places, not just under the top-nav */
+		background: url("../img/wrap/ets_rule_gray.png") repeat-x scroll 0 0 transparent;
+		height: 1px;
+		overflow: hidden;
+		clear: both;
+		}
+
+	nav ul {
+		margin: 0;
+		padding: 0 20px;
+		}
+
+	nav ul li {
+		float: left;
+		margin: 0;
+		padding: 0;
+		}
+
+	nav li a {
+		display: block;
+		background-image: url(../img/wrap/corp-top-nav-border.gif);
+		background-repeat: no-repeat;
+		background-position: center right;
+		padding: 0 10px;
+
+			color: #363636;
+			font-size: 12px;
+			font-weight: bold;
+			line-height: 25px; /* this sets the overall height for the site navigation */
+			text-decoration: none;
+			white-space: nowrap;
+
+		}
+
+	nav li a:visited {
+		color: #363636;
+		}
+
+	nav li a:hover {
+		text-decoration: underline;
+		}
+
+	nav li.last a {
+		background-image: none;
+		padding-right: 0;
+		}
+
+	#user-nav {
+		float: right;
+		}
+
+	#audience-nav {
+		float: right;
+		margin-top: 5px;
+			/* text-transform: uppercase; */
+		}
+
+	/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	/* audience header (gray header text on documents 'for audience') */
+
+		#audience-header {
+			float: right;
+			margin: -30px 20px 0 0; /* that 40px controls the height of the header */
+			padding: 0;
+			height: 50px;
+			line-height: 50px;
+			overflow: hidden;
+			clear: both;
+				color: #767676;
+				font-size: 205%;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+
+	/* end: audience header */
+	/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+	#header {
+		overflow: hidden;
+		}
+
+	#product-logo {
+		float: left;
+		margin: 10px 0 0 20px;
+		}
+
+	#corp-bar {
+		padding: 0 0 0 20px;
+		height: 25px;
+		line-height: 25px;
+		background: #004b8e;
+		}
+
+	.corp-bar {
+		border-top: 1px solid #004b8e;
+		}
+
+	#main {
+		}
+
+	#center-content {
+		padding: 20px 20px 60px 20px;
+		}
+
+	/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	/* breadcrumb */
+
+		#breadcrumb {
+			font-size: 80%;
+			margin-bottom: 1em;
+			color: #999;
+			}
+
+		#breadcrumb a {
+			color: #999;
+			}
+
+	/* end: breadcrumb */
+	/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+
+	h1 {
+		color: #004b8e;
+		}
+
+	h2, h3, h4, h5, h6 {
+		color: #555352;
+		}
+
+	div.rounded {
+		border: 1px solid #999;
+		border-radius: 10px;
+		padding: 0.5em 1em;
+		padding: 0.5em 1em 0.5em 1.4em; /* indent all for the show-hide trigger */
+		margin-bottom: 1em;
+		overflow: hidden;
+		}
+
+	div.rounded > .shaded {
+		margin: -0.5em -1em 1em -1em;
+		padding: 0.8em 1em;
+		margin: -0.5em -1em 1em -2em; /* indent all for the show-hide trigger */
+		padding: 0.8em 1em 0.8em 2em;
+		}
+
+	div.shaded {
+		background: #f2f2f2;
+		margin-bottom: 1em;
+		}
+
+	.shaded,
+	p.shaded {
+		background: #f2f2f2;
+		}
+
+	div.rounded.show-hide {
+		padding-bottom: 0;
+		}
+		
+	div.rounded .trigger {
+		margin-left: -3em; /* indent all for the show-hide trigger */
+		cursor: pointer;
+		color: #003082;
+		}
+		
+	div.rounded .trigger .icon {
+		display: inline-block;
+		width: 1em;
+		text-align: center;
+		}
+
+	div.rounded .trigger.closed {
+		margin-bottom: 0;
+		}
+	
+	.toggle {
+		margin-top: 1em;
+		}
+	
+	div.rounded ul {
+		list-style: disc;
+		margin-left: 0;
+		padding-left: 1.3em;
+		}
+
+	div.content-left {
+		float: left;
+		width: 21.3%;
+		margin-right: 2.2%;
+			font-size: 95%; /* just a little smaller than default text size */
+		}
+
+	div.content-left a {
+		text-decoration: none;
+		}
+	div.content-left a:hover {
+		text-decoration: underline;
+		}
+
+	div.content-right {
+		float: right;
+		width: 76%;
+		}
+
+	div.buttons-left,
+	div.buttons-right {
+		width: 50%;
+		}
+
+	div.buttons-left {
+		float: left;
+		}
+
+	div.buttons-left button {
+		margin-right: 1em;
+		}
+
+	div.buttons-right {
+		float: right;
+		text-align: right;
+		}
+
+	div.buttons-right button {
+		margin-left: 1em;
+		}
+
+	/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	/* messages */
+
+		div.msg {
+			border: 1px solid #363636;
+			padding: 0.5em 1em 0 1em;
+			margin-bottom: 1em;
+				font-size: 95%; /* just a little smaller than default text size */
+			}
+
+		div.msg p.last {
+			margin-bottom: 0.7em;
+			}
+
+		div.msg ul {
+			list-style-type: disc;
+			}
+
+		div.msg p.heading {
+			font-weight: bold;
+			font-size: 105%;
+			margin-bottom: 0.5em;
+			}
+
+		div.msg-success {
+			border-color: #390;
+			background: #efffe8;
+			}
+
+		div.msg-success p.heading {
+			color: #df0000;
+			}
+
+		div.msg-error {
+			border-color: #df0000;
+			background: #fce7e4;
+			}
+
+		div.msg-error p.heading {
+			color: #df0000;
+			}
+
+		div.msg-info {
+			border-color: #f3d607;
+			background: #ffffcc;
+			}
+
+		div.msg-important {
+			border-color: #f90;
+			background: #fdefbd;
+			border-radius: 10px;
+			}
+
+		div.msg-callout {
+			border-color: #f90;
+			background: #fdefbd;
+			}
+
+	/* messages */
+	/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+	/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	/* forms */
+
+		div.form-border {
+			border: 1px solid #363636;
+			margin: 0 0 2em;
+			padding: 1em 1em 0;
+			}
+
+
+		legend.h2,
+		legend.h3 {
+			clear: both;
+			margin: 0;
+			padding: 0 0 0.5em 0;
+			line-height: 1.2;
+			font-family: arial,helvetica,sans-serif;
+			font-weight: bold;
+			}
+
+		legend.h2 { font-size: 150%; }
+		legend.h3 { font-size: 128%; }
+
+		span.req {
+			display: inline-block;
+			text-align: center;
+			width: 10px;
+			padding-top: 5px;
+			vertical-align: top;
+			color: #f00;
+			}
+
+		label {
+			display: inline-block;
+			width: 150px;
+			vertical-align: top;
+			}
+
+		label:after,
+		fieldset.like-row legend:after,
+		fieldset legend *:not(.h2):after {
+			content:": ";
+			}
+
+		.data-table label:after {
+			content: "";
+			}
+
+		p.info {
+			float: right;
+			width: 485px;
+			margin-left: 25px;
+			margin-bottom: 0;
+
+				font-size: 95%; /* just a little smaller than default text size */
+				border: 1px solid #363636;
+				padding: 10px;
+				border-color: #f3d607;
+				background: #ffffcc;
+
+				position: relative;
+			}
+
+			p.notch .notch {
+				position: absolute;
+				display: inline-block;
+				top: 5px;
+				left: -20px;
+				height: 0;
+				border-top: 5px solid transparent;
+				border-left: 10px solid transparent;
+				border-bottom: 5px solid transparent;
+				border-right: 10px solid #f3d607;
+				}
+
+		fieldset input,
+		fieldset select,
+		input.text-lg-field {
+			margin-bottom: 0.5em;
+			margin-top: 0;
+			border: 1px solid #363636;
+			border-radius: 2px;
+			padding: 0.2em;
+			vertical-align: top;
+			}
+
+		fieldset select {
+			padding: 0 0 0 0.2em;
+			height: 23px;
+			}
+
+		input.text-lg-field { width: 15em; }
+		input.text-sm-field { width: 4em; }
+		input.text-year-field { width: 4em; }
+
+		fieldset.like-row {
+			display: inline-block;
+			vertical-align: top;
+			}
+
+		fieldset.like-row legend {
+			display: block;
+			float: left;
+			margin-right: 0.25em;
+			min-width: 150px;
+			vertical-align: top;
+			}
+
+		fieldset.like-row select,
+		fieldset.like-row input {
+			vertical-align: top;
+			}
+
+		input[aria-invalid="true"],
+		select[aria-invalid="true"] {
+			background: #fce7e4;
+			border: 1px solid #df0000;
+			}
+
+		div.error-input {
+			position: relative;
+			margin-left: 168px;
+			margin-top: 5px;
+			background: #fce7e4;
+			padding: 2px 5px;
+			width: 195px;
+
+				border: 1px solid #df0000;
+				font-size: 95%; /* just a little smaller than default text size */
+
+			}
+
+			.error-input .notch {
+				position: absolute;
+				display: inline-block;
+				top: -20px;
+				left: 5px;
+				height: 0;
+				border-top: 10px solid transparent;
+				border-left: 5px solid transparent;
+				border-bottom: 10px solid #df0000;
+				border-right: 5px solid transparent;
+				}
+
+
+	/* forms */
+	/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+
+	/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	/* buttons */
+
+		button.btn {
+			border: 1px solid #003082;
+			color: #fff;
+			background: #003082;
+			border-radius: 4px;
+			padding: 0.35em 1em 0.25em 1em;
+			margin: 0;
+			min-height: 24px;
+			font-size: 94%;
+			font-weight: bold;
+			text-decoration: none !important;
+			}
+
+		button.btn:hover {
+			border: 1px solid #3072be;
+			background: #3072be;
+			cursor: pointer;
+			}
+
+	/* buttons */
+	/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+
+	/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	/* tables */
+
+	table {
+		border: 1px solid #999;
+		margin-bottom: 1em;
+		border-collapse: collapse;
+		width: 100%;
+			font-size: 95%; /* just a little smaller than default text size */
+		}
+
+	table tr {
+		vertical-align: top;
+		}
+
+	table th, table td {
+		padding: 0.2em 0.5em;
+		border: 1px solid #999;
+		}
+
+	table th {
+		background: #f2f2f2;
+		text-align: left;
+		}
+
+	table th.as-td {
+		text-align: left;
+		font-weight: normal;
+		background: #fff;
+		}
+
+	table td {
+		text-align: left;
+		font-size: 1.0em;
+		}
+
+	table th.centered, table td.centered { text-align: center; }
+	table th.right, table td.right { text-align: right; }
+	table th.cost, table td.cost { text-align: right; }
+	table th.date, table td.date { white-space: nowrap; }
+
+	/* tables */
+	/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+
+	/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+	/* footer */
+
+
+		footer {
+			}
+
+		footer .corp-bar {border-top: 1px solid #004b8e;}
+
+		#corp-links {
+			margin-top: 10px;
+			margin-left: -10px; /* undo the left padding on the first li */
+			}
+
+		#corp-links a {
+			color: #666;
+			}
+
+		/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+		/* copyright and other cya */
+
+			#cya {
+				float: left;
+				color: #666;
+				font-weight: bold;
+				margin: 20px 0 0 20px;
+				}
+
+			#cya p {
+				font-size: 11px;
+				line-height: 1.2;
+				}
+
+		/* end: cya */
+		/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+		/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+		/* ets-3l logo (ets + listening, leading, learning) */
+
+			#ets-logo-3l {
+				display: block;
+				float: right;
+				margin-top: -20px;
+				margin-right: 20px;
+				width: 140px;
+				height: 60px;
+				text-indent: -10000px;
+				overflow: hidden;
+				background: #fff url(../img/wrap/ets-footer.gif) no-repeat 0 -40px;
+				}
+
+		/* end: ets-3l*/
+		/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+
+	/* end: footer */
+	/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+
+/* -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+/* fin */
+
+.lt-ie8 {}
+.lt-ie8 #audience-header { white-space: nowrap; margin-top: 10px; }
+.lt-ie8 .msg ul { margin-left: 1.5em; }
+.lt-ie8 span.req { display: block; float: left; }
+.lt-ie8 fieldset.like-row { margin-top: 0.2em; margin-bottom: -0.5em; }
+.lt-ie8 fieldset.like-row legend { margin-left: -0.6em; float: left; }
+.lt-ie8 fieldset.like-row select,
+.lt-ie8 fieldset.like-row input { display: block; float: left; margin-right: 0.5em; vertical-align: top; margin-top: -1.5em; }
+

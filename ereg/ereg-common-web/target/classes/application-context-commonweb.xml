@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns:beans="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/jee
+		http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+     <beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+            <property name="basename" value="messages" />
+     </beans:bean>
+
+     <context:component-scan base-package="org.ets.ereg.common.web.taglib" />
+     <context:component-scan base-package="org.ets.ereg.common.util" />
+     <bean id="generateBase64StringBusinessService" class="org.ets.ereg.session.facade.shared.service.util.GenerateBase64StringBusinessServiceImpl" depends-on="org.springframework.beans.factory.aspectj.AnnotationBeanConfigurerAspect"/>
+ 	 <bean class="org.springframework.beans.factory.aspectj.AnnotationBeanConfigurerAspect" factory-method="aspectOf" />
+     <!-- <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+           <property name="basename" value="messages" />
+     </bean> -->
+
+	 <bean id="decodeUrlFilter" class="org.ets.ereg.common.web.filter.ERegDecodeURLFilter"/>
+
+</beans>

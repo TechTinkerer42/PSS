@@ -1,0 +1,277 @@
+INSERT INTO CNTNT_TYP(CNTNT_TYP_CDE,CNTNT_TYP_DSC) VALUES('QSTN','Question');
+INSERT INTO CNTNT_TYP(CNTNT_TYP_CDE,CNTNT_TYP_DSC) VALUES('RESP','Response');
+
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(1,'QSTN');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(2,'QSTN');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(3,'QSTN');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(4,'QSTN');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(5,'QSTN');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(6,'QSTN');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(7,'QSTN');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(8,'QSTN');
+
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(9,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(10,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(11,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(12,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(13,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(14,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(15,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(16,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(17,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(18,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(19,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(20,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(21,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(22,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(23,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(24,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(25,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(26,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(27,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(28,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(29,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(30,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(31,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(32,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(33,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(34,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(35,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(36,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(37,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(38,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(39,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(40,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(41,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(42,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(43,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(44,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(45,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(46,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(47,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(48,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(49,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(50,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(51,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(52,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(53,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(54,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(55,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(56,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(57,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(58,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(59,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(60,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(61,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(62,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(63,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(64,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(65,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(66,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(67,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(68,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(69,'RESP');
+INSERT INTO INTL_CNTNT(intl_cntnt_id,CNTNT_TYP_CDE) VALUES(70,'RESP');
+
+
+INSERT INTO DMGRPH_QSTN_SET_TYP (DMGRPH_QSTN_SET_TYP_CDE, DMGRPH_QSTN_SET_TYP_DSC, DMGRPH_QSTN_SET_TYP_DSPLY_SEQ, DSPLY_DTA_FLG) VALUES ('TST', 'Test', '1', 'Y');
+INSERT INTO DMGRPH_QSTN_SET_TYP (DMGRPH_QSTN_SET_TYP_CDE, DMGRPH_QSTN_SET_TYP_DSC, DMGRPH_QSTN_SET_TYP_DSPLY_SEQ, DSPLY_DTA_FLG) VALUES ('PRFL', 'Profile', '2', 'Y');
+
+insert into DMGRPH_QSTN_RSP_TYP (DMGRPH_QSTN_RSP_TYP_CDE,DMGRPH_QSTN_RSP_TYP_DSC,DMGRPH_QSTN_RSP_TYP_SEQ,DMGRPH_QSTN_RSP_TYP_DSPLY_SEQ,DSPLY_DTA_FLG) values ('S','Single',1,1,'Y');
+insert into DMGRPH_QSTN_RSP_TYP (DMGRPH_QSTN_RSP_TYP_CDE,DMGRPH_QSTN_RSP_TYP_DSC,DMGRPH_QSTN_RSP_TYP_SEQ,DMGRPH_QSTN_RSP_TYP_DSPLY_SEQ,DSPLY_DTA_FLG) values ('M','Multiple',2,2,'Y');
+insert into DMGRPH_QSTN_RSP_TYP (DMGRPH_QSTN_RSP_TYP_CDE,DMGRPH_QSTN_RSP_TYP_DSC,DMGRPH_QSTN_RSP_TYP_SEQ,DMGRPH_QSTN_RSP_TYP_DSPLY_SEQ,DSPLY_DTA_FLG) values ('F','Free-form text',3,3,'Y');
+insert into DMGRPH_QSTN_RSP_TYP (DMGRPH_QSTN_RSP_TYP_CDE,DMGRPH_QSTN_RSP_TYP_DSC,DMGRPH_QSTN_RSP_TYP_SEQ,DMGRPH_QSTN_RSP_TYP_DSPLY_SEQ,DSPLY_DTA_FLG) values ('R','Radio',4,4,'Y');
+
+
+insert into DMGRPH_QSTN_SET (SET_ID,SET_DSC) values (1,'Initial set of question for HSET');
+insert into DMGRPH_QSTN_SET (SET_ID,SET_DSC) values (2,'Hobson Questions');
+insert into DMGRPH_QSTN_SET (SET_ID,SET_DSC) values (3,'New Set of Additional BIQ');
+insert into DMGRPH_QSTN_SET (SET_ID,SET_DSC) values (4,'New Set of Test order BIQ');
+
+insert into PGM_DMGRPH_QSTN_SET (PGM_CDE,SET_ID,EFF_DT,EXPRTN_DT,DTE_USG_TYP_FLG,DMGRPH_QSTN_SET_TYP_CDE) values ('HSE',1,to_date('01-JAN-2013','DD-MON-YYYY'),to_date('15-DEC-2013','DD-MON-YYYY'),'T','PRFL');
+
+
+insert into DMGRPH_QSTN (DMGRPH_QSTN_NO,DMGRPH_QSTN_RSP_TYP_CDE,DMGRPH_QSTN_NAM,INTL_CNTNT_ID) values (1,'S','HSET Demo Question1',1);
+insert into DMGRPH_QSTN (DMGRPH_QSTN_NO,DMGRPH_QSTN_RSP_TYP_CDE,DMGRPH_QSTN_NAM,INTL_CNTNT_ID) values (2,'S','HSET Demo Question2',2);
+insert into DMGRPH_QSTN (DMGRPH_QSTN_NO,DMGRPH_QSTN_RSP_TYP_CDE,DMGRPH_QSTN_NAM,INTL_CNTNT_ID) values (3,'S','HSET Demo Question3',3);
+insert into DMGRPH_QSTN (DMGRPH_QSTN_NO,DMGRPH_QSTN_RSP_TYP_CDE,DMGRPH_QSTN_NAM,INTL_CNTNT_ID) values (4,'S','HSET Demo Question4',4);
+insert into DMGRPH_QSTN (DMGRPH_QSTN_NO,DMGRPH_QSTN_RSP_TYP_CDE,DMGRPH_QSTN_NAM,INTL_CNTNT_ID) values (5,'M','HSET Demo Question5',5);
+insert into DMGRPH_QSTN (DMGRPH_QSTN_NO,DMGRPH_QSTN_RSP_TYP_CDE,DMGRPH_QSTN_NAM,INTL_CNTNT_ID) values (6,'S','HSET Demo Question6',6);
+insert into DMGRPH_QSTN (DMGRPH_QSTN_NO,DMGRPH_QSTN_RSP_TYP_CDE,DMGRPH_QSTN_NAM,INTL_CNTNT_ID) values (7,'M','HSET Demo Question7',7);
+insert into DMGRPH_QSTN (DMGRPH_QSTN_NO,DMGRPH_QSTN_RSP_TYP_CDE,DMGRPH_QSTN_NAM,INTL_CNTNT_ID) values (8,'R','HSET Demo Question8',8);
+
+insert into DMGRPH_QSTN_SET_ENTRY (SET_ID,DMGRPH_QSTN_NO,RSP_REQ_FLG,QSTN_DSPLY_SEQ,ADMIN_DSPLY_SEQ) values (1,1,'Y',1,1);
+insert into DMGRPH_QSTN_SET_ENTRY (SET_ID,DMGRPH_QSTN_NO,RSP_REQ_FLG,QSTN_DSPLY_SEQ,ADMIN_DSPLY_SEQ) values (1,2,'N',2,2);
+insert into DMGRPH_QSTN_SET_ENTRY (SET_ID,DMGRPH_QSTN_NO,RSP_REQ_FLG,QSTN_DSPLY_SEQ,ADMIN_DSPLY_SEQ) values (1,3,'N',3,3);
+insert into DMGRPH_QSTN_SET_ENTRY (SET_ID,DMGRPH_QSTN_NO,RSP_REQ_FLG,QSTN_DSPLY_SEQ,ADMIN_DSPLY_SEQ) values (1,4,'N',4,4);
+insert into DMGRPH_QSTN_SET_ENTRY (SET_ID,DMGRPH_QSTN_NO,RSP_REQ_FLG,QSTN_DSPLY_SEQ,ADMIN_DSPLY_SEQ) values (1,5,'N',5,6);
+insert into DMGRPH_QSTN_SET_ENTRY (SET_ID,DMGRPH_QSTN_NO,RSP_REQ_FLG,QSTN_DSPLY_SEQ,ADMIN_DSPLY_SEQ) values (1,6,'N',6,8);
+insert into DMGRPH_QSTN_SET_ENTRY (SET_ID,DMGRPH_QSTN_NO,RSP_REQ_FLG,QSTN_DSPLY_SEQ,ADMIN_DSPLY_SEQ) values (1,7,'N',7,5);
+insert into DMGRPH_QSTN_SET_ENTRY (SET_ID,DMGRPH_QSTN_NO,RSP_REQ_FLG,QSTN_DSPLY_SEQ,ADMIN_DSPLY_SEQ) values (1,8,'N',8,7);
+
+
+--question1
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (1,1,1,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'1','Y',9);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (1,2,2,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'2','Y',10);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (1,3,3,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'3','Y',11);
+
+--question2
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (2,4,1,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'1','Y',12);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (2,5,2,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'2','Y',13);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (2,6,3,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'3','Y',14);
+
+--question3
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (3,7,1,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'1','Y',15);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (3,8,2,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'2','Y',16);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (3,9,3,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'3','Y',17);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (3,10,4,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'4','Y',18);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (3,11,5,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'5','Y',19);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (3,12,6,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'6','Y',20);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (3,13,7,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'7','Y',21);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (3,14,8,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'8','Y',22);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (3,15,9,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'9','Y',23);
+
+--question4
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (4,16,1,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'1','Y',24);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (4,17,2,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'2','Y',25);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (4,18,3,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'3','Y',26);
+
+--question5
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (5,19,1,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'1','Y',27);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (5,20,2,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'2','Y',28);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (5,21,3,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'3','Y',29);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (5,22,4,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'4','Y',30);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (5,23,5,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'5','Y',31);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (5,24,6,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'6','Y',32);
+
+--question6
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (6,25,1,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'1','Y',33);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (6,26,2,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'2','Y',34);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (6,27,3,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'3','Y',35);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (6,28,4,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'4','Y',36);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (6,29,5,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'5','Y',37);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (6,30,6,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'6','Y',38);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (6,31,7,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'7','Y',39);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (6,32,8,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'8','Y',40);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (6,33,9,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'9','Y',41);
+
+--question7
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,34,1,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'1','Y',42);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,35,2,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'2','Y',43);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,36,3,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'3','Y',44);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,37,4,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'4','Y',45);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,38,5,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'5','Y',46);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,39,6,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'6','Y',47);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,40,7,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'7','Y',48);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,41,8,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'8','Y',49);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,42,9,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'9','Y',50);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,43,10,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'10','Y',51);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,44,11,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'11','Y',52);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,45,12,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'12','Y',53);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,46,13,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'13','Y',54);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,47,14,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'14','Y',55);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,48,15,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'15','Y',56);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,49,16,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'16','Y',57);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (7,50,17,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'17','Y',58);
+
+--question8
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (8,51,1,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'1','Y',59);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (8,52,2,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'2','Y',60);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (8,53,3,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'3','Y',61);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (8,54,4,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'4','Y',62);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (8,55,5,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'5','Y',63);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (8,56,6,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'6','Y',64);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (8,57,7,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'7','Y',65);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (8,58,8,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'8','Y',66);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (8,59,9,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'9','Y',67);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (8,60,10,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'10','Y',68);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (8,61,11,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'11','Y',69);
+insert into DMGRPH_RSP (DMGRPH_QSTN_NO,DMGRPH_RSP_NO,DMGRPH_VLD_RSP_SEQ,TST_ADM_VLD_RSP_FRFM_FLG,TST_ADM_VLD_RSP_FRFM_O_FLG,DMGRPH_VLD_RSP_EFF_DT,DMGRPH_VLD_RSP_EXPRTN_DT,RSP_LBL,DMGRPH_VLD_RSP_ACTV_FLG,INTL_CNTNT_ID) values (8,62,12,'N','N',to_date('01-Jan-2013','DD-MON-YYYY'),to_date('01-Jan-2014','DD-MON-YYYY'),'12','Y',70);
+
+
+
+insert into DMGRPH_QSTN_TRGR (TRIGGERING_DMGRPH_QSTN_NO,TRIGGERING_DMGRPH_RSP_NO,SET_ID,DMGRPH_QSTN_NO) values (1,1,1,2);
+insert into DMGRPH_QSTN_TRGR (TRIGGERING_DMGRPH_QSTN_NO,TRIGGERING_DMGRPH_RSP_NO,SET_ID,DMGRPH_QSTN_NO) values (1,1,1,3);
+insert into DMGRPH_QSTN_TRGR (TRIGGERING_DMGRPH_QSTN_NO,TRIGGERING_DMGRPH_RSP_NO,SET_ID,DMGRPH_QSTN_NO) values (1,2,1,2);
+insert into DMGRPH_QSTN_TRGR (TRIGGERING_DMGRPH_QSTN_NO,TRIGGERING_DMGRPH_RSP_NO,SET_ID,DMGRPH_QSTN_NO) values (1,2,1,4);
+insert into DMGRPH_QSTN_TRGR (TRIGGERING_DMGRPH_QSTN_NO,TRIGGERING_DMGRPH_RSP_NO,SET_ID,DMGRPH_QSTN_NO) values (1,3,1,4);
+
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(1,'EN','What is your current citizenship status?');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(2,'EN','Select the state or territory you consider your permanent residence.');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(3,'EN','How do you describe yourself?');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(4,'EN','Of what country are you a citizen?');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(5,'EN','In what geographic region(s) would you prefer to take HSET test? (Select all that apply.)');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(6,'EN','What is your current work status?');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(7,'EN','What are your reasons for taking HSET test? (Select all that apply.)');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(8,'EN','What is the highest level of education you completed?');
+
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(9,'EN','United States citizen');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(10,'EN','Resident alien ("permanent resident") in the United States');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(11,'EN','Neither a United States citizen nor a resident alien');
+
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(12,'EN','New Jersey');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(13,'EN','New York');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(14,'EN','New Hampshire');
+
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(15,'EN','American Indian or Alaskan Native');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(16,'EN','Asian or Asian American');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(17,'EN','Black or African American');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(18,'EN','Mexican, Mexican American, or Chicano');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(19,'EN','Native Hawaiian or Other Pacific Islander');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(20,'EN','Puerto Rican');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(21,'EN','Other Hispanic, Latino, or Latin American');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(22,'EN','White (non-Hispanic)');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(23,'EN','Other');
+
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(24,'EN','Singapore');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(25,'EN','India');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(26,'EN','Canada');
+
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(27,'EN','Northeast (CT, ME, MA, NH, RI, VT)');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(28,'EN','Mid-Atlantic (DC, DE, MD, NJ, NY, PA');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(29,'EN','South (AL, FL, GA, KY, LA ,MS, NC, SC, TN, VA ,WV)');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(30,'EN','Midwest (IL, IN, IA, KS, MI, MN, MO, NE, ND, OH, SD, WI)');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(31,'EN','Southwest (AZ, AR, NM, OK, TX)');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(32,'EN','West (AK, CA, CO, HI, ID, MT, NV, OR, UT, WA, WY)');
+
+
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(33,'EN','Employed Full Time');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(34,'EN','Employed Part Time (Fewer than 20 hours per week)');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(35,'EN','Unemployed (Seeking employment)');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(36,'EN','Permanent Disability');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(37,'EN','Not in the Labor Force (Unemployed by choice)');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(38,'EN','Not in the Labor Force (Homemake,Caregiver)');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(39,'EN','Retired');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(40,'EN','Full-time Student');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(41,'EN','Part-time Student');
+
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(42,'EN','Enroll in Technical or Trade Program');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(43,'EN','Enter a 2-Year College');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(44,'EN','Enter a 4-Year College');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(45,'EN','Skill Certification');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(46,'EN','Job Training');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(47,'EN','Get First Job');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(48,'EN','Keep Current Job');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(49,'EN','Get a Better Job');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(50,'EN','Employment Requirement');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(51,'EN','Military Entrance');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(52,'EN','Military Career');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(53,'EN','Early Release');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(54,'EN','Court Order');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(55,'EN','Public Assistance Requirement');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(56,'EN','Role Model for Family');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(57,'EN','Personal Satisfaction');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(58,'EN','Other');
+
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(59,'EN','None');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(60,'EN','K-3');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(61,'EN','4');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(62,'EN','5');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(63,'EN','6');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(64,'EN','7');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(65,'EN','8');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(66,'EN','9');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(67,'EN','10');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(68,'EN','11');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(69,'EN','12');
+insert into trnsltn(intl_cntnt_id,lang_cde,trnsltn_txt) values(70,'EN','12+');

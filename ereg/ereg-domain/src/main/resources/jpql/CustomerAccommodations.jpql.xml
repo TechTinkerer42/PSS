@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd" version="2.0">
+	<named-query name="CustomerAccommodations.getActiveAccmodationsForCustomer">
+		<query>
+			<![CDATA[
+			select customerAccommodation from org.ets.ereg.domain.accommodation.CustomerAccommodationTestImpl customerAccommodation
+				left join fetch customerAccommodation.accommodationTypeValue
+				left join fetch customerAccommodation.test
+				left join fetch customerAccommodation.programAccommodationDeliveryMode programAccommodationDeliveryMode
+				left join fetch programAccommodationDeliveryMode.accommodationType
+				left join fetch programAccommodationDeliveryMode.deliveryModeType
+			where customerAccommodation.customerAccommodationTestId.customerId = :customerId
+			and  :testDate <= customerAccommodation.expiryDate
+			]]>
+		</query>
+	</named-query>
+	<named-query name="CustomerAccommodations.getAllAccmodationsForCustomer">
+		<query>
+			<![CDATA[
+			select  customerAccommodation from org.ets.ereg.domain.accommodation.CustomerAccommodationTestImpl customerAccommodation
+			left join fetch customerAccommodation.accommodationTypeValue
+			left join fetch customerAccommodation.test
+			left join fetch customerAccommodation.programAccommodationDeliveryMode programAccommodationDeliveryMode
+			left join fetch programAccommodationDeliveryMode.accommodationType
+			left join fetch programAccommodationDeliveryMode.deliveryModeType
+			where customerAccommodation.customerAccommodationTestId.customerId = :customerId
+			]]>
+		</query>
+	</named-query>
+	<named-query name="CustomerAccommodations.getActiveAccmodationsForTest">
+		<query>
+			<![CDATA[
+			select  customerAccommodation from org.ets.ereg.domain.accommodation.CustomerAccommodationTestImpl customerAccommodation
+				left join fetch customerAccommodation.accommodationTypeValue
+				left join fetch customerAccommodation.test
+				left join fetch customerAccommodation.programAccommodationDeliveryMode programAccommodationDeliveryMode
+				left join fetch programAccommodationDeliveryMode.accommodationType
+				left join fetch programAccommodationDeliveryMode.deliveryModeType
+			where customerAccommodation.customerAccommodationTestId.customerId = :customerId
+			and  customerAccommodation.customerAccommodationTestId.testId = :testId
+			and  customerAccommodation.customerAccommodationTestId.programCode = :programCode
+			and  :testDate <= customerAccommodation.expiryDate
+			]]>
+		</query>
+	</named-query>
+	<named-query name="Accommodations.getAllAccommodations">
+		<query>
+			<![CDATA[
+			select  distinct accommodationType from org.ets.ereg.domain.accommodation.AccommodationTypeImpl accommodationType
+			left join fetch accommodationType.accommodationTypeGroup accommodationTypeGroup
+			left join fetch accommodationTypeGroup.accommodationGroup accommodationGroup
+			left join fetch accommodationType.accommodationTypeValues accommodationTypeValues,
+		   org.ets.ereg.domain.accommodation.ProgramAccommodationDeliveryModeImpl programAccommodationDeliveryMode
+		    where   programAccommodationDeliveryMode.programAccommodationDeliveryModeId.programCode = :programCode
+			  and 	programAccommodationDeliveryMode.programAccommodationDeliveryModeId.deliveryModeCode = :deliveryModeCode
+			  and   programAccommodationDeliveryMode.programAccommodationDeliveryModeId.accommodationTypeCode =	accommodationType.code
+			  order by 	accommodationGroup.accommodationGroupSequenceNumber
+			]]>
+		</query>
+	</named-query>
+
+	<named-query name="CustomerAccommodations.getTestsWithoutAccommodations">
+		<query>
+			<![CDATA[
+			select  distinct test from org.ets.ereg.domain.test.TestImpl test
+			where test NOT IN (select customerAccommodation.test from
+			      org.ets.ereg.domain.accommodation.CustomerAccommodationTestImpl customerAccommodation
+			 where customerAccommodation.customerAccommodationTestId.customerId = :customerId
+			and   customerAccommodation.customerAccommodationTestId.programCode = :programCode
+			and   customerAccommodation.customerAccommodationTestId.deliveryModeCode = :deliveryModeCode)
+			]]>
+		</query>
+	</named-query>
+	<named-query name="CustomerAccommodations.getAllNotApprovedAccommodationsForCustomer">
+		<query>
+			<![CDATA[
+			select  accommodationType from org.ets.ereg.domain.accommodation.AccommodationTypeImpl accommodationType
+			left join fetch accommodationType.accommodationTypeValues
+			where accommodationType.code NOT IN (select customerAccommodationTestId.accommodationTypeCode from
+			      org.ets.ereg.domain.accommodation.CustomerAccommodationTestImpl customerAccommodation
+			 where customerAccommodation.customerAccommodationTestId.customerId = :customerId
+			and   customerAccommodation.customerAccommodationTestId.programCode = :programCode
+			and   customerAccommodation.customerAccommodationTestId.deliveryModeCode = :deliveryModeCode)
+			]]>
+		</query>
+	</named-query>
+	<named-query name="Accommodations.getAccommodationDeliveryMethods">
+		<query>
+			<![CDATA[
+			select  distinct deliveryMethod from org.ets.ereg.domain.common.DeliveryModeTypeImpl deliveryMethod,
+				org.ets.ereg.domain.accommodation.ProgramAccommodationDeliveryModeImpl programAccommodationDeliveryMode
+						where programAccommodationDeliveryMode.programAccommodationDeliveryModeId.programCode = :programCode
+						and   programAccommodationDeliveryMode.programAccommodationDeliveryModeId.deliveryModeCode = deliveryMethod.code
+			]]>
+		</query>
+	</named-query>
+	<named-query name="CustomerAccommodations.getActiveAccmodationsForTestByDeliveryMode">
+		<query>
+			<![CDATA[
+			select  customerAccommodation from org.ets.ereg.domain.accommodation.CustomerAccommodationTestImpl customerAccommodation
+				left join fetch customerAccommodation.accommodationTypeValue
+				left join fetch customerAccommodation.test
+				left join fetch customerAccommodation.programAccommodationDeliveryMode programAccommodationDeliveryMode
+				left join fetch programAccommodationDeliveryMode.accommodationType
+				left join fetch programAccommodationDeliveryMode.deliveryModeType
+			where customerAccommodation.customerAccommodationTestId.customerId = :customerId
+			and  customerAccommodation.customerAccommodationTestId.testId = :testId
+			and  customerAccommodation.customerAccommodationTestId.programCode = :programCode
+			and  :expirationDate <= customerAccommodation.expiryDate
+			and  programAccommodationDeliveryMode.programAccommodationDeliveryModeId.deliveryModeCode = :deliveryModeCode
+			]]>
+		</query>
+	</named-query>
+	<named-query name="CustomerAccommodations.getCustomerAccmodation">
+		<query>
+			<![CDATA[
+			select customerAccommodation from org.ets.ereg.domain.accommodation.CustomerAccommodationTestImpl customerAccommodation
+				left join fetch customerAccommodation.accommodationTypeValue
+				left join fetch customerAccommodation.test
+				left join fetch customerAccommodation.programAccommodationDeliveryMode programAccommodationDeliveryMode
+				left join fetch programAccommodationDeliveryMode.accommodationType
+				left join fetch programAccommodationDeliveryMode.deliveryModeType
+			where customerAccommodation.customerAccommodationTestId.customerId = :customerId
+			and  customerAccommodation.customerAccommodationTestId.testId = :testId
+			and  customerAccommodation.customerAccommodationTestId.programCode = :programCode
+			and  customerAccommodation.customerAccommodationTestId.deliveryModeCode = :deliveryModeCode
+			and  customerAccommodation.customerAccommodationTestId.accommodationTypeCode = :accommodationTypeCode
+			]]>
+		</query>
+	</named-query>
+</entity-mappings>

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+    "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+    <tlib-version>3.0</tlib-version>
+    <jsp-version>2.1</jsp-version>
+    <short-name>common-tags</short-name>
+    <uri>http://ereg.ets.org/commontags</uri>
+    <tag-file>
+        <name>test</name>
+        <path>/META-INF/tags/commontags/commontest.tag</path>
+    </tag-file>
+     <tag-file>
+        <name>datepicker</name>
+        <path>/META-INF/tags/datepicker.tag</path>
+    </tag-file>
+     <tag-file>
+        <name>paginationheader</name>
+        <path>/META-INF/tags/paginationheader.tag</path>
+    </tag-file>
+     <tag-file>
+        <name>paginationfooter</name>
+        <path>/META-INF/tags/paginationfooter.tag</path>
+    </tag-file>
+    
+    <tag-file>
+        <name>modalWindow</name>
+        <path>/META-INF/tags/modalWindow.tag</path>
+    </tag-file>
+    <tag-file>
+        <name>modalConfirmationWindow</name>
+        <path>/META-INF/tags/modalConfirmationWindow.tag</path>
+    </tag-file>
+     <tag-file>
+        <name>columns</name>
+        <path>/META-INF/tags/columns.tag</path>
+    </tag-file>
+
+
+
+    <tag-file>
+        <name>grid</name>
+        <path>/META-INF/tags/grid.tag</path>
+    </tag-file>
+
+
+
+    <tag-file>
+        <name>pagination</name>
+        <path>/META-INF/tags/pagination.tag</path>
+    </tag-file>
+
+    <tag-file>
+        <name>paginationfooter</name>
+        <path>/META-INF/tags/paginationfooter.tag</path>
+    </tag-file>
+
+    <tag-file>
+        <name>paginationheader</name>
+        <path>/META-INF/tags/paginationheader.tag</path>
+    </tag-file>
+
+    <tag-file>
+        <name>sandboxRibbon</name>
+        <path>/META-INF/tags/sandboxRibbon.tag</path>
+    </tag-file>
+
+    <tag-file>
+        <name>stars</name>
+        <path>/META-INF/tags/stars.tag</path>
+    </tag-file>
+
+    <tag-file>
+        <name>testTakerAccommodation</name>
+        <path>/META-INF/tags/testTakerAccommodation.tag</path>
+    </tag-file>
+
+    <tag-file>
+    	<name>personalInfoTable</name>
+    	<path>/META-INF/tags/scheduling/personalInfoTable.tag</path>
+    </tag-file>
+
+    <tag-file>
+    	<name>appointmentInfoTable</name>
+    	<path>/META-INF/tags/scheduling/appointmentInfoTable.tag</path>
+    </tag-file>
+    <tag-file>
+    	<name>appointmentInfoPanel</name>
+    	<path>/META-INF/tags/scheduling/appointmentInfoPanel.tag</path>
+    </tag-file>
+    <tag-file>
+    	<name>appointmentInfoDetails</name>
+    	<path>/META-INF/tags/appointmentInfoDetails.tag</path>
+    </tag-file>
+        <tag-file>
+    	<name>viewCartBatteryItem</name>
+    	<path>/META-INF/tags/viewCartBatteryItem.tag</path>
+    </tag-file>
+    
+        <tag-file>
+    	<name>viewCartMemberShipItem</name>
+    	<path>/META-INF/tags/viewCartMemberShipItem.tag</path>
+    </tag-file>
+    
+        <tag-file>
+    	<name>viewCartTestItem</name>
+    	<path>/META-INF/tags/viewCartTestItem.tag</path>
+    </tag-file>
+    
+	<tag-file>
+		<name>accommodationsTable</name>
+		<path>/META-INF/tags/scheduling/accommodationsTable.tag</path>
+	</tag-file>
+	
+	<tag-file>
+		<name>accommodationsTable</name>
+		<path>/META-INF/tags/scheduling/accommodationsTable.tag</path>
+	</tag-file>
+	
+	<tag-file>
+		<name>spinner</name>
+		<path>/META-INF/tags/spinner.tag</path>
+	</tag-file>
+	
+	<tag-file>
+		<name>dateTime</name>
+		<path>/META-INF/tags/dateTime.tag</path>
+	</tag-file>
+    
+    <tag>
+	    <name>encode</name>
+	    <tagclass>org.ets.ereg.common.web.taglib.EncodingTagHandler</tagclass>
+	    <info>Encoding ids</info>
+	    <attribute>
+	      <name>out</name>
+	      <required>true</required>
+	      <rtexprvalue>true</rtexprvalue>
+	  	</attribute>
+	  	 <attribute>
+	      <name>type</name>
+	      <required>false</required>
+	      <rtexprvalue>true</rtexprvalue>
+	  	</attribute>
+	  	 <attribute>
+	      <name>context</name>
+	      <required>false</required>
+	      <rtexprvalue>true</rtexprvalue>
+	  	</attribute>
+	  	 <attribute>
+	      <name>var</name>
+	      <required>false</required>
+	      <rtexprvalue>true</rtexprvalue>
+	  	</attribute>
+	  	 <attribute>
+	      <name>scope</name>
+	      <required>false</required>
+	      <rtexprvalue>true</rtexprvalue>
+	  	</attribute>
+	  	<attribute>
+	      <name>encodable</name>
+	      <required>false</required>
+	    </attribute>
+	    <attribute>
+	      <name>hrefCode</name>
+	      <required>false</required>
+	      <rtexprvalue>true</rtexprvalue>
+	  	</attribute>
+	  	<attribute>
+	      <name>hrefText</name>
+	      <required>false</required>
+	      <rtexprvalue>true</rtexprvalue>
+	  	</attribute>
+	  	<attribute>
+	      <name>hrefStyle</name>
+	      <required>false</required>
+	      <rtexprvalue>true</rtexprvalue>
+	  	</attribute>
+	  	<attribute>
+	      <name>hrefStyleClass</name>
+	      <required>false</required>
+	      <rtexprvalue>true</rtexprvalue>
+	  	</attribute>
+	  	<attribute>
+	      <name>hrefTarget</name>
+	      <required>false</required>
+	      <rtexprvalue>false</rtexprvalue>
+	  	</attribute>
+	  	<attribute>
+	      <name>hrefOnclick</name>
+	      <required>false</required>
+	      <rtexprvalue>true</rtexprvalue>
+	  	</attribute>
+		<attribute>
+	      <name>param</name>
+	      <required>false</required>
+	      <rtexprvalue>true</rtexprvalue>
+	  	</attribute>
+	</tag>
+	<tag>
+	    <name>format</name>
+	    <tagclass>org.ets.ereg.common.web.taglib.AppointmentUtility</tagclass>
+	    <info>Appending zero to PBT appointment number</info>
+	    <attribute>
+	      <name>out</name>
+	      <required>true</required>
+	      <rtexprvalue>true</rtexprvalue>
+	  	</attribute>
+	</tag>
+	
+	<tag>
+		<name>phone</name>
+		<tag-class>org.ets.ereg.common.web.taglib.PhoneTagHandler</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>phoneNumber</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>countryAbbr</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>countryCode</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>extension</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>phoneType</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>canManageTestCenter</name>
+		<tag-class>org.ets.ereg.common.web.taglib.CanManageTestCenterTagHandler</tag-class>
+		<attribute>
+			<name>testCenterId</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+		<tag>
+		<name>formatRegex</name>
+		<tag-class>org.ets.ereg.common.web.taglib.FormatRegexTagHandler</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>out</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>regexInputString</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+				<attribute>
+			<name>regexOutputString</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	
+</taglib>

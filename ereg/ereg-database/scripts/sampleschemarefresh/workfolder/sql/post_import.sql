@@ -1,0 +1,9 @@
+-- compile invalid
+
+exec dbms_utility.compile_schema('&1');
+UPDATE ETS_APLCTN_CNFGN SET VAL = 'DATABASE' WHERE NAM ='AUTH_MECHANISM';
+UPDATE ETS_APLCTN_CNFGN SET VAL = '/j_spring_security_check' WHERE NAM ='AUTH_URL';
+UPDATE ETS_APLCTN_CNFGN SET VAL = 'j_username' WHERE NAM ='FIELDNAME_USENAME';
+UPDATE ETS_APLCTN_CNFGN SET VAL = 'j_password' WHERE NAM ='FIELDNAME_PASSWORD';
+commit;
+exit

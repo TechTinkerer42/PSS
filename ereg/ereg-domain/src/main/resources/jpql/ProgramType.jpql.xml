@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd" version="2.0">
+
+	<named-query name="ProgramType.findByCode">
+		<query>
+			<![CDATA[
+			select program from org.ets.ereg.domain.interfaces.model.common.ProgramType program
+			where
+			program.code = :code
+			]]>
+		</query>
+	</named-query>
+
+	<named-query name="ProgramType.getAllPrograms">
+		<query>
+			<![CDATA[
+			select program from org.ets.ereg.domain.interfaces.model.common.ProgramType program
+			]]>
+		</query>
+	</named-query>
+
+	<named-query name="ProgramType.getAllTestsForProgram">
+		<query>
+			<![CDATA[
+			select  test from org.ets.ereg.domain.test.TestImpl test where test.programType.code = :programCode
+			]]>
+		</query>
+	</named-query>
+
+</entity-mappings>

@@ -1,0 +1,30 @@
+.newusercommon, .returningusercommon {
+                border:1px solid orange;
+				min-height:220px;
+                 border-radius: 5px;
+	            -webkit-border-radius: 5px;
+	            -moz-border-radius: 5px;
+	            -ms-border-radius: 5px;
+	            -o-border-radius: 5px;
+	         	         
+				padding:15px;
+				margin:20px 0;
+
+}
+
+.formContainer1 {
+                 max-width:900px;
+			/*	background:#f7f7f7;*/
+                border:1px solid blue;
+                 border-radius: 5px;
+	            -webkit-border-radius: 5px;
+	            -moz-border-radius: 5px;
+	            -ms-border-radius: 5px;
+	            -o-border-radius: 5px;
+	         	         
+				padding:10px;
+				
+				margin:20px;
+				
+				
+}

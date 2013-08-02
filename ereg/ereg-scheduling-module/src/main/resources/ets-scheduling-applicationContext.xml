@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/jee
+		http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
+		http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+	<context:component-scan base-package="org.ets.ereg.scheduling.service" />
+	<context:component-scan base-package="org.ets.ereg.scheduling.dao" />
+	<context:component-scan base-package="org.ets.ereg.scheduling.booking.service" />
+	<context:component-scan base-package="org.ets.ereg.scheduling.booking.dao" />
+	<context:component-scan base-package="org.ets.ereg.scheduling.testtakertest.dao"></context:component-scan>
+
+	<bean id="org.ets.ereg.scheduling.spi.ssa.SSAHttpPostService"
+		class="org.ets.ereg.scheduling.spi.ssa.service.HttpPostService" scope="prototype"/>
+		<!-- <property name="authHost" value="${scheduling.ssa.authHost}" />
+		<property name="authPort" value="${scheduling.ssa.authPort}" />
+		<property name="loginUserId" value="${scheduling.ssa.loginUserId}" />
+		<property name="loginPwd" value="${scheduling.ssa.loginPwd}" />
+		<property name="connectionTimeout" value="${scheduling.ssa.connectionTimeout}" />
+		<property name="acceptAllCerts" value="${scheduling.ssa.acceptAllCerts}" />
+		<property name="socketTimeout" value="${scheduling.ssa.socketTimeout}" />
+	</bean> -->
+	
+	<bean id="schedulingService" class="org.ets.ereg.scheduling.service.impl.SchedulingServiceImpl">
+		<property name="useMockSchedulingService"
+			value="${scheduling.useMockSchedulingService}" />	
+	</bean>
+	<bean id="ssaSchedulingService"
+		class="org.ets.ereg.scheduling.spi.ssa.service.SSASchedulingService">
+		<property name="httpPostService"
+			ref="org.ets.ereg.scheduling.spi.ssa.SSAHttpPostService" />
+		<!-- <property name="protocol" value="${scheduling.ssa.protocol}" />
+		<property name="serverPath"
+			value="${scheduling.ssa.serverPath}" />
+		<property name="source" value="${scheduling.ssa.source}" />
+		<property name="requestSystemId" value="${scheduling.ssa.requestSystemId}" />
+		<property name="transactionPrefix" value="${scheduling.ssa.transactionPrefix}" /> -->
+	</bean>
+</beans>
