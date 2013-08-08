@@ -22,7 +22,6 @@ import org.ets.pss.persistence.model.Doc;
 import org.ets.pss.persistence.model.EtsCust;
 
 import org.ets.pss.persistence.model.UserTask;
-import org.ets.pss.service.AsgndTskAdapter;
 import org.ets.pss.service.TaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,8 +41,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.apache.commons.lang.StringUtils;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+/**
+ * @author ashwin sampath->asampath@ets.org
+ *
+ */
+
 @Controller("task-controller")
 @RequestMapping(value="/pss/task/")
 @SessionAttributes({"customer","task"})
