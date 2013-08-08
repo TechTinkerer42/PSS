@@ -69,7 +69,7 @@ import com.kaltura.client.enums.KalturaMediaType;
 import com.kaltura.client.types.KalturaMediaEntry;
 
 /**
- * @author SSINGH007
+ * @author ashwin sampath->asampath@ets.org
  *
  */
 @Service("taskService")
@@ -548,7 +548,7 @@ public class TaskServiceImpl implements TaskService {
 			BlcCustomer bc = new BlcCustomer();
 			bc.setCustomerId(customerId);
 			bc.setFirstName(loggedInUser.getFirstName());//ashwin fix for blccustomer for admin page
-			bc.setLastName(loggedInUser.getFirstName());//ashwin fix for blccustomer for admin page
+			bc.setLastName(loggedInUser.getLastName());//ashwin fix for blccustomer for admin page
 			
 			
 			blcCustomerDao.create(bc);
