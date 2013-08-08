@@ -653,7 +653,7 @@
 
 	table {
 		border: 1px solid #999;
-		margin-bottom: 1em;
+		/* margin-bottom: 1em; */
 		border-collapse: collapse;
 		width: 100%;
 			font-size: 95%; /* just a little smaller than default text size */
