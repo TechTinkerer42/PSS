@@ -68,7 +68,7 @@
         <sec:intercept-url pattern="/**" requires-channel="http"/>-->
 
         <!--  <sec:intercept-url pattern="/secure/**" access="isAuthenticated()" />-->
-           <sec:intercept-url pattern="/secure/**" access="ROLE_CUSTOMER" />
+           <sec:intercept-url pattern="/secure/**" access="ROLE_CUSTOMER,ROLE_ADMIN"/>
 
 
 		<!-- Define the login form along with the success and failure handlers '/signin?error=true' login-processing-url="/login_post.htm" -->
