@@ -91,7 +91,7 @@
 </div>
 
 </div>
-
+<!--  
 <div class="headContainer">
 <h2><spring:message code="additionalInformation"/></h2>
 </div>
@@ -117,7 +117,7 @@
 	</li>
 </ul>
 </div>
-
+-->
 <div class="headContainer">
 <h2><spring:message code="backgroundInformation"/></h2>
 </div>

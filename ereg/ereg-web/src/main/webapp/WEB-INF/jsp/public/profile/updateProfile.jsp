@@ -214,7 +214,7 @@
 
 	
 	
-
+<!--  
 
 	<h2><spring:message code="additionalInformation"/></h2>
 
@@ -280,7 +280,8 @@
 	</li>
 
 	</ul>
-	
+	-->
+	<br>
 	</div>
 
 

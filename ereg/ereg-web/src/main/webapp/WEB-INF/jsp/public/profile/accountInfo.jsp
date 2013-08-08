@@ -118,7 +118,7 @@
 <form:checkbox path="<%=ProfileForm.AGREE_TERMS%>" id="termsConditions" name="cc" class="radiocheck"/> 
 
 <strong><spring:message code="agreeTerms"/></strong>  <span class="checkConditions"></span></div>
-
+<h2><form:errors class="errorMessage" path="<%=ProfileForm.AGREE_TERMS %>"/></h2>
 
    </div>
 
