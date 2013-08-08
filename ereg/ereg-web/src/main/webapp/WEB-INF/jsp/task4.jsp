@@ -46,6 +46,21 @@ function setdiv( divid ){
 	}
 }
 
+$.extend({ alert: function (message, title) {
+	  $("<div></div>").dialog( {
+		  closeOnEscape: false,
+		  dialogClass: 'no-close-dialog',		     
+	    buttons: { "Ok": function () { $(this).dialog("close"); } },
+	   close: function (event, ui) { $(this).remove(); }, 
+	    title: title,
+	    resizable: false,
+	    position:['center',120],
+	    //height:195,
+	    modal: true
+	  }).text(message);
+	}
+	});
+
 	$(document)
 			.ready(
 					
@@ -344,8 +359,29 @@ function setdiv( divid ){
 										'mouseup',
 										(function(e) {
 											var clicked = $(this);
+											//var value = clicked.text();
+											//console.log("the word count value is "+value);
+											//var regex = /\s+/gi;
+											//var wordCount = value.trim().replace(regex, ' ').split(' ').length;
+											//var totalChars = value.length;
+											//var charCount = value.trim().length;
+											//var charCountNoSpace = value.replace(regex, '').length;
+											//console.log("the word count is "+wordCount);
+											//console.log("the word count is "+totalChars);
+											//console.log("the word count is "+charCount);
+											//console.log("the word count is "+charCountNoSpace);
+											    
+											  /*  if(charCount>25)
+											 {
+												  
+												   $.alert('Your Word Count is '+charCount +' the maximum allowed is '+25,'Warning!');
+												   e.preventDefault();
+											 } */
+											
+											
 											var idStr = clicked[0].id;
 											var indexOfCount = "cteditor".length;
+											
 											var index = idStr.substring(indexOfCount, idStr.length);
 											var selectedText = rangy.getSelection().toString();
 											var sel = rangy.getSelection();											
@@ -354,6 +390,11 @@ function setdiv( divid ){
 												$('#highlight' + index).prop('disabled', false);
 												$('#removehigh' + index).prop('disabled',false);//can be removed
 											}
+											
+											   
+											   
+											    
+
 											 
 											/*
 											var formattingEls = range
@@ -404,13 +445,33 @@ function setdiv( divid ){
 					 	
 						$('[id^=cteditor]')
 						.on(
-								'keyup',
+								'keypress', //'keyup',
 								(function(e) {
 									var clicked = $(this);
 									var idStr = clicked[0].id;
 									var indexOfCount = "cteditor".length;
 									var index = idStr.substring(indexOfCount, idStr.length);
 									var selectedText = rangy.getSelection().toString();
+									
+									 //var value = clicked.text();
+									// console.log("the word count value is "+value);
+									 //var regex = /\s+/gi;
+									 //var wordCount = value.trim().replace(regex, ' ').split(' ').length;
+									// var totalChars = value.length;
+									// var charCount = value.trim().length;
+									// var charCountNoSpace = value.replace(regex, '').length;
+									// console.log("the word count is "+wordCount);
+									 //console.log("the word count is "+totalChars);
+									 //console.log("the word count is "+charCount);
+									 //console.log("the word count is "+charCountNoSpace);
+									    
+									  /* if(charCount>25)
+									  {										  
+										  $.alert('Your Word Count is '+charCount +' the maximum allowed is '+25,'Warning!');
+										  e.preventDefault();
+									  }  */
+									
+									
 									if (selectedText.length > 0) {
 										$('#highlight' + index).prop('disabled', false);
 										$('#removehigh' + index).prop('disabled',false);//can be removed
@@ -484,6 +545,7 @@ function setdiv( divid ){
 
 																var text = $('#cteditor' + index).html();//val();
 																		//alert('the text is '+ text);
+																//var value = $('#cteditor' + index).text();	
 																		
 															    essayContentMap1[myPromptId] = text;
 													
@@ -493,7 +555,6 @@ function setdiv( divid ){
 												                
 												                var linkMap1=false;																
 																var linksArray1 = new Array();
-													
 													
 													/* $('#promptId'+myPromptId+' li').each(function(){
 														
@@ -522,8 +583,11 @@ function setdiv( divid ){
 														      //console.log($(this).attr('href'));
 														      //console.log('linksArray pushed true');
 															});
+														 
+															
 													});
 													
+														
 													
 													$('[id^=docsListForPrmpt]').each(function(){
 														var currentPrompt = $(this);
@@ -560,7 +624,7 @@ function setdiv( divid ){
 														$('#'+idStr+' li').each(function(){
 																								
 															var removeDocId = $(this).attr('id');		
-															console.log('the remove doc id is '+removeDocId);
+															//console.log('the remove doc id is '+removeDocId);
 															removeArray1.push(removeDocId);									
 															
 														});
@@ -594,6 +658,35 @@ function setdiv( divid ){
 
 															});							
 						
+					$('input[id^="wordCount"]').click(function(){
+					
+						var clicked = $(this);
+						var idStr = clicked[0].id;
+						var indexOfCount = "wordCount".length;
+						var index = idStr.substring(
+								indexOfCount, idStr.length);
+						//console.log("the index is "+index);
+						var value = $('#cteditor' + index).text();
+						
+						// console.log("the word count value is "+value);
+						 var regex = /\s+/gi;
+						 var wordCount = value.trim().replace(regex, ' ').split(' ').length;
+						 var totalChars = value.length;
+						 var charCount = value.trim().length;
+						 var charCountNoSpace = value.replace(regex, '').length;
+						 //console.log("the word count is "+wordCount);
+						 //console.log("the word count is "+totalChars);
+						 //console.log("the word count is "+charCount);
+						 //console.log("the word count is "+charCountNoSpace);
+						 
+						 $.alert('Your Word Count for this response is '+charCount +'. The maximum allowed for All Responses is '+50+'.','WordCount');
+						
+						  // alert("Your Word Count is "+charCount +" the maximum allowed is "+25);
+						   
+
+						
+					});
+						
 						$('#saveDraft').click(function(){
 							var promptDocMap = new Object();
 							var removePromptDocMap = new Object();
@@ -601,6 +694,7 @@ function setdiv( divid ){
 							var linkMap=false;
 							var myTaskId = $("#taskId").val();
 							var linksArray = new Array();
+							var wordCountTotal=0;
 							
 							$('[id^=cteditor]').each(function(){
 								
@@ -617,12 +711,26 @@ function setdiv( divid ){
 								var promptId = $('#promptId'+index).val();
 								
 								var text = currentEditor.html();
-								
-								
+								var value=currentEditor.text();
+								var regex = /\s+/gi;
+								var wordCount = value.trim().replace(regex, ' ').split(' ').length;
+								var totalChars = value.length;
+								var charCount = value.trim().length;
+								var charCountNoSpace = value.replace(regex, '').length;
+								wordCountTotal+=charCount;
 								essayContentMap[promptId] = text;
 								
 								
 							});
+							//console.log("the wordcount is "+wordCountTotal);
+							
+							if(wordCountTotal>50)
+								{
+									//alert("Your Word Count is "+wordCountTotal +" for all Responses.The maximum allowed is "+25);
+									$.alert('Your Word Count is '+wordCountTotal +' for all Responses.The maximum allowed for all Responses is '+50+'.Please get a word count at each Prompt and correct your Response accordingly before Saving Draft.','Warning!'); 
+									return;
+								}
+								
 
 							$('[id^=docsListForPrmpt]').each(function(){
 								var currentPrompt = $(this);
@@ -631,12 +739,13 @@ function setdiv( divid ){
 								var index = idStr.substring(indexOfCount, idStr.length);
 								var promptId = $('#promptId'+index).val();
 								
+								
 								//it is same for all prompts
 								//myTaskId = $("#taskId" + index).val();
 								
 									if(linksArray.length>0)
 									{
-									console.log('haslink');
+									//console.log('haslink');
 									linkMap = true;
 									
 									/* for (i = 0; i <linksArray.length; i++) {
@@ -692,7 +801,7 @@ function setdiv( divid ){
 								}), 
 								//dataType: 'json',
 								success : function(data) {
-									console.log(data);
+									//console.log(data);
 									alert("Task Draft is Saved Successfully");
 									$('#submitTask').prop('disabled', false);
 								},
@@ -704,6 +813,31 @@ function setdiv( divid ){
 						});
 						
 						$('#submitTask').click(function(){
+							 var wordCountTotal=0;
+                         $('[id^=cteditor]').each(function(){
+                        	   
+								var currentEditor = $(this);
+								var value=currentEditor.text();
+								var regex = /\s+/gi;
+								var wordCount = value.trim().replace(regex, ' ').split(' ').length;
+								var totalChars = value.length;
+								var charCount = value.trim().length;
+								var charCountNoSpace = value.replace(regex, '').length;
+								wordCountTotal+=charCount;
+								
+								
+								
+							});
+							//console.log("the wordcount is "+wordCountTotal);
+							
+							if(wordCountTotal>50)
+								{
+									//alert("Your Word Count is "+wordCountTotal +" for all Responses.The maximum allowed is "+25);
+								$.alert('Your Word Count is '+wordCountTotal +' for all Responses.The maximum allowed for all Responses is '+50+'.Please get a word count at each Prompt and correct your Response accordingly before Submitting Task.','Warning!'); 
+									return;
+								}
+								
+					
 							
 						    $( "#submit-confirm" ).dialog({
 						    	closeOnEscapeType:false,
@@ -1316,13 +1450,6 @@ div.videoouter
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    
-   
-    
-    
-	
-	
-	
 }
 
 div.video
@@ -1330,10 +1457,15 @@ div.video
 	padding:10px 10px 10px 10px;
 }
 
-.no-close .ui-dialog-titlebar-close {
+ .no-close .ui-dialog-titlebar-close {
 	display: none;
-}
+	} 
 
+.no-close-dialog .ui-dialog-titlebar-close {
+	display: none;
+	/* top:'20%';
+	left:'50%'; */
+} 
 
 
 .promptbutton {
@@ -1826,7 +1958,7 @@ margin-bottom:25px;
 		          </div>
                 </div>
                 </div>
-				
+				<%-- <c:out value="TASKSTATUS is: ${customerTask.docStsTyp.docStsTypCde}" /> --%>
 				 <div id="accordion" class="center"  >	
 					<c:forEach var="step" varStatus="status" items="${task.stepDTOs}">
 					
@@ -1883,15 +2015,11 @@ margin-bottom:25px;
 											</div>
 											<c:if test="${customerTask.docStsTyp.docStsTypCde!='CMPLD'}">
 											<c:if test="${prompt.media!='video'}">  	
-												<div id="editor_buttons${prompt.promptId}">
-												
-												<%-- <a class="butto" id="save_essay${prompt.promptId}">Save Essay</a> --%>
-												       											
-													    <input type="button" class="promptbutton" style="margin-left: 1.9px;" value="Save Essay" id="save_essay${prompt.promptId}" />  
-														<input type="button" class="promptbutton" value="Link Text" disabled id="highlight${prompt.promptId}" /> 
-														<%-- <a class="butto" id="highlight${prompt.promptId}">Link Text"</a> --%>
-														<input type="button"  class="promptbutton" value="Remove Link" disabled id="removehigh${prompt.promptId}" /> 
-														<%-- <a class="butto" disabled id="removehigh${prompt.promptId}">Remove Link"</a> --%>
+												<div id="editor_buttons${prompt.promptId}">	
+												       	<input type="button"  class="promptbutton" style="margin-left: 2.2px;" value="Word Count"  id="wordCount${prompt.promptId}" />										
+													    <input type="button" class="promptbutton"  value="Save Essay" id="save_essay${prompt.promptId}" />  
+														<input type="button" class="promptbutton" value="Link Text" disabled id="highlight${prompt.promptId}" /> 														
+														<input type="button"  class="promptbutton" value="Remove Link" disabled id="removehigh${prompt.promptId}" /> 														 
 												</div>
 												</c:if>
 											</c:if>

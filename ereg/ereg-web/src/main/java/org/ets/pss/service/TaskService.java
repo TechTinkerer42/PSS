@@ -39,13 +39,13 @@ public interface TaskService {
 	 Map<Long, String> getPromptForTask(long customerId,long lTaskId);
 	AsgndTsk getAssignedTask(long customerId,long lTaskId);
 
-	List<AsgndTsk> generateTasksForAccessCode(Long customerId, String accessCode);
+	List<AsgndTsk> generateTasksForAccessCode(ERegUser loggedInUser,Long customerId, String accessCode);
 	
 	TaskDTO getTask(Long taskId);
 	
 	 Map<Long, String> getCustomerPromptsForTask(Long customerId, Long taskId);
 	 Map<String, String> getVideosForTask(long customerId,long lTaskId);
 	ContentManagementDTO uploadContent(boolean exists,ContentManagementDTO contentManagementVO);
-	 String getAdminTasks(ERegUser loggedInUser);
+	String getAdminTasks();
 	
 }

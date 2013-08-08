@@ -3,7 +3,7 @@ package org.ets.pss.controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +20,9 @@ import org.ets.pss.persistence.dto.TaskDraft;
 import org.ets.pss.persistence.model.AsgndTsk;
 import org.ets.pss.persistence.model.Doc;
 import org.ets.pss.persistence.model.EtsCust;
+
 import org.ets.pss.persistence.model.UserTask;
+import org.ets.pss.service.AsgndTskAdapter;
 import org.ets.pss.service.TaskService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +41,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.apache.commons.lang.StringUtils;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 @Controller("task-controller")
 @RequestMapping(value="/pss/task/")
 @SessionAttributes({"customer","task"})
@@ -86,6 +91,48 @@ public class TaskController {
         
     }
     
+    
+	
+    @RequestMapping(value = "/gotoAdmin", method = RequestMethod.GET)
+    public String getReadOnlyTasks(String taskId,String userId, @LoggedInUser ERegUser loggedInUser, Model model) {
+    	
+    	System.out.println("taskId "+ taskId);
+    	long lTaskId = Long.parseLong(taskId);
+    	long lUserId = Long.parseLong(userId);
+    
+    	TaskDTO task = taskServiceImpl.getTask(lTaskId);
+    	
+    	if( null == task ) throw new RuntimeException("Invalid Task Id");
+    	
+    	model.addAttribute("task",task);
+    	 AsgndTsk  asgndTsk=taskServiceImpl.getAssignedTask(lUserId, lTaskId);
+    	
+    	model.addAttribute("customerTask", asgndTsk);
+    	
+  	
+    	Map<Long, String> prompts = taskServiceImpl.getPromptForTask(lUserId, lTaskId);
+    	Map<String, String> videomap = taskServiceImpl.getVideosForTask(lUserId, lTaskId);
+    	model.addAttribute("promptResponses", prompts);
+    	
+    	if(videomap!=null)
+    	{
+    	model.addAttribute("videoResponses", videomap);
+    	}
+//    	
+//    	model.addAttribute("prompts",prompts);    	 			
+//    	
+//    	model.addAttribute("uploadItem",new UploadItem());
+//      	
+//    	Set<Doc> cusotmerArtifacts = taskServiceImpl.getCustomerArtifacts(loggedInUser.getId());
+//    	
+//    	model.addAttribute("artifacts",cusotmerArtifacts);
+    	    	
+        return "task4";
+        
+    }
+    
+    
+    
     @RequestMapping(value = "/review/video", method = RequestMethod.GET)
     public String reviewVideo(@LoggedInUser ERegUser loggedInUser) {
     	System.out.println("coming here for reviewing video");
@@ -96,21 +143,12 @@ public class TaskController {
     }
   
     @RequestMapping(value = "/draft/admin", method = RequestMethod.GET)
-    public @ResponseBody String getAdminTasks(@LoggedInUser ERegUser loggedInUser) {
+    public @ResponseBody String getAdminTasks(@LoggedInUser ERegUser loggedInUser,Model model) {
     	System.out.println("coming here for getAdminTasks");
     	long customerId = loggedInUser.getId();
     	System.out.println("**** Customer Id : " + customerId);
-    	//List <AsgndTsk>list=new ArrayList<AsgndTsk>();
-    	 //AsgndTsk  asgndTsk=taskServiceImpl.getAdminTasks(customerId);
-    	 //list.add(asgndTsk);
-    	//return list;
-    	 String json=taskServiceImpl.getAdminTasks(loggedInUser);
-    	System.out.println("the json is ******************** "+json);
+    	String json=taskServiceImpl.getAdminTasks();
     	return json;
-	
-    	
-		 
-        
     }
         
     @RequestMapping(value = "/myPage", method = RequestMethod.GET)
@@ -149,7 +187,7 @@ public class TaskController {
 	public String addNewTask( @ModelAttribute("newtasks") EtsCust customer, BindingResult result, @LoggedInUser ERegUser loggedInUser) {                                           
 			 logger.debug("Adding a new tasks for : " + customer.getMilStsCde());  
 			 
-			 List<AsgndTsk> tasks = taskServiceImpl.generateTasksForAccessCode(loggedInUser.getId(), customer.getMilStsCde());
+			 List<AsgndTsk> tasks = taskServiceImpl.generateTasksForAccessCode(loggedInUser,loggedInUser.getId(), customer.getMilStsCde());
 		     
 			 
 			 return "redirect:/pss/task/myPage";

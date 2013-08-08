@@ -11,5 +11,5 @@ import org.ets.pss.persistence.model.BlcCustomer;
  */
 public interface BlcCustomerDao extends GenericDao<BlcCustomer> {
 
-	//EtsCust getCustomer(long customerId);
+	BlcCustomer getCustomer(long customerId);
 }

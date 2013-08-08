@@ -17,19 +17,45 @@
 <html>
 <head>
 
- 
- <link href="<c:url value='/resources/kendoui/styles/kendo.common.min.css'/>" rel="stylesheet" type="text/css"/>
- <link href="<c:url value='/resources/kendoui/styles/kendo.default.min.css'/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value='/resources/kendoui/styles/kendo.common.min.css'/>" rel="stylesheet" type="text/css"/>
+<link href="<c:url value='/resources/kendoui/styles/kendo.default.min.css'/>" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" 	src="<c:url value='/resources/jquery-ui-1.10.3/jquery-1.9.1.js'/>"></script>
 <script type="text/javascript" 	src="<c:url value='/resources/kendoui/kendo.all.min.js'/>"></script>
+<script type="text/javascript" 	src="<c:url value='/resources/kendoui/underscore-min.js'/>"></script>
+<script type="text/javascript" 	src="<c:url value='/resources/kendoui/backbone-min.js'/>"></script>
+
+<script type="text/javascript" 	src="<c:url value='/resources/kendoui/kendo.backbone.js'/>"></script>
+
 <%-- <script type="text/javascript"  src="<c:url value='/resources/kendoui/people.js'/>"></script>  --%>
 
 </head>
 
 <style>
+
 .k-header .k-link{
    text-align: center;
 }
+ .k-grid tbody tr{height:38px;} 
+
+ /* .k-grid td
+{
+    padding: 0.1em 0.1em 
+    
+}  */
+/* .k-grid td {
+border-style: solid;
+border-width: 0 0 0 1px;
+padding: .4em .6em;
+overflow: hidden;
+line-height: 3.0em;
+vertical-align: middle;
+text-overflow: ellipsis;
+} */
+
+/* k-grid-header .k-header {
+   overflow: visible;
+   white-space: normal;
+} */
 </style>
 <body>
 <div id="wrapper-center">
@@ -78,7 +104,7 @@
 
 					<div id="audience-header" aria-hidden="true">
 						<!-- that 'ephox-wrap' is needed for the ets cms, if you are not using it you can skip the div-wrapper -->
-						<div class="ephox-wrap">For Candidates</div>
+						<div class="ephox-wrap">For Admin</div>
 					</div>
 
 					<div class="clearboth"></div>
@@ -109,7 +135,9 @@
 </div>
 
 <!-- the FIRST h1 on the page MUST get the id="desc-main" attribute -->
-<h1 id="desc-main">Missouri Performance Assessments Home</h1>
+<!-- <h1 id="desc-main">Missouri Performance Assessments Home</h1> -->
+
+<h1 id="desc-main">Missouri Performance Assessments Admin View</h1>
 
 			
 			  
@@ -160,8 +188,9 @@
 				</c:if>
 			</div> --%>
 			<div class="rounded">
-			<h2 class="shaded like-h3">Missouri Pre-Service Teacher Assessments : Admin View</h2>
-            <h3 class="shaded like-h3">Submitted Assesments</h3>
+			<!-- <h2 class="shaded like-h3">Missouri Pre-Service Teacher Assessments : Admin View</h2> -->
+			<h2 class="shaded like-h3"><center>Candidates Submitted Tasks</center></h2>
+         <!--    <h3 class="shaded like-h3">Submitted Assesments</h3> -->
             
 		
            <div id="example" class="k-content">
@@ -171,8 +200,147 @@
            
             
                 $(document).ready(function() {
+                	
+
+                	
+                	
+                	// add a backbone namespace if we need it
+              /*   	kendo.Backbone = kendo.Backbone || {};
+                	
+                	 // BackboneTransport
+                	  // -----------------
+                	  //
+                	  // Define a transport that will move data between
+                	  // the kendo DataSource and the Backbone Collection
+                	  var BackboneTransport = function(collection){
+                	    this._collection = collection;
+                	  };
+                	  
+                	  _.extend(BackboneTransport.prototype, {
+
+                		    create: function(options) {
+                		      // increment the id
+                		      if (!this._currentId) { this._currentId = this._collection.length; }
+                		      this._currentId += 1;
+
+                		      // set the id on the data provided
+                		      var data = options.data;
+                		      data.id = this._currentId;
+
+                		      // create the model in the collection
+                		      this._collection.add(data);
+
+                		      // tell the DataSource we're done
+                		      options.success(data);
+                		    },
+
+                		    read: function(options) {
+                		    	console.log(this._collection.toJSON());
+                		      options.success(this._collection.toJSON());
+                		    },
+
+                		    update: function(options) {
+                		      // find the model
+                		      var model = this._collection.get(options.data.id);
+
+                		      // update the model
+                		      model.set(options.data);
+
+                		      // tell the DataSource we're done
+                		      options.success(options.data);
+                		    },
+
+                		    destroy: function(options) {
+                		      // find the model
+                		      var model = this._collection.get(options.data.id);
+
+                		      // remove the model
+                		      this._collection.remove(model);
+
+                		      // tell the DataSource we're done
+                		      options.success(options.data);
+                		    }
+                		  });
+                	  
+                	// kendo.backbone.BackboneDataSource
+                	  // -----------------------------------
+
+                	  // Define the custom data source that uses a Backbone.Collection
+                	  // as the underlying data store / transport
+                	// Define the custom data source that uses a Backbone.Collection
+                	  // as the underlying data store / transport
+                	  kendo.Backbone.DataSource = kendo.data.DataSource.extend({
+                	    init: function(options) {
+                	      var bbtrans = new BackboneTransport(options.collection);
+                	      _.defaults(options, {transport: bbtrans, autoSync: true});
+
+                	      kendo.data.DataSource.fn.init.call(this, options);
+                	    }
+                	  }); 
+
+               
+                	
+                	   var TodoModel = Backbone.Model.extend({
+                		   
+                                  initialize : function() {
+                          	    },
+                   	    parse: function(response){
+                   	    	console.log(response);
+                   	        return JSON.stringify(response);
+                   	    }
+                		   
+                	   });
+                	  var TodoCollection = Backbone.Collection.extend({
+                	    model: TodoModel,
+                	   // idAttribute: "myId",                	   
+                	    url: "/ereg-web/pss/task/draft/admin",
+                	    initialize : function() {
+                	    	this.fetch({update:true});  
+                	        // jabadaba whatever you need here
+                	    }
+                	    
+                	    
+                	  }); 
+                	  
+                	  // A hard coded list of items to render
+                	/*  var tasks = [
+                	    { task_name: "Task 4: Designing and Implementing Instruction to Promote Student Learning", cust_name: "ravi ramaswamy", customer_id: "3906",task_id: "2",task_date: "2016-06-14"},
+                	    { task_name: "Task 1: Knowledge of Students and the Learning Environment", cust_name: "harish gadre", customer_id: "13935",task_id: "2",task_date: "2016-06-14"}
+                	  
+                	  ]; */
+                	  
+                	// A backbone collection for the todo items
+                /* 	 var MyCollection = new TodoCollection();
+                     
+                	   MyCollection.on("change remove add", function(model){
+                		   console.log(model.attributes);
+                		  });
+                	 
+                	  var adminDataSource = new kendo.Backbone.DataSource({ 
+                	    collection: MyCollection,
+                	    
+                	   
+                	    schema: {
+                	    	
+                	      model: {
+                	    	  id: "id",
+                	    	  fields: {
+                              	task_name: { type: "string"},
+                              	cust_name: { type: "string"},
+                              	customer_id: { type: "string"},
+                              	task_id: { type: "string"},
+                              	task_date: { type: "string"}
+                              	
+                               }
+                	      
+                	      },
+                	    
+                     
+                	    }, 
+                	  });    */
+
                 
-                	 var adminDataSource = new kendo.data.DataSource({
+                	  var adminDataSource = new kendo.data.DataSource({
                          transport: {
                              read: {
                             	
@@ -207,23 +375,22 @@
                                  }
                                  
                              },
-                            /*   parse: function(response) {
-                                console.log($.parseJSON(response));
-                                return $.parseJSON(response);
-                             }   */
+                          
  
                           	 data: function(rawData) { 
                                   //return rawData[0].SearchResult.assets;
-                                  console.log(rawData);
+                                  //console.log(rawData);
                                   return rawData;
                                 }  
                          
                       }
-                     });
-                   var grid= $("#grid").kendoGrid({
+                     }); 
+                  
+                     var grid= $("#grid").kendoGrid({
                         
                         dataSource: adminDataSource,    
-                        //height: 430,
+                      
+                        height: 380,
                         columns: [
 
                                   {
@@ -241,32 +408,42 @@
                                       filterable: false
                                       //template: "#=first_name# #=last_name#",
                                   },
+                                  
+                                 /*  { field: "cust_name", title: "Done", width: '10%', template: "<input type='checkbox' # if (cust_name){ # checked='checked' #}# disabled='disabled'>" },  */
                             {
                             	
                                 title: "Task Name",
                                 field:"task_name",
-                                template:"<a href='/ereg-web/pss/task/goto?taskId=#=task_id#'>#=task_name#</a>",
-                                width: '50%',  
+                                template:"<a href='/ereg-web/pss/task/gotoAdmin?taskId=#=task_id#&userId=#=customer_id#'>#=task_name#</a>",
+                                width: '35%',  
                                  /* filterable: {
                                 	ui: taskFilter
                                 },  */
                                
                                
                             },
+                           /*  { command: ["edit", "destroy"], width: '20%' }, */
                              
                            
                             {
                                 
                                 title: "Submitted Date",
-                                field: "task_date",
+                                field: "task_date",                                
                                 width: '20%',  
-                                filterable: false
+                                filterable: false,
+                               /*  template:'#= kendo.toString(task_date, "dd/MM/yyyy") #' */
+                                	 
+                                	              
                                /* format: "{0:MM/dd/yyyy HH:mm tt}",
                                  filterable: {
                                     ui: "datetimepicker"
                                 }  */
                             } 
-                       ], toolbar: kendo.template( $( "#template" ).html()),
+                       ],
+                      /*  editable: {
+                    	      mode: "inline"
+                    	    }, */
+                       toolbar: kendo.template( $( "#template" ).html()),
                        sortable: true,
                        navigatable: true,
                        filterable: true,
@@ -289,7 +466,7 @@
                     });
                     
                    grid.find("#search").on("keyup focus", function (e) {
-                      	console.log("in search here");
+                      	//console.log("in search here");
                           var searchTerm = e.currentTarget.value;
                           var ds = grid.data('kendoGrid').dataSource;
                   		if (searchTerm.length === 0) {
@@ -338,6 +515,8 @@
                             optionLabel: "--Select Value--"
                         });
                     }
+                    
+                    
                 });
 
                
@@ -345,9 +524,11 @@
             </script>
             
             <script type="text/x-kendo-template" id="template">
+                        
                          <div class="toolbar" style="float: right;">
-                          <input type="search" class="k-textbox" placeholder="Search Assesments" id="search" style="width: 200px"></input>
-                            </div>
+                      Search Candidates: <input type="search" class="k-textbox" placeholder="" id="search" style="width: 200px"></input>
+                           </div>
+                     
              </script>  
         </div>
 

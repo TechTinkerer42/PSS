@@ -516,6 +516,7 @@ public class TaskServiceImpl implements TaskService {
 		
 		TaskStatusType completedTskStsTyp = taskStatusTypeDAO.get(TaskStatusType.class,"CMPLD");
 		asgndTsk.setDocStsTyp(completedTskStsTyp);
+		asgndTsk.setSbmtDte(new Date());//ashwin fix for Admin Tasks Screen
 		
 		asgndTskDao.update(asgndTsk);
 		
@@ -537,7 +538,7 @@ public class TaskServiceImpl implements TaskService {
 	}
 	
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public List<AsgndTsk> generateTasksForAccessCode(Long customerId, String accessCode) {
+	public List<AsgndTsk> generateTasksForAccessCode(ERegUser loggedInUser,Long customerId, String accessCode) {
 		
 		logger.debug("Customer ID  : " + customerId);
 		EtsCust customer1 = customerDaoImpl.get(EtsCust.class, customerId);
@@ -546,10 +547,13 @@ public class TaskServiceImpl implements TaskService {
 			
 			BlcCustomer bc = new BlcCustomer();
 			bc.setCustomerId(customerId);
+			bc.setFirstName(loggedInUser.getFirstName());//ashwin fix for blccustomer for admin page
+			bc.setLastName(loggedInUser.getFirstName());//ashwin fix for blccustomer for admin page
+			
 			
 			blcCustomerDao.create(bc);
 			
-			EtsCust etscust = new EtsCust();
+			EtsCust etscust = new EtsCust();			
 			etscust.setCustomerId(customerId);
 			etscust.setCustTypCde("TSTTK");
 			etscust.setTaxExmptFlg("N");
@@ -594,40 +598,28 @@ public class TaskServiceImpl implements TaskService {
 		return null;
 	}
 	
-	public String getAdminTasks(ERegUser loggedInUser)
+	public String getAdminTasks()
 	{
 		
 		List<AsgndTsk>assignedTaskListstemp=asgndTskDao.getCurrentTasks();
-		List<AsgndTsk>assignedTaskLists  = new ArrayList<AsgndTsk>();
+		List<AsgndTsk>assignedTaskList  = new ArrayList<AsgndTsk>();
+		
 		for(AsgndTsk vAsgndTsk:assignedTaskListstemp)
     	{
-    		
-    		if(vAsgndTsk.getDocStsTyp().getDocStsTypCde().equals("CMPLD"))
+			
+			
+    		if(vAsgndTsk.getDocStsTyp().getDocStsTypCde().equalsIgnoreCase("CMPLD"))
     		
     		{
-    			
-    			assignedTaskLists.add(vAsgndTsk);
+    						
+    			assignedTaskList.add(vAsgndTsk);
     			
     		}
     	}
-		/*EtsCust customer1 = customerDaoImpl.get(EtsCust.class, customerId);
 		
-		Set<AsgndTsk> assignedTaskList = customer1.getAsgndTsks();
-		List<AsgndTsk>assignedTaskLists  = new ArrayList<AsgndTsk>();
-    	for(AsgndTsk vAsgndTsk:assignedTaskList)
-    	{
-    		assignedTaskLists.add(vAsgndTsk);
-    		if(vAsgndTsk.getDocStsTyp().getDocStsTypCde().equals("CMPLD"))
-    		
-    		{
-    			assignedTaskLists.add(vAsgndTsk);
-    			
-    		}
-    		
-    	}*/
     	GsonBuilder gsonBuilder = new GsonBuilder();
     	Gson gson = gsonBuilder.registerTypeAdapter(AsgndTsk.class, new AsgndTskAdapter()).create();
-    	String json= gson.toJson(assignedTaskLists);
+    	String json= gson.toJson(assignedTaskList);
     	System.out.println("the json is "+json);
     	return json;
 	}

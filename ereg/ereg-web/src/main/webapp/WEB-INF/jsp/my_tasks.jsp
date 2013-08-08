@@ -267,6 +267,6 @@
 			</div><!-- /wrapper-content -->
 		</div><!-- /wrapper-center -->
 	
-	<script src="http://maps.google.com/maps/api/js?file=api&amp;v=3&amp;key=AIzaSyBElXakDy99jw9gMrUQ6Ik5DPvST6dJiwc&amp;sensor=false" type="text/javascript"></script>
-	<%-- <script src='<spring:url htmlEscape="true" value="/commonweb/js/testcenter/search.js"/>'></script> --%>
+	<%-- <script src="http://maps.google.com/maps/api/js?file=api&amp;v=3&amp;key=AIzaSyBElXakDy99jw9gMrUQ6Ik5DPvST6dJiwc&amp;sensor=false" type="text/javascript"></script>
+	<script src='<spring:url htmlEscape="true" value="/commonweb/js/testcenter/search.js"/>'></script> --%>
 </body>
