@@ -46,6 +46,24 @@ function setdiv( divid ){
 	}
 }
 
+function strip_tags(str){
+	t = str.replace(/<(\/)?(html|head|title|body|h1|h2|h3|h4|h5|h6|p|br|hr|pre|em|strong|code|b|i|ul|li|ol|dl|dd|table|tr|th|td)([^>]*)>/gi, "");
+	t = t.replace(/<(\/)?(iframe|frameset|form|input|select|option|textarea|blackquote|address|object)([^>]*)>/gi, "");
+    return t;
+	//$("#t").html(t);
+	}
+
+function stripTag(str){
+	t = str.replace(/<(\/)?(html|head|title|body|h1|h2|h3|h4|h5|h6|p|br|hr|pre|em|strong|code|b|i|ul|li|ol|dl|dd|table|tr|th|td)([^>]*)>/gi, "");
+	t = t.replace(/<(\/)?(iframe|frameset|form|input|select|option|textarea|blackquote|address|object)([^>]*)>/gi, "");
+	return t;
+	//$("#t").html(t);
+	}
+
+//jQuery.fn.stripTags = function() { return this.replaceWith( this.html().replace(/<\/?[^>]+>/gi, '') ); };
+
+jQuery.fn.stripTags = function(str) { return str.replace(/<\/?[^>]+>/gi, '');  };
+
 $.extend({ alert: function (message, title) {
 	  $("<div></div>").dialog( {
 		  closeOnEscape: false,
@@ -227,6 +245,9 @@ $.extend({ alert: function (message, title) {
 							}
 
 						});
+						
+						
+					
 
 						$('input[id^="highlight"]')
 								.click(
@@ -298,9 +319,35 @@ $.extend({ alert: function (message, title) {
 
 																			linkApplier.applyToSelection();
 																			
+																			
 
 																			$('#cteditor'+ index+ ' a').attr('contenteditable','false').attr('target','_blank');
+																			/*var sel = rangy.getSelection();
+																			var node="";
+																			var selRange = sel.getRangeAt(0);
+																			var currentElement = selRange.endContainer;*/
+																		  
+																		    	//node=selRange.getNodes([3]);
+																		    
+																		   // console.log(node);
 																			
+																			//console.log(selRange.endOffset);
+																			//console.log(selRange.endContainer);
+																			
+																			//var selectedNodes = [];
+																		   // var sel = rangy.getSelection();
+																		   /*  for (var i = 0; i < sel.rangeCount; ++i) {
+																		        selectedNodes = selectedNodes.concat( sel.getRangeAt(i).getNodes() );
+																		    } */
+																		   //console.log(selectedNodes);
+																		   
+																		
+																		    //selRange.setStartAfter(node[0],selRange.endOffset+1);
+																			//selRange.setStartAfter(selectedNodes[0],selRange.endOffset+1);
+																			//selRange.setStartAfter(selectedNodes[0],selRange.endOffset+1);
+																			//sel.removeAllRanges();
+																			//sel.addRange(selRange);
+																		
 																			       // .attr('color','red');
 																			       // .attr('font-size', '1.2em');
 																				}//end of radio:checked block
@@ -325,7 +372,6 @@ $.extend({ alert: function (message, title) {
 						$('input[id^="existingEssayContent"]')
 								.each(
 										function(index) {
-
 											var clicked = $(this);
 											if (clicked) {
 												var idStr = clicked[0].id;
@@ -541,11 +587,10 @@ $.extend({ alert: function (message, title) {
 
 																
 																var myPromptId = $("#promptId" + index).val();
-																//alert("the prompt id is "+myPromptId);
-
-																var text = $('#cteditor' + index).html();//val();
-																		//alert('the text is '+ text);
-																//var value = $('#cteditor' + index).text();	
+																var text = $('#cteditor' + index).html();//val();	
+																/*  text= text.replace(/<\/?([a-z]+)[^>]*>/gi, function(match, tag) { 
+							                                              return (tag.toLowerCase() === "a") ? match : "";
+							                                          });   */
 																		
 															    essayContentMap1[myPromptId] = text;
 													
@@ -555,24 +600,6 @@ $.extend({ alert: function (message, title) {
 												                
 												                var linkMap1=false;																
 																var linksArray1 = new Array();
-													
-													/* $('#promptId'+myPromptId+' li').each(function(){
-														
-														var docId = $(this).attr('id');
-														console.log('the docId is '+docId);
-														//var docName = $(this).text();	
-														docArray1.push(docId);									
-														
-													}); */
-													
-												/* 	var ctEditor = $('#cteditor' + index);
-													 $(ctEditor +'.ctclasseditor > a.highLightLink').each(function(){
-															linksArray1.push(true);
-															      //console.log($(this).attr('href'));
-															      console.log('linksArray1 pushed true');
-																}); */
-													
-													
 													
 													$('[id^=cteditor]').each(function(){
 														
@@ -664,27 +691,27 @@ $.extend({ alert: function (message, title) {
 						var idStr = clicked[0].id;
 						var indexOfCount = "wordCount".length;
 						var index = idStr.substring(
-								indexOfCount, idStr.length);
-						//console.log("the index is "+index);
+								indexOfCount, idStr.length);					
 						var value = $('#cteditor' + index).text();
+						var html = $('#cteditor' + index).html();
+						console.log("before "+html);
 						
-						// console.log("the word count value is "+value);
-						 var regex = /\s+/gi;
-						 var wordCount = value.trim().replace(regex, ' ').split(' ').length;
-						 var totalChars = value.length;
-						 var charCount = value.trim().length;
-						 var charCountNoSpace = value.replace(regex, '').length;
-						 //console.log("the word count is "+wordCount);
-						 //console.log("the word count is "+totalChars);
-						 //console.log("the word count is "+charCount);
-						 //console.log("the word count is "+charCountNoSpace);
-						 
-						 $.alert('Your Word Count for this response is '+charCount +'. The maximum allowed for All Responses is '+50+'.','WordCount');
+						 $('#cteditor'+index +'.ctclasseditor > div h3').each(function(){
+						 console.log('right here at criss cross apple sauce'+this);
+						 });
 						
-						  // alert("Your Word Count is "+charCount +" the maximum allowed is "+25);
-						   
+						 html= html.replace(/<\/?([a-z]+)[^>]*>/gi, function(match, tag) { 							
+							
+							
+							 return (tag.toLowerCase() === "a") ? match : "";
+							});  
+					
+						
+						console.log("after "+html);
 
-						
+						// console.log("the word count value is "+value);					
+						 var charCount = value.trim().length;
+						 $.alert('Your Word Count for this response is '+charCount +'. The maximum allowed for All Responses is '+3500+'.','WordCount');
 					});
 						
 						$('#saveDraft').click(function(){
@@ -712,11 +739,8 @@ $.extend({ alert: function (message, title) {
 								
 								var text = currentEditor.html();
 								var value=currentEditor.text();
-								var regex = /\s+/gi;
-								var wordCount = value.trim().replace(regex, ' ').split(' ').length;
-								var totalChars = value.length;
-								var charCount = value.trim().length;
-								var charCountNoSpace = value.replace(regex, '').length;
+								var regex = /\s+/gi;							
+								var charCount = value.trim().length;							
 								wordCountTotal+=charCount;
 								essayContentMap[promptId] = text;
 								
@@ -724,10 +748,10 @@ $.extend({ alert: function (message, title) {
 							});
 							//console.log("the wordcount is "+wordCountTotal);
 							
-							if(wordCountTotal>50)
+							if(wordCountTotal>3500)
 								{
 									//alert("Your Word Count is "+wordCountTotal +" for all Responses.The maximum allowed is "+25);
-									$.alert('Your Word Count is '+wordCountTotal +' for all Responses.The maximum allowed for all Responses is '+50+'.Please get a word count at each Prompt and correct your Response accordingly before Saving Draft.','Warning!'); 
+									$.alert('Your Word Count is '+wordCountTotal +' for all Responses.The maximum allowed for all Responses is '+3500+'.Please get a word count at each Prompt and correct your Response accordingly before Saving Draft.','Warning!'); 
 									return;
 								}
 								
@@ -739,21 +763,16 @@ $.extend({ alert: function (message, title) {
 								var index = idStr.substring(indexOfCount, idStr.length);
 								var promptId = $('#promptId'+index).val();
 								
-								
-								//it is same for all prompts
-								//myTaskId = $("#taskId" + index).val();
+							
 								
 									if(linksArray.length>0)
 									{
-									//console.log('haslink');
-									linkMap = true;
 									
+									linkMap = true;
 									/* for (i = 0; i <linksArray.length; i++) {
 										  if (!linksArray[i]) return false;
 									}
 									 return true; */
-									
-									
 									}
 								var docArray = new Array();
 								$('#'+idStr+' li').each(function(){
@@ -817,23 +836,13 @@ $.extend({ alert: function (message, title) {
                          $('[id^=cteditor]').each(function(){
                         	   
 								var currentEditor = $(this);
-								var value=currentEditor.text();
-								var regex = /\s+/gi;
-								var wordCount = value.trim().replace(regex, ' ').split(' ').length;
-								var totalChars = value.length;
-								var charCount = value.trim().length;
-								var charCountNoSpace = value.replace(regex, '').length;
-								wordCountTotal+=charCount;
-								
-								
-								
 							});
-							//console.log("the wordcount is "+wordCountTotal);
 							
-							if(wordCountTotal>50)
+							
+							if(wordCountTotal>3500)
 								{
 									//alert("Your Word Count is "+wordCountTotal +" for all Responses.The maximum allowed is "+25);
-								$.alert('Your Word Count is '+wordCountTotal +' for all Responses.The maximum allowed for all Responses is '+50+'.Please get a word count at each Prompt and correct your Response accordingly before Submitting Task.','Warning!'); 
+								$.alert('Your Word Count is '+wordCountTotal +' for all Responses.The maximum allowed for all Responses is '+3500+'.Please get a word count at each Prompt and correct your Response accordingly before Submitting Task.','Warning!'); 
 									return;
 								}
 								

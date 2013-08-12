@@ -2,8 +2,8 @@ package org.ets.pss.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -55,6 +55,8 @@ public class TaskController {
 	@Autowired
 	@Qualifier("taskService")
 	TaskService taskServiceImpl;
+	
+	
 	
     @RequestMapping(value = "/goto", method = RequestMethod.GET)
     public String index(String taskId, @LoggedInUser ERegUser loggedInUser, Model model) {
@@ -198,10 +200,36 @@ public class TaskController {
     
     @RequestMapping(value = "/upload/save", method = RequestMethod.POST)
     public @ResponseBody String save(@RequestParam MultipartFile file, @LoggedInUser ERegUser loggedInUser, Model model) {
-    	System.out.println("Upload / Save ");    	    	
-    	Doc doc = new Doc();
+    	System.out.println("Upload / Save ");    	
     	EtsCust etsCust = taskServiceImpl.getCustomer(loggedInUser.getId());
-    	doc.setEtsCust(etsCust);
+         Set<Doc> tempCusotmerArtifacts = taskServiceImpl.getCustomerArtifacts(etsCust.getCustomerId());
+    	
+    	if(tempCusotmerArtifacts != null && tempCusotmerArtifacts.size() > 0)
+    	{
+    		for(Doc doc : tempCusotmerArtifacts)
+    		    if(doc.getDocId()!=0)
+    		    {
+    		    	if(file.getOriginalFilename()!=null&& doc.getRspSrcLctnNam()!=null)
+    		    	{
+    		    		if(file.getOriginalFilename().equals(doc.getRspSrcLctnNam()))
+    		    		{     System.out.println("Document with same name already exists. You cannot attach document with same name.");
+    		    		//return "{\"error\":false}";
+    		    			
+    		    			 return ("{\"error\": \"" +"Document with same name already exists. You cannot attach document with same name"+ "\"}");
+    		    	
+    		    		    //return "{\"error\": Document with same name already exists. You cannot attach document with same name}";
+    		    			 //return "{\"error\":Customer Error}";
+    		    		//return "{\"success\":false}";
+    		    		}
+    		    	     }
+    		    }
+    	}
+    	
+    	Doc doc = new Doc();
+    	
+    	doc.setEtsCust(etsCust);   
+    	doc.setDateCreated(new Timestamp(new Date().getTime()));//ashwin fix for date now showing up in upload artifact page
+    	doc.setDateUpdated(new Timestamp(new Date().getTime()));//ashwin fix for date now showing up in upload artifact page
     	
     	String fileName = file.getOriginalFilename();    	
     	String fileExt = getFileExt(fileName);

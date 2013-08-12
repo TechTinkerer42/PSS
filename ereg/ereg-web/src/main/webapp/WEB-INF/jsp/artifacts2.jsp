@@ -183,7 +183,9 @@
 									<tr>
 										<td height="25"><c:out value="${ob.rspSrcLctnNam}" /></td>
 										<td><a href="" id='removeDoc<c:out value="${ob.docId}"/>'>remove</a></td>
-										<td>${doc.dateCreated}</td>
+										<td><fmt:formatDate  dateStyle="long" timeStyle="short"  value="${ob.dateCreated}" /></td>
+										<%-- String S = new SimpleDateFormat("MM/dd/yyyy").format(myTimestamp);
+										<td>${ob.dateCreated}</td> --%>
 									</tr>
 								</c:forEach>
 							</c:if>
