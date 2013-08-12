@@ -36,7 +36,7 @@ public class ProfileFormValidator implements Validator {
 	private static final String ADDRESS_LINE1_REQUIRED = "profile.create.validation.AddressLine1Required";
 	private static final String CITY_REQUIRED = "profile.create.validation.CityRequired";
 	private static final String STATE_REQUIRED = "profile.create.validation.StateRequired";
-	private static final String COUNTRY_REQUIRED = "country.required";
+	private static final String COUNTRY_REQUIRED = "profile.create.validation.CountryRequired";
 	private static final String POSTAL_CODE_REQUIRED = "profile.create.validation.PostalCodeRequired";
 	private static final String POSTAL_CODE_INVALID = "profile.create.validation.PostalCodeInvalid";
 	private static final String PHONE_COUNTRY_CODE_REQUIRED = "profile.create.validation.PhoneCountryCodeRequired";
