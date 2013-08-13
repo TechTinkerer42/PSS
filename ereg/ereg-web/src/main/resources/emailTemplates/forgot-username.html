@@ -1,0 +1,10 @@
+<html>
+  <head><title>Forgot UserName</title></head>  
+  <body> 
+	  <span th:text="'Dear, ' + ${customer.firstName} +  ' ' + ${customer.lastName}"></span>
+	  <br/>
+	  <p>Here is the information you requested, You <span th:text="${requestedField}"></span> is:<span th:text="${value}"></span> .</p>
+	  <p>You can acess the Pre-Service Teacher Assessment at https://missouriteacherpsa.ets.org 
+	  </p>  
+  </body>
+</html>
