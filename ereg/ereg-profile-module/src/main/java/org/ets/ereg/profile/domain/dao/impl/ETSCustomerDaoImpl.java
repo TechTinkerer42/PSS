@@ -124,6 +124,16 @@ public class ETSCustomerDaoImpl extends CustomerDaoImpl implements ETSCustomerDa
     	
     	return criteria;
     }
+	
+    public ETSCustomer getCustomerByEmail(String email){
+        List<ETSCustomer> list=(List<ETSCustomer>) em.createQuery("from ETSCustomerImpl where emailAddress = ?1  ")
+        .setParameter(1, email).getResultList();
+        if(!list.isEmpty()){
+              return list.get(0);
+        }
+        return null;
+        }
+
     
     private List<Predicate> addAddressPhoneCriteria(ETSAddress address, ETSPhone phone,List<Predicate> criteria,
     		 Root<CustomerAddressImpl> etsAddressRoot,Root<CustomerPhoneImpl> etsPhoneRoot,CriteriaBuilder cb){

@@ -14,7 +14,7 @@ public interface ETSCustomerBusinessService {
 	public CustomerResultsVO searchCustomerByCriteria(ETSCustomer customer,ETSAddress address, ETSPhone phone,
 			SearchParameters searchParams,String linkDispSeq,Long adminId, String username,Long apptNumber) throws ERegCheckedException;
 	public Customer readCustomerById(Long userId);
-
+	public ETSCustomer getCustomerByEmail(String email);
 
 
 

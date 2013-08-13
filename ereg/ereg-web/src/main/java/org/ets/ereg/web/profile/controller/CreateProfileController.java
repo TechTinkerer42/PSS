@@ -4,12 +4,14 @@ import java.beans.PropertyEditorSupport;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.broadleafcommerce.common.email.service.info.EmailInfo;
 import org.broadleafcommerce.common.exception.ServiceException;
 import org.broadleafcommerce.profile.core.domain.ChallengeQuestion;
 import org.broadleafcommerce.profile.core.domain.Country;
@@ -17,9 +19,11 @@ import org.broadleafcommerce.profile.core.domain.Customer;
 import org.broadleafcommerce.profile.core.domain.State;
 import org.broadleafcommerce.profile.web.core.CustomerState;
 import org.broadleafcommerce.profile.web.core.service.LoginService;
+import org.codehaus.plexus.util.StringUtils;
 import org.ets.ereg.common.business.service.ApplicationConfigurationService;
 import org.ets.ereg.common.business.util.EregUtils;
 import org.ets.ereg.common.business.util.ProgramContextHolder;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.ets.ereg.common.business.vo.biq.DemographicQuestionVO;
 import org.ets.ereg.common.shared.util.ReferenceTypeCriteria;
 import org.ets.ereg.common.web.util.Constant;
@@ -31,24 +35,32 @@ import org.ets.ereg.domain.interfaces.model.common.Gender;
 import org.ets.ereg.domain.interfaces.model.common.LanguageType;
 import org.ets.ereg.domain.interfaces.model.common.MilitaryStatusType;
 import org.ets.ereg.domain.interfaces.model.common.PhoneType;
+import org.ets.ereg.domain.interfaces.model.profile.ETSCustomer;
 import org.ets.ereg.profile.biq.service.ProfileDemographicQuestionService;
+import org.ets.ereg.profile.vo.ProfileVO;
+import org.ets.ereg.session.facade.profile.service.ETSCustomerBusinessService;
 import org.ets.ereg.session.facade.profile.service.ProfileBusinessService;
+import org.ets.ereg.session.facade.shared.service.ETSEmailService;
 import org.ets.ereg.session.facade.shared.service.ReferenceBusinessService;
 import org.ets.ereg.web.profile.form.ProfileForm;
 import org.ets.ereg.web.profile.validator.ProfileFormValidator;
 
 import org.ets.ereg.web.util.LoginUtil;
+import org.jsoup.helper.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.support.RequestContext;
@@ -77,12 +89,20 @@ public class CreateProfileController {
 
 	    @Resource(name="blLoginService")
 	    private LoginService loginService;
+	    
+	    @Resource(name="forgotUsernameEmailInfo")
+	    protected EmailInfo forgotUsernameEmailInfo;   
 
 	    @Resource(name="applicationConfigurationService")
 		private ApplicationConfigurationService applicationService;
-
+	    @Resource(name="etsCustomerBusinessService")
+        ETSCustomerBusinessService etsCustomerBusinessService;
+	    
 	    @Resource(name="profileDemographicQuestionService")
 		protected ProfileDemographicQuestionService profileDemographicService;
+	    
+	    @Resource(name="etsEmailService")
+	    protected ETSEmailService etsEmailService;
 		
 	    @Resource(name = "eregUtils")
 		private EregUtils eregUtils;	    
@@ -165,6 +185,107 @@ public class CreateProfileController {
 			profileForm.setStatusCode(ProfileForm.STATUS_KO);
 			profileForm.setStatusMessage("Error exist in form. Please check below.\n");
 		}
+		
+		
+		@RequestMapping(value="/submitEmail",method=RequestMethod.POST)
+		public String submitUsernameRequest(Model model,@ModelAttribute(CreateProfileController.FORM_ATTRIBUTE) ProfileForm profileForm){
+			String email=profileForm.getProfile().getCustomer().getEmailAddress();
+			ETSCustomer customer=etsCustomerBusinessService.getCustomerByEmail(email);
+			List<String> list=new ArrayList<String>();
+			if(customer==null){
+				list.add("Please Enter a valid Customer email");
+				model.addAttribute("messageList",list);
+				return "/public/profile/accountRecoveryContent";
+			}
+			
+			
+			HashMap<String, Object> props = new HashMap<String, Object>();
+			props.put("customer", customer);
+			props.put("requestedField", "user name");
+			props.put("value", customer.getUsername());
+			etsEmailService.sendTemplateEmail(customer.getEmailAddress(),forgotUsernameEmailInfo , props);
+			list.add("Email message sent.");
+			model.addAttribute("messageList",list);
+			return "/public/profile/accountRecoveryContent";
+			
+		}
+		
+		@RequestMapping(value="/changePassword",method=RequestMethod.POST)
+		public String changePassword(Model model,@ModelAttribute(CreateProfileController.FORM_ATTRIBUTE) ProfileForm profileForm){
+			ProfileVO profVO= profileBusinessService.readProfileByUsername(profileForm.getProfile().getCustomer().getUsername());			
+			List<String> list=validateChangePassword( profileForm,profVO);
+			if(list.isEmpty()){
+				profVO.getCustomer().setPassword(profileForm.getPassword());
+				profileBusinessService.saveProfile(profVO);
+				list.add("Password has been changed.");
+			}
+			model.addAttribute("messageList",list);
+			return "/public/profile/accountRecoveryContent";
+			
+		}
+		
+		public List<String> validateChangePassword(ProfileForm profileForm,ProfileVO profVO){
+			List<String> list=new ArrayList<String>();
+			String password=profileForm.getPassword();
+			String confirmPassword=profileForm.getPasswordConfirm();
+			if(!password.equals(confirmPassword)){
+				list.add("Passwords must match");
+			}
+			ETSCustomer customer=profVO.getCustomer();
+			String answer=customer.getChallengeAnswer();
+			String answerEntered=profileForm.getProfile().getCustomer().getChallengeAnswer();
+			if(StringUtils.isEmpty(password) ||
+					StringUtils.isEmpty(confirmPassword) 
+					||StringUtils.isEmpty(answerEntered)){
+				list.add("Required Fields cannot be blank");
+				
+			}
+			if(!StringUtil.isBlank(answerEntered)
+					&&!StringUtil.isBlank(answer)&&!answer.equals(answerEntered)){
+				list.add("Invalid answer please try again");
+			}
+				
+			return list;
+		}
+		
+		
+		@RequestMapping(value="/accountrecovery",method=RequestMethod.GET)
+		public String recoverAccount(HttpServletRequest request,
+				HttpServletResponse response,
+				Model model,
+				@RequestParam( value="forgotCredentials" , required=false) String credentials,
+				@ModelAttribute(CreateProfileController.FORM_ATTRIBUTE) ProfileForm profileForm){
+			if(!StringUtil.isBlank(credentials)){
+				if(credentials.equals("username")){
+					model.addAttribute("formaction", "submitEmail");
+					model.addAttribute("forgotUsername", true);
+				}else{
+					model.addAttribute("formaction", "changePassword");
+				}
+				return "/public/profile/accountRecoveryContent";		
+			}
+			return "/public/profile/accountRecovery";
+		}
+		@RequestMapping(value="/getUserInfo",method=RequestMethod.GET)
+		public String getUserInfo(@RequestParam( value="username" , required=true) String username,
+				Model model){
+			if(profileBusinessService.isUsernameAvailable(username)){
+			ProfileVO profVO= profileBusinessService.readProfileByUsername(username);
+			ETSCustomer customer=profVO.getCustomer();
+			model.addAttribute("customerInfo", customer);
+			}else{
+				List<String> messageList= new ArrayList<String>();
+				messageList.add("Please enter valid username");
+				model.addAttribute("messageList", messageList);
+			}
+			
+			return "/public/profile/accountRecoveryContent";
+			
+		}
+		
+		
+		
+		
 
 		@RequestMapping(method=RequestMethod.GET)
 		public String onGetNewProfile(

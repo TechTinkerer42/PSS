@@ -62,5 +62,10 @@ public class ETSCustomerBusinessServiceImpl  implements ETSCustomerBusinessServi
 		// TODO Auto-generated method stub
 		return etsCustomerService.readCustomerById(userId);
 	}
+	@Override
+	public ETSCustomer getCustomerByEmail(String email){
+		      return etsCustomerService.getCustomerByEmail(email);
+    }
+
 
 }

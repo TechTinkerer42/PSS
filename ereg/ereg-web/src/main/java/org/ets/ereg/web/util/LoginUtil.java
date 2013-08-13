@@ -63,6 +63,10 @@ public class LoginUtil {
 			String submitURL= request.getContextPath() +applicationService.findApplicationConfigurationValue(ApplicationConfiguration.AUTH_URL);
 			String username= applicationService.findApplicationConfigurationValue(ApplicationConfiguration.FIELDNAME_USENAME);
 			String password= applicationService.findApplicationConfigurationValue(ApplicationConfiguration.FIELDNAME_PASSWORD);
+			String forgotUserName= applicationService.findApplicationConfigurationValue(ApplicationConfiguration.FORGET_USERNAME_EREG);			
+			String forgotPassword= applicationService.findApplicationConfigurationValue(ApplicationConfiguration.FORGET_PASSWORD_EREG);
+			model.addAttribute("forgotUserName", forgotUserName);			
+			model.addAttribute("forgotPassword", forgotPassword);
 			model.addAttribute("username", username);
 			model.addAttribute("password", password);
 			model.addAttribute("actionValue", submitURL);
@@ -135,3 +139,4 @@ public class LoginUtil {
 		
 	}
 }
+

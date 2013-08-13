@@ -30,4 +30,5 @@ public interface ETSCustomerDao extends CustomerDao {
 	public String getGuidID(ETSCustomer customer, LinkageType linkageType);
 	ETSCustomer findCustomerByUsernameAndInternalFlag(String username, Boolean internalUserFlag);
 	public List<String> getCustomerProgramInterests( Long customerId );
+	public ETSCustomer getCustomerByEmail(String email);
 }

@@ -562,7 +562,7 @@ public class ProfileServiceImpl implements ProfileService, InitializingBean {
 			isAvailable = eiasWebServiceClient.searchUser(username);
         }
         else{
-        	isAvailable = (null == customerService.readCustomerByUsername(username));
+        	isAvailable = (null != customerService.readCustomerByUsername(username));
         }
 		return isAvailable;
 	}

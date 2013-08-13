@@ -30,8 +30,8 @@
 <script type="text/javascript" 	src="<c:url value='/resources/jquery-ui-1.10.3/ui/jquery-ui.js'/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/jquery-ui-1.10.3/themes/base/jquery-ui.css"/>"></script>
 <script type="text/javascript" 	src="<c:url value='/resources/json/json2.js'/>"></script> 
-
 <script type="text/javascript" src="<c:url value="/resources/fineuploader/jquery.fineuploader-3.5.0.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/dateformat/jquery.dateFormat-1.0.js"/>"></script>
 
 <script type="text/javascript" 	src="<c:url value='/resources/rangy-1.3/rangy-core.js'/>"></script>
 <script type="text/javascript" 	src="<c:url value='/resources/rangy-1.3/rangy-cssclassapplier.js'/>"></script>
@@ -53,12 +53,6 @@ function strip_tags(str){
 	//$("#t").html(t);
 	}
 
-function stripTag(str){
-	t = str.replace(/<(\/)?(html|head|title|body|h1|h2|h3|h4|h5|h6|p|br|hr|pre|em|strong|code|b|i|ul|li|ol|dl|dd|table|tr|th|td)([^>]*)>/gi, "");
-	t = t.replace(/<(\/)?(iframe|frameset|form|input|select|option|textarea|blackquote|address|object)([^>]*)>/gi, "");
-	return t;
-	//$("#t").html(t);
-	}
 
 //jQuery.fn.stripTags = function() { return this.replaceWith( this.html().replace(/<\/?[^>]+>/gi, '') ); };
 
@@ -237,7 +231,11 @@ $.extend({ alert: function (message, title) {
 								var documentsDiv = $('#documentsDiv');
 								var cList = $('<ul/>').attr('id', 'docList');
 								$.each(data, function(i, value) {
-									$('<li/>').attr('id', value.id).text(
+								
+									if(value.dateCreated==null)
+										{value.dateCreated="";}
+									//console.log(value.dateCreated);
+									$('<li/>').attr('id', value.id).attr('date',$.format.date(value.dateCreated, "MM/dd/yyyy")).text(
 											value.filename).appendTo(cList);
 								});
 								cList.appendTo(documentsDiv);
@@ -252,9 +250,10 @@ $.extend({ alert: function (message, title) {
 						$('input[id^="highlight"]')
 								.click(
 										function() {
+											
+										
 											var clicked = $(this);
 											var idStr = clicked[0].id;
-											//$('#highlight')+idstr;
 											var indexOfCount = "highlight".length;
 											var index = idStr.substring(
 													indexOfCount, idStr.length);
@@ -263,14 +262,41 @@ $.extend({ alert: function (message, title) {
 											$("#docList li")
 													.each(
 															function() {
-																var value = $(this)
-																		.text();
+																var value = $(this).text();
+																/* $.ajax({
+																	url : '/ereg-web/pss/artifact/getList',
+																	type : 'get',
+																	success : function(response) {
+																		console.log("success");
+																	
+																			$.each(response,function(index,ajaxvalue) {
+																				if(value==ajaxvalue.filename)
+																					{
+																					  value.prototype.dateCreated=$.format.date(ajaxvalue.dateCreated, "dd/MM/yyyy");
+																					}
+
+																						//var obj = response.artifacts[index];
+																				console.log("now the filename is "+ajaxvalue.filename);
+																				
+																				//console.log("now the date is "+ajaxvalue.dateCreated);
+																				console.log("now the formatted date is "+$.format.date(ajaxvalue.dateCreated, "dd/MM/yyyy"));
+																				
+																		});
+																
+																	}
+																}); */
+																//console.log("now the value date created is "+$(this).attr('date'));
+																
 																grid += '<tbody><tr><td>';
 																grid += '<input type="radio" id="'
 																		+ $(this).attr('id')
 																		+ '" name="FileRadio" value="/ereg-web/pss/artifact/view/' + $(this).attr('id')																		
 																		+ '">' +  "</input>";
-																grid += '</td>'+'<td>'+value+'</td>'+'<td>'+""+'</td>'+'</tr>';
+																grid += '</td>'+'<td>'+value+'</td>'+'<td>'+$(this).attr('date')+'</td>'+'</tr>';
+																
+																
+																
+																
 															});
 
 											grid += '</tbody></table>';
@@ -292,8 +318,7 @@ $.extend({ alert: function (message, title) {
 																					var selectectDoc = $('input:radio[name=FileRadio]:checked');
 																					var $closestTr = $(
 																							'input:radio[name=FileRadio]:checked')
-																							.closest(
-																									'tr');
+																							.closest('tr');
 																					
 																					linkvalue = selectectDoc.val();
 																					
@@ -405,43 +430,16 @@ $.extend({ alert: function (message, title) {
 										'mouseup',
 										(function(e) {
 											var clicked = $(this);
-											//var value = clicked.text();
-											//console.log("the word count value is "+value);
-											//var regex = /\s+/gi;
-											//var wordCount = value.trim().replace(regex, ' ').split(' ').length;
-											//var totalChars = value.length;
-											//var charCount = value.trim().length;
-											//var charCountNoSpace = value.replace(regex, '').length;
-											//console.log("the word count is "+wordCount);
-											//console.log("the word count is "+totalChars);
-											//console.log("the word count is "+charCount);
-											//console.log("the word count is "+charCountNoSpace);
-											    
-											  /*  if(charCount>25)
-											 {
-												  
-												   $.alert('Your Word Count is '+charCount +' the maximum allowed is '+25,'Warning!');
-												   e.preventDefault();
-											 } */
-											
-											
 											var idStr = clicked[0].id;
 											var indexOfCount = "cteditor".length;
 											
 											var index = idStr.substring(indexOfCount, idStr.length);
-											var selectedText = rangy.getSelection().toString();
-											var sel = rangy.getSelection();											
-											var range = sel.getRangeAt(0);
+											var selectedText = rangy.getSelection().toString();											
 											if (selectedText.length > 0) {
 												$('#highlight' + index).prop('disabled', false);
 												$('#removehigh' + index).prop('disabled',false);//can be removed
 											}
 											
-											   
-											   
-											    
-
-											 
 											/*
 											var formattingEls = range
 														.getNodes(
@@ -498,25 +496,6 @@ $.extend({ alert: function (message, title) {
 									var indexOfCount = "cteditor".length;
 									var index = idStr.substring(indexOfCount, idStr.length);
 									var selectedText = rangy.getSelection().toString();
-									
-									 //var value = clicked.text();
-									// console.log("the word count value is "+value);
-									 //var regex = /\s+/gi;
-									 //var wordCount = value.trim().replace(regex, ' ').split(' ').length;
-									// var totalChars = value.length;
-									// var charCount = value.trim().length;
-									// var charCountNoSpace = value.replace(regex, '').length;
-									// console.log("the word count is "+wordCount);
-									 //console.log("the word count is "+totalChars);
-									 //console.log("the word count is "+charCount);
-									 //console.log("the word count is "+charCountNoSpace);
-									    
-									  /* if(charCount>25)
-									  {										  
-										  $.alert('Your Word Count is '+charCount +' the maximum allowed is '+25,'Warning!');
-										  e.preventDefault();
-									  }  */
-									
 									
 									if (selectedText.length > 0) {
 										$('#highlight' + index).prop('disabled', false);
@@ -694,24 +673,45 @@ $.extend({ alert: function (message, title) {
 								indexOfCount, idStr.length);					
 						var value = $('#cteditor' + index).text();
 						var html = $('#cteditor' + index).html();
-						console.log("before "+html);
+						var taskID = $("#taskId").val();	
+						//console.log("before wordcount for task "+taskID);
 						
-						 $('#cteditor'+index +'.ctclasseditor > div h3').each(function(){
+						 /* $('#cteditor'+index +'.ctclasseditor > div h3').each(function(){
 						 console.log('right here at criss cross apple sauce'+this);
-						 });
+						 }); */
 						
-						 html= html.replace(/<\/?([a-z]+)[^>]*>/gi, function(match, tag) { 							
+						/*  html= html.replace(/<\/?([a-z]+)[^>]*>/gi, function(match, tag) { 							
 							
 							
 							 return (tag.toLowerCase() === "a") ? match : "";
-							});  
+							});   */
 					
 						
-						console.log("after "+html);
+						//console.log("after "+html);
 
 						// console.log("the word count value is "+value);					
 						 var charCount = value.trim().length;
-						 $.alert('Your Word Count for this response is '+charCount +'. The maximum allowed for All Responses is '+3500+'.','WordCount');
+						         if(taskID==1)
+							{
+						      
+						    $.alert('Your Character Count for this response is '+charCount +'. The maximum Character count allowed for All Responses for this Task is '+18000+'.','CharacterCount');
+							}
+						   if(taskID==2)
+							{
+								      
+								$.alert('Your Character Count for this response is '+charCount +'. The maximum Character count allowed for All Responses for this Task is '+23000+'.','CharacterCount');
+							}
+						     if(taskID==3)
+							{
+								      
+								$.alert('Your Character Count for this response is '+charCount +'. The maximum Character count allowed for All Responses for this Task is '+18000+'.','CharacterCount');
+						      }
+						    if(taskID==4)
+						    {
+								      
+							$.alert('Your Character Count for this response is '+charCount +'. The maximum Character Count allowed for All Responses for this Task is '+20000+'.','CharacterCount');
+						    }
+						         
 					});
 						
 						$('#saveDraft').click(function(){
@@ -721,7 +721,7 @@ $.extend({ alert: function (message, title) {
 							var linkMap=false;
 							var myTaskId = $("#taskId").val();
 							var linksArray = new Array();
-							var wordCountTotal=0;
+							
 							
 							$('[id^=cteditor]').each(function(){
 								
@@ -738,23 +738,14 @@ $.extend({ alert: function (message, title) {
 								var promptId = $('#promptId'+index).val();
 								
 								var text = currentEditor.html();
-								var value=currentEditor.text();
-								var regex = /\s+/gi;							
-								var charCount = value.trim().length;							
-								wordCountTotal+=charCount;
+								
 								essayContentMap[promptId] = text;
 								
 								
 							});
-							//console.log("the wordcount is "+wordCountTotal);
 							
-							if(wordCountTotal>3500)
-								{
-									//alert("Your Word Count is "+wordCountTotal +" for all Responses.The maximum allowed is "+25);
-									$.alert('Your Word Count is '+wordCountTotal +' for all Responses.The maximum allowed for all Responses is '+3500+'.Please get a word count at each Prompt and correct your Response accordingly before Saving Draft.','Warning!'); 
-									return;
-								}
-								
+							
+						
 
 							$('[id^=docsListForPrmpt]').each(function(){
 								var currentPrompt = $(this);
@@ -773,6 +764,8 @@ $.extend({ alert: function (message, title) {
 										  if (!linksArray[i]) return false;
 									}
 									 return true; */
+									
+									
 									}
 								var docArray = new Array();
 								$('#'+idStr+' li').each(function(){
@@ -833,18 +826,60 @@ $.extend({ alert: function (message, title) {
 						
 						$('#submitTask').click(function(){
 							 var wordCountTotal=0;
-                         $('[id^=cteditor]').each(function(){
+							 var taskID = $("#taskId").val();		
+                           $('[id^=cteditor]').each(function(){
                         	   
 								var currentEditor = $(this);
+								var value=currentEditor.text();
+								//var regex = /\s+/gi;
+								//var wordCount = value.trim().replace(regex, ' ').split(' ').length;
+								//var totalChars = value.length;
+								var charCount = value.trim().length;
+								//var charCountNoSpace = value.replace(regex, '').length;
+								wordCountTotal+=charCount;
+								
+								
+								
 							});
-							
-							
-							if(wordCountTotal>3500)
+							//console.log("the wordcount is "+wordCountTotal);
+							     if(taskID==1)
 								{
-									//alert("Your Word Count is "+wordCountTotal +" for all Responses.The maximum allowed is "+25);
-								$.alert('Your Word Count is '+wordCountTotal +' for all Responses.The maximum allowed for all Responses is '+3500+'.Please get a word count at each Prompt and correct your Response accordingly before Submitting Task.','Warning!'); 
+							       if(wordCountTotal>18000)
+								{
+									
+								$.alert('Your Character Count is '+wordCountTotal +' for all Responses.The maximum character count allowed for All Responses for this Task is '+18000 +'.Please get a Character Count at each Prompt and correct your Response accordingly before Submitting Task.','Warning!'); 
 									return;
 								}
+								}
+							      if(taskID==2)
+									{
+								       if(wordCountTotal>23000)
+									{
+									
+									    $.alert('Your Character Count is '+wordCountTotal +' for all Responses.The maximum character count allowed for All Responses for this Task is '+23000 +'.Please get a Character Count at each Prompt and correct your Response accordingly before Submitting Task.','Warning!'); 
+										return;
+									  }
+								    }
+							     
+							       if(taskID==3)
+									{
+								       if(wordCountTotal>18000)
+									{
+										
+									$.alert('Your Word Count is '+wordCountTotal +' for all Responses.The maximum character count allowed for All Responses for this Task is '+18000 +'.Please get a word count at each Prompt and correct your Response accordingly before Submitting Task.','Warning!'); 
+										return;
+									}
+								      }
+							        
+							        if(taskID==4)
+									{
+								       if(wordCountTotal>20000)
+									{
+										
+									   $.alert('Your Word Count is '+wordCountTotal +' for all Responses.The maximum character count allowed for All Responses for this Task is '+20000 +'.Please get a word count at each Prompt and correct your Response accordingly before Submitting Task.','Warning!'); 
+										return;
+									}
+									}
 								
 					
 							
@@ -912,14 +947,11 @@ $.extend({ alert: function (message, title) {
 							//console.log('upload video clicked');
 							//console.log("the prompt keys is "+$("#promptVideoKey").val());
 							//console.log("the task keys is "+$("#taskVideoKey").val());
-							var $j = jQuery.noConflict();
-							var promptDocMap = new Object();
-							var myTaskId = null;
+							//var $j = jQuery.noConflict();
+						
 							var SplitTable='<p> Each Articat must be in wmv,mp3 or [other] format and cannot exceed XX MB </p>';
-							var filenames = [];
-							
-							
-						    	 $("#videodialog").dialog({modal:true,width:600,height:300,position:['middle',20],buttons:[{text:"Close",click: function() { $(this).dialog('close'); }}]}) 
+						
+						    $("#videodialog").dialog({modal:true,width:600,height:300,position:['middle',20], dialogClass: 'no-close-dialog',buttons:[{text:"Close",click: function() { $(this).dialog('close'); }}]}) 
 							.each(
 									function(index) {
 										
@@ -1038,9 +1070,6 @@ $.extend({ alert: function (message, title) {
 						$('#reviewVideo').click(function(){
 							//console.log('review video clicked');
 							var $j = jQuery.noConflict();
-							var promptDocMap = new Object();
-							var myTaskId = null;
-							var SplitTable='<p> Each Articat must be in wmv,mp3 or [other] format and cannot exceed XX MB </p>';
 							var filenames = [];
 							/* $.ajax({
 								url : '/ereg-web/pss/task/review/video',
@@ -1067,11 +1096,7 @@ $.extend({ alert: function (message, title) {
 							  marginTop:'-150px',           
 							  marginLeft:'-300px' }); 
 							//$("#reviewhidden").css({top:windowHeight/2 - dHeight/2, left:windowWidth/2 - dWidth/2}).show();
-							
-						
-							
 						});
-						
 						
 						$('#closeVideo').click(function(){
 							//'scriptAccess' : 'always'
@@ -1094,11 +1119,10 @@ $.extend({ alert: function (message, title) {
 					        .attr('aria-expanded', 'true')
 					        .attr('aria-selected', 'true')
 					        .attr('tabIndex', 0)
-					   .find('span.ui-icon')
+					        .find('span.ui-icon')
 					        .removeClass('ui-icon-circle-arrow-e')
 					        .addClass('ui-icon-circle-arrow-s')
 					     .closest('h3').next('div').show();
-						     
 						     
 						     $('#accordion-1 h3').removeClass('ui-state-default')
 						        .addClass('ui-state-active')
@@ -1111,8 +1135,6 @@ $.extend({ alert: function (message, title) {
 						        .removeClass('ui-icon-circle-arrow-e')
 						        .addClass('ui-icon-circle-arrow-s')
 						     .closest('h3').next('div').show();
-					    
-						   
 						});
 						   
 						    
@@ -1180,9 +1202,6 @@ $.extend({ alert: function (message, title) {
 				          return false; // Cancels the default action
 							    
 								}}});
-						    
-						
-						
 					});
 					
 							 
@@ -1956,6 +1975,7 @@ margin-bottom:25px;
   		<p><input type="checkbox" id="confirmSubmit" value="true"/><label for="confirmSubmit" id="submitConfirmLabel" style="font-size:8pt;">By Checking this box, I understand that I am submitting my responses and artifacts associated with this task. I certify that the submissions represents the work that I completed. I understand that the responses andartifacts that I submit will be evaluated by educators, raters or other appropriate individuals and I understand that I will not be able to make any modifications once I click Submit.</label></p>
 	</div>
 	<input type="hidden" id="taskId" value="${task.taskId}" />	
+	<%-- <c:out value="taskid is: ${task.taskId}" /> --%>
 	
 	<!--  new  -->
 			    <div id="accordion-1" class="center"  >
@@ -1975,6 +1995,7 @@ margin-bottom:25px;
 								<%-- <c:out value="stepid is: ${step.stepID}" />-<c:out value="prompt id is: ${prompt.promptId}" /> --%>
 									<h3>${step.title} ${prompt.title}</h3>
 									<div >
+										
 									    <c:if test="${prompt.media=='video'}">  
 									                
 										         <input type="hidden" id="videoKey" value="<c:out value="${prompt.media}"/>" />	
@@ -1983,12 +2004,16 @@ margin-bottom:25px;
 											    <div id="video" class="videoouter">
 												<div class="videoinner"><h5>VIDEO UPLOAD</h5></div>				
 												<div class="video"><p><h5>Teaching Video.mp3</h5> <!-- <a href="">Video</a> --></p></div>
+												
+												<c:if test="${customerTask.docStsTyp.docStsTypCde!='CMPLD'}">												
 												<input type=button id="uploadVideo" class="uploadVideobutton" value="Upload Video" />
+												</c:if>
 												<input type=button id="reviewVideo" class="uploadVideobutton" value="Review Video" />
 												<input type=button id="closeVideo" class="uploadVideobutton" value="Close Video" />
 												<div id="videodialog" title="Upload Video" style="display: none"></div>				
 											    </div>											
 											</c:if> 
+											
 											
 										 <c:if test="${prompt.media!='video'}"> 
 										
@@ -2025,7 +2050,7 @@ margin-bottom:25px;
 											<c:if test="${customerTask.docStsTyp.docStsTypCde!='CMPLD'}">
 											<c:if test="${prompt.media!='video'}">  	
 												<div id="editor_buttons${prompt.promptId}">	
-												       	<input type="button"  class="promptbutton" style="margin-left: 2.2px;" value="Word Count"  id="wordCount${prompt.promptId}" />										
+												       	<input type="button"  class="promptbutton" style="margin-left: 2.2px;" value="Character Count"  id="wordCount${prompt.promptId}" />										
 													    <input type="button" class="promptbutton"  value="Save Essay" id="save_essay${prompt.promptId}" />  
 														<input type="button" class="promptbutton" value="Link Text" disabled id="highlight${prompt.promptId}" /> 														
 														<input type="button"  class="promptbutton" value="Remove Link" disabled id="removehigh${prompt.promptId}" /> 														 

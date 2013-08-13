@@ -88,7 +88,8 @@ public class ArtifactController {
     	{
     		artifact = new Artifact();
     		artifact.setId(doc.getDocId());
-    		//artifact.setDateCreated(doc.getDateCreated());
+    		System.out.println("the date created is "+doc.getDateCreated());
+    		artifact.setDateCreated(doc.getDateCreated());
     		artifact.setFilename(doc.getRspSrcLctnNam());
     		artifactList.add(artifact);
     	}

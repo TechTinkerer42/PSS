@@ -96,6 +96,17 @@
 		<property name="emailTemplate" value="appointmentScheduled-email"/>
 	</bean>
 	
+	 <bean id="forgotPasswordEmailInfo" parent="blEmailInfo" >
+     <property name="subject" value="Pre-Service Teacher Assessments Password Request."/>
+	<property name="emailTemplate" value="forgot-username"/>
+	 
+	 </bean>
+    <bean id="forgotUsernameEmailInfo" parent="blEmailInfo" >
+     <property name="subject" value="Pre-Service Teacher Assessments user name request."/>
+	<property name="emailTemplate" value="forgot-username"/>
+	
+    </bean>
+	
 	 <bean id="orderConfirmationEmailInfo" parent="blEmailInfo">
 		<property name="subject" value="Your HiSET Appointment(s) Has Been Confirmed."/>
 		<property name="emailTemplate" value="orderConfirmation-email"/>
