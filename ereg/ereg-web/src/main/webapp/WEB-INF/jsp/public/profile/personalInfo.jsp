@@ -71,9 +71,9 @@ $(document).ready(function () {
 	<label for="firstName"><spring:message code="firstName"/></label>
 	<form:input path="<%=ProfileForm.FIRST_NAME%>" size="30" id="firstName"  required="true"/>
 	<form:errors path="<%=ProfileForm.FIRST_NAME%>"/>
-	<span class="form_hint">
+	<!--<span class="form_hint">
 	<spring:message code="profile.create.validation.FirstNameHint" />
-	</span>
+	</span>-->
 	</li>
 	
 	
