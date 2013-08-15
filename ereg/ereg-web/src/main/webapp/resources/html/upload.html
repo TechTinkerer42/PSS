@@ -25,7 +25,7 @@
 																				},
 																				
 																				validation: {
-																			        allowedExtensions: ['wmv','mp4','rtf','txt', 'xls','doc'],
+																					allowedExtensions: ['doc','xls','ppt','docx','xlsx','pptx','jpeg','txt','pdf','rtf'],
 																			        sizeLimit: 1048576 // 50 kB = 50 * 1024 bytes
 																			       // sizeLimit: 2147483648 //2GB
 																			      },
@@ -37,9 +37,7 @@
 																						fileName) {
 																					if (fileName.length > 33) {
 																						fileName = fileName
-																								.slice(
-																										0,
-																										19)
+																								.slice0,19)
 																								+ '...'
 																								+ fileName
 																										.slice(-14);

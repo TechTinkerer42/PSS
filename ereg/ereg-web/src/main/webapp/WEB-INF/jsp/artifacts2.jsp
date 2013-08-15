@@ -36,7 +36,7 @@
 						
 						$('#uploadArtifact').click(
 									function() {
-										console.log("Clicked the Button");	
+										
 										$("#uploadDialog")
 													.load('/ereg-web/resources/html/upload.html')
 													.dialog(
@@ -108,7 +108,7 @@
 														error : function(xhr,
 																textStatus,
 																thrownError) {
-															console.log("Error xhr status: "+ xhr.statusText);
+															//console.log("Error xhr status: "+ xhr.statusText);
 														},
 													});
 										});
