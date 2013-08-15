@@ -47,7 +47,7 @@
 <h1><spring:message code="user.accountRecovery"/></h1>
 <c:url value="/public/signin" var="prev_url"/> 
 <span id="statusMessages" ></span>
-<input type="radio"  value="username"  name="forgotCredentials" id="forgotUserName">Forgot Username
+<input type="radio"  value="username"  name="forgotCredentials" id="forgotUserName">Forgot UserName
 <input type="radio"  value="password"  name="forgotCredentials" id="forgotPassword">Forgot Password
 
 <div id="formContent" style="display:none;"> 
@@ -87,7 +87,7 @@ $(document).ready(function () {
 	 $('input[type=radio]').live('change', function() { 
 		  var selectedVal = $("input:radio:checked").val();
 		  $('#formContent').show();
-         console.log(selectedVal);
+         //console.log(selectedVal);
 		 $('#scenario').val(selectedVal);
          
 		 
@@ -100,15 +100,15 @@ $(document).ready(function () {
 		var target='statusMessages';
 		ajaxPost(formAction,form,target ,'POST',
 		function(data) {
-			console.log(data.results);
-			console.log("Errors Present:"+data.errors);
+			//console.log(data.results);
+			//console.log("Errors Present:"+data.errors);
 			$('#statusMessages').text('');
-			if(data.errors)
-			 $('#statusMessages').append('<ul style="color:red;">');
-			else
-				$('#statusMessages').append('<ul>');	
+			 $('#statusMessages').append('<ul>');
 		 for (var i in data.results) {
-                      $('#statusMessages').append( '<li>'+data.results[i]+'</li>' );
+			 if(data.errors)
+                      $('#statusMessages').append( '<li style="color:red;">'+data.results[i]+'</li>' );
+			 else
+				 $('#statusMessages').append( '<li style="color:green;">'+data.results[i]+'</li>' );
          }
 		 $('#statusMessages').append('</ul>');
 

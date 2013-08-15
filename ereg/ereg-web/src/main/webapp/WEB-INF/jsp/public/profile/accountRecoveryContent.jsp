@@ -103,7 +103,7 @@
 $(document).ready(function () {
 	
 	$("#username").change(function(){
-		  console.log("The text has been changed.");
+		 // console.log("The text has been changed.");
 		  
 		  
 		});
