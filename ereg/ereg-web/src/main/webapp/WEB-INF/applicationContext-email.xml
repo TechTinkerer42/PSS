@@ -101,9 +101,9 @@
 	<property name="emailTemplate" value="forgot-username"/>
 	 
 	 </bean>
-    <bean id="forgotUsernameEmailInfo" parent="blEmailInfo" >
-     <property name="subject" value="Pre-Service Teacher Assessments user name request."/>
-	<property name="emailTemplate" value="forgot-username"/>
+    <bean id="forgotCredentialsEmailInfo" parent="blEmailInfo" >
+     <property name="subject" value="Pre-Service Teacher Assessments credentials request."/>
+	<property name="emailTemplate" value="forgot-credentials"/>
 	
     </bean>
 	

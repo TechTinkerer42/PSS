@@ -23,6 +23,16 @@
 																				text : {
 																					uploadButton : '<i class="icon-plus icon-white"></i> <font size=2>Upload Document or File</font>'
 																				},
+																				
+																				validation: {
+																			        allowedExtensions: ['wmv','mp4','rtf','txt', 'xls','doc'],
+																			        sizeLimit: 1048576 // 50 kB = 50 * 1024 bytes
+																			       // sizeLimit: 2147483648 //2GB
+																			      },
+																			       showMessage: function(message) {
+																			          // Using Bootstrap's classes
+																			          $('#uploadDialog').append('<div class="alert alert-error">' + message + '</div>');
+																			        },
 																				formatFileName : function(
 																						fileName) {
 																					if (fileName.length > 33) {
@@ -67,7 +77,7 @@
 </script>					
 </head>
 <body>
-<p>Each artifact must be in doc, pdf, ppt, xls or [other] format and cannot exceed 10 MB</p>
+<p>Each artifact must be in doc, pdf, ppt, xls or [other] format and cannot exceed 1 MB</p>
 <div id="jquery-wrapped-fine-uploader"></div>
 </body>
 </html>

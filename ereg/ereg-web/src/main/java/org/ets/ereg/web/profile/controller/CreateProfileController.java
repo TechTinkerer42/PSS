@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -90,8 +91,8 @@ public class CreateProfileController {
 	    @Resource(name="blLoginService")
 	    private LoginService loginService;
 	    
-	    @Resource(name="forgotUsernameEmailInfo")
-	    protected EmailInfo forgotUsernameEmailInfo;   
+	    @Resource(name="forgotCredentialsEmailInfo")
+	    protected EmailInfo forgotCredentialsEmailInfo;   
 
 	    @Resource(name="applicationConfigurationService")
 		private ApplicationConfigurationService applicationService;
@@ -188,100 +189,48 @@ public class CreateProfileController {
 		
 		
 		@RequestMapping(value="/submitEmail",method=RequestMethod.POST)
-		public String submitUsernameRequest(Model model,@ModelAttribute(CreateProfileController.FORM_ATTRIBUTE) ProfileForm profileForm){
+		public @ResponseBody  Map<String,Object> submitCredentialsRequest(Model model,@ModelAttribute(CreateProfileController.FORM_ATTRIBUTE) ProfileForm profileForm){
 			String email=profileForm.getProfile().getCustomer().getEmailAddress();
 			ETSCustomer customer=etsCustomerBusinessService.getCustomerByEmail(email);
+			Map<String,Object> map= new HashMap<String,Object>();
 			List<String> list=new ArrayList<String>();
 			if(customer==null){
 				list.add("Please Enter a valid Customer email");
-				model.addAttribute("messageList",list);
-				return "/public/profile/accountRecoveryContent";
+				map.put("errors", true);
+				map.put("results", list);
+				return map;
 			}
 			
 			
 			HashMap<String, Object> props = new HashMap<String, Object>();
 			props.put("customer", customer);
+			if("password".equals(profileForm.getScenario())){
+				props.put("requestedField", "password");
+				props.put("value", customer.getPassword());
+			}
+			else{
 			props.put("requestedField", "user name");
 			props.put("value", customer.getUsername());
-			etsEmailService.sendTemplateEmail(customer.getEmailAddress(),forgotUsernameEmailInfo , props);
+			}
+			etsEmailService.sendTemplateEmail(customer.getEmailAddress(),forgotCredentialsEmailInfo , props);
 			list.add("Email message sent.");
 			model.addAttribute("messageList",list);
-			return "/public/profile/accountRecoveryContent";
+			map.put("errors", false);
+			map.put("results", list);
+			return map;
 			
 		}
 		
-		@RequestMapping(value="/changePassword",method=RequestMethod.POST)
-		public String changePassword(Model model,@ModelAttribute(CreateProfileController.FORM_ATTRIBUTE) ProfileForm profileForm){
-			ProfileVO profVO= profileBusinessService.readProfileByUsername(profileForm.getProfile().getCustomer().getUsername());			
-			List<String> list=validateChangePassword( profileForm,profVO);
-			if(list.isEmpty()){
-				profVO.getCustomer().setPassword(profileForm.getPassword());
-				profileBusinessService.saveProfile(profVO);
-				list.add("Password has been changed.");
-			}
-			model.addAttribute("messageList",list);
-			return "/public/profile/accountRecoveryContent";
-			
-		}
-		
-		public List<String> validateChangePassword(ProfileForm profileForm,ProfileVO profVO){
-			List<String> list=new ArrayList<String>();
-			String password=profileForm.getPassword();
-			String confirmPassword=profileForm.getPasswordConfirm();
-			if(!password.equals(confirmPassword)){
-				list.add("Passwords must match");
-			}
-			ETSCustomer customer=profVO.getCustomer();
-			String answer=customer.getChallengeAnswer();
-			String answerEntered=profileForm.getProfile().getCustomer().getChallengeAnswer();
-			if(StringUtils.isEmpty(password) ||
-					StringUtils.isEmpty(confirmPassword) 
-					||StringUtils.isEmpty(answerEntered)){
-				list.add("Required Fields cannot be blank");
-				
-			}
-			if(!StringUtil.isBlank(answerEntered)
-					&&!StringUtil.isBlank(answer)&&!answer.equals(answerEntered)){
-				list.add("Invalid answer please try again");
-			}
-				
-			return list;
-		}
-		
+
 		
 		@RequestMapping(value="/accountrecovery",method=RequestMethod.GET)
 		public String recoverAccount(HttpServletRequest request,
 				HttpServletResponse response,
 				Model model,
-				@RequestParam( value="forgotCredentials" , required=false) String credentials,
 				@ModelAttribute(CreateProfileController.FORM_ATTRIBUTE) ProfileForm profileForm){
-			if(!StringUtil.isBlank(credentials)){
-				if(credentials.equals("username")){
-					model.addAttribute("formaction", "submitEmail");
-					model.addAttribute("forgotUsername", true);
-				}else{
-					model.addAttribute("formaction", "changePassword");
-				}
-				return "/public/profile/accountRecoveryContent";		
-			}
 			return "/public/profile/accountRecovery";
 		}
-		@RequestMapping(value="/getUserInfo",method=RequestMethod.GET)
-		public String getUserInfo(@RequestParam( value="username" , required=true) String username,
-				Model model){
-			if(profileBusinessService.isUsernameAvailable(username)){
-			ProfileVO profVO= profileBusinessService.readProfileByUsername(username);
-			ETSCustomer customer=profVO.getCustomer();
-			model.addAttribute("customerInfo", customer);
-			}else{
-				List<String> messageList= new ArrayList<String>();
-				messageList.add("Please enter valid username");
-				model.addAttribute("messageList", messageList);
-			}
-			
-			return "/public/profile/accountRecoveryContent";
-			
-		}
+
 		
 		
 		

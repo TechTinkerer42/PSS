@@ -233,6 +233,7 @@ public class TaskController {
     	
     	String fileName = file.getOriginalFilename();    	
     	String fileExt = getFileExt(fileName);
+    	System.out.println("Context Type:"+file.getContentType());
     	String mime = null;
     	if(fileExt != null)
     	{

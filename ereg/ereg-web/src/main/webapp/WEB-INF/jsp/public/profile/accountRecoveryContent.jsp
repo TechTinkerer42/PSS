@@ -43,9 +43,9 @@
 	<label for="username"><spring:message code="username"/></label>
 	<form:input path="<%=ProfileForm.USERNAME %>" size="30" id="username" required="required" />
 	<form:errors class="errorMessage" path="<%=ProfileForm.USERNAME %>"/>
-	<span><span id="getUserInfo" class="getUserInfo submit" style="color:blue;">get user details</span></span>
+	<span><span id="getUserInfo" class="getUserInfo submit" style="">get user details</span></span>
 	</li> 
-<span id="userDetails" style="color:red;"></span>
+<span id="userDetails" ></span>
 </c:if>
 	</c:otherwise>
 	</c:choose>
@@ -54,14 +54,14 @@
 	<li>
 	<label for="answer">${customerInfo.challengeQuestion.question}</label>
 	<form:input path="profile.customer.challengeAnswer" size="30" id="answer" required="required" /></li>
-	<li><label for="password"><spring:message code="password"/></label>
+	<li><label for="password"><spring:message code="newPassword"/></label>
 	<form:password path="<%=ProfileForm.PASSWORD %>" size="30" id="password" required="required" />
 	<form:errors class="errorMessage" path="<%=ProfileForm.PASSWORD %>"/>
 	<span class="form_hint">Hint: The password should have minimum 8 characters and maximum 16 characters. It should contains atleast 1 capital letter and a symbol or a digit</span>
 	
 	</li>
 	<li>
-	<label for="passwordConfirm"><spring:message code="passwordConfirm"/></label>
+	<label for="passwordConfirm"><spring:message code="newPasswordConfirm"/></label>
 	<form:password path="<%= ProfileForm.PASSWORD_CONFIRM %>" size="30" id="passwordConfirm" required="required"/>
 	<form:errors class="errorMessage" path="<%= ProfileForm.PASSWORD_CONFIRM %>"/>
 	</li>
@@ -77,7 +77,18 @@
 	<c:url value="/secure/home" var="prev_url"/>
 	<a class="submit" href="<c:out value='${prev_url}'/>"><spring:message code="back"/></a>
 </div>
-    <div class="span6"><span class="right"><button class="submit" type="submit" id="submitButton"><spring:message code="submit"/></button></span></div>
+    <div class="span6"><span class="right">
+    <c:choose>
+    <c:when test="${forgotUsername }">
+    <button class="submit" type="submit" id="submitButton"><spring:message code="submit"/></button>
+    </c:when>
+    <c:otherwise>
+     <button class="submit" type="submit" id="submitButton" disabled="disabled"><spring:message code="submit"/></button>
+    </c:otherwise></c:choose>
+   
+    
+    
+    </span></div>
     </div>
 </c:if>
 </div>
@@ -91,6 +102,12 @@
 <script type="text/javascript">
 $(document).ready(function () {
 	
+	$("#username").change(function(){
+		  console.log("The text has been changed.");
+		  
+		  
+		});
+	
 $(".getUserInfo").on('click', function () {
 	//console.log("entering the get user info");
 	var usrnam=$("#username").val();
@@ -99,6 +116,7 @@ $(".getUserInfo").on('click', function () {
 		data: {username:usrnam},
 		success: 	function(data) {
 			$("#userDetails").html(data);
+			$("#submitButton").prop('disabled', false);
 		},
 		dataType: 'html'
 		});

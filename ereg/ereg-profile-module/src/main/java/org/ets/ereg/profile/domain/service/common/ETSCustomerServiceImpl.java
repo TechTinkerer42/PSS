@@ -160,4 +160,10 @@ public class ETSCustomerServiceImpl extends CustomerServiceImpl implements
         customerRole.setCustomer(customer);
         roleDao.addRoleToCustomer(customerRole);
     }
+	@Override
+	public ETSCustomer getCustomerByEmail(String email){
+        return customerDao.getCustomerByEmail(email);
+    }
+
+	
 }

@@ -36,7 +36,8 @@
 						
 						$('#uploadArtifact').click(
 									function() {
-											$("#uploadDialog")
+										console.log("Clicked the Button");	
+										$("#uploadDialog")
 													.load('/ereg-web/resources/html/upload.html')
 													.dialog(
 															{
@@ -139,24 +140,19 @@
 	<a href="">MyArtifacts</a>
 </div>
 
-
+<div id="uploadDialog" title="Upload Artifacts" style="display:none"> </div>
 	 <!-- the FIRST h1 on the page MUST get the id="desc-main" attribute -->
-<h1 id="desc-main">My Artifacts</h1>
+<h1>Pre Service Teacher Assessments</h1>
 
-<h2>My Assessments</h2>
-	
-		
-					<div id="uploadDialog" title="Upload Artifacts" style="display:none"> </div>
-				
-					<!-- <h3>My Artifacts</h3> -->
-					
-					<div id="message" style="margin: 10px 0px 10px 0px;">
-					These Artifacts can be linked to from any task for this assesments. If you rename an artifact, any tasks
-					that link to this artifact will be automatically updated. If you remove and artifact, any tasks that link
-					to the artifact will no longer link to the artifact, but you should check your task to see if you essay
-					response needs to be modified.<br><br>
-					Artifacts that been linked to in tasks that have already been submitted cannot be removed, renamed or replaced.
-					</div>
+<h3>My Artifacts</h3>
+
+<div id="message">
+These Artifacts can be linked to from any task for this assesments. If you rename an artifact, any tasks
+that link to this artifact will be automatically updated. If you remove and artifact, any tasks that link
+to the artifact will no longer link to the artifact, but you should check your task to see if you essay
+response needs to be modified.<br><br>
+Artifacts that been linked to in tasks that have already been submitted cannot be removed, renamed or replaced.
+</div>
 					
 					<!-- <div style="width: 100%; margin: 10px 0px 20px 0px;">&nbsp;
 					<div class="span6">
@@ -165,7 +161,7 @@
 					
 					</div>  -->
 					<br>
-					<p><a class="submit" id="uploadArtifact" href="javascript: return 0;">Upload Artifact</a></p>
+					<p><a class="submit" id="uploadArtifact" >Upload Artifact</a></p>
 					
 			       
 					<div id="artifactsDiv" style="margin: 20px 5px 10px 5px;">
