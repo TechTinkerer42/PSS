@@ -24,9 +24,8 @@
 																					uploadButton : '<i class="icon-plus icon-white"></i> <font size=2>Upload Document or File</font>'
 																				},
 																				
-																				validation: {
-																					allowedExtensions: ['doc','xls','ppt','docx','xlsx','pptx','jpeg','txt','pdf','rtf'],
-																			        sizeLimit: 1048576 // 50 kB = 50 * 1024 bytes
+																				validation: {allowedExtensions: ['doc','xls','ppt','docx','xlsx','pptx','jpeg','txt','pdf','rtf'],
+																			        sizeLimit:1048576 // 50 kB = 50 * 1024 bytes
 																			       // sizeLimit: 2147483648 //2GB
 																			      },
 																			       showMessage: function(message) {
@@ -37,7 +36,9 @@
 																						fileName) {
 																					if (fileName.length > 33) {
 																						fileName = fileName
-																								.slice0,19)
+																								.slice(
+																										0,
+																										19)
 																								+ '...'
 																								+ fileName
 																										.slice(-14);
