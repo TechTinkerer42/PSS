@@ -434,7 +434,8 @@ $.extend({ alert: function (message, title) {
 											var indexOfCount = "cteditor".length;
 											
 											var index = idStr.substring(indexOfCount, idStr.length);
-											var selectedText = rangy.getSelection().toString();											
+											var selectedText = rangy.getSelection().toString();	
+											
 											if (selectedText.length > 0) {
 												$('#highlight' + index).prop('disabled', false);
 												$('#removehigh' + index).prop('disabled',false);//can be removed
@@ -495,8 +496,7 @@ $.extend({ alert: function (message, title) {
 									var idStr = clicked[0].id;
 									var indexOfCount = "cteditor".length;
 									var index = idStr.substring(indexOfCount, idStr.length);
-									var selectedText = rangy.getSelection().toString();
-									
+									var selectedText = rangy.getSelection().toString();								
 									if (selectedText.length > 0) {
 										$('#highlight' + index).prop('disabled', false);
 										$('#removehigh' + index).prop('disabled',false);//can be removed
@@ -506,9 +506,74 @@ $.extend({ alert: function (message, title) {
 											$('#removehigh' + index).prop('disabled',true);//can be removed
 											$('#highlight' + index).prop('disabled', true);//can be removed
 										}
+									/*  setTimeout(function(){ 
+									    //var text = $('#cteditor' + index).html();
+									 //   console.log('the id on keypress is '+idStr);
+									  //  console.log('now the index is '+index);
+										var currentEditor = $('#cteditor' + index);
+										var value=currentEditor.html();
+										
+										 value= value.replace(/<\/?([a-z]+)[^>]*>/gi, function(match, tag) { 
+										
+                                             return (tag.toLowerCase() === "a") ? match : "";
+                                         }); 
+										
+										   //var el = document.getElementById('cteditor' + index);										
+											//el.innerHTML = el.innerHTML.replace(/(<([^>]+)>)/ig,"");
+										 
+							           
+									 
+									 },100); */
 									 
 								}));
-                                      
+						
+						
+						
+						$('[id^=cteditor]')
+						.on(
+								'paste', //'keyup',
+								(function(e) {
+									//console.log($(this));
+									var clicked = $(this);
+									var idStr = clicked[0].id;
+									//console.log('the id on paste is '+idStr);
+									var indexOfCount = "cteditor".length;
+									var index = idStr.substring(indexOfCount, idStr.length);
+									
+									 //console.log('now the index is '+index);
+									 var currentEditor = $('#cteditor' + index);
+									  setTimeout(function(){ 
+									
+										//var currentEditor = $(this);
+										 //var text = $('#cteditor' + index).html();
+										
+										//var html = $('#cteditor' + index).html();
+										
+										var value=currentEditor.html();
+										//console.log('the value on paste before is '+value);
+										 value= value.replace(/<\/?([a-z]+)[^>]*>/gi, function(match, tag) {
+											// console.log('the value on paste is'+value);
+                                             return (tag.toLowerCase() === "a") ? match : "";
+                                         }); 
+										 //console.log('the value on paste after is '+value);
+										// $(this).innerText=value;
+										// $(this)[0].innerHTML=$(this)[0].innerHTML.replace(value);
+										 //$(this)[0].outerHTML=value;
+										// $(this)[0].text=value;
+										var el = document.getElementById('cteditor' + index);
+										//console.log(el);
+										el.innerHTML = el.innerHTML.replace(/(<([^>]+)>)/ig,"");
+										//$(this)[0].innerHTML = $(this)[0].innerHTML.replace(/(<([^>]+)>)/ig,"");
+										 //currentEditor.innerHTML= currentEditor.innerHTML.replace(/(<([^>]+)>)/ig,"");
+										// currentEditor.outerHTML=value;
+										 //currentEditor.text=value;
+										 //console.log(currentEditor.innerHTML);
+										// console.log(currentEditor.outerHTML);
+										 //console.log(currentEditor.text);
+										 
+									 
+									  },100); }));
+					  
 											$('[id^=cteditor]')
 													.on('mouseout',
 															(function(e) {
@@ -538,6 +603,7 @@ $.extend({ alert: function (message, title) {
 														var selectedText = rangy
 																.getSelection()
 																.toString();
+														
 														if (selectedText.length <= 0) {
 															var clicked = $(this);
 															var idStr = clicked[0].id;
@@ -566,10 +632,7 @@ $.extend({ alert: function (message, title) {
 
 																
 																var myPromptId = $("#promptId" + index).val();
-																var text = $('#cteditor' + index).html();//val();	
-																/*  text= text.replace(/<\/?([a-z]+)[^>]*>/gi, function(match, tag) { 
-							                                              return (tag.toLowerCase() === "a") ? match : "";
-							                                          });   */
+																var text = $('#cteditor' + index).html();//val();																
 																		
 															    essayContentMap1[myPromptId] = text;
 													
@@ -640,9 +703,8 @@ $.extend({ alert: function (message, title) {
 													
 													
 													
-																$.ajax({
-																			url : '/ereg-web/pss/task/editor/save',
-																			type : 'post',
+																$.ajax({   url : '/ereg-web/pss/task/editor/save',
+																		    type : 'post',
 																			contentType : "application/json",
 																			data :  JSON.stringify({
 																			    taskId : myTaskId,	
@@ -671,9 +733,10 @@ $.extend({ alert: function (message, title) {
 						var indexOfCount = "wordCount".length;
 						var index = idStr.substring(
 								indexOfCount, idStr.length);					
-						var value = $('#cteditor' + index).text();
-						var html = $('#cteditor' + index).html();
+						//var value = $('#cteditor' + index).text();
+						//var html = $('#cteditor' + index).html();
 						var taskID = $("#taskId").val();	
+						 var wordCountTotal=0;
 						//console.log("before wordcount for task "+taskID);
 						
 						 /* $('#cteditor'+index +'.ctclasseditor > div h3').each(function(){
@@ -689,27 +752,39 @@ $.extend({ alert: function (message, title) {
 						
 						//console.log("after "+html);
 
-						// console.log("the word count value is "+value);					
-						 var charCount = value.trim().length;
+						// console.log("the word count value is "+value);	
+						
+						  $('[id^=cteditor]').each(function(){
+                        	   
+								var currentEditor = $(this);
+								var value=currentEditor.text();
+								
+								var charCount = value.trim().length;
+							
+								wordCountTotal+=charCount;
+								
+							});
+						
+						 //var charCount = value.trim().length;
 						         if(taskID==1)
 							{
 						      
-						    $.alert('Your Character Count for this response is '+charCount +'. The maximum Character count allowed for All Responses for this Task is '+18000+'.','CharacterCount');
+						    $.alert('Your Character Count for all Response\'s is '+wordCountTotal +'. The maximum Character count allowed for all Response\'s for this Task is '+18000+'.','CharacterCount');
 							}
 						   if(taskID==2)
 							{
 								      
-								$.alert('Your Character Count for this response is '+charCount +'. The maximum Character count allowed for All Responses for this Task is '+23000+'.','CharacterCount');
+								$.alert('Your Character Count for all Response\'s is '+wordCountTotal +'. The maximum Character count allowed for all Response\'s for this Task is '+23000+'.','CharacterCount');
 							}
 						     if(taskID==3)
 							{
 								      
-								$.alert('Your Character Count for this response is '+charCount +'. The maximum Character count allowed for All Responses for this Task is '+18000+'.','CharacterCount');
+								$.alert('Your Character Count for all Response\'s is '+wordCountTotal +'. The maximum Character count allowed for all Response\'s for this Task is '+18000+'.','CharacterCount');
 						      }
 						    if(taskID==4)
 						    {
 								      
-							$.alert('Your Character Count for this response is '+charCount +'. The maximum Character Count allowed for All Responses for this Task is '+20000+'.','CharacterCount');
+							$.alert('Your Character Count for all Response\'s is '+wordCountTotal +'. The maximum Character Count allowed for all Response\'s for this Task is '+20000+'.','CharacterCount');
 						    }
 						         
 					});
@@ -815,7 +890,7 @@ $.extend({ alert: function (message, title) {
 								success : function(data) {
 									//console.log(data);
 									alert("Task Draft is Saved Successfully");
-									$('#submitTask').prop('disabled', false);
+									//$('#submitTask').prop('disabled', false);
 								},
 								error: function(XMLHttpRequest, textStatus, errorThrown) { 
 								   alert("Status: " + textStatus); alert("Error: " + errorThrown);
@@ -841,6 +916,12 @@ $.extend({ alert: function (message, title) {
 								
 								
 							});
+                                  if(wordCountTotal<=0)
+                        	   {
+                                	  $.alert('You cannot submit a Empty Task','Error!');
+                                	  return;
+                        	   }
+                           
 							//console.log("the wordcount is "+wordCountTotal);
 							     if(taskID==1)
 								{
@@ -921,6 +1002,8 @@ $.extend({ alert: function (message, title) {
 												});
 												
 												$('#taskButtonsDiv').empty();
+												window.location = '/ereg-web/secure/home';
+												
 											},
 											error : function(data)
 											{
@@ -1240,7 +1323,7 @@ $.extend({ alert: function (message, title) {
     -moz-border-radius: 5px;
     border-radius: 5px;
     border: 1px solid #999; margin-bottom: 1em; height:275px; overflow:auto;
-	
+	/* -webkit-user-select: auto; */
 }
 
 a.highLightLink {
@@ -1888,7 +1971,7 @@ margin-bottom:25px;
 	<t:base title="Home Page">
    <div id="breadcrumb">
    	<p class="hide">Site Path:</p>
-	<a   href="/ereg-web/secure/home">Home</a> <span aria-hidden="true">&gt;</span>
+	<a href="/ereg-web/secure/home">Home</a> <span aria-hidden="true">&gt;</span>
 	<a href="/ereg-web/secure/home">My Tasks</a> <span aria-hidden="true">&gt;</span>
 	<a href="/ereg-web/pss/task/goto?taskId=${task.taskId}">CurrentTask</a> <span aria-hidden="true"></span>
     </div>
@@ -2089,7 +2172,7 @@ margin-bottom:25px;
 			<!-- <input type=button id="saveDraft"  value="Save Draft" /> -->
 			<c:choose>
 				<c:when test="${customerTask.docStsTyp.docStsTypCde == 'ACTIV'}">
-					<a class="submit" id="submitTask" disabled>Submit Task</a>
+					<a class="submit" id="submitTask">Submit Task</a>
 				<!-- <input type=button id="submitTask" value="Submit Task" disabled /> -->
 				</c:when>
 				<c:when test="${customerTask.docStsTyp.docStsTypCde != 'ACTIV'}">				
