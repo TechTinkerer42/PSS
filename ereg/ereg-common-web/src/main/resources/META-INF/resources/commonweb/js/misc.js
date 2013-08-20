@@ -9,44 +9,44 @@
 $(function() {
     $(".radiocheck").change(function() {
         if ($("#male").is(":checked")) {
-            $(".radiostarcolor").css('backgroundImage', "url('../commonweb/img/valid.png')");
+            $(".radiostarcolor").css('backgroundImage', "url('../../commonweb/img/valid.png')");
         }
         if ($("#fmale").is(":checked")) {
-            $(".radiostarcolor").css('backgroundImage', "url('../commonweb/img/valid.png')");
+            $(".radiostarcolor").css('backgroundImage', "url('../../commonweb/img/valid.png')");
         }
        
           if ($("#landline").is(":checked")) {
-            $(".radiophonecolor").css('backgroundImage', "url('../commonweb/img/valid.png')");
+            $(".radiophonecolor").css('backgroundImage', "url('../../commonweb/img/valid.png')");
         }
 		 if ($("#mobile").is(":checked")) {
-            $(".radiophonecolor").css('backgroundImage', "url('../commonweb/img/valid.png')");
+            $(".radiophonecolor").css('backgroundImage', "url('../../commonweb/img/valid.png')");
         }
        
 	      if ($("#lSpanish").is(":checked")) {
-            $(".languageRadio").css('backgroundImage', "url('../commonweb/img/valid.png')");
+            $(".languageRadio").css('backgroundImage', "url('../../commonweb/img/valid.png')");
         }
 		 if ($("#lEnglish").is(":checked")) {
-            $(".languageRadio").css('backgroundImage', "url('../commonweb/img/valid.png')");
+            $(".languageRadio").css('backgroundImage', "url('../../commonweb/img/valid.png')");
         }
 
          if ($("#termsConditions").is(":checked")) {
-            $(".checkConditions").css('backgroundImage', "url('../commonweb/img/valid.png')");
+            $(".checkConditions").css('backgroundImage', "url('../../commonweb/img/valid.png')");
         }
 		else {
-            $(".checkConditions").css('backgroundImage', "url('../commonweb/img/red_asterisk.png')");
+            $(".checkConditions").css('backgroundImage', "url('../../commonweb/img/red_asterisk.png')");
         }
 
          if ($("#mmy").is(":checked")) {
-            $(".militaryRadio").css('backgroundImage', "url('../commonweb/img/valid.png')");
+            $(".militaryRadio").css('backgroundImage', "url('../../commonweb/img/valid.png')");
         }
 		 if ($("#mmn").is(":checked")) {
-            $(".militaryRadio").css('backgroundImage', "url('../commonweb/img/valid.png')");
+            $(".militaryRadio").css('backgroundImage', "url('../../commonweb/img/valid.png')");
         }
 		if ($("#csr_RM").is(":checked")) {
-			$(".radiostarcolor").css('backgroundImage', "url('../commonweb/img/valid.png')");
+			$(".radiostarcolor").css('backgroundImage', "url('../../commonweb/img/valid.png')");
 		}
 		if ($("#csr_RF").is(":checked")) {
-			$(".radiostarcolor").css('backgroundImage', "url('../commonweb/img/valid.png')");
+			$(".radiostarcolor").css('backgroundImage', "url('../../commonweb/img/valid.png')");
 		}
    });
 
