@@ -36,6 +36,7 @@
 <script type="text/javascript" 	src="<c:url value='/resources/rangy-1.3/rangy-core.js'/>"></script>
 <script type="text/javascript" 	src="<c:url value='/resources/rangy-1.3/rangy-cssclassapplier.js'/>"></script>
 
+
 <script>
 
 function setdiv( divid ){
@@ -427,7 +428,7 @@ $.extend({ alert: function (message, title) {
 
 					 	$('[id^=cteditor]')
 								.on(
-										'mouseup',
+										'mouseup mouseover',
 										(function(e) {
 											var clicked = $(this);
 											var idStr = clicked[0].id;
@@ -437,9 +438,27 @@ $.extend({ alert: function (message, title) {
 											var selectedText = rangy.getSelection().toString();	
 											
 											if (selectedText.length > 0) {
+												//alert('the selected text is here');
 												$('#highlight' + index).prop('disabled', false);
 												$('#removehigh' + index).prop('disabled',false);//can be removed
 											}
+											
+											var nodes = rangy.getSelection().getRangeAt(0).getNodes(false, function (el) {
+												 if (el.tagName === 'A')
+
+													{//alert('the node is '+el.tagName);
+														$('#highlight'+ index)
+																.prop('disabled',true);
+													}
+											}
+											    
+											 
+											 );
+											
+											 if (selectedText.length <= 0) {
+													$('#removehigh' + index).prop('disabled',true);//can be removed
+													$('#highlight' + index).prop('disabled', true);//can be removed
+												} 
 											
 											/*
 											var formattingEls = range
@@ -481,16 +500,15 @@ $.extend({ alert: function (message, title) {
 											 
 											 );*/
 											 
-											 if (selectedText.length <= 0) {
-													$('#removehigh' + index).prop('disabled',true);//can be removed
-													$('#highlight' + index).prop('disabled', true);//can be removed
-												}
+											
 											 
 										}));
 					 	
+					
+					 	
 						$('[id^=cteditor]')
 						.on(
-								'keypress', //'keyup',
+								'keyup keypress', //'keyup',//keypress
 								(function(e) {
 									var clicked = $(this);
 									var idStr = clicked[0].id;
@@ -506,6 +524,22 @@ $.extend({ alert: function (message, title) {
 											$('#removehigh' + index).prop('disabled',true);//can be removed
 											$('#highlight' + index).prop('disabled', true);//can be removed
 										}
+									 
+										var nodes = rangy.getSelection().getRangeAt(0).getNodes(false, function (el) {
+											
+											 if (el.tagName === 'A')
+
+												{
+												 //alert(el.tagName);
+													//alert('the node is '+el.tagName);
+													$('#highlight'+ index)
+															.prop('disabled',true);
+
+												}
+										}
+										 );
+									 
+									 
 									/*  setTimeout(function(){ 
 									    //var text = $('#cteditor' + index).html();
 									 //   console.log('the id on keypress is '+idStr);
@@ -526,7 +560,43 @@ $.extend({ alert: function (message, title) {
 									 },100); */
 									 
 								}));
-						
+						function convertHtmlToText( input) {
+						    var inputText =input;// document.getElementById("input").value;
+						    var returnText = "" + inputText;
+
+						    //-- remove BR tags and replace them with line break
+						    returnText=returnText.replace(/<br>/gi, "\n");
+						    returnText=returnText.replace(/<br\s\/>/gi, "\n");
+						    returnText=returnText.replace(/<br\/>/gi, "\n");
+
+						    //-- remove P and A tags but preserve what's inside of them
+						    returnText=returnText.replace(/<p.*>/gi, "\n");
+						    returnText=returnText.replace(/<a.*href="(.*?)".*>(.*?)<\/a>/gi, " $2");
+
+						    //-- remove all inside SCRIPT and STYLE tags
+						    returnText=returnText.replace(/<script.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/script>/gi, "");
+						    returnText=returnText.replace(/<style.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/style>/gi, "");
+						    //-- remove all else
+						    returnText=returnText.replace(/<(?:.|\s)*?>/g, "");
+
+						    //-- get rid of more than 2 multiple line breaks:
+						    returnText=returnText.replace(/(?:(?:\r\n|\r|\n)\s*){2,}/gim, "\n\n");
+
+						    //-- get rid of more than 2 spaces:
+						    returnText = returnText.replace(/ +(?= )/g,'');
+
+						    //-- get rid of html-encoded characters:
+						    returnText=returnText.replace(/&nbsp;/gi," ");
+						    returnText=returnText.replace(/&amp;/gi,"&");
+						    returnText=returnText.replace(/&quot;/gi,'"');
+						    returnText=returnText.replace(/&lt;/gi,'<');
+						    returnText=returnText.replace(/&gt;/gi,'>');
+						    return returnText;
+
+						    //-- return
+						    //document.getElementById("output").value = returnText;
+						}
+
 						
 						
 						$('[id^=cteditor]')
@@ -541,7 +611,7 @@ $.extend({ alert: function (message, title) {
 									var index = idStr.substring(indexOfCount, idStr.length);
 									
 									 //console.log('now the index is '+index);
-									 var currentEditor = $('#cteditor' + index);
+									var currentEditor = $('#cteditor' + index);
 									  setTimeout(function(){ 
 									
 										//var currentEditor = $(this);
@@ -549,32 +619,51 @@ $.extend({ alert: function (message, title) {
 										
 										//var html = $('#cteditor' + index).html();
 										
-										var value=currentEditor.html();
+										//var value=currentEditor.html();
 										//console.log('the value on paste before is '+value);
-										 value= value.replace(/<\/?([a-z]+)[^>]*>/gi, function(match, tag) {
-											// console.log('the value on paste is'+value);
+										/*  value= value.replace(/<\/?([a-z]+)[^>]*>[^\s\S]+?/gi, function(match, tag) {
+											
                                              return (tag.toLowerCase() === "a") ? match : "";
-                                         }); 
+                                         });  */
 										 //console.log('the value on paste after is '+value);
 										// $(this).innerText=value;
 										// $(this)[0].innerHTML=$(this)[0].innerHTML.replace(value);
 										 //$(this)[0].outerHTML=value;
 										// $(this)[0].text=value;
+										//var value=currentEditor.html();
+										//console.log("the text value is "+value);
+										//var found = value.match(/(<([^/S/n/r]+[^>]+)>)/ig);
+										//console.log(found);
+									/* 	$.each(found, function(i, v) {
+										    console.log(i+" = "+v);
+										}); */
+									
+										/* value= value.replace(/<\/?([a-z]+[^\S\r\n])[^>]*>/ig, function(match, tag) {
+											 console.log("tag is "+tag);
+											if(tag.toLowerCase() === "<div><br> ")
+												{
+												 console.log("its a newline gotcha!");
+												}
+                                             return (tag.toLowerCase() === "/n") ? match : "";
+                                         });
+										console.log("value is "+value); */
+										
+										//returnValue=convertHtmlToText(value);
+										//console.log('the new reutnr value is '+returnValue);
+										//var el = document.getElementById('cteditor' + index);
+										 //el.innerHTML = el.innerHTML.replace(/(<([^>]+)>)/ig,"");
+										//el.innerHTML= el.innerHTML.replace(/<\/?([a-z]+[^\S\r\n])[^>]*>/ig,"");
+										//el.innerHTML = el.innerHTML.replace(/(<([^>]+)>)/ig,"");
+										//el.innerHTML =el.innerHTML.replace(/(<([^>]+)>)/ig,returnValue);
+										 //el.innerHTML= el.innerHTML.replace(/<\/?([a-z]+[^\S\r\n])[^>]*>/ig,"");
+										//el.innerHTML = el.innerHTML.replace(/(<([^>]+)>)/ig,"");								
+										//el.innerHTML= el.innerHTML.replace(/<\/?([a-z]+[^\S\r\n])[^>]*>/ig,"").replace((/<script.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/script>/gi, ""),"").replace(/<style.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/style>/gi, "").replace(/<(?:.|\s)*?>/g, "");
+                                       									
 										var el = document.getElementById('cteditor' + index);
-										//console.log(el);
-										el.innerHTML = el.innerHTML.replace(/(<([^>]+)>)/ig,"");
-										//$(this)[0].innerHTML = $(this)[0].innerHTML.replace(/(<([^>]+)>)/ig,"");
-										 //currentEditor.innerHTML= currentEditor.innerHTML.replace(/(<([^>]+)>)/ig,"");
-										// currentEditor.outerHTML=value;
-										 //currentEditor.text=value;
-										 //console.log(currentEditor.innerHTML);
-										// console.log(currentEditor.outerHTML);
-										 //console.log(currentEditor.text);
-										 
-									 
+										el.innerHTML = el.innerHTML.replace(/(<([^>]+)>)/ig,"");		
 									  },100); }));
 					  
-											$('[id^=cteditor]')
+										$('[id^=cteditor]')
 													.on('mouseout',
 															(function(e) {
 																var selectedText = rangy
@@ -595,7 +684,7 @@ $.extend({ alert: function (message, title) {
 
 																}
 
-															})); 
+															}));  
 											
 											$('[id^=cteditor]')
 											.on('keydown',
@@ -643,8 +732,7 @@ $.extend({ alert: function (message, title) {
 												                var linkMap1=false;																
 																var linksArray1 = new Array();
 													
-													$('[id^=cteditor]').each(function(){
-														
+													    $('[id^=cteditor]').each(function(){
 														var currentEditor = $(this);
 														var ideditor = currentEditor[0].id;								    	
 														 $('#'+ideditor +'.ctclasseditor > a.highLightLink').each(function(){
@@ -962,18 +1050,18 @@ $.extend({ alert: function (message, title) {
 									}
 									}
 								
-					
+							       
 							
 						    $( "#submit-confirm" ).dialog({
 						    	closeOnEscapeType:false,
-						        show: {
+						       /*  show: {
 						            effect: "blind",
 						            duration: 1000
 						          },
 						          hide: {
 						            effect: "explode",
 						            duration: 1000
-						          },
+						          }, */
 						    	dialogClass:"no-close",
 						        resizable: false,
 						        width:500,
@@ -1025,6 +1113,11 @@ $.extend({ alert: function (message, title) {
 						      }).siblings('.ui-dialog-titlebar').remove();
 
 						});
+						
+						
+						 $('#artifactTask').click(function(){
+					        	window.location = '/ereg-web/pss/artifact/';
+					        });
 						
 						$('#uploadVideo').click(function(){
 							//console.log('upload video clicked');
@@ -2047,15 +2140,17 @@ margin-bottom:25px;
   
 	   <%--  video: ${entry.key} - value = ${entry.value} --%>
 	<div id="expandocollpase" align="right"> 
-	            <a id ='expandAccordions' href="#" class="expand_all">[Expand All]</a>&nbsp;&nbsp;|&nbsp;<a id ='collapseAccordions'  href="#" class="collapse_all" >[Collapse All]</a>
+	           <a id ='artifactTask' href="#" class="expand_all">[Upload/Manage My Artifacts]</a>&nbsp;&nbsp;|&nbsp; <a id ='expandAccordions' href="#" class="expand_all">[Expand All]</a>&nbsp;&nbsp;|&nbsp;<a id ='collapseAccordions'  href="#" class="collapse_all" >[Collapse All]</a>
     </div> 
 	<div id="documentsDiv" style="display: none"></div>
 	<div id="linkdialog" title="Teachers Assesment Artifacts"
 		style="display: none"></div>
 	<div id="submit-confirm" title="Submit" style="display:none;background-color:#FCE7E4;">
-  		<p style="font-size:9pt;font-weight:bold;color:red"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Are you Sure you want to submit your task including all essay responses and artifacts associated with this task?</p>
-  		<p style="font-size:11pt;font-weight:bold;">Once you submit your task, you will not be able to make any modifications to the essay responses or the artifacts associated with task</p>
-  		<p><input type="checkbox" id="confirmSubmit" value="true"/><label for="confirmSubmit" id="submitConfirmLabel" style="font-size:8pt;">By Checking this box, I understand that I am submitting my responses and artifacts associated with this task. I certify that the submissions represents the work that I completed. I understand that the responses andartifacts that I submit will be evaluated by educators, raters or other appropriate individuals and I understand that I will not be able to make any modifications once I click Submit.</label></p>
+  		<p style="font-size:9pt;font-weight:bold;color:red"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Are you sure you want to submit your task including all responses and artifacts associated with this Task?</p>
+  		<p style="font-size:11pt;font-weight:bold;">Once you submit your task, you will not be able to make any modifications to your responses or the artifacts associated with the Task.</</p>
+  		<p><input type="checkbox" id="confirmSubmit" value="true"/><label for="confirmSubmit" id="submitConfirmLabel" style="font-size:8pt;white-space: wrap;width:450;">By checking this box, I understand that I am submitting my own responses and artifacts associated with this task. I certify that the submission represents the work that I completed and that I have acquired and possess all signed Student and Adult Release forms required by the assessment. I understand that the responses and artifacts that I submit will be evaluated by educators, raters, or other appropriate individuals, and I understand that I will not be able to make any modifications once I click Submit. 
+         I further give permission for my submission to be used by Missouri Department of Elementary and Secondary Education (DESE) for  the development of exemplars, improvement of the assessment, establishing effective state policy or other appropriate and necessary official state business.  No candidate work will be used for commercial or retail purposes.
+  		</label></p>
 	</div>
 	<input type="hidden" id="taskId" value="${task.taskId}" />	
 	<%-- <c:out value="taskid is: ${task.taskId}" /> --%>

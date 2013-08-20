@@ -1,6 +1,10 @@
 package org.ets.pss.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -45,7 +49,7 @@ public class ArtifactController {
 	
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(@LoggedInUser ERegUser loggedInUser, Model model) {    	
-    	Set<Doc> cusotmerArtifacts = artifactServiceImpl.getCustomerArtifacts(loggedInUser.getId());  	
+    	List<Doc> cusotmerArtifacts = artifactServiceImpl.getCustomerArtifacts(loggedInUser.getId());  	
     	model.addAttribute("artifacts",cusotmerArtifacts);
     	return "artifacts2";
     }
@@ -59,15 +63,40 @@ public class ArtifactController {
     	
     	response.setArtifacts(new ArrayList<Artifact>());
     	
-    	Set<Doc> cusotmerArtifacts = artifactServiceImpl.getCustomerArtifacts(loggedInUser.getId());
+    	List<Doc> cusotmerArtifacts = artifactServiceImpl.getCustomerArtifacts(loggedInUser.getId());
     	for(Doc doc:cusotmerArtifacts)
     	{
     		Artifact a = new Artifact();
     		a.setId(doc.getDocId());
-    		a.setFilename(doc.getRspSrcLctnNam());  
+    		a.setFilename(doc.getRspSrcLctnNam()); 
     		a.setDateCreated(doc.getDateCreated());
-    		logger.info("adding "+doc.getRspSrcLctnNam());
-    		
+    		//a.setDateCreated(doc.getDateCreated());
+    		/*logger.info("adding "+doc.getRspSrcLctnNam()+doc.getDateCreated());
+    		if(doc.getDateCreated()!=null)
+            {
+    		Calendar cal = Calendar.getInstance();
+            cal.setTime(doc.getDateCreated());
+            String formatedDate = (cal.get(Calendar.MONTH)+ 1)+ "/" + cal.get(Calendar.DATE)  + "/" + cal.get(Calendar.YEAR);
+            logger.info("adding formatted date "+formatedDate);
+    		Date date=new Date(formatedDate);    		
+    		SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+    		Date dbDate=null;
+			try {
+				if(formatedDate!=null)
+				{
+				dbDate = format.parse(formatedDate);
+				}
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		a.setDateCreated(dbDate);
+    		logger.info("formatted date "+a.getDateCreated());
+            }
+    		else
+    		{
+    			a.setDateCreated(null);
+    		}*/
     		response.getArtifacts().add(a);
     	}
     	//model.addAttribute("artifacts",cusotmerArtifacts);
@@ -78,7 +107,7 @@ public class ArtifactController {
     
     @RequestMapping(value = "/getList", method = RequestMethod.GET)
     public @ResponseBody List<Artifact> getList(@LoggedInUser ERegUser loggedInUser, Model model) {    	  	
-    	Set<Doc> cusotmerArtifacts = artifactServiceImpl.getCustomerArtifacts(loggedInUser.getId());  
+    	List<Doc> cusotmerArtifacts = artifactServiceImpl.getCustomerArtifacts(loggedInUser.getId());  
     	
     	List<Artifact> artifactList = new ArrayList<Artifact>();
     	

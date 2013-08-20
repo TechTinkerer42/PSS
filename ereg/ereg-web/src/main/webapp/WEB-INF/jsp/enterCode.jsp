@@ -64,11 +64,13 @@
 				
 				<div class="five">
 					<form:form method="post" commandName="newtasks" action="/ereg-web/pss/task/addNewTasks">
+					
 					<div class="content">	
 						<span class="homePageh2">Enter Assessments Code</span>
 					</div> 
 					<div>
 						<form:input path="milStsCde" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<form:errors class="errorMessage" path="milStsCde"/>
 						<input type="submit" value="Add Tasks" />
 					</div>  
 					</form:form>  

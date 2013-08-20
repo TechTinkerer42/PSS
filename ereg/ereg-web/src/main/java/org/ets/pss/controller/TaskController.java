@@ -95,7 +95,6 @@ public class TaskController {
         
     }
     
-    
 	
     @RequestMapping(value = "/gotoAdmin", method = RequestMethod.GET)
     public String getReadOnlyTasks(String taskId,String userId, @LoggedInUser ERegUser loggedInUser, Model model) {
@@ -202,7 +201,7 @@ public class TaskController {
     public @ResponseBody String save(@RequestParam MultipartFile file, @LoggedInUser ERegUser loggedInUser, Model model) {
     	System.out.println("Upload / Save ");    	
     	EtsCust etsCust = taskServiceImpl.getCustomer(loggedInUser.getId());
-         Set<Doc> tempCusotmerArtifacts = taskServiceImpl.getCustomerArtifacts(etsCust.getCustomerId());
+         List<Doc> tempCusotmerArtifacts = taskServiceImpl.getCustomerArtifacts(etsCust.getCustomerId());
     	
     	if(tempCusotmerArtifacts != null && tempCusotmerArtifacts.size() > 0)
     	{
@@ -233,7 +232,6 @@ public class TaskController {
     	
     	String fileName = file.getOriginalFilename();    	
     	String fileExt = getFileExt(fileName);
-    	System.out.println("Context Type:"+file.getContentType());
     	String mime = null;
     	if(fileExt != null)
     	{
@@ -277,7 +275,7 @@ public class TaskController {
     	
     	taskServiceImpl.saveDoc(doc);
     	
-    	Set<Doc> cusotmerArtifacts = taskServiceImpl.getCustomerArtifacts(etsCust.getCustomerId());
+    	List<Doc> cusotmerArtifacts = taskServiceImpl.getCustomerArtifacts(etsCust.getCustomerId());
     	
     	if(cusotmerArtifacts != null && cusotmerArtifacts.size() > 0)
     	{

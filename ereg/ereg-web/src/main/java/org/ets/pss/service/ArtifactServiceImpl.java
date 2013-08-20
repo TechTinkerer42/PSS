@@ -3,6 +3,7 @@
  */
 package org.ets.pss.service;
 
+import java.util.List;
 import java.util.Set;
 
 import org.ets.pss.persistence.dao.DocDao;
@@ -36,7 +37,7 @@ public class ArtifactServiceImpl implements ArtifactService {
 	 * @see org.ets.pss.service.ArtifactService#getCustomerArtifacts(long customerId)
 	 */
 	@SuppressWarnings("unchecked")
-	public Set<Doc> getCustomerArtifacts(long customerId) {		
+	public List<Doc> getCustomerArtifacts(long customerId) {		
 		return  artifactDaoImpl.getCustomerArtifacts(customerId);
 	}
 
@@ -45,7 +46,7 @@ public class ArtifactServiceImpl implements ArtifactService {
 		Doc doc = artifactDaoImpl.get(Doc.class,docId);
 		if(doc != null && doc.getCustCrAsgndTskDocs() != null && doc.getCustCrAsgndTskDocs().size()>0)
 		{
-			return "document is linked in essay. You cannot remove this document.";
+			return "Artifact is linked in an Essay. You cannot remove this Artifact.";
 		}
 		else
 		{

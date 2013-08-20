@@ -525,7 +525,7 @@ public class TaskServiceImpl implements TaskService {
 	}
 
 	@SuppressWarnings("unchecked")
-	public Set<Doc> getCustomerArtifacts(long customerId) {		
+	public List<Doc> getCustomerArtifacts(long customerId) {		
 		return  artifactDaoImpl.getCustomerArtifacts(customerId);
 	}
 
@@ -692,10 +692,10 @@ public class TaskServiceImpl implements TaskService {
 	    					{		    					
 	    						if( null == crBlb.getCrBlb()) {
 	    							logger.error("No response " + prmpt.getPromptId() ) ; 
-	    							customerPromptResponses.put(prmpt.getPromptId(), "No Response" );
+	    							customerPromptResponses.put(prmpt.getPromptId(), "" );
 	    							continue;
 	    						}
-//		    						prompt.setEssayContent(new String(crBlb.getCrBlb(),"UTF-8"));
+		    				    //prompt.setEssayContent(new String(crBlb.getCrBlb(),"UTF-8"));
 	    						customerPromptResponses.put(prmpt.getPromptId(), new String(crBlb.getCrBlb(),"UTF-8"));
 	    						
 	    					}

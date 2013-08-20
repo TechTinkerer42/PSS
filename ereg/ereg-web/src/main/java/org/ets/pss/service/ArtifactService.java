@@ -19,7 +19,7 @@ import org.ets.pss.persistence.model.UserTask;
  *
  */
 public interface ArtifactService {
-	Set<Doc> getCustomerArtifacts(long customerId);
+	List<Doc> getCustomerArtifacts(long customerId);
 	String removeArtifact(long docId);
 	Doc getDoc(long docId);
 

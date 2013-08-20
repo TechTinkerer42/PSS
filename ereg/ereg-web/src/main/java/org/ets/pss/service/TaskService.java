@@ -32,7 +32,7 @@ public interface TaskService {
 	boolean getVideoEntries(ContentManagementDTO dto,long customerId,long tskId, long promptId);
 	String saveDraft(TaskDraft taskDraft,long custId);
 	String submitTask(long taskId,long custId);
-	Set<Doc> getCustomerArtifacts(long customerId);
+	List<Doc> getCustomerArtifacts(long customerId);
 	EtsCust getCustomer(long customerId);
 	List<UserTask> getUserTasks(long customerId);
 	MdaMimeTyp lookupMime(String mime);

@@ -3,6 +3,7 @@
  */
 package org.ets.pss.persistence.dao;
 
+import java.util.List;
 import java.util.Set;
 
 import org.ets.pss.persistence.dto.Artifact;
@@ -19,6 +20,6 @@ public interface DocDao extends GenericDao<Doc> {
 	Artifact getArtifact(long artifactId);
 	void saveArtifact(Doc a);*/
 	Set<Doc> findAll();
-	Set<Doc> getCustomerArtifacts(long customerId);
+	List<Doc> getCustomerArtifacts(long customerId);
 	//Set<Artifact> getUserArtifactsForTask(long userId,long taskId);
 }

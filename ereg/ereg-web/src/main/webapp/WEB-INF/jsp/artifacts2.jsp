@@ -27,6 +27,7 @@
 <script type="text/javascript" 	src="<c:url value='/resources/jquery-ui-1.10.3/ui/jquery-ui.js'/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/fineuploader/jquery.fineuploader-3.5.0.js"/>"></script>
 <link href="<c:url value="/resources/fineuploader/fineuploader-3.5.0.css"/>" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<c:url value="/resources/dateformat/jquery.dateFormat-1.0.js"/>"></script>
 
 <script>
 	$(document)
@@ -91,7 +92,7 @@
 																							+ '</td>'
 																							+ '<td><a href="" id="removeDoc'+obj.id+'">remove</a></td>'
 																							+ '<td>'
-																							+ ((obj.dateCreated != null) ? obj.dateCreated
+																							+ ((obj.dateCreated != null) ? $.format.date(obj.dateCreated, "MM/dd/yyyy")
 																									: '')
 																							+ '</td>'
 																							+ '</tr>';

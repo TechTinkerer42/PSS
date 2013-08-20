@@ -3,6 +3,10 @@
  */
 package org.ets.pss.persistence.impl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,11 +18,11 @@ import javax.persistence.Query;
 import org.ets.pss.persistence.dao.DocDao;
 import org.ets.pss.persistence.dto.Artifact;
 import org.ets.pss.persistence.model.Doc;
-import org.ets.pss.persistence.model.Doc;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.apache.commons.io.comparator.NameFileComparator;
 
 /**
  * @author SSINGH007
@@ -87,13 +91,52 @@ public class DocDaoImpl extends GenericDaoImpl<Doc> implements DocDao {
 
 	}*/
 	
-	public Set<Doc> getCustomerArtifacts(long customerId)
+	public List<Doc> getCustomerArtifacts(long customerId)
 	{
 		Query q = em.createQuery("SELECT x FROM Doc x where x.etsCust.customerId=?1");
 		q.setParameter(1,customerId);
 		@SuppressWarnings("unchecked")
 		List<Doc> userTaskArtifacts = (List<Doc>) q.getResultList();
-		return new HashSet<Doc>(userTaskArtifacts);
+		
+		 //Collections.sort(userTaskArtifacts, NameFileComparator.NAME_INSENSITIVE_COMPARATOR);
+		
+		System.out.println("**** before sorting  ascending ***");
+		 for(Doc doc: userTaskArtifacts){
+			 System.out.println("before sort doc is "+doc.getRspSrcLctnNam());
+	        }
+		
+        //Sorting using Anonymous inner class type
+        Collections.sort(userTaskArtifacts, new Comparator<Doc>() {
+          
+
+			@Override
+			public int compare(Doc e1, Doc e2) {
+				//parameter are of type Object, so we have to downcast it to Doc objects
+				
+				String id1 = ((Doc) e1).getRspSrcLctnNam();
+                String id2 = ((Doc) e2).getRspSrcLctnNam();
+ 
+                // ascending order
+             return id1.toLowerCase().compareTo(id2.toLowerCase());
+               
+            // descending order
+               //return id2.toLowerCase().compareTo(id1.toLowerCase());
+                
+              
+            }
+			
+			
+			
+			
+			
+        });
+        System.out.println("**** After sorting id accending ***");
+        for(Doc doc: userTaskArtifacts){
+            System.out.println(" after sort doc is "+doc.getRspSrcLctnNam());
+        }
+		
+		
+		return new ArrayList<Doc>(userTaskArtifacts);
 	}	
 	
 	public Set<Artifact> getUserArtifactsForTask(long userId,long taskId)
