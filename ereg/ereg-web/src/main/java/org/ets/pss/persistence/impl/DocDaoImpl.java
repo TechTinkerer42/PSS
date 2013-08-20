@@ -100,10 +100,10 @@ public class DocDaoImpl extends GenericDaoImpl<Doc> implements DocDao {
 		
 		 //Collections.sort(userTaskArtifacts, NameFileComparator.NAME_INSENSITIVE_COMPARATOR);
 		
-		System.out.println("**** before sorting  ascending ***");
+		/*System.out.println("**** before sorting  ascending ***");
 		 for(Doc doc: userTaskArtifacts){
 			 System.out.println("before sort doc is "+doc.getRspSrcLctnNam());
-	        }
+	        }*/
 		
         //Sorting using Anonymous inner class type
         Collections.sort(userTaskArtifacts, new Comparator<Doc>() {
@@ -130,10 +130,10 @@ public class DocDaoImpl extends GenericDaoImpl<Doc> implements DocDao {
 			
 			
         });
-        System.out.println("**** After sorting id accending ***");
+       /* System.out.println("**** After sorting id accending ***");
         for(Doc doc: userTaskArtifacts){
             System.out.println(" after sort doc is "+doc.getRspSrcLctnNam());
-        }
+        }*/
 		
 		
 		return new ArrayList<Doc>(userTaskArtifacts);
