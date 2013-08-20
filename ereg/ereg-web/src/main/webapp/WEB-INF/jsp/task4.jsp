@@ -708,14 +708,14 @@ $.extend({ alert: function (message, title) {
 													})); 
                        
 											
-						//creare save essay button functionality						
-					$('input[id^="save_essay"]').click(function() {
+						//creare save response button functionality						
+					$('input[id^="save_response"]').click(function() {
 																var promptDocMap1 = new Object();
 																var removePromptDocMap1=new Object();
 																var essayContentMap1 = new Object();
 																var clicked = $(this);
 																var idStr = clicked[0].id;
-																var indexOfCount = "save_essay".length;
+																var indexOfCount = "save_response".length;
 																var index = idStr.substring(
 																		indexOfCount, idStr.length);
 
@@ -804,7 +804,7 @@ $.extend({ alert: function (message, title) {
 																				
 																			}), 
 																			success : function(data) {
-																				alert("Prompt Saved Successfully");
+																				$.alert("Response Saved Successfully", "Task Response Save Status");
 
 																			},
 																error: function(XMLHttpRequest, textStatus, errorThrown) { 
@@ -852,27 +852,33 @@ $.extend({ alert: function (message, title) {
 								wordCountTotal+=charCount;
 								
 							});
-						
+						  var messagePart1 = "The total character count for all responses to this task thus far is ";
+						  var messagePart2 = ". The maximum character count permitted for this Task is ";
+						  var messageTitle = "Character Count Status";
 						 //var charCount = value.trim().length;
 						         if(taskID==1)
 							{
 						      
-						    $.alert('Your Character Count for all Response\'s is '+wordCountTotal +'. The maximum Character count allowed for all Response\'s for this Task is '+18000+'.','CharacterCount');
+						   // $.alert('Your Character Count for all Response\'s is '+wordCountTotal +'. The maximum Character count allowed for all Response\'s for this Task is '+18000+'.','CharacterCount');
+						     $.alert(messagePart1 + wordCountTotal + messagePart2 + 18000 + '.', messageTitle);
 							}
 						   if(taskID==2)
 							{
 								      
-								$.alert('Your Character Count for all Response\'s is '+wordCountTotal +'. The maximum Character count allowed for all Response\'s for this Task is '+23000+'.','CharacterCount');
+								//$.alert('Your Character Count for all Response\'s is '+wordCountTotal +'. The maximum Character count allowed for all Response\'s for this Task is '+23000+'.','CharacterCount');
+							   $.alert(messagePart1 + wordCountTotal + messagePart2 + 23000 + '.', messageTitle);
 							}
 						     if(taskID==3)
 							{
 								      
-								$.alert('Your Character Count for all Response\'s is '+wordCountTotal +'. The maximum Character count allowed for all Response\'s for this Task is '+18000+'.','CharacterCount');
+								//$.alert('Your Character Count for all Response\'s is '+wordCountTotal +'. The maximum Character count allowed for all Response\'s for this Task is '+18000+'.','CharacterCount');
+						    	 $.alert(messagePart1 + wordCountTotal + messagePart2 + 18000 + '.', messageTitle);
 						      }
 						    if(taskID==4)
 						    {
 								      
-							$.alert('Your Character Count for all Response\'s is '+wordCountTotal +'. The maximum Character Count allowed for all Response\'s for this Task is '+20000+'.','CharacterCount');
+							//$.alert('Your Character Count for all Response\'s is '+wordCountTotal +'. The maximum Character Count allowed for all Response\'s for this Task is '+20000+'.','CharacterCount');
+						    	 $.alert(messagePart1 + wordCountTotal + messagePart2 + 20000 + '.', messageTitle);
 						    }
 						         
 					});
@@ -977,7 +983,7 @@ $.extend({ alert: function (message, title) {
 								//dataType: 'json',
 								success : function(data) {
 									//console.log(data);
-									alert("Task Draft is Saved Successfully");
+									$.alert("Task Draft is Saved Successfully", "Task Draft Save Status");
 									//$('#submitTask').prop('disabled', false);
 								},
 								error: function(XMLHttpRequest, textStatus, errorThrown) { 
@@ -1004,9 +1010,13 @@ $.extend({ alert: function (message, title) {
 								
 								
 							});
+ 						  var messagePart1 = "The total character count for all responses to this task thus far is ";
+						  var messagePart2 = ". The maximum character count permitted for this Task is ";
+						  var messageTitle = "Character Count Status";
+
                                   if(wordCountTotal<=0)
                         	   {
-                                	  $.alert('You cannot submit a Empty Task','Error!');
+                                	  $.alert("You have not provided written commentary for the guiding prompts for this Task. Tasks with no response cannot be submitted.","Submission Error");
                                 	  return;
                         	   }
                            
@@ -1016,7 +1026,8 @@ $.extend({ alert: function (message, title) {
 							       if(wordCountTotal>18000)
 								{
 									
-								$.alert('Your Character Count is '+wordCountTotal +' for all Responses.The maximum character count allowed for All Responses for this Task is '+18000 +'.Please get a Character Count at each Prompt and correct your Response accordingly before Submitting Task.','Warning!'); 
+							     $.alert(messagePart1 + wordCountTotal + messagePart2 + 18000 + '.', messageTitle);
+
 									return;
 								}
 								}
@@ -1025,7 +1036,7 @@ $.extend({ alert: function (message, title) {
 								       if(wordCountTotal>23000)
 									{
 									
-									    $.alert('Your Character Count is '+wordCountTotal +' for all Responses.The maximum character count allowed for All Responses for this Task is '+23000 +'.Please get a Character Count at each Prompt and correct your Response accordingly before Submitting Task.','Warning!'); 
+									    $.alert(messagePart1 + wordCountTotal + messagePart2 + 23000 + '.', messageTitle);
 										return;
 									  }
 								    }
@@ -1035,7 +1046,7 @@ $.extend({ alert: function (message, title) {
 								       if(wordCountTotal>18000)
 									{
 										
-									$.alert('Your Word Count is '+wordCountTotal +' for all Responses.The maximum character count allowed for All Responses for this Task is '+18000 +'.Please get a word count at each Prompt and correct your Response accordingly before Submitting Task.','Warning!'); 
+								    $.alert(messagePart1 + wordCountTotal + messagePart2 + 18000 + '.', messageTitle);
 										return;
 									}
 								      }
@@ -1045,7 +1056,7 @@ $.extend({ alert: function (message, title) {
 								       if(wordCountTotal>20000)
 									{
 										
-									   $.alert('Your Word Count is '+wordCountTotal +' for all Responses.The maximum character count allowed for All Responses for this Task is '+20000 +'.Please get a word count at each Prompt and correct your Response accordingly before Submitting Task.','Warning!'); 
+										$.alert(messagePart1 + wordCountTotal + messagePart2 + 20000 + '.', messageTitle);								         
 										return;
 									}
 									}
@@ -2079,9 +2090,8 @@ margin-bottom:25px;
 		<div class="row">
 			<div class="span9">
 				<%-- <h1><center><spring:message code="home.welcome.heading" arguments="${globalContextCustomer.currentProgramShortDescription}"/></center></h1> --%>
-				<h1><left>Pre-Service Teacher Assessments</left></h1>
-				<h3>${task.title}</h3>
-				
+				<h1><center><spring:message code="tasks.currentTask.title" /></center></h1> <br><br>
+< 				<div id="message"><spring:message code="tasks.currentTask.description" /> </div>				
 				<p style="color:red; margin:10px 0 0 0;">${STATUS_MESSAGE}</p>
 			</div>
 		</div>
@@ -2147,11 +2157,9 @@ margin-bottom:25px;
 	<div id="linkdialog" title="Teachers Assesment Artifacts"
 		style="display: none"></div>
 	<div id="submit-confirm" title="Submit" style="display:none;background-color:#FCE7E4;">
-  		<p style="font-size:9pt;font-weight:bold;color:red"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Are you sure you want to submit your task including all responses and artifacts associated with this Task?</p>
-  		<p style="font-size:11pt;font-weight:bold;">Once you submit your task, you will not be able to make any modifications to your responses or the artifacts associated with the Task.</</p>
-  		<p><input type="checkbox" id="confirmSubmit" value="true"/><label for="confirmSubmit" id="submitConfirmLabel" style="font-size:8pt;white-space: wrap;width:450;">By checking this box, I understand that I am submitting my own responses and artifacts associated with this task. I certify that the submission represents the work that I completed and that I have acquired and possess all signed Student and Adult Release forms required by the assessment. I understand that the responses and artifacts that I submit will be evaluated by educators, raters, or other appropriate individuals, and I understand that I will not be able to make any modifications once I click Submit. 
-         I further give permission for my submission to be used by Missouri Department of Elementary and Secondary Education (DESE) for  the development of exemplars, improvement of the assessment, establishing effective state policy or other appropriate and necessary official state business.  No candidate work will be used for commercial or retail purposes.
-  		</label></p>
+   		<p style="font-size:9pt;font-weight:bold;color:red"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Are you Sure you want to submit your task including all essay responses and artifacts associated with this task?</p>
+   		<p style="font-size:11pt;font-weight:bold;">Once you submit your task, you will not be able to make any modifications to the essay responses or the artifacts associated with task</p>
+   		<p><input type="checkbox" id="confirmSubmit" value="true"/><label for="confirmSubmit" id="submitConfirmLabel" style="font-size:8pt;">By Checking this box, I understand that I am submitting my responses and artifacts associated with this task. I certify that the submissions represents the work that I completed. I understand that the responses andartifacts that I submit will be evaluated by educators, raters or other appropriate individuals and I understand that I will not be able to make any modifications once I click Submit.</label></p>
 	</div>
 	<input type="hidden" id="taskId" value="${task.taskId}" />	
 	<%-- <c:out value="taskid is: ${task.taskId}" /> --%>
@@ -2231,7 +2239,7 @@ margin-bottom:25px;
 											<c:if test="${prompt.media!='video'}">  	
 												<div id="editor_buttons${prompt.promptId}">	
 												       	<input type="button"  class="promptbutton" style="margin-left: 2.2px;" value="Character Count"  id="wordCount${prompt.promptId}" />										
-													    <input type="button" class="promptbutton"  value="Save Essay" id="save_essay${prompt.promptId}" />  
+													    <input type="button" class="promptbutton"  value="Save Response" id="save_response${prompt.promptId}" />    
 														<input type="button" class="promptbutton" value="Link Text" disabled id="highlight${prompt.promptId}" /> 														
 														<input type="button"  class="promptbutton" value="Remove Link" disabled id="removehigh${prompt.promptId}" /> 														 
 												</div>
