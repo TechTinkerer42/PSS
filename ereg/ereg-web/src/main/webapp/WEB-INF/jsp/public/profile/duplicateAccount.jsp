@@ -59,7 +59,7 @@
 </div>
 <div class="span6"><span class="right"><button type="submit" name="submit" class="submit"><spring:message code="signIn"/></button></span></div>
 </div>
-<a href=""><spring:message code="forgotUsername"/></a> | <a href=""><spring:message code="forgotPassword"/></a><br>
+<a href="/ereg-web/public/profile/accountrecovery"><spring:message code="forgotUsername"/></a> | <a href="/ereg-web/public/profile/accountrecovery"><spring:message code="forgotPassword"/></a><br>
 <p></p>
 
 		

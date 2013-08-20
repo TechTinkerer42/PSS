@@ -95,13 +95,13 @@
 											googie1.decorateTextarea($(this));
 										}); */
 
-						//creare save essay button functionality						
-						$('input[id^="save_essay"]')
+						//creare save Response button functionality						
+						$('input[id^="save_response"]')
 								.click(
 										function() {
 											var clicked = $(this);
 											var idStr = clicked[0].id;
-											var indexOfCount = "save_essay".length;
+											var indexOfCount = "save_response".length;
 											var index = idStr.substring(
 													indexOfCount, idStr.length);
 
@@ -739,8 +739,8 @@ div.five
 					</div>
 
 					<div id="editor_buttons${status.count}">
-						<input type="button" value="Save Essay" disabled
-							id="save_essay${status.count}" /> <input type="button" 
+						<input type="button" value="Save Response" disabled
+							id="save_response${status.count}" /> <input type="button" 
 							value="Link Text" id="highlight${status.count}" /> <input
 							type="button"  value="Remove Link" disabled
 							id="removehigh${status.count}" />

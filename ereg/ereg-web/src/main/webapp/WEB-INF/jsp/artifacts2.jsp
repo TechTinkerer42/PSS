@@ -143,14 +143,14 @@
 
 <div id="uploadDialog" title="Upload Artifacts" style="display:none"> </div>
 	 <!-- the FIRST h1 on the page MUST get the id="desc-main" attribute -->
-<h1><spring:message code="view.artifacts.teacher.assessments"/></h1>
+<h1><spring:message code="tasks.artifacts.myArtifacts.title"/></h1>
 
 <h3><spring:message code="view.artifacts.libraryOfArtifacts"/></h3>
 
 <div id="message">
-<spring:message code="view.artifacts.description.text"/> <br><br>
+<spring:message code="tasks.artifacts.myArtifacts.text"/> <br><br>
 
-<spring:message code="view.artifacts.description.text1"/>
+<spring:message code="tasks.artifacts.myArtifacts.text1"/>
 
 </div>
 					

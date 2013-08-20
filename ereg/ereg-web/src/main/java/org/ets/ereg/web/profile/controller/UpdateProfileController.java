@@ -108,7 +108,7 @@ public class UpdateProfileController {
 
 		private void setGenericValidationError(ProfileForm profileForm){
 			profileForm.setStatusCode(ProfileForm.STATUS_KO);
-			profileForm.setStatusMessage("Error exist in form. Please check below.");
+			profileForm.setStatusMessage("<b>Important Message</b> An error was found in the information you entered.  Please check your responses below.  All required fields must be answered..\n");
 		}
 
 		@RequestMapping(method=RequestMethod.GET)

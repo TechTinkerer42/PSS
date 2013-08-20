@@ -62,8 +62,8 @@
 					<nav id="audience-nav" role="navigation" aria-labelledby="desc-audience-nav">
 						<p class="hide" id="desc-audience-nav">Audience links</p>
 						<ul>
-							<li><a href="/ereg-web/secure/home" title="Frequently Asked Questions" class="lsa-trans donottransform">FAQs</a></li>
-							<li><a href="/ereg-web/secure/home">Contact Us</a></li>
+							<li><a href="http://mega.ets.org/rsc/pdf/faq.pdf" title="Frequently Asked Questions" class="lsa-trans donottransform">FAQs</a></li>
+							<li><a href="http://mega.ets.org/contact/index.html">Contact Us</a></li>
 						</ul>
 						<div class="clearboth"></div>
 					</nav>
@@ -133,7 +133,6 @@
 						<li><a href='<c:url value='${changePassword}' />'><spring:message code="home.changepassword.link.display"/></a></li>
 						<li><a href='<c:url value='${changeSecurityQuestion}' />'><spring:message code="home.securityq.link.display"/></a></li>
 						<li><a href='<c:url value='/secure/profile/background/update' />'><spring:message code="home.backgroundinfo.display"/></a></li>
-						<li><a href="<c:url value='/secure/testtaker/accommodations/view' />"><spring:message code="home.accommodations"/></a></li>
 					</ul>
 				</div>
 			</div>
@@ -156,7 +155,7 @@
 			</div> --%>
 			<div class="rounded">
 			<h2 class="shaded like-h3">	My Assessments</h2>
-            <h3>Pre-Service Teacher Assessments: Exit Assessments</h3>
+            <h3><spring:message code="myassessments.tasks.preserviceTeacher"/></h3>
 
 
 		<!-- <div id="rightSide" style="margin-left: 25px">
@@ -230,9 +229,9 @@
 					<nav id="corp-links" role="navigation" aria-labelledby="corp-links-desc">
 						<p class="hide" id="corp-links-desc">State Links</p>
 						<ul>
-							<li><a href="http://dese.mo.gov/">Missouri Department of Elementry and Secondary Education</a></li>
-							<li><a href="">Missouri Performance Assessments Website</a></li>
-							<li><a href="">Legal/Privacy Policy</a></li>
+							<li><a href="http://dese.mo.gov/" target="_blank"><spring:message code="footer.moDeptSecondaryEdu"/></a></li>
+ 							<li><a href="http://mega.ets.org" target="_blank"><spring:message code="footer.moPerfAssmtSite"/></a></li>
+ 							<li><a href="http://www.ets.org/legal" target="_blank"><spring:message code="footer.legalPrivacyPolicy"/></a></li>
 						</ul>
 						<div class="clearboth"></div>
 					</nav><!-- /corp-links -->
