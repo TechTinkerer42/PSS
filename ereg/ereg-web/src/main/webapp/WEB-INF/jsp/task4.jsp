@@ -2079,7 +2079,8 @@ margin-bottom:25px;
 		<div class="row">
 			<div class="span9">
 				<%-- <h1><center><spring:message code="home.welcome.heading" arguments="${globalContextCustomer.currentProgramShortDescription}"/></center></h1> --%>
-				<h1><center>Pre-Service Teacher Assessments</center></h1>
+				<h1><left>Pre-Service Teacher Assessments</left></h1>
+				<h3>${task.title}</h3>
 				
 				<p style="color:red; margin:10px 0 0 0;">${STATUS_MESSAGE}</p>
 			</div>
@@ -2156,11 +2157,12 @@ margin-bottom:25px;
 	<%-- <c:out value="taskid is: ${task.taskId}" /> --%>
 	
 	<!--  new  -->
+	 
 			    <div id="accordion-1" class="center"  >
 			    <h3>${task.title}</h3>
 			    <div>
 			     <div class="rounded">				
-				<div class="taskstatus" style="padding: 10px 0 0 0;"><span>Status: New</span></div>
+				<!-- <div class="taskstatus" style="padding: 10px 0 0 0;"><span>Status: New</span></div> -->
 				<div class="taskinstr" style="padding: 20px 0px 0px 0px;"><span>${task.instructions}</span></div>
 		          </div>
                 </div>
