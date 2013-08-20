@@ -350,7 +350,7 @@ public class CreateProfileController {
 						return getAccountInfoStepView();
 					}
 					else{
-						if(profileBusinessService.isUsernameAvailable(profileForm.getProfile().getCustomer().getUsername())){
+						if(!profileBusinessService.isUsernameAvailable(profileForm.getProfile().getCustomer().getUsername())){
 							profileForm.setStatusCode(ProfileForm.STATUS_OK);
 							return getReviewInfoStepRedirect();
 						}
