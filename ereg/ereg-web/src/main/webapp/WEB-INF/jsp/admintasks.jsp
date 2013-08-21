@@ -96,8 +96,8 @@ text-overflow: ellipsis;
 					<nav id="audience-nav" role="navigation" aria-labelledby="desc-audience-nav">
 						<p class="hide" id="desc-audience-nav">Audience links</p>
 						<ul>
-							<li><a href="/ereg-web/secure/home" title="Frequently Asked Questions" class="lsa-trans donottransform">FAQs</a></li>
-							<li><a href="/ereg-web/secure/home">Contact Us</a></li>
+							<li><a href="http://mega.ets.org/rsc/pdf/faq.pdf" target="_blank" title="Frequently Asked Questions" class="lsa-trans donottransform">FAQs</a></li>
+							<li><a href="http://mega.ets.org/rsc/pdf/faq.pdf" target="_blank">Contact Us</a></li>
 						</ul>
 						<div class="clearboth"></div>
 					</nav>
