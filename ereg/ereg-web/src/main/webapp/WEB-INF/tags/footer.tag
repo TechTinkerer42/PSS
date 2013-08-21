@@ -14,9 +14,9 @@
 					<nav id="corp-links" role="navigation" aria-labelledby="corp-links-desc">
 						<p class="hide" id="corp-links-desc">State Links</p>
 						<ul>
-							<li><a href="http://dese.mo.gov/">Missouri Department of Elementry and Secondary Education</a></li>
-							<li><a href="">Missouri Performance Assessments Website</a></li>
-							<li><a href="">Legal/Privacy Policy</a></li>
+							<li><a href="http://dese.mo.gov/" target="_blank"><spring:message code="footer.moDeptSecondaryEdu"/></a></li>
+							<li><a href="http://mega.ets.org" target="_blank"><spring:message code="footer.moPerfAssmtSite"/></a></li>
+							<li><a href="http://www.ets.org/legal" target="_blank"><spring:message code="footer.legalPrivacyPolicy"/></a></li>
 						</ul>
 						<div class="clearboth"></div>
 					</nav><!-- /corp-links -->
