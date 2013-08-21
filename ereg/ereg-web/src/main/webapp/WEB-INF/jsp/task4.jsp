@@ -1173,8 +1173,8 @@ $.extend({ alert: function (message, title) {
 															
 															
 															validation: {
-														        allowedExtensions: ['wmv','mp4','mpg','jpeg', 'jpg','flv'],
-														        //sizeLimit: 5120000 // 50 kB = 50 * 1024 bytes
+														        allowedExtensions: ['wmv','mp4','mpg','mpeg', 'avi','flv','mov','divx' ],
+														        sizeLimit: 104857600 // 50 kB = 50 * 1024 bytes
 														       // sizeLimit: 2147483648 //2GB
 														      },
 														       showMessage: function(message) {
