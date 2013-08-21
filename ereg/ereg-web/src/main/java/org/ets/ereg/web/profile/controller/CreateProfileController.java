@@ -501,7 +501,7 @@ public class CreateProfileController {
 					}
 
 					// to check if the ldap username is duplicate at the last step again
-					if(!(profileBusinessService.isUsernameAvailable(profileForm.getProfile().getCustomer().getUsername()))){
+					if(profileBusinessService.isUsernameAvailable(profileForm.getProfile().getCustomer().getUsername())){
 						errors.rejectValue(ProfileForm.USERNAME, "profile.create.validation.usernameUsed");
 						setGenericValidationError(profileForm);
 						return getAccountInfoStepRedirect();
