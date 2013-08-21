@@ -1174,7 +1174,7 @@ $.extend({ alert: function (message, title) {
 															
 															validation: {
 														        allowedExtensions: ['wmv','mp4','mpg','mpeg', 'avi','flv','mov','divx' ],
-														        sizeLimit: 104857600 // 50 kB = 50 * 1024 bytes
+														        sizeLimit: 1073741824 // 50 kB = 50 * 1024 bytes
 														       // sizeLimit: 2147483648 //2GB
 														      },
 														       showMessage: function(message) {
@@ -2170,7 +2170,7 @@ margin-bottom:25px;
 	<!--  new  -->
 	 
 			    <div id="accordion-1" class="center"  >
-			    <h3>${task.title}</h3>
+			    <h3>${task.title2}</h3>
 			    <div>
 			     <div class="rounded">				
 				<!-- <div class="taskstatus" style="padding: 10px 0 0 0;"><span>Status: New</span></div> -->
@@ -2189,9 +2189,9 @@ margin-bottom:25px;
 										
 									    <c:if test="${prompt.media=='video'}">  
 									                
-										         <input type="hidden" id="videoKey" value="<c:out value="${prompt.media}"/>" />	
-										          <input type="hidden" id="promptVideoKey" value="<c:out value="${prompt.promptId}"/>" />
-										           <input type="hidden" id="taskVideoKey" value="<c:out value="${task.taskId}"/>" />												   
+										       <input type="hidden" id="videoKey" value="<c:out value="${prompt.media}"/>" />	
+										       <input type="hidden" id="promptVideoKey" value="<c:out value="${prompt.promptId}"/>" />
+										       <input type="hidden" id="taskVideoKey" value="<c:out value="${task.taskId}"/>" />												   
 											    <div id="video" class="videoouter">
 												<div class="videoinner"><h5>VIDEO UPLOAD</h5></div>				
 												<div class="video"><p><h5>Teaching Video.mp3</h5> <!-- <a href="">Video</a> --></p></div>
