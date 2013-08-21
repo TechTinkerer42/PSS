@@ -854,31 +854,32 @@ $.extend({ alert: function (message, title) {
 							});
 						  var messagePart1 = "The total character count for all responses to this task thus far is ";
 						  var messagePart2 = ". The maximum character count permitted for this Task is ";
+						  var messagePart3 = ". You will not be able to submit a task that exceeds the maximum character count.";
 						  var messageTitle = "Character Count Status";
 						 //var charCount = value.trim().length;
 						         if(taskID==1)
 							{
 						      
 						   // $.alert('Your Character Count for all Response\'s is '+wordCountTotal +'. The maximum Character count allowed for all Response\'s for this Task is '+18000+'.','CharacterCount');
-						     $.alert(messagePart1 + wordCountTotal + messagePart2 + 18000 + '.', messageTitle);
+						     $.alert(messagePart1 + wordCountTotal + messagePart2 + 18000 + messagePart3, messageTitle);
 							}
 						   if(taskID==2)
 							{
 								      
 								//$.alert('Your Character Count for all Response\'s is '+wordCountTotal +'. The maximum Character count allowed for all Response\'s for this Task is '+23000+'.','CharacterCount');
-							   $.alert(messagePart1 + wordCountTotal + messagePart2 + 23000 + '.', messageTitle);
+							   $.alert(messagePart1 + wordCountTotal + messagePart2 + 23000 + messagePart3, messageTitle);
 							}
 						     if(taskID==3)
 							{
 								      
 								//$.alert('Your Character Count for all Response\'s is '+wordCountTotal +'. The maximum Character count allowed for all Response\'s for this Task is '+18000+'.','CharacterCount');
-						    	 $.alert(messagePart1 + wordCountTotal + messagePart2 + 18000 + '.', messageTitle);
+						    	 $.alert(messagePart1 + wordCountTotal + messagePart2 + 18000 + messagePart3, messageTitle);
 						      }
 						    if(taskID==4)
 						    {
 								      
 							//$.alert('Your Character Count for all Response\'s is '+wordCountTotal +'. The maximum Character Count allowed for all Response\'s for this Task is '+20000+'.','CharacterCount');
-						    	 $.alert(messagePart1 + wordCountTotal + messagePart2 + 20000 + '.', messageTitle);
+						    	 $.alert(messagePart1 + wordCountTotal + messagePart2 + 20000 + messagePart3, messageTitle);
 						    }
 						         
 					});
@@ -1012,6 +1013,7 @@ $.extend({ alert: function (message, title) {
 							});
  						  var messagePart1 = "The total character count for all responses to this task thus far is ";
 						  var messagePart2 = ". The maximum character count permitted for this Task is ";
+						  var messagePart3 = ". You will not be able to submit a task that exceeds the maximum character count.";
 						  var messageTitle = "Character Count Status";
 
                                   if(wordCountTotal<=0)
@@ -1026,7 +1028,7 @@ $.extend({ alert: function (message, title) {
 							       if(wordCountTotal>18000)
 								{
 									
-							     $.alert(messagePart1 + wordCountTotal + messagePart2 + 18000 + '.', messageTitle);
+							     $.alert(messagePart1 + wordCountTotal + messagePart2 + 18000 + messagePart3, messageTitle);
 
 									return;
 								}
@@ -1036,7 +1038,7 @@ $.extend({ alert: function (message, title) {
 								       if(wordCountTotal>23000)
 									{
 									
-									    $.alert(messagePart1 + wordCountTotal + messagePart2 + 23000 + '.', messageTitle);
+									    $.alert(messagePart1 + wordCountTotal + messagePart2 + 23000 + messagePart3, messageTitle);
 										return;
 									  }
 								    }
@@ -1046,7 +1048,7 @@ $.extend({ alert: function (message, title) {
 								       if(wordCountTotal>18000)
 									{
 										
-								    $.alert(messagePart1 + wordCountTotal + messagePart2 + 18000 + '.', messageTitle);
+								    $.alert(messagePart1 + wordCountTotal + messagePart2 + 18000 + messagePart3, messageTitle);
 										return;
 									}
 								      }
@@ -1056,7 +1058,7 @@ $.extend({ alert: function (message, title) {
 								       if(wordCountTotal>20000)
 									{
 										
-										$.alert(messagePart1 + wordCountTotal + messagePart2 + 20000 + '.', messageTitle);								         
+										$.alert(messagePart1 + wordCountTotal + messagePart2 + 20000 + messagePart3, messageTitle);								         
 										return;
 									}
 									}
@@ -2091,7 +2093,7 @@ margin-bottom:25px;
 			<div class="span9">
 				<%-- <h1><center><spring:message code="home.welcome.heading" arguments="${globalContextCustomer.currentProgramShortDescription}"/></center></h1> --%>
 				<h1><center><spring:message code="tasks.currentTask.title" /></center></h1> <br><br>
-< 				<div id="message"><spring:message code="tasks.currentTask.description" /> </div>				
+ 				<div id="message"><spring:message code="tasks.currentTask.description" /> </div>				
 				<p style="color:red; margin:10px 0 0 0;">${STATUS_MESSAGE}</p>
 			</div>
 		</div>
