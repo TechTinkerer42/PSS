@@ -2173,7 +2173,7 @@ margin-bottom:25px;
 	<!--  new  -->
 	 
 			    <div id="accordion-1" class="center"  >
-			    <h3>${task.title}</h3>
+			    <h3>${task.title2}</h3>
 			    <div>
 			     <div class="rounded">				
 				<!-- <div class="taskstatus" style="padding: 10px 0 0 0;"><span>Status: New</span></div> -->
