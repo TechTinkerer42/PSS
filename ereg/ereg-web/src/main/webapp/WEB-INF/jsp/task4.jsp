@@ -2092,7 +2092,8 @@ margin-bottom:25px;
 		<div class="row">
 			<div class="span9">
 				<%-- <h1><center><spring:message code="home.welcome.heading" arguments="${globalContextCustomer.currentProgramShortDescription}"/></center></h1> --%>
-				<h1><center><spring:message code="tasks.currentTask.title" /></center></h1> <br><br>
+				<h1><left><spring:message code="tasks.currentTask.title" /></left></h1> <h3>${task.title}</h3><br>
+				
  				<div id="message"><spring:message code="tasks.currentTask.description" /> </div>				
 				<p style="color:red; margin:10px 0 0 0;">${STATUS_MESSAGE}</p>
 			</div>
@@ -2161,7 +2162,7 @@ margin-bottom:25px;
 	<div id="submit-confirm" title="Submit" style="display:none;background-color:#FCE7E4;">
    		<p style="font-size:9pt;font-weight:bold;color:red"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Are you Sure you want to submit your task including all essay responses and artifacts associated with this task?</p>
    		<p style="font-size:11pt;font-weight:bold;">Once you submit your task, you will not be able to make any modifications to the essay responses or the artifacts associated with task</p>
-   		<p><input type="checkbox" id="confirmSubmit" value="true"/><label for="confirmSubmit" id="submitConfirmLabel" style="font-size:8pt;">By Checking this box, I understand that I am submitting my responses and artifacts associated with this task. I certify that the submissions represents the work that I completed. I understand that the responses andartifacts that I submit will be evaluated by educators, raters or other appropriate individuals and I understand that I will not be able to make any modifications once I click Submit.</label></p>
+   		<p><input type="checkbox" id="confirmSubmit" value="true"/><label for="confirmSubmit" id="submitConfirmLabel" style="font-size:8pt;white-space: wrap;width:450;">By Checking this box, I understand that I am submitting my responses and artifacts associated with this task. I certify that the submissions represents the work that I completed. I understand that the responses andartifacts that I submit will be evaluated by educators, raters or other appropriate individuals and I understand that I will not be able to make any modifications once I click Submit.</label></p>
 	</div>
 	<input type="hidden" id="taskId" value="${task.taskId}" />	
 	<%-- <c:out value="taskid is: ${task.taskId}" /> --%>
