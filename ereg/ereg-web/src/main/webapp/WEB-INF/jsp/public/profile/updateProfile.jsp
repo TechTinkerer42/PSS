@@ -32,7 +32,7 @@
 <div class="create_form">
 
 
-
+<div class="headContainer"><p><spring:message code="background.message"/></p></div>
 <form:form method="post" modelAttribute="profileForm">
 <div class="formRow">
  	<c:set var="STATUS_OK" value="<%=ProfileForm.STATUS_OK%>" />

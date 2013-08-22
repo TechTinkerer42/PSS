@@ -67,7 +67,7 @@
  
 
  <c:url value="/profile/" var="prev_url"/> 
-<p>If you want to modify your Personal Information,click Back to return to previous page.<br>If you need any help, contact: 609-774-7471 or 855-856-3514 available Monday-Friday, 8:00 a.m. - 6:45 p.m. Central Time (except for U.S. holidays)
+<p>If you want to modify your Personal Information,click Back to return to previous page.<br>If you need any help, contact: 609-774-7471 or 855-856-3714 available Monday-Friday, 8:00 a.m. - 6:45 p.m. Central Time (except for U.S. holidays)
 <br>OR email: mega@ets.org </p>
 
 		

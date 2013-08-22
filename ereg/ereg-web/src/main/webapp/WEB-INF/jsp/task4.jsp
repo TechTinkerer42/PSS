@@ -301,7 +301,7 @@ $.extend({ alert: function (message, title) {
 															});
 
 											grid += '</tbody></table>';
-
+											grid = "<h3>Pre-Service Teacher Exit Assessment</h3><h3>My Library of Artifacts</h3>" + grid;
 											$("#linkdialog").html(grid);
 											$("#linkdialog")
 													.dialog(
@@ -2159,8 +2159,6 @@ margin-bottom:25px;
 	<div id="documentsDiv" style="display: none"></div>
 	<div id="linkdialog" title="Link to Artifact"
 		style="display: none">
-	<spring:message code="myassessments.tasks.preserviceTeacher" /><br>
-	<spring:message code="view.artifacts.libraryOfArtifacts" />	
 	</div>
 	<div id="submit-confirm" title="Submit" style="display:none;background-color:#FCE7E4;">
    		<p style="font-size:9pt;font-weight:bold;color:red"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Are you Sure you want to submit your task including all essay responses and artifacts associated with this task?</p>

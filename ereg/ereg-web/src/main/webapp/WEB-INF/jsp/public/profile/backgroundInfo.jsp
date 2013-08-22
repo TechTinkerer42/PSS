@@ -40,7 +40,7 @@
   	<c:if test="${profileForm.statusCode==STATUS_KO}">
 		<div style="margin:20px;">
 		<div class="errorblock">	
-		<strong><i class="icon-exclamation-sign"></i> <c:out value="${profileForm.statusMessage}"/></strong><br/>
+		<strong><i class="icon-exclamation-sign"></i> <c:out value="${profileForm.statusMessage}" /></strong><br/>
 		<form:errors/>		
 			<br/>
 		</div>
