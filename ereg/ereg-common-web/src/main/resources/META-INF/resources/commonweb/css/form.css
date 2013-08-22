@@ -137,20 +137,20 @@ form[id="searchFormHome"] input[type="text"] {
 
 /* === HTML5 validation styles === */	
 .create_form input:required, .create_form textarea:required, .create_form select:required {
-	background: #fff url(../img/red_asterisk.png) no-repeat 98% center;
+	/* background: #fff url(../img/red_asterisk.png) no-repeat 98% center; */
 }
 
 .create_form select:required {padding-right:20px;}
 
 .create_form input:required:valid, .create_form textarea:required:valid, .create_form select:required:valid {
-	background: #fff  url(../img/valid.png) no-repeat 98% center;
+	/*background: #fff  url(../img/valid.png) no-repeat 98% center;*/
 /*	box-shadow: 0 0 5px #5cd053;
 	border-color: #28921f;*/
 }
 
 .create_form select:required:valid { padding-right:20px;}
 .create_form input:focus:invalid, .create_form textarea:focus:invalid; .create_form select:focus:invalid {
-	background: #fff url(../img/invalid.png) no-repeat 98% center;
+	/*background: #fff url(../img/invalid.png) no-repeat 98% center;*/
 	box-shadow: 0 0 5px #DB7E06;
 	border-color: #b03535
 }
@@ -334,6 +334,19 @@ input[type="radio"]
 
 
 .radiostarcolor{ background: #fff url(../img/red_asterisk.png) no-repeat 2px 3px; width:20px; height:19px; display:inline-block;}
+
+.required:before {
+    color: #B81E12;
+    content: "*";
+    display: block;
+    font-family: "Grotesk URW Regular",georgia,myraid pro,Helvetica,sans-serif;
+    font-size: 1.4em;
+    height: 12px;
+    margin: 1px 0 0 -12px;
+    position: absolute;
+    width: 12px;
+    font-weight:bold;
+}
 
 .radiophonecolor { background: #fff url(../img/red_asterisk.png) no-repeat 2px 3px; width:20px; height:19px; display:inline-block;}
 
