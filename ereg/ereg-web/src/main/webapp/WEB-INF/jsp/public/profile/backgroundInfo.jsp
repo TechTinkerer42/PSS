@@ -77,8 +77,9 @@
 
 
 	
-	<div  id="q${demographicQuestion.qstnNo}" <c:if test="${!demographicQuestion.displayed}">style="display:none;"</c:if>>
+	<!-- Moved DIV tag inside li tag -->
     	<li>
+    	<div  id="q${demographicQuestion.qstnNo}" <c:if test="${!demographicQuestion.displayed}">style="display:none;"</c:if>>
 	 	<!-- CheckBox-->
     	<c:if test="${demographicQuestion.responseType == 'M'}">
     	
@@ -89,7 +90,7 @@
 					<c:if test="${demographicQuestion.responseRequired == false}">
 							
 					</c:if>
-            		<strong>${demographicQuestion.displayText}<strong>
+            		<strong>${demographicQuestion.displayText}</strong>
             	<!-- 	${demographicQuestion.triggerArray}  -->
             		
             	</div>
@@ -112,7 +113,7 @@
 					<c:if test="${demographicQuestion.responseRequired == false}">
 							
 					</c:if>
-            		<strong>${demographicQuestion.displayText}<strong>
+            		<strong>${demographicQuestion.displayText}</strong>
             	<!-- 	${demographicQuestion.triggerArray}  -->
             		
             	</div>
@@ -140,7 +141,7 @@
 					<c:if test="${demographicQuestion.responseRequired == false}">
 					
 					</c:if>
-            		<strong>${demographicQuestion.displayText}<strong>
+            		<strong>${demographicQuestion.displayText}</strong>
             		
             	</div>
             	
@@ -180,9 +181,10 @@
 				
 
 	    </c:if>
+	     </div>
 	  </li>
      
-	  </div>
+	 
      </c:forEach>
 	  </ol>
      
