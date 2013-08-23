@@ -77,7 +77,7 @@
 
 
 	
-	<!-- Moved DIV tag inside li tag -->
+	
     	<li>
     	<div  id="q${demographicQuestion.qstnNo}" <c:if test="${!demographicQuestion.displayed}">style="display:none;"</c:if>>
 	 	<!-- CheckBox-->
