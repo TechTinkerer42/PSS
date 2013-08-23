@@ -259,7 +259,7 @@ $.extend({ alert: function (message, title) {
 											var index = idStr.substring(
 													indexOfCount, idStr.length);
 											var linkvalue = "http://";
-											var grid = '<table id="myTable" cellspacing="0" cellpadding="2" width ="100%" border = "1" align="center"><thead><tr><td align ="center"></td><td align ="center">ArtifactName</td><td align ="center">DateUploaded</td></tr></thead>';
+											var grid = '<table id="myTable" cellspacing="0" cellpadding="2" width ="100%" border = "1" align="center"><thead><tr><td align ="center"></td><td align ="center">Artifact Name</td><td align ="center">Date Uploaded</td></tr></thead>';
 											$("#docList li")
 													.each(
 															function() {
@@ -301,7 +301,7 @@ $.extend({ alert: function (message, title) {
 															});
 
 											grid += '</tbody></table>';
-
+											grid = "<h3>Pre-Service Teacher Exit Assessment</h3><h3>My Library of Artifacts</h3>" + grid;
 											$("#linkdialog").html(grid);
 											$("#linkdialog")
 													.dialog(
@@ -1138,7 +1138,7 @@ $.extend({ alert: function (message, title) {
 							//console.log("the task keys is "+$("#taskVideoKey").val());
 							//var $j = jQuery.noConflict();
 						
-							var SplitTable='<p> Each Articat must be in wmv,mp3 or [other] format and cannot exceed XX MB </p>';
+							var SplitTable='<p> Each video must be in avi, divx, flv, mov, mp4, mpeg, mpg or wmv format and cannot exceed XX MB </p>';
 						
 						    $("#videodialog").dialog({modal:true,width:600,height:300,position:['middle',20], dialogClass: 'no-close-dialog',buttons:[{text:"Close",click: function() { $(this).dialog('close'); }}]}) 
 							.each(
@@ -2092,7 +2092,7 @@ margin-bottom:25px;
 		<div class="row">
 			<div class="span9">
 				<%-- <h1><center><spring:message code="home.welcome.heading" arguments="${globalContextCustomer.currentProgramShortDescription}"/></center></h1> --%>
-				<h1><left><spring:message code="tasks.currentTask.title" /></left></h1> <h3>${task.title}</h3><br>
+				<h1><left><spring:message code="myassessments.tasks.preserviceTeacher" /></left></h1> <h3>${task.title}</h3><br>
 				
  				<div id="message"><spring:message code="tasks.currentTask.description" /> </div>				
 				<p style="color:red; margin:10px 0 0 0;">${STATUS_MESSAGE}</p>
@@ -2157,8 +2157,9 @@ margin-bottom:25px;
 	           <a id ='artifactTask' href="#" class="expand_all">[Upload/Manage My Artifacts]</a>&nbsp;&nbsp;|&nbsp; <a id ='expandAccordions' href="#" class="expand_all">[Expand All]</a>&nbsp;&nbsp;|&nbsp;<a id ='collapseAccordions'  href="#" class="collapse_all" >[Collapse All]</a>
     </div> 
 	<div id="documentsDiv" style="display: none"></div>
-	<div id="linkdialog" title="Teachers Assesment Artifacts"
-		style="display: none"></div>
+	<div id="linkdialog" title="Link to Artifact"
+		style="display: none">
+	</div>
 	<div id="submit-confirm" title="Submit" style="display:none;background-color:#FCE7E4;">
    		<p style="font-size:9pt;font-weight:bold;color:red"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Are you Sure you want to submit your task including all essay responses and artifacts associated with this task?</p>
    		<p style="font-size:11pt;font-weight:bold;">Once you submit your task, you will not be able to make any modifications to the essay responses or the artifacts associated with task</p>
@@ -2170,7 +2171,7 @@ margin-bottom:25px;
 	<!--  new  -->
 	 
 			    <div id="accordion-1" class="center"  >
-			    <h3>${task.title}</h3>
+			    <h3>${task.title2}</h3>
 			    <div>
 			     <div class="rounded">				
 				<!-- <div class="taskstatus" style="padding: 10px 0 0 0;"><span>Status: New</span></div> -->

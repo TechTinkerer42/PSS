@@ -51,7 +51,7 @@
 			 <div class="header-image ets-home" id="ets-product-logo" role="banner"> 
 			 <div id="product-logo">
 						<div class="parent" id="mo-logo">
-							<a href=""><img src="/ereg-web/resources/img/logo-mo-dese.423x61.jpg" width="100%" height="100%" alt="Missouri Educator Gateway Assessments"></a>
+							<a href="http://mega.ets.org/" target="_blank"><img src="/ereg-web/resources/img/logo-mo-dese.423x61.jpg" width="100%" height="100%" alt="Missouri Educator Gateway Assessments"></a>
 						</div>
 					</div> 
    

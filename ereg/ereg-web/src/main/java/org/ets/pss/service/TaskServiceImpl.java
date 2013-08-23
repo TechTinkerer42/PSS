@@ -610,8 +610,7 @@ public class TaskServiceImpl implements TaskService {
 			
     		if(vAsgndTsk.getDocStsTyp().getDocStsTypCde().equalsIgnoreCase("CMPLD"))
     		
-    		{
-    						
+    		{		
     			assignedTaskList.add(vAsgndTsk);
     			
     		}
@@ -620,7 +619,7 @@ public class TaskServiceImpl implements TaskService {
     	GsonBuilder gsonBuilder = new GsonBuilder();
     	Gson gson = gsonBuilder.registerTypeAdapter(AsgndTsk.class, new AsgndTskAdapter()).create();
     	String json= gson.toJson(assignedTaskList);
-    	System.out.println("the json is "+json);
+    	//System.out.println("the json is "+json);
     	return json;
 	}
 	
@@ -869,6 +868,8 @@ public class TaskServiceImpl implements TaskService {
         TaskDTO taskDTO = new TaskDTO();
         taskDTO.setTaskId(task.getTaskId());
         taskDTO.setTitle(task.getTitle());
+       // System.out.println("the title is "+task.getTitle2());
+        taskDTO.setTitle2(task.getTitle2());
         taskDTO.setInstructions(task.getInstructions());
         Test test = task.getTest();
         taskDTO.setTestName(test.getTstNam());

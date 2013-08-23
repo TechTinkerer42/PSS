@@ -24,7 +24,23 @@ public class Task implements Serializable {
 	@Column(name="TTL_NAM_1", nullable=false)
 	private String title;
 	
+	@Column(name="TTL_NAM_2", nullable=false)
+	private String title2;
 	
+	/**
+	 * @return the title2
+	 */
+	public String getTitle2() {
+		return title2;
+	}
+
+	/**
+	 * @param title2 the title2 to set
+	 */
+	public void setTitle2(String title2) {
+		this.title2 = title2;
+	}
+
 	@Column(name="INSTR_TXT")
 	private String instructions;
 

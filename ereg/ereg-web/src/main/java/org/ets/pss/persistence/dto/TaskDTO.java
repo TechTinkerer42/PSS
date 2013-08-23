@@ -10,6 +10,21 @@ public class TaskDTO extends BaseDTO {
 	private Long taskId;
 	private String instructions;
 	private String title;
+	private String title2;
+	/**
+	 * @return the title2
+	 */
+	public String getTitle2() {
+		return title2;
+	}
+
+	/**
+	 * @param title2 the title2 to set
+	 */
+	public void setTitle2(String title2) {
+		this.title2 = title2;
+	}
+
 	private boolean readOnly;
 	private int status;
 	

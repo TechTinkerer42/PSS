@@ -25,7 +25,7 @@
 
 					<div id="cya">
 						<p>
-							Copyright <span aria-hidden="true">&copy;</span> YYYY. All rights reserved.<br />
+							Copyright <span aria-hidden="true">&copy;</span> 2013 by Educational Testing Service. All rights reserved.<br />
 							All trademarks are the property of their respective owners.
 						</p>
 					</div> <!-- /cya -->

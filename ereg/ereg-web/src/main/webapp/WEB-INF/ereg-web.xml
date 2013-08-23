@@ -136,7 +136,7 @@
     </listener>
     
      <session-config>
- 		 <session-timeout>20</session-timeout>
+ 		 <session-timeout>90</session-timeout>
 	</session-config>
     
     <!-- Note: The applicationContext-servlet-cms-contentClient.xml file is used to load static assets

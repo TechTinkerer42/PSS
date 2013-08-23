@@ -62,7 +62,7 @@
 	</bean>
 
 	<bean id="blRegistrationEmailInfo" parent="blEmailInfo">
-		<property name="subject" value="Your HiSET account has been created."/>
+		<property name="subject" value="Missouri Performance Assessment Pilot Account Information"/>
 		<property name="emailTemplate" value="register-email"/>
 	</bean>
 

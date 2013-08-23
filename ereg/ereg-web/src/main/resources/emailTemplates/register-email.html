@@ -1,30 +1,31 @@
 <html>
-  <head><title>Registration Success</title></head>  
-  <body> 
+  <head><title>Registration Success</title></head>
+  <body>
 	  <span th:text="'Welcome, ' + ${customer.firstName} + (${customer.middleInitial}==''?'':(' ' + ${customer.middleInitial})) + ' ' + ${customer.lastName}"></span>
-	  <br/>
+	  <br></br>
 	  <p>
-	  Thank you for creating your Missouri Performance Assessment Pilot Account.<br><br>
+	  Thank you for creating your Missouri Performance Assessment Pilot Account.<br></br><br></br>
 
-		You have selected the following user name: <user name><br><br>
+		<span th:text="'You have selected the following user name: ' + ${customer.username}"></span> 
+		<br></br><br></br>
 
-		Please make a note of your user name, password and security question and keep them in a secure place.<br><br>
+		Please make a note of your user name, password and security question and keep them in a secure place.<br></br><br></br>
 
-		For security reasons your password and security answer will not be sent by e-mail.<br><br>
+		For security reasons your password and security answer will not be sent by e-mail.<br></br><br></br>
 
-		To access your account, visit: <insert pilot submission site url><br><br> 
+		To access your account, visit: <a href="https://missouriteacherpsa.ets.org/ereg-web/">https://missouriteacherpsa.ets.org/ereg-web/</a> </a><br></br><br></br>
 
-		If you did not create an account, or if you have any questions, please contact an ETS Customer Service Representative.<br><br>
+		If you did not create an account, or if you have any questions, please contact an ETS Customer Service Representative.<br></br><br></br>
 
-   		PHONE:<br>
-   		1-609-774-7471<br>
-   		1-855-856-3514<br><br>
-		Available Monday-Friday, 8:00 a.m. - 6:45 p.m. Central Time (except for U.S. holidays)<br><br>
+   		PHONE:<br></br>
+   		1-609-774-7471<br></br>
+   		1-855-856-3714<br></br><br></br>
+		Available Monday-Friday, 8:00 a.m. - 6:45 p.m. Central Time (except for U.S. holidays)<br></br><br></br>
 
-     	E-MAIL:mega@ets.org<br><br>
+     	E-MAIL:mega@ets.org<br></br><br></br>
 
-		Sincerely,<br>
+		Sincerely,<br></br>
 		MISSOURI PERFORMANCE ASSESSMENT PILOT TEAM
-	   </p> 
+	   </p>
   </body>
 </html>
