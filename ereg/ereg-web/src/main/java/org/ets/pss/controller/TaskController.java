@@ -136,11 +136,14 @@ public class TaskController {
     
     
     
-    @RequestMapping(value = "/review/video", method = RequestMethod.GET)
-    public String reviewVideo(@LoggedInUser ERegUser loggedInUser) {
+    @RequestMapping(value = "/review/video", method = RequestMethod.POST)
+    public  @ResponseBody String reviewVideo(@RequestParam String promptId,@RequestParam String taskId,@LoggedInUser ERegUser loggedInUser) {
     	System.out.println("coming here for reviewing video");
-	
-    	return "review";
+    	long lTaskId = Long.parseLong(taskId);
+    	long lpromptId = Long.parseLong(promptId);
+    	long customerId = loggedInUser.getId();
+    	String entry = taskServiceImpl.getVideoEntryKey(customerId,lTaskId,lpromptId);
+    	return entry;
 		 
         
     }
@@ -174,7 +177,7 @@ public class TaskController {
 		for(RoleEnum role:roles)
     	{
     	   code=role.getCode();
-    	   System.out.println("the role code is *****************"+code);
+    	   //System.out.println("the role code is *****************"+code);
     	   
     	   
     	}
@@ -312,8 +315,8 @@ public class TaskController {
     		  //yyyyMMddhhmm
     		  String directoryName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
     		  System.out.println("directory name is: " + directoryName);
-    		 //File theDir=new File("c:\\ash\\temp\\"+directoryName);
-    		 File theDir=new File("/export/Apps/tomcat/upload/"+directoryName);
+    		 File theDir=new File("c:\\ash\\temp\\"+directoryName);
+    		 //File theDir=new File("/export/Apps/tomcat/upload/"+directoryName);
     		  if (!theDir.exists())
     		  {
     		    System.out.println("creating directory: " + directoryName);
@@ -322,8 +325,8 @@ public class TaskController {
     		       System.out.println("DIR created");  
     		     
     		  //Unix file format
-    		 // File tempfile=new File("c:\\ash\\temp\\"+directoryName+"\\"+fileName);
-    		 File tempfile=new File("/export/Apps/tomcat/upload/"+directoryName+"/"+fileName);
+    		 File tempfile=new File("c:\\ash\\temp\\"+directoryName+"\\"+fileName);
+    		 //File tempfile=new File("/export/Apps/tomcat/upload/"+directoryName+"/"+fileName);
     		  
     		  file.transferTo(tempfile);
     		  

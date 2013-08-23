@@ -1138,7 +1138,7 @@ $.extend({ alert: function (message, title) {
 							//console.log("the task keys is "+$("#taskVideoKey").val());
 							//var $j = jQuery.noConflict();
 						
-							var SplitTable='<p> Each video must be in avi, divx, flv, mov, mp4, mpeg, mpg or wmv format and cannot exceed XX MB </p>';
+							var SplitTable='<p> Each video must be in avi, divx, flv, mov, m4p, mp4, mpeg, mpg or wmv format and cannot exceed 2 GB. </p>';
 						
 						    $("#videodialog").dialog({modal:true,width:600,height:300,position:['middle',20], dialogClass: 'no-close-dialog',buttons:[{text:"Close",click: function() { $(this).dialog('close'); }}]}) 
 							.each(
@@ -1168,13 +1168,11 @@ $.extend({ alert: function (message, title) {
 															text : {
 																//uploadButton:'<div>Select a file</div>'
 																uploadButton : '<i class="icon-plus icon-white"></i> <font size=2>Select and Upload Video</font>'
-																
-															},
-															
+																},
 															
 															validation: {
-														        allowedExtensions: ['wmv','mp4','mpg','jpeg', 'jpg','flv'],
-														        //sizeLimit: 5120000 // 50 kB = 50 * 1024 bytes
+																 allowedExtensions: ['wmv','m4p','mp4','mov','mpeg','mpg','avi','divx','flv'],
+																 sizeLimit: 2147483648// 50 kB = 50 * 1024 bytes
 														       // sizeLimit: 2147483648 //2GB
 														      },
 														       showMessage: function(message) {
@@ -1188,9 +1186,7 @@ $.extend({ alert: function (message, title) {
 																	fileName) {
 																if (fileName.length > 33) {
 																	fileName = fileName
-																			.slice(
-																					0,
-																					19)
+																			.slice(0,19)
 																			+ '...'
 																			+ fileName
 																					.slice(-14);
@@ -1257,35 +1253,49 @@ $.extend({ alert: function (message, title) {
 						});//end $('#uploadVideo').click function
 						
 						$('#reviewVideo').click(function(){
-							//console.log('review video clicked');
-							var $j = jQuery.noConflict();
-							var filenames = [];
-							/* $.ajax({
+							
+							$.ajax({
+								
 								url : '/ereg-web/pss/task/review/video',
-								type : 'GET',
+								type : 'POST',								
+								data : {
+									   promptId:$("#promptVideoKey").val(),
+								       taskId:$("#taskVideoKey").val(),
+								},
 								success : function(data) {
-									//console.log(data);
-									console.log("Reviwed video Successfully");
+								
+							      		(function embedVideoPlayer() {
+		                                kWidget.embed('reviewhidden', {
+		                                      'wid': '_958691',
+		                                      'uiconf_id' : '15210901',
+		                                      'entry_id':data,
+		                                      'flashvars': {"akamaiHD.loadingPolicy":"preInitialize","akamaiHD.asyncInit":true,"streamerType":"rtmp"}
+		                                });
+		                                })();
 									
 								},
+								error : function(data)
+								{
+									//console.log("Problem with Reviewed video");
+								}
+								 
 								
 								
-							}); */
-							var windowHeight = $(window).height();
-							var windowWidth = $(window).width();
-							var dHeight = $('#dialogBox').height();
-							var dWidth = $('#dialogBox').width();
+							});
+							
+						
 							$("#reviewhidden").css("display", "block");
 							$("#reviewhidden").css({position:'absolute',
 							  top:'45%',
 							  left:'50%',
-							  width:'400px',                 
-							  height:'200px',            
+							  width:'600px',                 
+							  height:'400px',            
 							  zIndex:1000,
 							  marginTop:'-150px',           
 							  marginLeft:'-300px' }); 
 							//$("#reviewhidden").css({top:windowHeight/2 - dHeight/2, left:windowWidth/2 - dWidth/2}).show();
 						});
+						
 						
 						$('#closeVideo').click(function(){
 							//'scriptAccess' : 'always'
@@ -2140,18 +2150,18 @@ margin-bottom:25px;
 			</div> -->
 	
     							
-   <div id="reviewhidden" style="display: none">
+   <%-- <div id="reviewhidden" style="display: none">
   
   <c:if test="${not empty videoResponses}">
   <c:forEach var="entry" items="${videoResponses}">
   
 
-<%-- <script src="http://cdnapi.kaltura.com/p/958691/sp/95869100/embedIframeJs/uiconf_id/15210901/partner_id/958691?autoembed=true&entry_id=${entry.value}&playerId=kaltura_player_1372798520&cache_st=1372798520&width=400&height=333&flashvars[akamaiHD.loadingPolicy]=preInitialize&flashvars[akamaiHD.asyncInit]=true&flashvars[streamerType]=hdnetwork"></script>   --%>
+<script src="http://cdnapi.kaltura.com/p/958691/sp/95869100/embedIframeJs/uiconf_id/15210901/partner_id/958691?autoembed=true&entry_id=${entry.value}&playerId=kaltura_player_1372798520&cache_st=1372798520&width=400&height=333&flashvars[akamaiHD.loadingPolicy]=preInitialize&flashvars[akamaiHD.asyncInit]=true&flashvars[streamerType]=hdnetwork"></script>  
 <script src="https://cdnapisec.kaltura.com/p/958691/sp/95869100/embedIframeJs/uiconf_id/15210901/partner_id/958691?autoembed=true&entry_id=${entry.value}&playerId=kaltura_player_1372798520&cache_st=1372798520&width=560&height=395&flashvars[akamaiHD.loadingPolicy]=preInitialize&flashvars[akamaiHD.asyncInit]=true&flashvars[streamerType]=hdnetwork"></script>
   </c:forEach> 
   </c:if>
-   </div>
-  
+   </div> --%>
+  <div id="reviewhidden" style="display: none"></div> 
 	   <%--  video: ${entry.key} - value = ${entry.value} --%>
 	<div id="expandocollpase" align="right"> 
 	           <a id ='artifactTask' href="#" class="expand_all">[Upload/Manage My Artifacts]</a>&nbsp;&nbsp;|&nbsp; <a id ='expandAccordions' href="#" class="expand_all">[Expand All]</a>&nbsp;&nbsp;|&nbsp;<a id ='collapseAccordions'  href="#" class="collapse_all" >[Collapse All]</a>

@@ -7,6 +7,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="ct" uri="http://ereg.ets.org/commontags"%>
 <%@page import="java.util.logging.Logger"%>
+<%@page import="java.util.*"%>
 <%@page import="org.ets.pss.persistence.model.AsgndTsk"%>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -174,14 +175,23 @@
 							</tr>
 							</thead>
 							<tbody>
+							<%-- <jsp:useBean id="dateValue" class="java.util.Date" /> --%>
+                                         <%--  <jsp:setProperty name="dateValue" property="date" value="${$ob.dateCreated}" /> --%>
+                                       <%--   <td> <fmt:formatDate value="${ob.dateCreated}" type="both" dateStyle="full"
+                                             timeStyle="full" pattern="MM/dd/yyyy HH:mm" /></td> --%>
+                                         <%-- <td> <fmt:formatDate value="${ob.dateCreated}" type="both" pattern="MM/dd/yyyy" /></td> --%>
+                                          <%-- <td><fmt:formatDate value="${dateValue}" pattern="MM/dd/yyyy HH:mm" /></td> --%>
+										<%-- <td><fmt:formatDate pattern="yyyy-MM-dd" value="${$ob.dateCreated}" /></td> --%>
+										<%-- <td><fmt:formatDate  dateStyle="long" timeStyle="short"  value="${ob.dateCreated}" /></td> --%>
+										<%-- String S = new SimpleDateFormat("MM/dd/yyyy").format(myTimestamp);
+										<td>${ob.dateCreated}</td> --%>
+							
 							<c:if test="${!empty artifacts}">
 								<c:forEach var="ob" varStatus="status" items="${artifacts}">
 									<tr>
 										<td height="25"><c:out value="${ob.rspSrcLctnNam}" /></td>
 										<td><a href="" id='removeDoc<c:out value="${ob.docId}"/>'>remove</a></td>
-										<td><fmt:formatDate  dateStyle="long" timeStyle="short"  value="${ob.dateCreated}" /></td>
-										<%-- String S = new SimpleDateFormat("MM/dd/yyyy").format(myTimestamp);
-										<td>${ob.dateCreated}</td> --%>
+									       <td> <fmt:formatDate value="${ob.dateCreated}" type="date" pattern="MM/dd/yyyy" /></td>
 									</tr>
 								</c:forEach>
 							</c:if>

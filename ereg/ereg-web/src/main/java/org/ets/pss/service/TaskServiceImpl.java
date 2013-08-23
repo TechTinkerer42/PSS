@@ -150,6 +150,32 @@ public class TaskServiceImpl implements TaskService {
 		return contentManagementVO;
 	} 
 	
+	@Transactional(propagation= Propagation.REQUIRED, readOnly=false)
+	public String getVideoEntryKey(long customerId,long tskId, long promptId) {		
+		
+    	
+    	
+    	 List<String>videoEntries = custBlbDao.getCurrentVideoEntriesForPrompt(promptId, tskId,customerId);
+    	
+    	String entry=null;
+    		         if(videoEntries != null && videoEntries.size()>0)
+    			{
+    				   for(String videoEntry:videoEntries)
+    				{
+    						System.out.println("the video entry name is "+videoEntry);
+    						entry=videoEntry;
+    						
+    						
+    			
+    		     	 }//end for
+    				  
+    				   return entry;
+    			}//end if
+    	 
+    		         else return "";
+	}
+
+	
 
 	@Transactional(propagation= Propagation.REQUIRED, readOnly=false)
 	public boolean getVideoEntries(ContentManagementDTO dto,long customerId,long tskId, long promptId) {		

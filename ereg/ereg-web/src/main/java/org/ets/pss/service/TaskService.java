@@ -44,6 +44,7 @@ public interface TaskService {
 	TaskDTO getTask(Long taskId);
 	
 	 Map<Long, String> getCustomerPromptsForTask(Long customerId, Long taskId);
+	String getVideoEntryKey(long customerId,long tskId, long promptId);
 	 Map<String, String> getVideosForTask(long customerId,long lTaskId);
 	ContentManagementDTO uploadContent(boolean exists,ContentManagementDTO contentManagementVO);
 	String getAdminTasks();
