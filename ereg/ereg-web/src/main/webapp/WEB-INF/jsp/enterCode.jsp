@@ -45,7 +45,7 @@
 		<!-- Column2 Starts -->
 		<div class="column2">
 			<div  class="block" <c:if test="${all_biq_answered}">style="display:none;"</c:if>>
-				<h3><spring:message code="home.notifocation.heading"/></h3>
+				<h3>Important Message</h3>
 				<c:if test="${!all_biq_answered}">
 					<div style="width:100%; margin:0 auto; border:0px dotted #ccc; padding:0; background:#FFEEE2">
 						<div class="content">

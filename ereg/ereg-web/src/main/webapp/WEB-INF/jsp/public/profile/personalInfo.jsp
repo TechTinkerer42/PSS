@@ -137,11 +137,7 @@ $(document).ready(function () {
 		<form:radiobutton path="<%=ProfileForm.GENDER %>" value="${gender.code}"/>${gender.description}
 		</c:if>
 	</c:forEach>
-	<span class="radiostarcolor"></span>
 	<form:errors  class="errorMessage" path="<%=ProfileForm.GENDER %>"/>
-
-	
-
 
 	</li>
 	
@@ -238,7 +234,7 @@ $(document).ready(function () {
 	</li>
 	<li>
 	
-	<c:set var="PHONE_TYPE_LANDLINE" value="<%=PhoneType.Landline%>" />
+	<c:set var="PHONE_	_LANDLINE" value="<%=PhoneType.Landline%>" />
 	<c:set var="PHONE_TYPE_MOBILE" value="<%=PhoneType.Mobile%>" />
 	<label for="primaryPhoneType"><spring:message code="phoneType"/></label>
 	<c:forEach items="${phoneTypes}" var="phoneType">
