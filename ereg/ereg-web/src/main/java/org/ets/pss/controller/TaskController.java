@@ -74,14 +74,14 @@ public class TaskController {
     	model.addAttribute("customerTask", asgndTsk);
     	
   	
-    	Map<Long, String> prompts = taskServiceImpl.getPromptForTask(loggedInUser.getId(), lTaskId);
-    	Map<String, String> videomap = taskServiceImpl.getVideosForTask(loggedInUser.getId(), lTaskId);
-    	model.addAttribute("promptResponses", prompts);
+    	 Map<Long, String> prompts = taskServiceImpl.getPromptForTask(loggedInUser.getId(), lTaskId);
+    	 model.addAttribute("promptResponses", prompts);
+    	//Map<String, String> videomap = taskServiceImpl.getVideosForTask(loggedInUser.getId(), lTaskId);
     	
-    	if(videomap!=null)
+    	/*if(videomap!=null)
     	{
     	model.addAttribute("videoResponses", videomap);
-    	}
+    	}*/
 //    	
 //    	model.addAttribute("prompts",prompts);    	 			
 //    	
@@ -315,8 +315,8 @@ public class TaskController {
     		  //yyyyMMddhhmm
     		  String directoryName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
     		  System.out.println("directory name is: " + directoryName);
-    		 File theDir=new File("c:\\ash\\temp\\"+directoryName);
-    		 //File theDir=new File("/export/Apps/tomcat/upload/"+directoryName);
+    		 //File theDir=new File("c:\\ash\\temp\\"+directoryName);
+    		 File theDir=new File("/export/Apps/tomcat/upload/"+directoryName);
     		  if (!theDir.exists())
     		  {
     		    System.out.println("creating directory: " + directoryName);
@@ -325,8 +325,8 @@ public class TaskController {
     		       System.out.println("DIR created");  
     		     
     		  //Unix file format
-    		 File tempfile=new File("c:\\ash\\temp\\"+directoryName+"\\"+fileName);
-    		 //File tempfile=new File("/export/Apps/tomcat/upload/"+directoryName+"/"+fileName);
+    		 //File tempfile=new File("c:\\ash\\temp\\"+directoryName+"\\"+fileName);
+    		 File tempfile=new File("/export/Apps/tomcat/upload/"+directoryName+"/"+fileName);
     		  
     		  file.transferTo(tempfile);
     		  

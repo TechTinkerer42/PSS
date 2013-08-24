@@ -35,6 +35,9 @@
 
 <script type="text/javascript" 	src="<c:url value='/resources/rangy-1.3/rangy-core.js'/>"></script>
 <script type="text/javascript" 	src="<c:url value='/resources/rangy-1.3/rangy-cssclassapplier.js'/>"></script>
+ <script src="https://cdnapisec.kaltura.com/p/958691/sp/95869100/embedIframeJs/uiconf_id/15210901/partner_id/958691"></script>
+<!-- <script src="http://cdnapi.kaltura.com/p/958691/sp/95869100/embedIframeJs/uiconf_id/15210901/partner_id/958691"></script> -->
+<!-- <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script> -->
 
 
 <script>
@@ -560,6 +563,62 @@ $.extend({ alert: function (message, title) {
 									 },100); */
 									 
 								}));
+						
+						function extractTextWithWhitespace(elems)
+						{
+						    var lineBreakNodeName = "BR"; // Use <br> as a default
+						    if ($.browser.webkit)
+						    {
+						        lineBreakNodeName = "DIV";
+						    }
+						    else if ($.browser.msie)
+						    {
+						        lineBreakNodeName = "P";
+						    }
+						    else if ($.browser.mozilla)
+						    {
+						        lineBreakNodeName = "BR";
+						    }
+						    else if ($.browser.opera)
+						    {
+						        lineBreakNodeName = "P";
+						    }
+						    var extractedText = extractTextWithWhitespaceWorker(elems, lineBreakNodeName);
+
+						    return extractedText;
+						}
+						
+
+						// Cribbed from jQuery 1.4.2 (getText) and modified to retain whitespace
+						function extractTextWithWhitespaceWorker(elems, lineBreakNodeName)
+						{
+						    var ret = "";
+						    var elem;
+
+						    for (var i = 0; elems[i]; i++)
+						    {
+						        elem = elems[i];
+
+						        if (elem.nodeType === 3     // text node
+						            || elem.nodeType === 4) // CDATA node
+						        {
+						            ret += elem.nodeValue;
+						        }
+
+						        if (elem.nodeName === lineBreakNodeName)
+						        {
+						            ret += "\n";
+						        }
+
+						        if (elem.nodeType !== 8) // comment node
+						        {
+						            ret += extractTextWithWhitespace(elem.childNodes, lineBreakNodeName);
+						        }
+						    }
+
+						    return ret;
+						}
+						
 						function convertHtmlToText( input) {
 						    var inputText =input;// document.getElementById("input").value;
 						    var returnText = "" + inputText;
@@ -572,7 +631,7 @@ $.extend({ alert: function (message, title) {
 						    //-- remove P and A tags but preserve what's inside of them
 						    returnText=returnText.replace(/<p.*>/gi, "\n");
 						    returnText=returnText.replace(/<a.*href="(.*?)".*>(.*?)<\/a>/gi, " $2");
-
+						 
 						    //-- remove all inside SCRIPT and STYLE tags
 						    returnText=returnText.replace(/<script.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/script>/gi, "");
 						    returnText=returnText.replace(/<style.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/style>/gi, "");
@@ -597,7 +656,15 @@ $.extend({ alert: function (message, title) {
 						    //document.getElementById("output").value = returnText;
 						}
 
-						
+						function Convert( template)
+						{
+						    template = template.replace( "<img .*?alt=[\"']?([^\"']*)[\"']?.*?/?>", "$1"); /* Use image alt text. */
+						    template = template.replace("<a .*?href=[\"']?([^\"']*)[\"']?.*?>(.*)</a>", "$1"); /* Convert links to something useful */
+						    template = template.replace( "<(/p|/div|/h\\d|br)\\w?/?>", "\n"); /* Let's try to keep vertical whitespace intact. */
+						    template = template.replace("<[A-Za-z/][^<>]*>", ""); /* Remove the rest of the tags. */
+
+						    return template;
+						}
 						
 						$('[id^=cteditor]')
 						.on(
@@ -658,7 +725,16 @@ $.extend({ alert: function (message, title) {
 										 //el.innerHTML= el.innerHTML.replace(/<\/?([a-z]+[^\S\r\n])[^>]*>/ig,"");
 										//el.innerHTML = el.innerHTML.replace(/(<([^>]+)>)/ig,"");								
 										//el.innerHTML= el.innerHTML.replace(/<\/?([a-z]+[^\S\r\n])[^>]*>/ig,"").replace((/<script.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/script>/gi, ""),"").replace(/<style.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/style>/gi, "").replace(/<(?:.|\s)*?>/g, "");
-                                       									
+                                      
+										//var value=extractTextWithWhitespace(currentEditor);
+										//console.log('the value now is '+value);
+										//var value=currentEditor.html();	
+										//returnValue=convertHtmlToText(value);
+										//console.log(returnValue);
+                                       	//returnValue=convertHtmlToText(value);
+                                     	//console.log('the return value is '+returnValue);
+                                         currentEditor.html(returnValue);
+                                       	//console.log('the return value is '+returnValue);
 										var el = document.getElementById('cteditor' + index);
 										el.innerHTML = el.innerHTML.replace(/(<([^>]+)>)/ig,"");		
 									  },100); }));
@@ -1223,7 +1299,7 @@ $.extend({ alert: function (message, title) {
 										                	 if (responseJSON.success) {
 										                		 //$(this).fineUploader('setParams', {'param1': 'val1'});
 										                		 //console.log('coming here succes'+ name+ element);
-										                		 location.reload();
+										                		// location.reload();
 										                	 return name;
 										                	 }
 										                     //.prepend(SplitTable);
@@ -1302,7 +1378,7 @@ $.extend({ alert: function (message, title) {
 							//System.security.allowDomain("https://cdnapisec.kaltura.com");
 							//console.log('close video clicked');
 							//document.getElementById("kaltura_player_1372798520").sendNotification('doStop');
-							 $("#kaltura_player_1372798520").get(0).sendNotification('doStop');
+							$("#reviewhidden").get(0).sendNotification('doStop');
 							$("#reviewhidden").css("display", "none");
 							 
 						});
@@ -1428,6 +1504,7 @@ $.extend({ alert: function (message, title) {
 	width: 98.5%;
 	resize: none margin-left:50px;
 	margin:auto;
+	white-space: pre;	
 	/* margin-right: 0px;
 	margin-left: 0px; */
 	/* border: 1.0px solid #000; */
