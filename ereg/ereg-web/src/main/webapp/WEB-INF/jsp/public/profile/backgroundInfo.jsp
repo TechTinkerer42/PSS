@@ -58,26 +58,9 @@
 
 <div class="formRow">
 
-
-
-
-
-
-	
-
-	
-
-
-<div class="questionSection" >
+<div>
 	<ol>
 <c:forEach var="demographicQuestion" items="${profileForm.profile.demographicQuestions}" varStatus="i">
-	
-
-
-
-
-	
-	
     	<li>
     	<div  id="q${demographicQuestion.qstnNo}" <c:if test="${!demographicQuestion.displayed}">style="display:none;"</c:if>>
 	 	<!-- CheckBox-->
@@ -154,9 +137,7 @@
 			<form:option  value="${validResponseItem.respNo}" name="${validResponseItem.respNo}" >${validResponseItem.possibleResponse}</form:option>
 		</c:forEach>
 	</form:select>
-	
-	
-				</div>
+	</div>
 	    </c:if>
 	 
 	 <!--TextBox-->
@@ -175,16 +156,10 @@
             	 <div class="questionRow">	
             	        			
         			<form:input path="profile.demographicQuestions[${i.index}].freeFormAnswer" size="10" id=""  maxlength="256"  />       		
-					
-				</div></li>
-				
-				
-
+				</div>
 	    </c:if>
 	     </div>
 	  </li>
-     
-	 
      </c:forEach>
 	  </ol>
      
