@@ -35,7 +35,6 @@
 						<li><a href='<c:url value='${changePassword}' />'><spring:message code="home.changepassword.link.display"/></a></li>
 						<li><a href='<c:url value='${changeSecurityQuestion}' />'><spring:message code="home.securityq.link.display"/></a></li>
 						<li><a href='<c:url value='/secure/profile/background/update' />'><spring:message code="home.backgroundinfo.display"/></a></li>
-						<li><a href="<c:url value='/secure/testtaker/accommodations/view' />"><spring:message code="home.accommodations"/></a></li>
 					</ul>
 				</div>
 			</div>
@@ -44,12 +43,12 @@
 		<!-- Column1 Ends -->
 		<!-- Column2 Starts -->
 		<div class="column2">
-			<div  class="block" <c:if test="${all_biq_answered}">style="display:none;"</c:if>>
-				<h3><spring:message code="home.notifocation.heading"/></h3>
+			<div  class="block" <c:if test="${all_biq_answered}">style="display:none;"</c:if>>				
+				<h3>Important Message</h3>
 				<c:if test="${!all_biq_answered}">
 					<div style="width:100%; margin:0 auto; border:0px dotted #ccc; padding:0; background:#FFEEE2">
 						<div class="content">
-							<spring:message code="home.background.message.part1"/> <a href='<c:url value='/secure/profile/background/update' />'><spring:message code="home.background.message.part2"/></a> <spring:message code="home.background.message.part3"/> 
+							<spring:message code="enterCode.errorMsg"/> 
 						</div>
 					</div>
 				</c:if>
