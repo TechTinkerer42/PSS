@@ -37,7 +37,7 @@
 <script type="text/javascript" 	src="<c:url value='/resources/rangy-1.3/rangy-cssclassapplier.js'/>"></script>
  <script src="https://cdnapisec.kaltura.com/p/958691/sp/95869100/embedIframeJs/uiconf_id/15210901/partner_id/958691"></script>
 <!-- <script src="http://cdnapi.kaltura.com/p/958691/sp/95869100/embedIframeJs/uiconf_id/15210901/partner_id/958691"></script> -->
-<!-- <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script> -->
+ <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script> 
 
 
 <script>
@@ -733,7 +733,7 @@ $.extend({ alert: function (message, title) {
 										//console.log(returnValue);
                                        	//returnValue=convertHtmlToText(value);
                                      	//console.log('the return value is '+returnValue);
-                                         currentEditor.html(returnValue);
+                                         //currentEditor.html(returnValue);
                                        	//console.log('the return value is '+returnValue);
 										var el = document.getElementById('cteditor' + index);
 										el.innerHTML = el.innerHTML.replace(/(<([^>]+)>)/ig,"");		
