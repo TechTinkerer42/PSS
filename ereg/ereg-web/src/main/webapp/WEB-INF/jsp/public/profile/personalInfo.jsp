@@ -68,9 +68,9 @@ $(document).ready(function () {
  <ul>
  
  <li>
-	<label for="firstName" class="required"><spring:message code="firstName"/></label> 
-	<form:input path="<%=ProfileForm.FIRST_NAME%>" size="30" id="firstName" required="required" />
-	<form:errors class="errorMessage"  path="<%=ProfileForm.FIRST_NAME%>"/>
+	<label for="firstName"><spring:message code="firstName"/></label> 
+	<form:input path="<%=ProfileForm.FIRST_NAME%>" size="30" id="firstName" required="true" />
+	<form:errors path="<%=ProfileForm.FIRST_NAME%>"/>
 	<!--<span class="form_hint">
 	<spring:message code="profile.create.validation.FirstNameHint" />
 	</span>-->
@@ -84,13 +84,13 @@ $(document).ready(function () {
 	</li>
 	
 	<li>
-	<label for="lastName" class="required"><spring:message code="lastName"/></label>
+	<label for="lastName"><spring:message code="lastName"/></label>
 	<form:input path="<%=ProfileForm.LAST_NAME%>" size="30" id="lastName" required="required"/>
 	<form:errors class="errorMessage" path="<%=ProfileForm.LAST_NAME%>"/>
 	</li>
 	
 	<li>
-	<label for="dateOfBirth" class="required"><spring:message code="dateOfBirth"/></label>
+	<label for="dateOfBirth" ><spring:message code="dateOfBirth"/></label>
 	<!--
 	<script>DateInput('orderdate', true, 'DD-MON-YYYY')</script>
 	<form:input path="<%=ProfileForm.DATE_OF_BIRTH %>" size="10" id="dateOfBirth" required="required"/>-->
@@ -121,16 +121,16 @@ $(document).ready(function () {
 	<c:set var="GENDER_PREFER_NOT_TO_ANSWER" value="<%=Gender.PreferNotToAnswer%>" />
 
 	
-	<label for="gender" class="required"><spring:message code="gender"/></label>
+	<label for="gender"><spring:message code="gender"/></label>
 	
 	<c:forEach items="${genders}" var="gender">
 		<c:if test='${gender.code.equalsIgnoreCase(GENDER_MALE)}'>
-		<form:radiobutton path="<%=ProfileForm.GENDER %>" value="${gender.code}" id="male" name="rr" />
+		<form:radiobutton path="<%=ProfileForm.GENDER %>" value="${gender.code}" id="male" name="rr" class="radiocheck" 	/>
 		
 		${gender.description}
 		</c:if>
 		<c:if test='${gender.code.equalsIgnoreCase(GENDER_FEMALE)}' >
-		<form:radiobutton path="<%=ProfileForm.GENDER %>" value="${gender.code}" id="fmale" name="rr" />${gender.description}
+		<form:radiobutton path="<%=ProfileForm.GENDER %>" value="${gender.code}" id="fmale" name="rr" class="radiocheck" />${gender.description}
 
 		</c:if>
 		<c:if test='${gender.code.equalsIgnoreCase(GENDER_PREFER_NOT_TO_ANSWER)}'>
@@ -160,7 +160,7 @@ $(document).ready(function () {
 <div style="clear:both;"></div>
 	
 	<li>
-	<label for="emailAddress" class="required"><spring:message code="emailAddress"/></label>
+	<label for="emailAddress" ><spring:message code="emailAddress"/></label>
 	<form:input path="<%=ProfileForm.EMAIL_ADDRESS %>" size="30" id="emailAddress" class="h5-email" required="required"/>
 	<form:errors class="errorMessage" path="<%=ProfileForm.EMAIL_ADDRESS %>"/>
 	<span class="form_hint">Email format: example@ets.org
@@ -171,7 +171,7 @@ $(document).ready(function () {
 
 
 	<li>
-	<label for="country" class="required"><spring:message code="country"/></label>
+	<label for="country" ><spring:message code="country"/></label>
 	<form:select path="<%=ProfileForm.COUNTRY%>" required="required">
 		<form:option value=""><spring:message code="select"/></form:option>
 		<c:forEach items="${countries}" var="country">
@@ -182,7 +182,7 @@ $(document).ready(function () {
 	</li>
 	
 	<li>
-	<label for="addressLine1" class="required"><spring:message code="addressLine1"/></label>
+	<label for="addressLine1" 	><spring:message code="addressLine1"/></label>
 	<form:input path="<%=ProfileForm.ADDRESS_LINE1%>" size="30" id="addressLine1" required="required" />
 	<form:errors class="errorMessage" path="<%=ProfileForm.ADDRESS_LINE1%>"/>
 	</li>
@@ -192,13 +192,13 @@ $(document).ready(function () {
 	</li>
 	
 	<li>
-	<label for="city" class="required"><spring:message code="city"/></label>
+	<label for="city" ><spring:message code="city"/></label>
 	<form:input path="<%=ProfileForm.CITY%>" size="30" id="city" required="required"/>
 	<form:errors class="errorMessage" path="<%=ProfileForm.CITY%>"/>
 	</li>
 	
 	<li>
-	<label for="state" class="required"><spring:message code="state"/></label>
+	<label for="state" ><spring:message code="state"/></label>
 	<form:select path="<%=ProfileForm.STATE%>" required="required">
 		<form:option value=""><spring:message code="select"/></form:option>
 		<c:forEach items="${states}" var="state">
@@ -209,14 +209,14 @@ $(document).ready(function () {
 	</li>
 	
 	<li>
-	<label for="postalCode" class="required"><spring:message code="postalCode"/></label>
+	<label for="postalCode" ><spring:message code="postalCode"/></label>
 	<form:input path="<%=ProfileForm.POSTAL_CODE%>" size="30" id="postalCode" class="smalltext" maxlength="5"  pattern="[0-9]{5}" required="required"/>
 	<form:errors class="errorMessage" path="<%=ProfileForm.POSTAL_CODE%>"/>
 </li>
 	<h2><spring:message code="primaryPhone"/></h2>
 	
 	<li>
-	<label for="primaryPhoneCountryCode" class="required"><spring:message code="phoneCountryCode"/></label>
+	<label for="primaryPhoneCountryCode" ><spring:message code="phoneCountryCode"/></label>
 	<form:select path="<%=ProfileForm.PRIMARY_PHONE_COUNTRY_CODE%>" id="primaryPhoneCountryCode" required="required">
 		<form:option value=""><spring:message code="select"/></form:option>
 		<c:forEach items="${countries}" var="country">
@@ -226,7 +226,7 @@ $(document).ready(function () {
 	<form:errors class="errorMessage" path="<%=ProfileForm.PRIMARY_PHONE_COUNTRY_CODE%>"/>
 	</li>
 	<li>
-	<label for="primaryPhoneNumber" class="required"><spring:message code="phoneNumber"/></label>
+	<label for="primaryPhoneNumber" ><spring:message code="phoneNumber"/></label>
 	<form:input path="<%=ProfileForm.PRIMARY_PHONE_PHONE_NUMBER%>" size="30" maxlength="10"  pattern="[0-9]{10}" id="primaryPhoneNumber" required="required" />
 	<form:errors  class="errorMessage"  path="<%=ProfileForm.PRIMARY_PHONE_PHONE_NUMBER%>"/>
 	</li>
@@ -239,7 +239,7 @@ $(document).ready(function () {
 	
 	<c:set var="PHONE_TYPE_LANDLINE" value="<%=PhoneType.Landline%>" />
 	<c:set var="PHONE_TYPE_MOBILE" value="<%=PhoneType.Mobile%>" />
-	<label for="primaryPhoneType" class="required"><spring:message code="phoneType"/></label>
+	<label for="primaryPhoneType" ><spring:message code="phoneType"/></label>
 	<c:forEach items="${phoneTypes}" var="phoneType">
 		<c:if test='${phoneType.code.equalsIgnoreCase(PHONE_TYPE_LANDLINE)}'>
 		<form:radiobutton path="<%=ProfileForm.PRIMARY_PHONE_PHONE_TYPE %>" value="${phoneType.code}" id="landline" name="pp"/>

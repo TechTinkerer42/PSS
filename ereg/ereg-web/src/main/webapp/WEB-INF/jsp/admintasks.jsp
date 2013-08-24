@@ -1,4 +1,4 @@
-%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -89,7 +89,7 @@ text-overflow: ellipsis;
 
 					<div id="product-logo">
 						<div id="mo-logo">
-							<a href=""><img src="/ereg-web/resources/img/logo-mo-dese.423x61.jpg" width="423" height="61" alt="Missouri Educator Gateway Assessments"></a>
+							<a href="http://mega.ets.org/" target="_blank"><img src="/ereg-web/resources/img/logo-mo-dese.423x61.jpg" width="423" height="61" alt="Missouri Educator Gateway Assessments"></a>
 						</div>
 					</div>
 
@@ -559,8 +559,8 @@ text-overflow: ellipsis;
 						<p class="hide" id="corp-links-desc">State Links</p>
 						<ul>
 							<li><a href="http://dese.mo.gov/" target="_blank"><spring:message code="footer.moDeptSecondaryEdu"/></a></li>
-< 							<li><a href="http://mega.ets.org" target="_blank"><spring:message code="footer.moPerfAssmtSite"/></a></li>
-< 							<li><a href="http://www.ets.org/legal" target="_blank"><spring:message code="footer.legalPrivacyPolicy"/></a></li>
+ 							<li><a href="http://mega.ets.org" target="_blank"><spring:message code="footer.moPerfAssmtSite"/></a></li>
+ 							<li><a href="http://www.ets.org/legal" target="_blank"><spring:message code="footer.legalPrivacyPolicy"/></a></li>
 						</ul>
 						<div class="clearboth"></div>
 					</nav><!-- /corp-links -->

@@ -20,7 +20,7 @@
              <span class="required_notification"><spring:message code="requiredInformation"/></span>
 
 </div>
-<div class="headContainer"><p>[We may display instructions here. Explain why we're asking for this information and how it will be used.]</p></div>
+<div class="headContainer"><spring:message code="background.message"/></div>
 
 <!-- Form Canvas starts here -->
 <c:url value="/secure/home" var="prev_url"/>
@@ -31,11 +31,11 @@
 	<c:set var="STATUS_KO" value="<%=ProfileForm.STATUS_KO%>" />
   	<c:if test="${profileForm.statusCode==STATUS_KO}">
 		<div style="margin:20px;">
-		<div class="errorblock">	
-		<strong><i class="icon-exclamation-sign"></i> <c:out value="${profileForm.statusMessage}"/></strong><br/>
-		<form:errors/>		
-			<br/>
-		</div>
+			<div class="errorblock">
+  				<i class="icon-exclamation-sign"></i>
+  				<c:out value="${profileForm.statusMessage}" escapeXml="false" />
+  				<!-- 	<form:errors/>  -->
+  			</div>
 		</div>
  	</c:if>
 	</p>
