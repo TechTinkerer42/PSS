@@ -133,7 +133,7 @@ form[id="searchFormHome"] input[type="text"] {
 	.create_form select:focus { background: #fff; 
 		border:1px solid #555; 
 		box-shadow: 0 0 3px #aaa; 
-		padding-right:20px;}
+		}
 
 /* === HTML5 validation styles === */	
 .create_form input:required, .create_form textarea:required, .create_form select:required {
@@ -335,14 +335,13 @@ input[type="radio"]
 
 .radiostarcolor{ background: #fff url(../img/red_asterisk.png) no-repeat 2px 3px; width:20px; height:19px; display:inline-block;}
 
-.required:before {
+.required:after {
     color: #B81E12;
     content: "*";
-    display: block;
     font-family: "Grotesk URW Regular",georgia,myraid pro,Helvetica,sans-serif;
     font-size: 1.4em;
     height: 12px;
-    margin: 1px 0 0 -12px;
+    margin: 1px 0 0 3px;
     position: absolute;
     width: 12px;
     font-weight:bold;
