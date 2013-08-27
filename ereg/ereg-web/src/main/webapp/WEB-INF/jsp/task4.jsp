@@ -641,7 +641,10 @@ $.extend({ alert: function (message, title) {
 						    if ($.browser.webkit)
 						      ce.find("div").replaceWith(function() { return "\n" + this.innerHTML; });
 						    if ($.browser.msie)
-						      ce.find("p").replaceWith(function() { return this.innerHTML + "\n"; });
+						     $(".ctclasseditor p").css("margin", "0px");
+						    ce.find("p").replaceWith(function() { return this.innerHTML + "<br>"; });
+						     //ce.find("p").replaceWith(function() {return "\n" + this.innerHTML;});
+						     // ce.find("p").replaceWith(function() { return this.innerHTML + "\n"; });
 						    if ($.browser.mozilla || $.browser.opera || $.browser.msie)
 						      ce.find("br").replaceWith("\n");
 						    
@@ -1508,6 +1511,7 @@ $.extend({ alert: function (message, title) {
 
 .essay_div {
 	height: 400px;
+	-moz-appearance: textfield-multiline;
 }
 
 .ctclasseditor {
@@ -1515,7 +1519,16 @@ $.extend({ alert: function (message, title) {
 	width: 98.5%;
 	resize: none margin-left:50px;
 	margin:auto;
-	white-space: pre;	
+    white-space: pre;
+    font: medium -moz-fixed;
+    font: -webkit-small-control;   
+	/*
+	-moz-appearance: textfield-multiline; 
+	white-space: pre-wrap;    
+    white-space: -moz-pre-wrap; 
+    white-space: -pre-wrap;   
+    white-space: -o-pre-wrap;   
+    word-wrap: break-word;    */ 
 	/* margin-right: 0px;
 	margin-left: 0px; */
 	/* border: 1.0px solid #000; */
@@ -1529,6 +1542,11 @@ $.extend({ alert: function (message, title) {
     border: 1px solid #999; margin-bottom: 1em; height:275px; overflow:auto;
 	/* -webkit-user-select: auto; */
 }
+ .ctclasseditor p
+{
+     margin:0px;
+   /*  line-height: 0px; */
+} 
 
 a.highLightLink {
 	 /* color: red; */
@@ -2352,6 +2370,7 @@ margin-bottom:25px;
 												<input type="hidden" id="existingEssayContent${prompt.promptId}"
 												value="<c:out value="${promptResponses[prompt.promptId]}"/>" /> 
 											   <div id="cteditor${prompt.promptId}" spellcheck="true" class="ctclasseditor" contenteditable='<c:choose><c:when test="${customerTask.docStsTyp.docStsTypCde!='CMPLD'}">true</c:when><c:when test="${customerTask.docStsTyp.docStsTypCde=='CMPLD'}">false</c:when></c:choose>'>
+											 
 											    </div>
 																					
 											<div id="docsDivForPrmpt${prompt.promptId}" style="display: none">
