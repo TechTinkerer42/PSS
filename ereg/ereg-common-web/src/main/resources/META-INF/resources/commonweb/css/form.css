@@ -341,7 +341,7 @@ input[type="radio"]
     font-family: "Grotesk URW Regular",georgia,myraid pro,Helvetica,sans-serif;
     font-size: 1.4em;
     height: 12px;
-    margin: 1px 0 0 3px;
+    margin: -4px 0 0 3px;
     position: absolute;
     width: 12px;
     font-weight:bold;
