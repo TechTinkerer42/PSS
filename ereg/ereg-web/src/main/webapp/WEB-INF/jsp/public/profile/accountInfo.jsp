@@ -58,13 +58,13 @@
   
   <li>
 
-	<label for="username"><spring:message code="username"/></label>
+	<label for="username" class="required"><spring:message code="username"/>:</label>
 	<form:input path="<%=ProfileForm.USERNAME %>" size="30" id="username" required="required" />
 	<form:errors class="errorMessage" path="<%=ProfileForm.USERNAME %>"/>
 </li>
 
 <li>
-	<label for="password"><spring:message code="password"/></label>
+	<label for="password" class="required"><spring:message code="password"/>:</label>
 	<form:password path="<%=ProfileForm.PASSWORD %>" size="30" id="password" required="required" />
 	<form:errors class="errorMessage" path="<%=ProfileForm.PASSWORD %>"/>
 	<span class="form_hint">Hint: The password should have minimum 8 characters and maximum 16 characters. It should contains atleast 1 capital letter and a symbol or a digit</span>
@@ -72,13 +72,13 @@
 
 
 	<li>
-	<label for="passwordConfirm"><spring:message code="passwordConfirm"/></label>
+	<label for="passwordConfirm" class="required"><spring:message code="passwordConfirm"/>:</label>
 	<form:password path="<%= ProfileForm.PASSWORD_CONFIRM %>" size="30" id="passwordConfirm" required="required"/>
 	<form:errors class="errorMessage" path="<%= ProfileForm.PASSWORD_CONFIRM %>"/>
 	</li>
 
 	<li>
-	<label for="securityQuestion"><spring:message code="challengeQuestion"/></label>
+	<label for="securityQuestion" class="required"><spring:message code="challengeQuestion"/>:</label>
 	<form:select path="<%=ProfileForm.SECURITY_QUESTION %>" id="securityQuestion" required="required">
 		<form:option value=""><spring:message code="select"/></form:option>
 		<c:forEach items="${challengeQuestions}" var="challengeQuestion">
@@ -116,7 +116,7 @@
 -->
 
 <div class="termsCheckbox">
-<form:checkbox path="<%=ProfileForm.AGREE_TERMS%>" id="termsConditions" name="cc" class="radiocheck"/> 
+<form:checkbox path="<%=ProfileForm.AGREE_TERMS%>" id="termsConditions" name="cc"/> 
 
 <strong><spring:message code="agreeTerms"/></strong>  <span class="checkConditions"></span></div>
 <h2><form:errors class="errorMessage" path="<%=ProfileForm.AGREE_TERMS %>"/></h2>
