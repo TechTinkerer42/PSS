@@ -200,30 +200,37 @@ public class TaskController {
 			 
 	}  	
     
-    @RequestMapping(value = "/upload/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/upload/save", method = RequestMethod.POST,produces = "text/html; charset=utf-8")
     public @ResponseBody String save(@RequestParam MultipartFile file, @LoggedInUser ERegUser loggedInUser, Model model) {
-    	System.out.println("Upload / Save ");    	
+    	System.out.println("Upload / Save ");    
+    	
+    	long allowedFileSize = 1048576L;
+    	
     	EtsCust etsCust = taskServiceImpl.getCustomer(loggedInUser.getId());
-         List<Doc> tempCusotmerArtifacts = taskServiceImpl.getCustomerArtifacts(etsCust.getCustomerId());
+        List<Doc> tempCusotmerArtifacts = taskServiceImpl.getCustomerArtifacts(etsCust.getCustomerId());
     	
     	if(tempCusotmerArtifacts != null && tempCusotmerArtifacts.size() > 0)
     	{
     		for(Doc doc : tempCusotmerArtifacts)
     		    if(doc.getDocId()!=0)
     		    {
-    		    	if(file.getOriginalFilename()!=null&& doc.getRspSrcLctnNam()!=null)
+    		    	if(file.getOriginalFilename()!=null && doc.getRspSrcLctnNam()!=null)
     		    	{
-    		    		if(file.getOriginalFilename().equals(doc.getRspSrcLctnNam()))
-    		    		{     System.out.println("Document with same name already exists. You cannot attach document with same name.");
-    		    		//return "{\"error\":false}";
+    		    			if(file.getSize() > allowedFileSize){
+    		    				return (getFileSizeExceedMessage(file.getOriginalFilename()));	
+    		    			}
+    		    			else if(file.getOriginalFilename().equals(doc.getRspSrcLctnNam())){     
+    		    				//System.out.println("Document with same name already exists. You cannot attach document with same name.");
+    		    				//return "{\"error\":false}";
     		    			
     		    			 return ("{\"error\": \"" +"Document with same name already exists. You cannot attach document with same name"+ "\"}");
     		    	
     		    		    //return "{\"error\": Document with same name already exists. You cannot attach document with same name}";
-    		    			 //return "{\"error\":Customer Error}";
-    		    		//return "{\"success\":false}";
-    		    		}
-    		    	     }
+    		    		   //return "{\"error\":Customer Error}";
+    		    		  //return "{\"success\":false}";
+    		    			}
+    		    			
+    		    	    }
     		    }
     	}
     	
@@ -433,5 +440,10 @@ public class TaskController {
 		return null;
 	}
 	
-
+	private String getFileSizeExceedMessage(String fileName)
+	{
+		return "{\"error\": \" is too large, maximum file size is 1.0MB. " + "\"}";
+	}
+	
+	
 }
