@@ -78,7 +78,7 @@
 <h2><spring:message code="login.returnuser"/></h2>
 
 <%-- <p><spring:message code="login.returnuser.message" arguments="${globalContextCustomer.currentProgramShortDescription}"/></p> --%>
-<label for="username"><spring:message code="login.username"/>:</label>
+<label for="username" class="required"><spring:message code="login.username"/>:</label>
 <input type='text' name=${username} value='' required="required" id="username">
 
 <c:set var="AUTH_MECHANISM" value="<%=ApplicationConfiguration.AUTH_MECHANISM_OAM %>" />
@@ -90,7 +90,7 @@
  
 <br>
 
-<label for="password"><spring:message code="login.password"/>:</label>
+<label for="password" class="required"><spring:message code="login.password"/>:</label>
 <input type='password' name=${password} required="required" id="password"/>
 
 
