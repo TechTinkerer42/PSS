@@ -60,17 +60,11 @@
 	
 
 
-<div class="questionSection" >
+<div>
 	<ol>
 <c:forEach var="demographicQuestion" items="${profileForm.profile.demographicQuestions}" varStatus="i">
-	
-
-
-
-
-	
-	<div  id="q${demographicQuestion.qstnNo}" <c:if test="${!demographicQuestion.displayed}">style="display:none;"</c:if>>
     	<li>
+    	<div  id="q${demographicQuestion.qstnNo}" <c:if test="${!demographicQuestion.displayed}">style="display:none;"</c:if>>
 	 	<!-- CheckBox-->
     	<c:if test="${demographicQuestion.responseType == 'M'}">
     	
@@ -166,14 +160,15 @@
             	        			
         			<form:input path="profile.demographicQuestions[${i.index}].freeFormAnswer" size="10" id=""  maxlength="256"  />       		
 					
-				</div></li>
+				</div>
 				
 				
 
 	    </c:if>
+	     </div>
 	  </li>
      
-	  </div>
+	 
      </c:forEach>
 	  </ol>
      
