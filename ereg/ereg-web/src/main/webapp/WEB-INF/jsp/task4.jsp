@@ -25,40 +25,19 @@
 
 <!-- fine uploader -->
 <link href="<c:url value="/resources/fineuploader/fineuploader-3.5.0.css"/>" rel="stylesheet" type="text/css" />
-
 <script type="text/javascript" 	src="<c:url value='/resources/jquery-ui-1.10.3/jquery-1.9.1.js'/>"></script>
 <script type="text/javascript" 	src="<c:url value='/resources/jquery-ui-1.10.3/ui/jquery-ui.js'/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/jquery-ui-1.10.3/themes/base/jquery-ui.css"/>"></script>
 <script type="text/javascript" 	src="<c:url value='/resources/json/json2.js'/>"></script> 
 <script type="text/javascript" src="<c:url value="/resources/fineuploader/jquery.fineuploader-3.5.0.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/dateformat/jquery.dateFormat-1.0.js"/>"></script>
-
 <script type="text/javascript" 	src="<c:url value='/resources/rangy-1.3/rangy-core.js'/>"></script>
+<script type="text/javascript" 	src="<c:url value='/resources/rangy-1.3/jsHtmlToText.js'/>"></script>
 <script type="text/javascript" 	src="<c:url value='/resources/rangy-1.3/rangy-cssclassapplier.js'/>"></script>
  <script src="https://cdnapisec.kaltura.com/p/958691/sp/95869100/embedIframeJs/uiconf_id/15210901/partner_id/958691"></script>
 <!-- <script src="http://cdnapi.kaltura.com/p/958691/sp/95869100/embedIframeJs/uiconf_id/15210901/partner_id/958691"></script> -->
- <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script> 
-
-
+<script type="text/javascript" 	src="<c:url value='/resources/jquery/jquery-migrate-1.2.1.min.js'/>"></script>
 <script>
-
-function setdiv( divid ){
-	if(document.getElementById(divid).height == 100 ){
-		document.getElementById(divid).height = 500;
-	}else{
-		document.getElementById(divid).height = 100;
-	}
-}
-
-function strip_tags(str){
-	t = str.replace(/<(\/)?(html|head|title|body|h1|h2|h3|h4|h5|h6|p|br|hr|pre|em|strong|code|b|i|ul|li|ol|dl|dd|table|tr|th|td)([^>]*)>/gi, "");
-	t = t.replace(/<(\/)?(iframe|frameset|form|input|select|option|textarea|blackquote|address|object)([^>]*)>/gi, "");
-    return t;
-	//$("#t").html(t);
-	}
-
-
-//jQuery.fn.stripTags = function() { return this.replaceWith( this.html().replace(/<\/?[^>]+>/gi, '') ); };
 
 jQuery.fn.stripTags = function(str) { return str.replace(/<\/?[^>]+>/gi, '');  };
 
@@ -82,14 +61,17 @@ $.extend({ alert: function (message, title) {
 					
 					function() {
 						jQuery.noConflict();
-						rangy.init();
 						
+						
+						if ( typeof jQuery.migrateMute === "undefined" ) {
+	                                                   jQuery.migrateMute = true;
+                                                                         }
+						rangy.init();						
 						var accordicons = {
 							      header: "ui-icon-circle-arrow-e",
 							      activeHeader: "ui-icon-circle-arrow-s"
 							    };
 
-						//create accordian  
 						
 						$("#accordion-1").accordion({heightStyle: "content",collapsible: true,active: false,icons: accordicons});
 						$("#accordion").accordion({heightStyle: "content",collapsible: true,active: false,icons: accordicons});
@@ -541,27 +523,7 @@ $.extend({ alert: function (message, title) {
 												}
 										}
 										 );
-									 
-									 
-									/*  setTimeout(function(){ 
-									    //var text = $('#cteditor' + index).html();
-									 //   console.log('the id on keypress is '+idStr);
-									  //  console.log('now the index is '+index);
-										var currentEditor = $('#cteditor' + index);
-										var value=currentEditor.html();
-										
-										 value= value.replace(/<\/?([a-z]+)[^>]*>/gi, function(match, tag) { 
-										
-                                             return (tag.toLowerCase() === "a") ? match : "";
-                                         }); 
-										
-										   //var el = document.getElementById('cteditor' + index);										
-											//el.innerHTML = el.innerHTML.replace(/(<([^>]+)>)/ig,"");
-										 
-							           
-									 
-									 },100); */
-									 
+								
 								}));
 						
 						function extractTextWithWhitespace(elems)
@@ -589,7 +551,7 @@ $.extend({ alert: function (message, title) {
 						}
 						
 
-						// Cribbed from jQuery 1.4.2 (getText) and modified to retain whitespace
+						//  from jQuery  (getText) and modified to retain whitespace
 						function extractTextWithWhitespaceWorker(elems, lineBreakNodeName)
 						{
 						    var ret = "";
@@ -620,18 +582,18 @@ $.extend({ alert: function (message, title) {
 						}
 						
 						function convertHtmlToText( input) {
+							//console.log(input);
 						    var inputText =input;// document.getElementById("input").value;
 						    var returnText = "" + inputText;
-
-						    //-- remove BR tags and replace them with line break
+						  //-- remove BR tags and replace them with line break
 						    returnText=returnText.replace(/<br>/gi, "\n");
 						    returnText=returnText.replace(/<br\s\/>/gi, "\n");
 						    returnText=returnText.replace(/<br\/>/gi, "\n");
 
 						    //-- remove P and A tags but preserve what's inside of them
 						    returnText=returnText.replace(/<p.*>/gi, "\n");
-						    returnText=returnText.replace(/<a.*href="(.*?)".*>(.*?)<\/a>/gi, " $2");
-						 
+						    returnText=returnText.replace(/<a.*href="(.*?)".*>(.*?)<\/a>/gi, " $2 ($1)");
+
 						    //-- remove all inside SCRIPT and STYLE tags
 						    returnText=returnText.replace(/<script.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/script>/gi, "");
 						    returnText=returnText.replace(/<style.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/style>/gi, "");
@@ -650,6 +612,7 @@ $.extend({ alert: function (message, title) {
 						    returnText=returnText.replace(/&quot;/gi,'"');
 						    returnText=returnText.replace(/&lt;/gi,'<');
 						    returnText=returnText.replace(/&gt;/gi,'>');
+
 						    return returnText;
 
 						    //-- return
@@ -658,14 +621,60 @@ $.extend({ alert: function (message, title) {
 
 						function Convert( template)
 						{
-						    template = template.replace( "<img .*?alt=[\"']?([^\"']*)[\"']?.*?/?>", "$1"); /* Use image alt text. */
+							console.log('inside template');
+							template=template.replace(/<a.*href="(.*?)".*>(.*?)<\/a>/gi, " $2 ($1)");
+
+							template = template.replace( "<img .*?alt=[\"']?([^\"']*)[\"']?.*?/?>", "$1"); /* Use image alt text. */
 						    template = template.replace("<a .*?href=[\"']?([^\"']*)[\"']?.*?>(.*)</a>", "$1"); /* Convert links to something useful */
 						    template = template.replace( "<(/p|/div|/h\\d|br)\\w?/?>", "\n"); /* Let's try to keep vertical whitespace intact. */
 						    template = template.replace("<[A-Za-z/][^<>]*>", ""); /* Remove the rest of the tags. */
+						    
+						    //-- remove all else
+						     template= template.replace(/<(?:.|\s)*?>/g, "");
+
 
 						    return template;
 						}
 						
+						$.fn.getPreText = function () {
+						    var ce = $("<pre/>").html(this.html());
+						    if ($.browser.webkit)
+						      ce.find("div").replaceWith(function() { return "\n" + this.innerHTML; });
+						    if ($.browser.msie)
+						     $(".ctclasseditor p").css("margin", "0px");
+						    ce.find("p").replaceWith(function() { return this.innerHTML + "<br>"; });
+						     //ce.find("p").replaceWith(function() {return "\n" + this.innerHTML;});
+						     // ce.find("p").replaceWith(function() { return this.innerHTML + "\n"; });
+						    if ($.browser.mozilla || $.browser.opera || $.browser.msie)
+						      ce.find("br").replaceWith("\n");
+						    
+						    //textContent or text()
+						    return ce.text();
+						};
+						
+						$('[id^=cteditor]').keydown(function(e)
+				       {
+							var clicked = $(this);
+						    if ((e.keyCode == 82 && e.ctrlKey)||(e.keyCode == 75 && e.ctrlKey)||(e.keyCode == 7 && e.ctrlKey)||(e.keyCode == 65 && e.ctrlKey)||(e.keyCode == 85 && e.ctrlKey)||(e.keyCode == 66 && e.ctrlKey)|| (e.keyCode == 73 && e.ctrlKey) )
+						   {
+						    	//console.log('its a control Bold or Italic');
+						    	e.preventDefault();
+						    	e.stopPropagation();
+						    	var idStr = clicked[0].id;
+								//console.log('the id on paste is '+idStr);
+								var indexOfCount = "cteditor".length;
+								var index = idStr.substring(indexOfCount, idStr.length);
+								
+								 //console.log('now the index is '+index);
+								var currentEditor = $('#cteditor' + index);
+								setTimeout(function(){ 
+								currentEditor.html(currentEditor.getPreText());
+								},200); 
+						    	}
+				       });
+
+							
+				       
 						$('[id^=cteditor]')
 						.on(
 								'paste', //'keyup',
@@ -679,7 +688,7 @@ $.extend({ alert: function (message, title) {
 									
 									 //console.log('now the index is '+index);
 									var currentEditor = $('#cteditor' + index);
-									  setTimeout(function(){ 
+									 setTimeout(function(){ 
 									
 										//var currentEditor = $(this);
 										 //var text = $('#cteditor' + index).html();
@@ -726,17 +735,22 @@ $.extend({ alert: function (message, title) {
 										//el.innerHTML = el.innerHTML.replace(/(<([^>]+)>)/ig,"");								
 										//el.innerHTML= el.innerHTML.replace(/<\/?([a-z]+[^\S\r\n])[^>]*>/ig,"").replace((/<script.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/script>/gi, ""),"").replace(/<style.*>[\w\W]{1,}(.*?)[\w\W]{1,}<\/style>/gi, "").replace(/<(?:.|\s)*?>/g, "");
                                       
-										//var value=extractTextWithWhitespace(currentEditor);
-										//console.log('the value now is '+value);
-										//var value=currentEditor.html();	
+										//var returnValue=extractTextWithWhitespace(currentEditor);
+										//console.log('the value now is '+returnValue);
+										//var value=currentEditor.html();
+										currentEditor.html(currentEditor.getPreText());
+										// $("#edit").html($("#edit").getPreText());
+
+										//returnValue=htmlToText(value);
 										//returnValue=convertHtmlToText(value);
+										//returnValue=Convert(value);
 										//console.log(returnValue);
                                        	//returnValue=convertHtmlToText(value);
                                      	//console.log('the return value is '+returnValue);
-                                         //currentEditor.html(returnValue);
+                                        // currentEditor.html(returnValue);
                                        	//console.log('the return value is '+returnValue);
-										var el = document.getElementById('cteditor' + index);
-										el.innerHTML = el.innerHTML.replace(/(<([^>]+)>)/ig,"");		
+										//var el = document.getElementById('cteditor' + index);
+										//el.innerHTML = el.innerHTML.replace(/(<([^>]+)>)/ig,"");		
 									  },100); }));
 					  
 										$('[id^=cteditor]')
@@ -1497,6 +1511,7 @@ $.extend({ alert: function (message, title) {
 
 .essay_div {
 	height: 400px;
+	-moz-appearance: textfield-multiline;
 }
 
 .ctclasseditor {
@@ -1504,7 +1519,16 @@ $.extend({ alert: function (message, title) {
 	width: 98.5%;
 	resize: none margin-left:50px;
 	margin:auto;
-	white-space: pre;	
+    white-space: pre;
+    font: medium -moz-fixed;
+    font: -webkit-small-control;   
+	/*
+	-moz-appearance: textfield-multiline; 
+	white-space: pre-wrap;    
+    white-space: -moz-pre-wrap; 
+    white-space: -pre-wrap;   
+    white-space: -o-pre-wrap;   
+    word-wrap: break-word;    */ 
 	/* margin-right: 0px;
 	margin-left: 0px; */
 	/* border: 1.0px solid #000; */
@@ -1518,6 +1542,11 @@ $.extend({ alert: function (message, title) {
     border: 1px solid #999; margin-bottom: 1em; height:275px; overflow:auto;
 	/* -webkit-user-select: auto; */
 }
+ .ctclasseditor p
+{
+     margin:0px;
+   /*  line-height: 0px; */
+} 
 
 a.highLightLink {
 	 /* color: red; */
@@ -2341,6 +2370,7 @@ margin-bottom:25px;
 												<input type="hidden" id="existingEssayContent${prompt.promptId}"
 												value="<c:out value="${promptResponses[prompt.promptId]}"/>" /> 
 											   <div id="cteditor${prompt.promptId}" spellcheck="true" class="ctclasseditor" contenteditable='<c:choose><c:when test="${customerTask.docStsTyp.docStsTypCde!='CMPLD'}">true</c:when><c:when test="${customerTask.docStsTyp.docStsTypCde=='CMPLD'}">false</c:when></c:choose>'>
+											 
 											    </div>
 																					
 											<div id="docsDivForPrmpt${prompt.promptId}" style="display: none">
