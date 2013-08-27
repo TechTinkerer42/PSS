@@ -636,17 +636,70 @@ $.extend({ alert: function (message, title) {
 						    return template;
 						}
 						
-						$.fn.getPreText = function () {
+						$.fn.getPreText = function (currentEditor) {
 						    var ce = $("<pre/>").html(this.html());
 						    if ($.browser.webkit)
 						      ce.find("div").replaceWith(function() { return "\n" + this.innerHTML; });
-						    if ($.browser.msie)
-						     $(".ctclasseditor p").css("margin", "0px");
+						    if ($.browser.msie)	
+						    $(".ctclasseditor p").css("margin", "0px");
 						    ce.find("p").replaceWith(function() { return this.innerHTML + "<br>"; });
+						   /*var tempNode = document.createTextNode("X");
+							    rangy.dom.insertAfter(tempNode, sel.anchorNode.parentNode);
+							    range.selectNode(tempNode);
+							sel.setSingleRange(range);*/  	
+						    
+						  /*  var clicked = $(this);
+						   var idStr = clicked[0].id;
+							
+							var indexOfCount = "cteditor".length;
+							var index = idStr.substring(indexOfCount, idStr.length);
+							var el = document.getElementById('cteditor'+index);
+							el.focus();							
+						    
+						  var sel = rangy.getSelection(); 
+						   var range = sel.getRangeAt(0); 
+						   // alert(sel.anchorNode.parentNode);
+						   sel.selectAllChildren(el);//unwanted here
+						   text = sel.toString();//unwanted here
+						   sel.removeAllRanges();//unwanted here
+						   range.selectNodeContents(el);
+						    var formattingEls = range
+							.getNodes(
+									false,
+									function(el) {
+										alert('the node is '+el.tagName);
+										if(el.tagName == 'P')
+										{
+											
+											range.setStartAfter(el);											
+											range.collapse(true);
+											rangy.getSelection().setSingleRange(range);
+
+										}
+										
+									}); */
+						    //range.setStartAfter(el);
+							//range.collapse(true);
+							//rangy.getSelection().setSingleRange(range);
+													 
+													 
+						    //range.setStartAfter(el.getElementsByTagName("div")[0]);
+						    //range.collapse(true);
+			                //rangy.getSelection().setSingleRange(range);
+						    
+						    //alert(sel.anchorNode.parentNode);
+						   // range.setStartAfter(sel.anchorNode.parentNode);
+						   // range.setEndAfter(sel.anchorNode.parentNode);//dont need this one 
+						   // range.collapse(true);
+			               // rangy.getSelection().setSingleRange(range);
+						   
+						    
 						     //ce.find("p").replaceWith(function() {return "\n" + this.innerHTML;});
 						     // ce.find("p").replaceWith(function() { return this.innerHTML + "\n"; });
 						    if ($.browser.mozilla || $.browser.opera || $.browser.msie)
-						      ce.find("br").replaceWith("\n");
+						      //ce.find("br").replaceWith("\n");
+						    ce.find("br").replaceWith(function() { return "\n" + this.innerHTML; });
+						  
 						    
 						    //textContent or text()
 						    return ce.text();
@@ -655,6 +708,11 @@ $.extend({ alert: function (message, title) {
 						$('[id^=cteditor]').keydown(function(e)
 				       {
 							var clicked = $(this);
+							 /* if (($.browser.msie) && (e.keyCode == 32))
+								 {
+								 
+								 } */
+								 
 						    if ((e.keyCode == 82 && e.ctrlKey)||(e.keyCode == 75 && e.ctrlKey)||(e.keyCode == 7 && e.ctrlKey)||(e.keyCode == 65 && e.ctrlKey)||(e.keyCode == 85 && e.ctrlKey)||(e.keyCode == 66 && e.ctrlKey)|| (e.keyCode == 73 && e.ctrlKey) )
 						   {
 						    	//console.log('its a control Bold or Italic');
@@ -689,6 +747,7 @@ $.extend({ alert: function (message, title) {
 									 //console.log('now the index is '+index);
 									var currentEditor = $('#cteditor' + index);
 									 setTimeout(function(){ 
+									
 									
 										//var currentEditor = $(this);
 										 //var text = $('#cteditor' + index).html();
@@ -738,7 +797,7 @@ $.extend({ alert: function (message, title) {
 										//var returnValue=extractTextWithWhitespace(currentEditor);
 										//console.log('the value now is '+returnValue);
 										//var value=currentEditor.html();
-										currentEditor.html(currentEditor.getPreText());
+										currentEditor.html(currentEditor.getPreText(currentEditor));
 										// $("#edit").html($("#edit").getPreText());
 
 										//returnValue=htmlToText(value);
@@ -2311,7 +2370,7 @@ margin-bottom:25px;
 										           <input type="hidden" id="taskVideoKey" value="<c:out value="${task.taskId}"/>" />												   
 											    <div id="video" class="videoouter">
 												<div class="videoinner"><h5>VIDEO UPLOAD</h5></div>				
-												<div class="video"><p><h5>Teaching Video.mp3</h5> <!-- <a href="">Video</a> --></p></div>
+												<div class="video"><p> <!-- <h5>Teaching Video.mp3</h5><a href="">Video</a> --></p></div>
 												
 												<c:if test="${customerTask.docStsTyp.docStsTypCde!='CMPLD'}">												
 												<input type=button id="uploadVideo" class="uploadVideobutton" value="Upload Video" />
