@@ -763,4 +763,6 @@
 .lt-ie8 fieldset.like-row legend { margin-left: -0.6em; float: left; }
 .lt-ie8 fieldset.like-row select,
 .lt-ie8 fieldset.like-row input { display: block; float: left; margin-right: 0.5em; vertical-align: top; margin-top: -1.5em; }
+.review-help1{display:block; height:80px; padding:10px; font-size:0.87em; font-family:arial; position:absolute; width:350px; border:1px solid #F0BC20; background:#FCF1D1; color:#000; margin-left:450px; margin-top:20px; }
+.review-help2 {display:block; height:40px; padding:10px; font-size:0.87em; font-family:arial; position:absolute; width:350px; border:1px solid #F0BC20; background:#FCF1D1; color:#000; margin-left:450px; margin:130px 0 0 450px;}
 
