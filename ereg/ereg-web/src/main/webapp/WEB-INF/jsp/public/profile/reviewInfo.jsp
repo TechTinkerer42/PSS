@@ -8,10 +8,6 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="ct" uri="http://ereg.ets.org/commontags"%>
 
-<style>
-.review-help1{display:block; height:80px; padding:10px; font-size:0.87em; font-family:arial; position:absolute; width:350px; border:1px solid #F0BC20; background:#FCF1D1; color:#000; margin-left:450px; margin-top:20px; }
-.review-help2 {display:block; height:40px; padding:10px; font-size:0.87em; font-family:arial; position:absolute; width:350px; border:1px solid #F0BC20; background:#FCF1D1; color:#000; margin-left:450px; margin:130px 0 0 450px;}
-</style>
 <t:base title="Create Profile - Review">
 <div class="headContainer ">
 
@@ -37,7 +33,7 @@
 
 <c:url value="/public/profile/account" var="prev_url"/>
 <ul>
-<li><label><spring:message code="firstName"/>:</label> <c:out value="${profileForm.profile.customer.firstName}"/>
+<li><label><spring:message code="firstName"/></label> <c:out value="${profileForm.profile.customer.firstName}"/>
 
 <div class="review-help1">
 <spring:message code="profile.create.reviewinfo.nameConfirmation" />
@@ -49,31 +45,31 @@
 
 </li>
 <div style="clear:both;"></div>
-<li><label><spring:message code="middleInitial"/>:</label> <c:out value="${profileForm.profile.customer.middleInitial}"/></li>
+<li><label><spring:message code="middleInitial"/></label> <c:out value="${profileForm.profile.customer.middleInitial}"/></li>
 <div style="clear:both;"></div>
-<li><label><spring:message code="lastName"/>:</label> <c:out value="${profileForm.profile.customer.lastName}"/></li>
+<li><label><spring:message code="lastName"/></label> <c:out value="${profileForm.profile.customer.lastName}"/></li>
 <div style="clear:both;"></div>
-<li><label><spring:message code="dateOfBirth"/>:</label> <ct:dateTime part="date" value="${profileForm.profile.customer.dateOfBirth}" /></li>
+<li><label><spring:message code="dateOfBirth"/></label> <ct:dateTime part="date" value="${profileForm.profile.customer.dateOfBirth}" /></li>
 <div style="clear:both;"></div>
-<li><label><spring:message code="gender"/>:</label><c:out value="${profileForm.profile.customer.gender.description}" /></li>
+<li><label><spring:message code="gender"/></label><c:out value="${profileForm.profile.customer.gender.description}" /></li>
 <div style="clear:both;"></div>
-<li><label><spring:message code="socialSecurity"/>:</label><c:out value="${profileForm.profile.customer.socialSecurity}"/> </li>
+<li><label><spring:message code="socialSecurity"/></label><c:out value="${profileForm.profile.customer.socialSecurity}"/> </li>
 <div style="clear:both;"></div>
-<li><label><spring:message code="emailAddress"/>:</label><c:out value="${profileForm.profile.customer.emailAddress}"/></li>
+<li><label><spring:message code="emailAddress"/></label><c:out value="${profileForm.profile.customer.emailAddress}"/></li>
 <div style="clear:both;"></div>
-<li><label><spring:message code="country"/>:</label><c:out value="${profileForm.profile.address.country.name}"/></li>
+<li><label><spring:message code="country"/></label><c:out value="${profileForm.profile.address.country.name}"/></li>
 <div style="clear:both;"></div>
-<li><label><spring:message code="addressLine1"/>:</label><c:out value="${profileForm.profile.address.addressLine1}"/> </li>
+<li><label><spring:message code="addressLine1"/></label><c:out value="${profileForm.profile.address.addressLine1}"/> </li>
 <div style="clear:both;"></div>
-<li><label><spring:message code="addressLine2"/>:</label><c:out value="${profileForm.profile.address.addressLine2}"/> </li>
+<li><label><spring:message code="addressLine2"/></label><c:out value="${profileForm.profile.address.addressLine2}"/> </li>
 <div style="clear:both;"></div>
-<li><label><spring:message code="city"/>:</label><c:out value="${profileForm.profile.address.city}"/></li>
+<li><label><spring:message code="city"/></label><c:out value="${profileForm.profile.address.city}"/></li>
 <div style="clear:both;"></div>
-<li><label><spring:message code="state"/>:</label><c:out value="${profileForm.profile.address.state.name}"/></li>
+<li><label><spring:message code="state"/></label><c:out value="${profileForm.profile.address.state.name}"/></li>
 <div style="clear:both;"></div>
-<li><label><spring:message code="postalCode"/>:</label><c:out value="${profileForm.profile.address.postalCode}"/></li>
+<li><label><spring:message code="postalCode"/></label><c:out value="${profileForm.profile.address.postalCode}"/></li>
 <div style="clear:both;"></div>
-	<li><label><spring:message code="primaryPhone"/>:</label>
+	<li><label><spring:message code="primaryPhone"/></label>
 					<c:out value="${profileForm.profile.primaryPhone.phoneNumber}" />
 					<c:if test="${ profileForm.profile.primaryPhone.phoneExtension != null  && profileForm.profile.primaryPhone.phoneExtension.length() > 0}">
 						<c:out value="ext. ${profileForm.profile.primaryPhone.phoneExtension}" />
@@ -82,7 +78,7 @@
 	
 	<div style="clear:both;"></div>
 	
-<li><label><spring:message code="alternatePhone"/>:</label><c:out value="${profileForm.profile.alternatePhone.phoneNumber}" />
+<li><label><spring:message code="alternatePhone"/></label><c:out value="${profileForm.profile.alternatePhone.phoneNumber}" />
 					<c:if test="${ profileForm.profile.alternatePhone.phoneExtension != null &&  profileForm.profile.alternatePhone.phoneExtension.length() > 0}">
 						<c:out value="ext. ${profileForm.profile.alternatePhone.phoneExtension}" />
 					</c:if> </li>
@@ -160,13 +156,22 @@
 <div class="bottomContainer">
 
  <div class="row-fluid">
-    <div class="span6"><c:url value="/public/profile/account" var="prev_url"/> 
-<a class="submit" href="<c:out value='${prev_url}'/>"><spring:message code="back"/></a>
+    <div class="span6">
+    <c:url value="/public/profile/account" var="prev_url"/><a class="submit" href="<c:out value='${prev_url}'/>"><spring:message code="back"/></a>
 </div>
-    <div class="span6"><span class="right"><button class="submit" type="submit"><spring:message code="submit"/></button></span></div>
+
+  <div class="span6">
+  <span class="right"><button class="submit" type="submit"><spring:message code="submit"/></button>
+  </span>
+  </div>
     </div>
 
 </div>
+
+
+
+
+    
 </form:form>
 
  <!--  Form Canvas ends here -->

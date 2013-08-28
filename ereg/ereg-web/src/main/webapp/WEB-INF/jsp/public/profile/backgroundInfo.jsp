@@ -58,7 +58,7 @@
 
 <div class="formRow">
 
-<div>
+<div class="questionSection">
 	<ol>
 <c:forEach var="demographicQuestion" items="${profileForm.profile.demographicQuestions}" varStatus="i">
     	<li>

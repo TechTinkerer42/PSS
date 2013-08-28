@@ -26,7 +26,7 @@
  	<c:set var="STATUS_OK" value="<%=ProfileForm.STATUS_OK%>" />
 	<c:set var="STATUS_KO" value="<%=ProfileForm.STATUS_KO%>" />
   	<c:if test="${profileForm.statusCode==STATUS_KO}">
- 		<c:out value="${profileForm.statusMessage}"/>
+ 		<c:out value="${profileForm.statusMessage}" escapeXml="false"/>
  	</c:if>
 
 	<ul>
@@ -40,13 +40,13 @@
 	<label for="newPassword"><spring:message code="newPassword"/></label>
 	<form:password path="<%=ProfileForm.PASSWORD %>" size="30" id="newPassword" required="required"/>
 		<form:errors path="password"/>
-		<span class="form_hint">Hint: The password should have minimum 8 characters and maximum 16 characters. It should contains atleast 1 capital letter and a symbol or a digit</span>
+		<span class="form_hint">Hint: The password should have minimum 8 characters and maximum 16 characters and contain at least one uppercase letter (A through Z) and 3 and contain at least one non-alphabetic character (for example,!, $, #, %) OR one number (0 through 9).</span>
 	</li>
 	<li>
 	<label for="newPasswordConfirm"><spring:message code="newPasswordConfirm"/></label>
 	<form:password path="<%=ProfileForm.PASSWORD_CONFIRM %>" size="30" id="newPasswordConfirm" required="required"/>
 	<form:errors path="<%=ProfileForm.PASSWORD_CONFIRM %>"/>
-	<span class="form_hint">Hint: The password should have minimum 8 characters and maximum 16 characters. It should contains atleast 1 capital letter and a symbol or a digit</span>
+	<span class="form_hint">Hint: The password should have minimum 8 characters and maximum 16 characters and contain at least one uppercase letter (A through Z) and 3 and contain at least one non-alphabetic character (for example,!, $, #, %) OR one number (0 through 9).</span>
 </li>
 </ul>
 

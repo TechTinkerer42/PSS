@@ -61,13 +61,14 @@
 	<label for="username" class="required"><spring:message code="username"/>:</label>
 	<form:input path="<%=ProfileForm.USERNAME %>" size="30" id="username" required="required" />
 	<form:errors class="errorMessage" path="<%=ProfileForm.USERNAME %>"/>
+	<span class="form_hint">Hint: The User Name must be between 6 and 16 characters (letters and/or numbers only).</span>
 </li>
 
 <li>
 	<label for="password" class="required"><spring:message code="password"/>:</label>
 	<form:password path="<%=ProfileForm.PASSWORD %>" size="30" id="password" required="required" />
 	<form:errors class="errorMessage" path="<%=ProfileForm.PASSWORD %>"/>
-	<span class="form_hint">Hint: The password should have minimum 8 characters and maximum 16 characters. It should contains atleast 1 capital letter and a symbol or a digit</span>
+	<span class="form_hint">Hint: The password should have minimum 8 characters and maximum 16 characters, contain at least one uppercase letter (A through Z) and 3. contain at least one non-alphabetic character (for example,!, $, #, %) OR one number (0 through 9).</span>
 	</li>
 
 
@@ -102,7 +103,7 @@
    <li>
    
    <div id="terms-conditions">
-   I Agree to the <a href="http://www.ets.org/legal/terms/" target="_blank">Terms and Conditions</a> governing use and access to ETS websites and to the ETS <a href="http://www.ets.org/legal/privacy/" target="_blank">Privacy and Security Policy</a>.
+   I Agree to the <a href="http://www.ets.org/legal/terms/" target="_blank"><b>Terms and Conditions</b></a> governing use and access to ETS websites and to the ETS <b><a href="http://www.ets.org/legal/privacy/" target="_blank">Privacy and Security Policy</a></b>.
  <br><br>
 
 <!--
