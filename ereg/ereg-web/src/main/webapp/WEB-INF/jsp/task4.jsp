@@ -1287,7 +1287,7 @@ $.extend({ alert: function (message, title) {
 							//console.log("the task keys is "+$("#taskVideoKey").val());
 							//var $j = jQuery.noConflict();
 						
-							var SplitTable='<p> Each video must be in avi, divx, flv, mov, m4p, mp4, mpeg, mpg or wmv format and cannot exceed 2 GB. </p>';
+							var SplitTable='<p> Each video must be in avi, divx, flv, mp4, mpeg, mpg or wmv format and cannot exceed 100 MB. </p>';
 						
 						    $("#videodialog").dialog({modal:true,width:600,height:300,position:['middle',20], dialogClass: 'no-close-dialog',buttons:[{text:"Close",click: function() { $(this).dialog('close'); }}]}) 
 							.each(
@@ -1320,8 +1320,8 @@ $.extend({ alert: function (message, title) {
 																},
 															
 															validation: {
-																 allowedExtensions: ['wmv','m4p','mp4','mov','mpeg','mpg','avi','divx','flv'],
-																 sizeLimit: 2147483648// 50 kB = 50 * 1024 bytes
+																 allowedExtensions: ['wmv','m4p','mp4','mpeg','mpg','avi','divx','flv'],
+																 sizeLimit: 104857600//2147483648// 50 kB = 50 * 1024 bytes
 														       // sizeLimit: 2147483648 //2GB
 														      },
 														       showMessage: function(message) {
