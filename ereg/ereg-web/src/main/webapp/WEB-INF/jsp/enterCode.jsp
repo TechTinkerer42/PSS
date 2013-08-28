@@ -12,7 +12,7 @@
 	<div class="headContainer">
 		<div class="row">
 			<div class="span9">
-				<h1><spring:message code="home.welcome.heading" arguments="${globalContextCustomer.currentProgramShortDescription}"/> </h1>
+				<h1><spring:message code="home.welcome.heading" arguments="Missouri Performance Assessments"/> </h1>
 				<p style="color:red; margin:10px 0 0 0;">${STATUS_MESSAGE}</p>
 			</div>
 		</div>
@@ -54,7 +54,7 @@
 				</c:if>
 			</div>
 			<div class="block">
-				<h3>My MPA Assessments</h3>
+				<h3>My Missouri Performance Assessments</h3>
 				
 
 
@@ -65,12 +65,12 @@
 					<form:form method="post" commandName="newtasks" action="/ereg-web/pss/task/addNewTasks">
 					
 					<div class="content">	
-						<span class="homePageh2">Enter Assessments Code</span>
+						<span class="homePageh2">Enter Assessment Code</span>
 					</div> 
 					<div>
 						<form:input path="milStsCde" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<form:errors class="errorMessage" path="milStsCde"/>
-						<input type="submit" value="Add Tasks" />
+						<input type="submit" value="Begin Your Assessment" />
 					</div>  
 					</form:form>  
 				</div>
