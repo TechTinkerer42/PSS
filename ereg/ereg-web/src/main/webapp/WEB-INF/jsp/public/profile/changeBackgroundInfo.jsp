@@ -60,7 +60,7 @@
 	
 
 
-<div>
+<div class="questionSection">
 	<ol>
 <c:forEach var="demographicQuestion" items="${profileForm.profile.demographicQuestions}" varStatus="i">
     	<li>
@@ -75,7 +75,7 @@
 					<c:if test="${demographicQuestion.responseRequired == false}">
 							
 					</c:if>
-            		<strong>${demographicQuestion.displayText}<strong>
+            		<strong>${demographicQuestion.displayText}</strong>
             	<!-- 	${demographicQuestion.triggerArray}  -->
             		
             	</div>
@@ -96,7 +96,7 @@
 					<c:if test="${demographicQuestion.responseRequired == false}">
 							
 					</c:if>
-            		<strong>${demographicQuestion.displayText}<strong>
+            		<strong>${demographicQuestion.displayText}</strong>
             	<!-- 	${demographicQuestion.triggerArray}  -->
             		
             	</div>
@@ -124,7 +124,7 @@
 					<c:if test="${demographicQuestion.responseRequired == false}">
 					
 					</c:if>
-            		<strong>${demographicQuestion.displayText}<strong>
+            		<strong>${demographicQuestion.displayText}</strong>
             		
             	</div>
             	
