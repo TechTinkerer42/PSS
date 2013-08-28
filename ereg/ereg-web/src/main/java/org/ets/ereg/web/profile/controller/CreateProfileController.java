@@ -195,7 +195,7 @@ public class CreateProfileController {
 			Map<String,Object> map= new HashMap<String,Object>();
 			List<String> list=new ArrayList<String>();
 			if(customer==null){
-				list.add("Please Enter a valid Customer email");
+				list.add("Please enter a valid email address");
 				map.put("errors", true);
 				map.put("results", list);
 				return map;
@@ -525,7 +525,7 @@ public class CreateProfileController {
 			            if(redirectUrl != null) {
 			            	return "redirect:" + redirectUrl;
 			            }
-						return getAccountCreatedView();
+						return "redirect:/secure/home";
 					}
 					else
 					{
