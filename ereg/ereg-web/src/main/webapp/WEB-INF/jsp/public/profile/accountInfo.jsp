@@ -68,7 +68,7 @@
 	<label for="password" class="required"><spring:message code="password"/>:</label>
 	<form:password path="<%=ProfileForm.PASSWORD %>" size="30" id="password" required="required" />
 	<form:errors class="errorMessage" path="<%=ProfileForm.PASSWORD %>"/>
-	<span class="form_hint">Hint: The password should have minimum 8 characters and maximum 16 characters, contain at least one uppercase letter (A through Z) and 3. contain at least one non-alphabetic character (for example,!, $, #, %) OR one number (0 through 9).</span>
+	<span class="form_hint">Hint: The password should have minimum 8 characters and maximum 16 characters,<br/> contain at least  one uppercase letter  (A through Z) and <br/> contain at least one non-alphabetic character (for example,!, $, #, %) OR one number (0 through 9).</span>
 	</li>
 
 

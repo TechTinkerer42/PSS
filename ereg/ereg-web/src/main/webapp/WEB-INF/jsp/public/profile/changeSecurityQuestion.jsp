@@ -24,7 +24,7 @@
  	<c:set var="STATUS_OK" value="<%=ProfileForm.STATUS_OK%>" />
 	<c:set var="STATUS_KO" value="<%=ProfileForm.STATUS_KO%>" />
   	<c:if test="${profileForm.statusCode==STATUS_KO}">
- 		<c:out value="${profileForm.statusMessage}"/>
+ 		<c:out value="${profileForm.statusMessage}"   escapeXml="false" />
  	</c:if>
 	<ul>
 	<li>
