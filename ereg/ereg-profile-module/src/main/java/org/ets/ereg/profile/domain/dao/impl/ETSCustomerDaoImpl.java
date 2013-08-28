@@ -126,7 +126,7 @@ public class ETSCustomerDaoImpl extends CustomerDaoImpl implements ETSCustomerDa
     }
 	
     public ETSCustomer getCustomerByEmail(String email){
-        List<ETSCustomer> list=(List<ETSCustomer>) em.createQuery("from ETSCustomerImpl where emailAddress = ?1  ")
+        List<ETSCustomer> list=(List<ETSCustomer>) em.createQuery("from ETSCustomerImpl where lower(emailAddress) = lower(?1)  ")
         .setParameter(1, email).getResultList();
         if(!list.isEmpty()){
               return list.get(0);
