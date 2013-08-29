@@ -1,12 +1,7 @@
 package org.ets.pss.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,7 +10,6 @@ import org.ets.ereg.security.user.LoggedInUser;
 import org.ets.pss.persistence.dto.Artifact;
 import org.ets.pss.persistence.dto.ArtifactResponse;
 import org.ets.pss.persistence.model.Doc;
-import org.ets.pss.persistence.model.EtsCust;
 import org.ets.pss.service.ArtifactService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +20,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -117,7 +110,7 @@ public class ArtifactController {
     	{
     		artifact = new Artifact();
     		artifact.setId(doc.getDocId());
-    		System.out.println("the date created is "+doc.getDateCreated());
+    		//System.out.println("the date created is "+doc.getDateCreated());
     		artifact.setDateCreated(doc.getDateCreated());
     		artifact.setFilename(doc.getRspSrcLctnNam());
     		artifactList.add(artifact);

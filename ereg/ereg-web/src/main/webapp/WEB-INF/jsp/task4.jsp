@@ -34,7 +34,7 @@
 <script type="text/javascript" 	src="<c:url value='/resources/rangy-1.3/rangy-core.js'/>"></script>
 <script type="text/javascript" 	src="<c:url value='/resources/rangy-1.3/jsHtmlToText.js'/>"></script>
 <script type="text/javascript" 	src="<c:url value='/resources/rangy-1.3/rangy-cssclassapplier.js'/>"></script>
- <script src="https://cdnapisec.kaltura.com/p/958691/sp/95869100/embedIframeJs/uiconf_id/15210901/partner_id/958691"></script>
+<script src="https://cdnapisec.kaltura.com/p/958691/sp/95869100/embedIframeJs/uiconf_id/15210901/partner_id/958691"></script>
 <!-- <script src="http://cdnapi.kaltura.com/p/958691/sp/95869100/embedIframeJs/uiconf_id/15210901/partner_id/958691"></script> -->
 <script type="text/javascript" 	src="<c:url value='/resources/jquery/jquery-migrate-1.2.1.min.js'/>"></script>
 <script>
@@ -42,7 +42,7 @@
 jQuery.fn.stripTags = function(str) { return str.replace(/<\/?[^>]+>/gi, '');  };
 
 $.extend({ alert: function (message, title) {
-	  $("<div></div>").dialog( {
+	  $("<div id='alertdialog'></div>").dialog( {
 		  closeOnEscape: false,
 		  dialogClass: 'no-close-dialog',		     
 	    buttons: { "Ok": function () { $(this).dialog("close"); } },
@@ -66,6 +66,9 @@ $.extend({ alert: function (message, title) {
 						if ( typeof jQuery.migrateMute === "undefined" ) {
 	                                                   jQuery.migrateMute = true;
                                                                          }
+						/*  t = setTimeout(function() {
+							   autosave(60000);
+                             },60000); */ // set timer to run every 60 seconds */
 						rangy.init();						
 						var accordicons = {
 							      header: "ui-icon-circle-arrow-e",
@@ -76,7 +79,17 @@ $.extend({ alert: function (message, title) {
 						$("#accordion-1").accordion({heightStyle: "content",collapsible: true,active: false,icons: accordicons});
 						$("#accordion").accordion({heightStyle: "content",collapsible: true,active: false,icons: accordicons});
 						   
-						
+						function autosave(last)
+						{
+							//console.log("Firing autosave");
+							 $('#saveDraft').trigger('click',['autosave']);
+							 t =setTimeout(function() {//console.log('Firing AutoSave');
+								 if($("#alertdialog").dialog( "isOpen" ))
+									 $("#alertdialog").dialog( "close" );
+								  autosave(60000);
+                             },last
+						      ); 
+						}
 
 						function surroundSelectedText(templateElement) {
 
@@ -1033,7 +1046,8 @@ $.extend({ alert: function (message, title) {
 						         
 					});
 						
-						$('#saveDraft').click(function(){
+						$('#saveDraft').click(function(event,trigger){
+							
 							var promptDocMap = new Object();
 							var removePromptDocMap = new Object();
 							var essayContentMap = new Object();
@@ -1132,7 +1146,11 @@ $.extend({ alert: function (message, title) {
 								}), 
 								//dataType: 'json',
 								success : function(data) {
+									    if($.trim(trigger) == 'autosave')
+									    $.alert("Task Auto Saved Successfully", "Task Auto Save Status");
+										
 									//console.log(data);
+									else
 									$.alert("Task Draft is Saved Successfully", "Task Draft Save Status");
 									//$('#submitTask').prop('disabled', false);
 								},
@@ -2338,7 +2356,7 @@ margin-bottom:25px;
 	<div id="submit-confirm" title="Submit" style="display:none;background-color:#FCE7E4;">
    		<p style="font-size:9pt;font-weight:bold;color:red"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Are you Sure you want to submit your task including all essay responses and artifacts associated with this task?</p>
    		<p style="font-size:11pt;font-weight:bold;">Once you submit your task, you will not be able to make any modifications to the essay responses or the artifacts associated with task</p>
-   		<p><input type="checkbox" id="confirmSubmit" value="true"/><label for="confirmSubmit" id="submitConfirmLabel" style="font-size:8pt;white-space: wrap;width:450;">By Checking this box, I understand that I am submitting my responses and artifacts associated with this task. I certify that the submissions represents the work that I completed. I understand that the responses andartifacts that I submit will be evaluated by educators, raters or other appropriate individuals and I understand that I will not be able to make any modifications once I click Submit.</label></p>
+   		<p><input type="checkbox" id="confirmSubmit" value="true"/><label for="confirmSubmit" id="submitConfirmLabel" style="font-size:8pt;white-space: wrap;width:450;">By checking this box, I understand that I am submitting my own responses and artifacts associated with this task.I understand the role of professional ethics and that my ability to earn a Missouri Teacher's Certificate will be jeopardized if I violate the privacy of my students and/or co-workers by posting any responses, artifacts, and videos without appropriate permission from students, parents, and co-workers.I certify that the submission represents the work that I completed and that I have acquired and possess all signed Student and Adult Release forms required by the assessment. I understand that the responses, artifacts, and video that I submit will be evaluated by educators, raters, or other appropriate individuals, and I understand that I will not be able to make any modifications once I click Submit.I further give permission for all parts of my submission to be used by the Missouri Department of Elementary and Secondary Education (DESE) for the development of exemplars, improvement of the assessment, establishing effective state policy or other appropriate and necessary official state business.</label></p>
 	</div>
 	<input type="hidden" id="taskId" value="${task.taskId}" />	
 	<%-- <c:out value="taskid is: ${task.taskId}" /> --%>
