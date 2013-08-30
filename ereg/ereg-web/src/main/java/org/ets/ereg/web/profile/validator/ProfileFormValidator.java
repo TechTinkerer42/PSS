@@ -272,8 +272,9 @@ public class ProfileFormValidator implements Validator {
 	}
 
 	private static void validateSecurityAnswer(String securityAnswer, Errors errors){
+		
 		if(GenericValidator.isBlankOrNull(securityAnswer)){
-			errors.reject(ProfileForm.SECURITY_ANSWER, ProfileFormValidator.SECURITY_ANSWER_REQUIRED);
+			errors.rejectValue(ProfileForm.SECURITY_ANSWER, ProfileFormValidator.SECURITY_ANSWER_REQUIRED);
 		}
 	}
 
