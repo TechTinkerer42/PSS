@@ -8,14 +8,18 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
+<style type="text/css">
+	label:after {
+			content:" " !important;
+	}
+	
+</style>
 <t:base title="Update Background Info">
 
 <div class="headContainer ">
 <div class="row">
 <div class="span9"><h1>${headText}</h1></div>
 </div>
-
-
              <h2></h2>
              <span class="required_notification"><spring:message code="requiredInformation"/></span>
 
