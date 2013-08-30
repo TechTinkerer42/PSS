@@ -90,7 +90,7 @@
 	</li>
 
 	<li>
-	<label for="securityAnswer"><spring:message code="challengeAnswer"/></label>
+	<label for="securityAnswer" class="required"><spring:message code="challengeAnswer"/>:</label>
 	<form:input path="<%=ProfileForm.SECURITY_ANSWER %>" size="30" id="securityAnswer" maxLength="25" required="required"/>
 	<form:errors class="errorMessage" path="<%=ProfileForm.SECURITY_ANSWER %>"/>
 
