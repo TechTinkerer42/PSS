@@ -13,7 +13,6 @@
 <div class="formContainer">
 	<h1><spring:message code="technicalerrorpage.heading"/></h1>
 	<p><spring:message code="technicalerrorpage.userDebugId"/><b><c:out value="${wrapperException.refNumber}"/></b></p>
-	<p><spring:message code="technicalerrorpage.MailTo"/><a href="<c:out value='mailto:${helpDeskEmail}?subject=${wrapperException.refNumber}'/>"><spring:message code="technicalerrorpage.helpDesk"/></a>
 	<p><a href="/ereg-web/secure/home" class="submit"><spring:message code="technicalerrorpage.backHomeBtn"/></a></p>
 </div>
 
