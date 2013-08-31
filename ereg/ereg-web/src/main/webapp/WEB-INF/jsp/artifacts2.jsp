@@ -114,7 +114,7 @@
 														},
 													});
 										});
-
+							
 						$('#goToMyHomePage').click(function() {
 							
 							$.ajax({
@@ -189,7 +189,7 @@
 							<c:if test="${!empty artifacts}">
 								<c:forEach var="ob" varStatus="status" items="${artifacts}">
 									<tr>
-										<td height="25"><c:out value="${ob.rspSrcLctnNam}" /></td>
+										<td height="25"><a href='/ereg-web/pss/artifact/view/<c:out value="${ob.docId}"/>' id='viewDoc<c:out value="${ob.docId}"/>'><c:out value="${ob.rspSrcLctnNam}" /></a></td>
 										<td><a href="" id='removeDoc<c:out value="${ob.docId}"/>'>remove</a></td>
 									       <td> <fmt:formatDate value="${ob.dateCreated}" type="date" pattern="MM/dd/yyyy" /></td>
 									</tr>
