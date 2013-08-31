@@ -731,7 +731,8 @@ $.extend({ alert: function (message, title) {
 						    	//console.log('its a control Bold or Italic');
 						    	e.preventDefault();
 						    	e.stopPropagation();
-						    	var idStr = clicked[0].id;
+						    	return false;
+						    	/* var idStr = clicked[0].id;
 								//console.log('the id on paste is '+idStr);
 								var indexOfCount = "cteditor".length;
 								var index = idStr.substring(indexOfCount, idStr.length);
@@ -740,7 +741,7 @@ $.extend({ alert: function (message, title) {
 								var currentEditor = $('#cteditor' + index);
 								setTimeout(function(){ 
 								currentEditor.html(currentEditor.getPreText());
-								},200); 
+								},200);  */
 						    	}
 				       });
 
