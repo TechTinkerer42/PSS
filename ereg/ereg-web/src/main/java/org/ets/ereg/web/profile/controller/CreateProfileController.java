@@ -506,6 +506,8 @@ public class CreateProfileController {
 						return getAccountInfoStepRedirect();
 					}
 
+					String plainTextPassword = profileForm.getProfile().getCustomer().getPassword();
+					
 					String guid = profileBusinessService.saveProfile(profileForm.getProfile());
 
 					profileBusinessService.registerProfile(profileForm.getProfile());
@@ -514,7 +516,7 @@ public class CreateProfileController {
 					{
 						loginService.loginCustomer(
 								profileForm.getProfile().getCustomer().getUsername(),
-								profileForm.getProfile().getCustomer().getPassword());
+								plainTextPassword);
 						sessionStatus.setComplete();
 						profileForm.setStatusCode(ProfileForm.STATUS_OK);
 
