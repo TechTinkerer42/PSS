@@ -42,6 +42,7 @@ import org.ets.ereg.profile.biq.service.ProfileDemographicQuestionService;
 import org.ets.ereg.profile.model.service.common.ETSCustomerService;
 import org.ets.ereg.profile.service.GeneratePasswordService;
 import org.ets.ereg.profile.service.ProfileService;
+import org.ets.ereg.profile.util.ProfileUtils;
 import org.ets.ereg.profile.vo.ProfileVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -95,7 +96,8 @@ public class ProfileServiceImpl implements ProfileService, InitializingBean {
 
 	@Resource(name = "eregUtils")
 	private EregUtils eregUtils;
-
+	
+	
 	private ETSPhone clonePhone(ETSPhone phone){
 		ETSPhone clone = (ETSPhone)phoneService.create();
 		clone.setId(phone.getId());
@@ -370,13 +372,24 @@ public class ProfileServiceImpl implements ProfileService, InitializingBean {
 	@Override
 	public String saveProfile(ProfileVO profile)
 	{
+		
 		String guidID ="";
 		if(null == profile.getCustomer().getMilitaryMemberShip() || !profile.getCustomer().getMilitaryMemberShip()){
 			MilitaryStatusType value = referenceService.getEntityByPrimaryKey(MilitaryStatusType.class, MilitaryStatusType.NOT_A_MEMBER);
 			profile.getCustomer().setMilitaryStatus(value);
 		}
 
-		ETSCustomer customer = (ETSCustomer)customerService.saveCustomer(profile.getCustomer(), profile.getCustomer().isRegistered());
+		
+		ETSCustomer customerFromUI = profile.getCustomer();
+
+		//Encrypt password
+		try {
+					customerFromUI.setPassword(ProfileUtils.encryptString(customerFromUI.getPassword()));
+				} catch (Exception e) {
+					LOG.debug(e.getMessage());
+				}
+		
+		ETSCustomer customer = (ETSCustomer)customerService.saveCustomer(customerFromUI, customerFromUI.isRegistered());
 		if( !profile.getCustomer().isRegistered()){
 			ProgramType programType = programService
 					.getProgramByPrimaryKey(ProgramContextHolder.getProgramCode());
@@ -640,7 +653,14 @@ public class ProfileServiceImpl implements ProfileService, InitializingBean {
 		}
 		ETSCustomer customer = profile.getCustomer();
 		//LinkageType linkageType = referenceService.getEntityByPrimaryKey(LinkageType.class, LinkageType.EIAS_OIM_GUID);
-
+		
+		//Encrypt password
+		try {
+			 customer.setPassword(ProfileUtils.encryptString(customer.getPassword()));
+		} catch (Exception e) {
+			LOG.debug(e.getMessage());
+		}
+		
         if(eregUtils.isOAMAuthentication())
         {
 			eiasWebServiceClient.resetPassword(customer.getUsername(), customer.getLdapGUIDID(), customer.getPassword(), "Y");
@@ -658,13 +678,23 @@ public class ProfileServiceImpl implements ProfileService, InitializingBean {
 			profile.getCustomer().setMilitaryStatus(value);
 		}
 
+		ETSCustomer customer = profile.getCustomer();
+		
+		//Encrypt password
+		try {
+			 customer.setPassword(ProfileUtils.encryptString(customer.getPassword()));
+		} catch (Exception e) {
+			LOG.debug(e.getMessage());
+		}
+
+		
 		if(eregUtils.isOAMAuthentication())
 		{
         	eiasWebServiceClient.modifyUser(profile.getCustomer());
         }
         else
         {
-        	customerService.saveCustomer(profile.getCustomer(), profile.getCustomer().isRegistered());
+        	customerService.saveCustomer(customer, customer.isRegistered());
         }
 	}
 
