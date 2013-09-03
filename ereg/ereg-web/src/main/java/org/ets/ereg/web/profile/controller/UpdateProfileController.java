@@ -30,6 +30,7 @@ import org.ets.ereg.domain.interfaces.model.common.MilitaryStatusType;
 import org.ets.ereg.domain.interfaces.model.common.PhoneType;
 import org.ets.ereg.profile.biq.service.ProfileDemographicQuestionService;
 import org.ets.ereg.profile.service.ProfileService;
+import org.ets.ereg.profile.util.ProfileUtils;
 import org.ets.ereg.profile.vo.ProfileVO;
 import org.ets.ereg.session.facade.profile.service.ProfileBusinessService;
 import org.ets.ereg.session.facade.shared.service.ReferenceBusinessService;
@@ -211,8 +212,17 @@ public class UpdateProfileController {
 					}
 					else{
 						ProfileVO profile = profileBusinessService.readProfileById(CustomerState.getCustomer().getId());
+						
+						String password = null;
+						try {
+							password = ProfileUtils.encryptString(profileForm.getOldPassword());
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						
+						
 						// A call need to be made to OAM to match the password
-						profile = profileBusinessService.authenthicate(profile.getCustomer().getUsername(), profileForm.getOldPassword());
+						profile = profileBusinessService.authenthicate(profile.getCustomer().getUsername(), password);
 						if(null == profile){
 							errors.rejectValue(ProfileForm.OLD_PASSWORD, "passwordchange.currentPasswordIncorrect");
 							setGenericValidationError(profileForm);
@@ -276,8 +286,16 @@ public class UpdateProfileController {
 					}
 					else{
 						ProfileVO profile = profileBusinessService.readProfileById(CustomerState.getCustomer().getId());
+						
+						String password = null;
+						try {
+							password = ProfileUtils.encryptString(profileForm.getOldPassword());
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						
 						// A call need to be made to OAM to match the password
-						profile = profileBusinessService.authenthicate(profile.getCustomer().getUsername(), profileForm.getOldPassword());
+						profile = profileBusinessService.authenthicate(profile.getCustomer().getUsername(), password);
 						if(null == profile){
 							errors.rejectValue(ProfileForm.OLD_PASSWORD, "passwordchange.currentPasswordIncorrect");
 							setGenericValidationError(profileForm);
