@@ -108,7 +108,13 @@ $(document).ready(function () {
 			<c:set var="dayIndex" value="${dayIndex+1}"/>
 		</c:forEach>
 	</form:select>
-	<form:input path="<%=ProfileForm.YEAR_OF_BIRTH%>" size="4" id="yearOfBirth" maxlength="4"  pattern="[0-9]{4}" required="required" class="dobYear"/>
+	<form:select path="<%=ProfileForm.YEAR_OF_BIRTH%>" required="required" class="dobYears">
+		<form:option value=""><spring:message code="year"/></form:option>
+		<c:forEach items="${dobYears}" var="year">
+			<form:option value="${year}">${year}</form:option>
+		</c:forEach>
+	</form:select>
+<!-- 	<form:input path="<%=ProfileForm.YEAR_OF_BIRTH%>" size="4" id="yearOfBirth" maxlength="4"  pattern="[0-9]{4}" required="required" class="dobYear"/>   -->
 	<form:errors class="errorMessage" path="<%=ProfileForm.DATE_OF_BIRTH %>"/>
 	</li>
 

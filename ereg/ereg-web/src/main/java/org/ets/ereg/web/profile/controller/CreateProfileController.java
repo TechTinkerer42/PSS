@@ -3,6 +3,7 @@ package org.ets.ereg.web.profile.controller;
 import java.beans.PropertyEditorSupport;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -45,7 +46,6 @@ import org.ets.ereg.session.facade.shared.service.ETSEmailService;
 import org.ets.ereg.session.facade.shared.service.ReferenceBusinessService;
 import org.ets.ereg.web.profile.form.ProfileForm;
 import org.ets.ereg.web.profile.validator.ProfileFormValidator;
-
 import org.ets.ereg.web.util.LoginUtil;
 import org.jsoup.helper.StringUtil;
 import org.slf4j.Logger;
@@ -675,6 +675,19 @@ public class CreateProfileController {
 	    	days.add("30");
 	    	days.add("31");
 	    	return days;
+	    }
+
+	    @ModelAttribute("dobYears")
+	    public List<String> getDobYears()
+	    {
+	    	Calendar calendar = Calendar.getInstance();
+	    	int startingYear = calendar.get(Calendar.YEAR) - 60;
+	    	int endingYear = startingYear + 44;
+	    	List<String> years = new ArrayList<String>();
+	    	for (;startingYear<endingYear;startingYear++) {
+	    		years.add(String.valueOf(startingYear));
+	    	}
+	    	return years;
 	    }
 
 	    @InitBinder

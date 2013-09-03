@@ -102,7 +102,7 @@
 	 
 	 </bean>
     <bean id="forgotCredentialsEmailInfo" parent="blEmailInfo" >
-     <property name="subject" value="Pre-Service Teacher Assessments credentials request."/>
+     <property name="subject" value="Pre-Service Teacher Exit Assessment Credentials Request."/>
 	<property name="emailTemplate" value="forgot-credentials"/>
 	
     </bean>
