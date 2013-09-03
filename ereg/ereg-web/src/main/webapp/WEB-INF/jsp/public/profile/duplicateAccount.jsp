@@ -36,11 +36,11 @@
 <li><h1><spring:message code="duplicateAccount"/></h1></li>
 <li><spring:message code="duplicateAccountDetail1"/><br><spring:message code="duplicateAccountDetail2"/></li>
 <li><h2><spring:message code="returningUser"/></h2></li>
-<li><label for="username"><spring:message code="username"/>:</label>
+<li><label for="username"><spring:message code="username"/></label>
 <input type='text' name=${username} value='' required="required" id="username">
 </li>
 
-<li><label for="password"><spring:message code="password"/>:</label>
+<li><label for="password"><spring:message code="password"/></label>
 <input type='password' name=${password} required="required" id="password"/>
 </li>
 
