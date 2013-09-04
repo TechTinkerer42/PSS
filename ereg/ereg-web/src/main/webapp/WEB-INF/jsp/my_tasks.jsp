@@ -8,6 +8,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="ct" uri="http://ereg.ets.org/commontags"%>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+ <meta http-equiv="pragma" content="no-cache" />
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -15,7 +16,96 @@
 <!--[if IE 9]>    <html class="no-js lt-ie10" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <link href="<c:url value="/resources/css/pssscreen.css"/>" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" 	src="<c:url value='/resources/jquery-ui-1.10.3/jquery-1.9.1.js'/>"></script>
 <body>
+
+<Script>
+$(document).ready(function() {
+	
+	var enablelinks=false;
+    var enablefinallink=false;
+	
+	
+
+	$('a[id^="alink"]')
+	.each(
+			
+			function(index) {
+				
+				
+				 if( $("a:contains('/ereg-web/pss/task/')"))
+					//var url = $(this).attr('href');
+					//var status = $(this).attr('status');
+					//$(this).addClass('selected');
+                    //return ($(this).removeAttr('disabled'));
+					var clicked = $(this);
+					var idStr = clicked[0].id;
+				
+					var indexOfCount = "alink".length;
+					var task = idStr.substring(indexOfCount,idStr.length);
+					
+					   
+				 if( $("a:contains('/ereg-web/pss/task/')"))
+				
+					     if(task==1)
+						{
+					    	 $('a[id="alink1"]') .removeAttr('disabled');
+					    	
+					    	  if( $('a[id="alink1"]').attr('status')=='COMPLETED')
+					    	 {
+					    		  enablelinks=true;
+					    		
+					    	}
+						} 
+					    	           if(enablelinks)
+					    		   {
+					    	        	   $('a[id="alink3"]') .removeAttr('disabled');
+					    	        	   $('a[id="alink4"]') .removeAttr('disabled');
+					    		         
+					    	              if( ($('a[id="alink3"]').attr('status')=='COMPLETED')&&  ($('a[id="alink4"]').attr('status')=='COMPLETED'))
+								    	 {
+					    	            	  enablefinallink=true;
+							    		 
+							    		 }
+					    	        }  
+						    	        
+					             
+						    	           if(enablefinallink)
+						    		   { 
+						    	        	   $('a[id="alink2"]') .removeAttr('disabled');
+						    		   }
+					
+	        });
+	
+	
+	
+
+
+			 $('a').click(function()
+{
+				 //console.log('clicked');
+                return ($(this).attr('disabled')) ? false : true;
+             
+});   
+			 
+});
+</Script>
+
+<style id="ash-css">
+ a[disabled]
+{
+  color: grey;
+ 
+}
+./* disabled{
+  color: grey;
+ 
+} 
+ .selected {
+     a color:grey;  
+}  */
+
+</style>
 <div id="access-links" class="hide" role="navigation" aria-labelledby="desc-access-links">
 			<span id="desc-access-links">Quick Links</span>
 			<ul>
@@ -167,7 +257,7 @@
 			
 					<span class="homePageh2" style="color: black;"  >Pre-Service Teacher Assessments: Exit Assessments</span>
 				</div> -->
-								
+				 	
 				<p><a href="/ereg-web/pss/artifact/">Upload/Manage My Artifacts</a></p>	
 				<table style="border: 1px solid black; width: 98%; text-align:center;">
 				<thead>
@@ -184,12 +274,16 @@
     						<tr>
 						        												<td><c:choose>
 														<c:when test="${ob.showAsLink == 'true'}">
-															<a href="<c:url value="/pss/task/goto?taskId=${ob.taskId}"/>"><c:out value="${ob.name}" />
+														<!-- <li><a href="http://sbaam.com?num=1" disabled="disabled">Sbaam (disabled link)</a></li> -->
+														     <a href="/ereg-web/pss/task/goto?taskId='${ob.taskId}'" disabled="disabled"  id="alink${ob.taskId}"  status="${ob.status}" ><c:out value="${ob.name}"/></a>
+															<%-- <a href="<c:url value="/pss/task/goto?taskId=${ob.taskId}"/>" disabled="disabled"><c:out value="${ob.name}" />  --%>
 																<c:if test="${ob.status == 'IN PROGRESS'}"><!-- -View/Edit Task --></c:if></a>
 														</c:when>
 														<c:when test="${ob.showAsLink == 'true'}">
 															<c:set var="tStatus" scope="session" value="${ob.status}"/>
-															<a href="<c:url value="/pss/task/goto?taskId=${ob.taskId}"/>"><c:out value="${ob.name}" />
+															
+															    	
+															<a href="<c:url  value="/pss/task/goto?taskId=${ob.taskId}"/>"><c:out value="${ob.name}" />
 																<c:if test="${tStatus == 'READY'}"><!-- -View/Edit Task --></c:if></a>
 																<c:out value="${tStatus}"/>
 														</c:when>

@@ -20,9 +20,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-
 <title>Missouri Performance Assessments Application</title>
-
 <!-- fine uploader -->
 <link href="<c:url value="/resources/fineuploader/fineuploader-3.5.0.css"/>" rel="stylesheet" type="text/css" />
 <script type="text/javascript" 	src="<c:url value='/resources/jquery-ui-1.10.3/jquery-1.9.1.js'/>"></script>
@@ -66,27 +64,25 @@ $.extend({ alert: function (message, title) {
 						if ( typeof jQuery.migrateMute === "undefined" ) {
 	                                                   jQuery.migrateMute = true;
                                                                          }
-						/*  t = setTimeout(function() {
-							   autosave(60000);
-                             },60000); */ // set timer to run every 60 seconds */
+						  t = setTimeout(function() {
+							   autosave(600000);
+                             },600000);  
 						rangy.init();						
 						var accordicons = {
 							      header: "ui-icon-circle-arrow-e",
 							      activeHeader: "ui-icon-circle-arrow-s"
 							    };
-
 						
 						$("#accordion-1").accordion({heightStyle: "content",collapsible: true,active: false,icons: accordicons});
 						$("#accordion").accordion({heightStyle: "content",collapsible: true,active: false,icons: accordicons});
 						   
 						function autosave(last)
 						{
-							//console.log("Firing autosave");
 							 $('#saveDraft').trigger('click',['autosave']);
-							 t =setTimeout(function() {//console.log('Firing AutoSave');
+							 t =setTimeout(function() {
 								 if($("#alertdialog").dialog( "isOpen" ))
 									 $("#alertdialog").dialog( "close" );
-								  autosave(60000);
+								  autosave(600000);
                              },last
 						      ); 
 						}
@@ -440,7 +436,7 @@ $.extend({ alert: function (message, title) {
 												$('#highlight' + index).prop('disabled', false);
 												$('#removehigh' + index).prop('disabled',false);//can be removed
 											}
-											
+											if(rangy.getSelection().rangeCount)
 											var nodes = rangy.getSelection().getRangeAt(0).getNodes(false, function (el) {
 												 if (el.tagName === 'A')
 
@@ -522,7 +518,7 @@ $.extend({ alert: function (message, title) {
 											$('#removehigh' + index).prop('disabled',true);//can be removed
 											$('#highlight' + index).prop('disabled', true);//can be removed
 										}
-									 
+									    if(rangy.getSelection().rangeCount)
 										var nodes = rangy.getSelection().getRangeAt(0).getNodes(false, function (el) {
 											
 											 if (el.tagName === 'A')
@@ -1383,12 +1379,14 @@ $.extend({ alert: function (message, title) {
                                                           
 										                .on('complete', function(event, id, name, responseJSON) {
 										                	//console.log('coming here to oncomplete '+id);
-										                	var element= $('#fine-uploader')[0];
-										                	var fileItemContainer = $(this).fineUploader('getItemByFileId', id);
-										                	 $(fileItemContainer);
+										                	//var element= $('#fine-uploader')[0];
+										                	//var fileItemContainer = $(this).fineUploader('getItemByFileId', id);
+										                	 //$(fileItemContainer);
 										                	 //console.log('the filename is '+name);
 										                	 $(".alert-error").closest('div').remove();
 										                	 if (responseJSON.success) {
+										                		// $("#reviewfile").html('<b>'+name+'</b>');
+										                		//$("#reviewfile").css("display", "block");
 										                		 //$(this).fineUploader('setParams', {'param1': 'val1'});
 										                		 //console.log('coming here succes'+ name+ element);
 										                		// location.reload();
@@ -1452,7 +1450,7 @@ $.extend({ alert: function (message, title) {
 							});
 							
 						
-							$("#reviewhidden").css("display", "block");
+							$("#reviewhidden").css("display", "block");							
 							$("#reviewhidden").css({position:'absolute',
 							  top:'45%',
 							  left:'50%',
@@ -1461,6 +1459,8 @@ $.extend({ alert: function (message, title) {
 							  zIndex:1000,
 							  marginTop:'-150px',           
 							  marginLeft:'-300px' }); 
+							    //$("#reviewfile").html('<b>'+name+'</b>');
+		                		//$("#reviewfile").css("display", "block");  			
 							//$("#reviewhidden").css({top:windowHeight/2 - dHeight/2, left:windowWidth/2 - dWidth/2}).show();
 						});
 						
@@ -2345,7 +2345,10 @@ margin-bottom:25px;
   </c:forEach> 
   </c:if>
    </div> --%>
-  <div id="reviewhidden" style="display: none"></div> 
+  <div id="reviewhidden" style="display: none"> 
+  
+  </div> 
+  
 	   <%--  video: ${entry.key} - value = ${entry.value} --%>
 	<div id="expandocollpase" align="right"> 
 	           <a id ='artifactTask' href="#" class="expand_all">[Upload/Manage My Artifacts]</a>&nbsp;&nbsp;|&nbsp; <a id ='expandAccordions' href="#" class="expand_all">[Expand All]</a>&nbsp;&nbsp;|&nbsp;<a id ='collapseAccordions'  href="#" class="collapse_all" >[Collapse All]</a>
@@ -2389,13 +2392,14 @@ margin-bottom:25px;
 										           <input type="hidden" id="taskVideoKey" value="<c:out value="${task.taskId}"/>" />												   
 											    <div id="video" class="videoouter">
 												<div class="videoinner"><h5>VIDEO UPLOAD</h5></div>				
-												<div class="video"><p> <!-- <h5>Teaching Video.mp3</h5><a href="">Video</a> --></p></div>
-												
+												<div class="video"><p><b>The video upload may take several minutes.   The video file name will appear in the box below when the upload is complete.  Review your video to ensure a successful upload.</b></p></div>
 												<c:if test="${customerTask.docStsTyp.docStsTypCde!='CMPLD'}">												
 												<input type=button id="uploadVideo" class="uploadVideobutton" value="Upload Video" />
 												</c:if>
 												<input type=button id="reviewVideo" class="uploadVideobutton" value="Review Video" />
 												<input type=button id="closeVideo" class="uploadVideobutton" value="Close Video" />
+												<!-- <div id="reviewfile" class="video" style="display: none"></div> -->
+												<div id="reviewtext" class="video"><p><b>Make sure you review your video upload before submitting Task 4.</b></p></div>
 												<div id="videodialog" title="Upload Video" style="display: none"></div>				
 											    </div>											
 											</c:if> 
