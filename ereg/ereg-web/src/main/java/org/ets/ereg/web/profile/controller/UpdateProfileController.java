@@ -221,6 +221,7 @@ public class UpdateProfileController {
 						}
 						
 						
+						
 						// A call need to be made to OAM to match the password
 						profile = profileBusinessService.authenthicate(profile.getCustomer().getUsername(), password.trim());
 						if(null == profile){
