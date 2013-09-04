@@ -8,12 +8,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<style type="text/css">
-	label:after {
-			content:" " !important;
-	}
-	
-</style>
+
 <t:base title="Update Background Info">
 
 <div class="headContainer ">
@@ -48,7 +43,12 @@
 <div class="formContainer">
 
 
-
+<style type="text/css">
+	label:after {
+			content:" " !important;
+	}
+	
+</style>
 <div class="create_form">
 
 

@@ -51,6 +51,12 @@
 
 <div class="formContainer">
 
+<style type="text/css">
+	label:after {
+			content:" " !important;
+	}
+	
+</style>
 
 
 <div class="create_form">
