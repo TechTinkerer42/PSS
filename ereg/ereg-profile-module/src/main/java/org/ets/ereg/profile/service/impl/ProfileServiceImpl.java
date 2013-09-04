@@ -26,6 +26,7 @@ import org.ets.ereg.common.business.util.ProgramContextHolder;
 import org.ets.ereg.common.business.vo.CustomerVO;
 import org.ets.ereg.common.business.vo.biq.DemographicQuestionVO;
 import org.ets.ereg.common.business.vo.biq.DmgrphQstnTriggerVO;
+import org.ets.ereg.common.util.CommonUtils;
 import org.ets.ereg.domain.interfaces.model.common.AddressType;
 import org.ets.ereg.domain.interfaces.model.common.CustomerLinkage;
 import org.ets.ereg.domain.interfaces.model.common.CustomerType;
@@ -384,7 +385,7 @@ public class ProfileServiceImpl implements ProfileService, InitializingBean {
 
 		//Encrypt password
 		try {
-					customerFromUI.setPassword(ProfileUtils.encryptString(customerFromUI.getPassword()));
+					customerFromUI.setPassword(CommonUtils.encodeString(customerFromUI.getPassword()));
 				} catch (Exception e) {
 					LOG.debug(e.getMessage());
 				}
@@ -656,7 +657,7 @@ public class ProfileServiceImpl implements ProfileService, InitializingBean {
 		
 		//Encrypt password
 		try {
-			 customer.setPassword(ProfileUtils.encryptString(customer.getPassword()));
+			 customer.setPassword(CommonUtils.encodeString(customer.getPassword()));
 		} catch (Exception e) {
 			LOG.debug(e.getMessage());
 		}
@@ -682,7 +683,7 @@ public class ProfileServiceImpl implements ProfileService, InitializingBean {
 		
 		//Encrypt password
 		try {
-			 customer.setPassword(ProfileUtils.encryptString(customer.getPassword()));
+			 customer.setPassword(CommonUtils.encodeString(customer.getPassword()));
 		} catch (Exception e) {
 			LOG.debug(e.getMessage());
 		}
