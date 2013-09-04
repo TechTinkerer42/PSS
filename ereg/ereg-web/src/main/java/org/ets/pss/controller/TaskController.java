@@ -60,8 +60,10 @@ public class TaskController {
 	
     @RequestMapping(value = "/goto", method = RequestMethod.GET)
     public String index(String taskId, @LoggedInUser ERegUser loggedInUser, Model model) {
+    	//taskId=taskId.replaceAll("'","");
+    	taskId =taskId.replaceAll("^\'|\'$", "");
+    	System.out.println("after replace taskId "+ taskId);
     	
-    	System.out.println("taskId "+ taskId);
     	long lTaskId = Long.parseLong(taskId);
     
     	TaskDTO task = taskServiceImpl.getTask(lTaskId);
@@ -91,7 +93,8 @@ public class TaskController {
 //    	
 //    	model.addAttribute("artifacts",cusotmerArtifacts);
     	    	
-        return "task4";
+       return "task4";
+        //return "test";
         
     }
     
@@ -321,18 +324,18 @@ public class TaskController {
     		  //MM/dd/yyyy h:mm:ss a
     		  //yyyyMMddhhmm
     		  String directoryName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
-    		  System.out.println("directory name is: " + directoryName);
-    		  //File theDir=new File("c:\\ash\\temp\\"+directoryName);
+    		  //System.out.println("directory name is: " + directoryName);
+    		 // File theDir=new File("c:\\ash\\temp\\"+directoryName);
     		  File theDir=new File("/export/Apps/tomcat/upload/"+directoryName);
     		  if (!theDir.exists())
     		  {
-    		    System.out.println("creating directory: " + directoryName);
+    		    //System.out.println("creating directory: " + directoryName);
     		    boolean result = theDir.mkdir();  
     		    if(result){    
     		       System.out.println("DIR created");  
     		     
     		  //Unix file format
-    		 // File tempfile=new File("c:\\ash\\temp\\"+directoryName+"\\"+fileName);
+    		   // File tempfile=new File("c:\\ash\\temp\\"+directoryName+"\\"+fileName);
     		    File tempfile=new File("/export/Apps/tomcat/upload/"+directoryName+"/"+fileName);
     		  
     		  file.transferTo(tempfile);
