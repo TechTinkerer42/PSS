@@ -65,8 +65,8 @@ $.extend({ alert: function (message, title) {
 	                                                   jQuery.migrateMute = true;
                                                                          }
 						  t = setTimeout(function() {
-							   autosave(300000);
-                             },300000);  
+							   autosave(600000);
+                             },600000);  
 						rangy.init();						
 						var accordicons = {
 							      header: "ui-icon-circle-arrow-e",
@@ -82,7 +82,7 @@ $.extend({ alert: function (message, title) {
 							 t =setTimeout(function() {
 								 if($("#alertdialog").dialog( "isOpen" ))
 									 $("#alertdialog").dialog( "close" );
-								  autosave(300000);
+								  autosave(600000);
                              },last
 						      ); 
 						}
