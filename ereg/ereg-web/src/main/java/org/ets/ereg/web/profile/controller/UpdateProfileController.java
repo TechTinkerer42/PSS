@@ -21,6 +21,7 @@ import org.broadleafcommerce.profile.web.core.CustomerState;
 import org.ets.ereg.common.business.util.ProgramContextHolder;
 import org.ets.ereg.common.business.vo.biq.DemographicQuestionVO;
 import org.ets.ereg.common.shared.util.ReferenceTypeCriteria;
+import org.ets.ereg.common.util.CommonUtils;
 import org.ets.ereg.domain.interfaces.model.biq.DemographicQuestionSetType;
 import org.ets.ereg.domain.interfaces.model.common.ETSCountry;
 import org.ets.ereg.domain.interfaces.model.common.EthnicityType;
@@ -30,7 +31,6 @@ import org.ets.ereg.domain.interfaces.model.common.MilitaryStatusType;
 import org.ets.ereg.domain.interfaces.model.common.PhoneType;
 import org.ets.ereg.profile.biq.service.ProfileDemographicQuestionService;
 import org.ets.ereg.profile.service.ProfileService;
-import org.ets.ereg.profile.util.ProfileUtils;
 import org.ets.ereg.profile.vo.ProfileVO;
 import org.ets.ereg.session.facade.profile.service.ProfileBusinessService;
 import org.ets.ereg.session.facade.shared.service.ReferenceBusinessService;
@@ -215,7 +215,7 @@ public class UpdateProfileController {
 						
 						String password = null;
 						try {
-							password = ProfileUtils.encryptString(profileForm.getOldPassword());
+							password = CommonUtils.encodeString(profileForm.getOldPassword());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -289,7 +289,7 @@ public class UpdateProfileController {
 						
 						String password = null;
 						try {
-							password = ProfileUtils.encryptString(profileForm.getOldPassword());
+							password = CommonUtils.deCodeString(profileForm.getOldPassword());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
