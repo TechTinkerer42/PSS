@@ -16,6 +16,7 @@ import org.broadleafcommerce.profile.core.domain.CustomerRole;
 import org.broadleafcommerce.profile.core.service.RoleService;
 import org.ets.ereg.common.enums.EIASHeadersEnum;
 import org.ets.ereg.common.enums.RoleEnum;
+import org.ets.ereg.common.util.CommonUtils;
 import org.ets.ereg.domain.interfaces.model.profile.ETSAdminUser;
 import org.ets.ereg.domain.interfaces.model.profile.ETSCustomer;
 import org.ets.ereg.security.user.ERegUser;
@@ -27,6 +28,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+
 
 public abstract class AbstractERegUserDetailsService implements ERegUserDetails {
 	@Resource(name = "blRoleService")
@@ -50,7 +52,8 @@ public abstract class AbstractERegUserDetailsService implements ERegUserDetails 
 		for (AdminPermission adminPermission : adminUser.getAllPermissions()) {
 			authorities.add(new SimpleGrantedAuthority(adminPermission.getName()));
 		}
-		ERegUser eregUser = new ERegUser(username, StringUtils.stripToEmpty(adminUser.getPassword()), true, true, true, true, authorities);
+		
+		ERegUser eregUser = new ERegUser(username, CommonUtils.deCodeString(StringUtils.stripToEmpty(adminUser.getPassword())), true, true, true, true, authorities);
 		eregUser.setId(adminUser.getId());
 		eregUser.setFirstName(adminUser.getFirstName());
 		eregUser.setLastName(adminUser.getLastName());
@@ -76,7 +79,8 @@ public abstract class AbstractERegUserDetailsService implements ERegUserDetails 
 				authorities.add(new SimpleGrantedAuthority(customerRole.getRoleName()));
 			}
 		}
-		ERegUser eregUser = new ERegUser(username, StringUtils.stripToEmpty(customer.getPassword()), true, true, true, true, authorities);
+		
+		ERegUser eregUser = new ERegUser(username, CommonUtils.deCodeString(StringUtils.stripToEmpty(customer.getPassword())), true, true, true, true, authorities);
 		eregUser.setId(customer.getId());
 		eregUser.setFirstName(customer.getFirstName());
 		eregUser.setLastName(customer.getLastName());
