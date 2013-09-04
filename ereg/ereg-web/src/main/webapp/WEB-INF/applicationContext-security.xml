@@ -106,7 +106,7 @@
 	<sec:authentication-manager alias="blAuthenticationManager">
 		<sec:authentication-provider ref="OAMPreAuthProvider"/>
 		<sec:authentication-provider user-service-ref="blUserDetailsService">
-			<sec:password-encoder hash="sha" />
+			<sec:password-encoder hash="plaintext" />
 		</sec:authentication-provider>
 	</sec:authentication-manager>
 
