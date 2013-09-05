@@ -28,6 +28,7 @@ import org.ets.ereg.common.business.util.ProgramContextHolder;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.ets.ereg.common.business.vo.biq.DemographicQuestionVO;
 import org.ets.ereg.common.shared.util.ReferenceTypeCriteria;
+import org.ets.ereg.common.util.CommonUtils;
 import org.ets.ereg.common.web.util.Constant;
 import org.ets.ereg.domain.interfaces.model.biq.DemographicQuestionSetType;
 import org.ets.ereg.domain.interfaces.model.common.ApplicationConfiguration;
@@ -200,13 +201,14 @@ public class CreateProfileController {
 				map.put("results", list);
 				return map;
 			}
+			 
 			
-			
-			HashMap<String, Object> props = new HashMap<String, Object>();
+			String customerEmail = CommonUtils.deCodeString(customer.getPassword().trim());
+						HashMap<String, Object> props = new HashMap<String, Object>();
 			props.put("customer", customer);
 			if("password".equals(profileForm.getScenario())){
 				props.put("requestedField", "password");
-				props.put("value", customer.getPassword());
+				props.put("value", customerEmail);
 			}
 			else{
 			props.put("requestedField", "user name");

@@ -213,17 +213,17 @@ public class UpdateProfileController {
 					else{
 						ProfileVO profile = profileBusinessService.readProfileById(CustomerState.getCustomer().getId());
 						
-						String password = null;
-						try {
-							password = CommonUtils.encodeString(profileForm.getOldPassword());
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
+//						String password = null;
+//						try {
+//							password = CommonUtils.encodeString(profileForm.getOldPassword()).trim();
+//						} catch (Exception e) {
+//							e.printStackTrace();
+//						}
 						
 						
 						
 						// A call need to be made to OAM to match the password
-						profile = profileBusinessService.authenthicate(profile.getCustomer().getUsername(), password.trim());
+						profile = profileBusinessService.authenthicate(profile.getCustomer().getUsername(), profileForm.getOldPassword());
 						if(null == profile){
 							errors.rejectValue(ProfileForm.OLD_PASSWORD, "passwordchange.currentPasswordIncorrect");
 							setGenericValidationError(profileForm);
@@ -288,15 +288,15 @@ public class UpdateProfileController {
 					else{
 						ProfileVO profile = profileBusinessService.readProfileById(CustomerState.getCustomer().getId());
 						
-						String password = null;
-						try {
-							password = CommonUtils.deCodeString(profileForm.getOldPassword());
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
+//						String password = null;
+//						try {
+//							password = CommonUtils.encodeString(profileForm.getOldPassword());
+//						} catch (Exception e) {
+//							e.printStackTrace();
+//						}
 						
 						// A call need to be made to OAM to match the password
-						profile = profileBusinessService.authenthicate(profile.getCustomer().getUsername(), password);
+						profile = profileBusinessService.authenthicate(profile.getCustomer().getUsername(), profileForm.getOldPassword());
 						if(null == profile){
 							errors.rejectValue(ProfileForm.OLD_PASSWORD, "passwordchange.currentPasswordIncorrect");
 							setGenericValidationError(profileForm);
