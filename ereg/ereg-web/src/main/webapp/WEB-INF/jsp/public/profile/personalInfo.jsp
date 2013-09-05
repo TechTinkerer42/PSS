@@ -18,8 +18,6 @@
 </div>
 
 
-<p><spring:message code="personalInfo.message"/></p>
-
   <img src='<spring:url value="/commonweb/img/step1.jpg" htmlEscape="true"/>' alt=""><br><br>
   
              <h2><spring:message code="personalInformation"/></h2>
