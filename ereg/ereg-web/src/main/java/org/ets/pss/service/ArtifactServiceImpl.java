@@ -46,7 +46,7 @@ public class ArtifactServiceImpl implements ArtifactService {
 		Doc doc = artifactDaoImpl.get(Doc.class,docId);
 		if(doc != null && doc.getCustCrAsgndTskDocs() != null && doc.getCustCrAsgndTskDocs().size()>0)
 		{
-			return "Artifact is linked in an Essay. You cannot remove this Artifact.";
+			return "Artifact is linked to a Task.  To remove this artifact, you must first remove the link within the Task.";
 		}
 		else
 		{
