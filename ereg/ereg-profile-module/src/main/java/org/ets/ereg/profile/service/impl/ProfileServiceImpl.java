@@ -596,12 +596,15 @@ public class ProfileServiceImpl implements ProfileService, InitializingBean {
 	@Override
 	public ProfileVO authenthicate(String username, String password) {
 		ProfileVO profile = readProfileByUsername(username);
+	
+		
+		
 		if(null != profile)
 		{
-			if(null == password || !password.equalsIgnoreCase(profile.getCustomer().getPassword()))
+			if(null == password || !password.equals(CommonUtils.deCodeString(profile.getCustomer().getPassword()).trim()))
 			{
 				profile = null;
-			}
+			} 
 		}
 		return profile;
 	}
@@ -681,14 +684,7 @@ public class ProfileServiceImpl implements ProfileService, InitializingBean {
 
 		ETSCustomer customer = profile.getCustomer();
 		
-		//Encrypt password
-		try {
-			 customer.setPassword(CommonUtils.encodeString(customer.getPassword()));
-		} catch (Exception e) {
-			LOG.debug(e.getMessage());
-		}
-
-		
+				
 		if(eregUtils.isOAMAuthentication())
 		{
         	eiasWebServiceClient.modifyUser(profile.getCustomer());
