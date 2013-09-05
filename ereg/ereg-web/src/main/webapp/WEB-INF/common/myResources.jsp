@@ -10,6 +10,13 @@
 					<li><a href="http://mega.ets.org/rsc/pdf/pilot_submission_site_users_guide.pdf" target="_blank"><spring:message code="tasks.myresources.pilotSubmissionGuide"/></a></li>
 					<li><a href="http://mega.ets.org/rsc/pdf/pilot_submission_schedule.pdf" target="_blank"><spring:message code="tasks.myresources.pilotSubmissionSchedule"/></a></li>
 					<li><a href="http://mega.ets.org/pre_service_teacher_assessment/index.html" target="_blank"><spring:message code="tasks.myresources.taskReqRubrics"/></a></li>
+					<li>
+						<spring:message code="tasks.myresources.task1ReqForms"/>
+						<ul>
+							<li><a href="http://mega.ets.org/rsc/pdf/task_1_contextual_factors.pdf" target="_blank"><spring:message code="tasks.myresources.task1ReqForms.contextFactors"/></a></li>
+							<li><a href="http://mega.ets.org/rsc/pdf/task_1_instructional_support_resources.pdf" target="_blank"><spring:message code="tasks.myresources.task1ReqForms.instructional"/></a></li>
+						</ul>	
+					</li>
 					<li><a href="http://mega.ets.org/creating_submitting_tasks/index.html" target="_blank"><spring:message code="tasks.myresources.ancillaryMaterials"/></a></li>
 					<li><a href="http://dese.mo.gov/eq/documents/TeacherStandards.pdf" target="_blank"><spring:message code="tasks.myresources.moTeacherStandards"/></a></li>
 					</ul>
