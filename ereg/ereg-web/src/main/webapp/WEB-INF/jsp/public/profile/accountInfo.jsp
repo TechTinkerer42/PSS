@@ -103,8 +103,6 @@
    <li>
    
    <div id="terms-conditions">
-   I Agree to the <a href="http://www.ets.org/legal/terms/" target="_blank"><b>Terms and Conditions</b></a> governing use and access to ETS websites and to the ETS <b><a href="http://www.ets.org/legal/privacy/" target="_blank">Privacy and Security Policy</a></b>.
- <br><br>
 
 <!--
 
@@ -118,8 +116,8 @@
 
 <div class="termsCheckbox">
 <form:checkbox path="<%=ProfileForm.AGREE_TERMS%>" id="termsConditions" name="cc"/> 
-
-<strong><spring:message code="agreeTerms"/></strong>  <span class="checkConditions"></span></div>
+	I Agree to the <a href="http://www.ets.org/legal/terms/" target="_blank"><b>Terms and Conditions</b></a> governing use and access to ETS websites and to the ETS <b><a href="http://www.ets.org/legal/privacy/" target="_blank">Privacy and Security Policy</a></b>.
+<span class="checkConditions"></span></div> <br/>
 <h2><form:errors class="errorMessage" path="<%=ProfileForm.AGREE_TERMS %>"/></h2>
 
    </div>
