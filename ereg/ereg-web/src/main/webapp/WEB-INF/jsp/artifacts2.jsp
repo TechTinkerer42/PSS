@@ -104,7 +104,22 @@
 																		.replaceWith(
 																				tableHtml);
 															} else {
-																alert(response.message);
+																//alert(response.message);
+																
+																$("<div></div>").html(response.message).dialog({
+       																					 title: "Remove Artifact ",
+       																					 dialogClass: "no-close",
+        																				 resizable: false,
+        																				 modal: true,
+        																				 buttons: {
+            																						"Ok": function() 
+            																									{
+                																									$( this ).dialog( "close" );
+            																									}
+        																						}
+    																							});
+																
+																
 															}
 														},
 														error : function(xhr,
