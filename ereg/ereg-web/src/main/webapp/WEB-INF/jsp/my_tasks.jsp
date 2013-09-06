@@ -264,7 +264,7 @@ $(document).ready(function() {
 				<thead>
 					<tr>
 					<th>Task</th>
-					<th class="nowrap">Submission Date	</th>
+					<th class="nowrap">Submission Due Date	</th>
 					<th>Status</th>
 					<th class="nowrap">Last Saved</th>
 					</tr>
