@@ -2393,7 +2393,7 @@ margin-bottom:25px;
 											    <div id="video" class="videoouter">
 												<div class="videoinner"><h5>VIDEO UPLOAD</h5></div>				
 												<div class="video"><p><b>The video upload may take several minutes.   The video file name will appear in the box below when the upload is complete.  Review your video to ensure a successful upload.</b></p></div>
-												<c:if test="${customerTask.docStsTyp.docStsTypCde!='CMPLD'}">												
+												<c:if test="${customerTask.docStsTyp.docStsTypCde!='CMPLD' && task.activeTask}">												
 												<input type=button id="uploadVideo" class="uploadVideobutton" value="Upload Video" />
 												</c:if>
 												<input type=button id="reviewVideo" class="uploadVideobutton" value="Review Video" />
@@ -2437,7 +2437,7 @@ margin-bottom:25px;
 											<div id="essay_instructions${prompt.promptId}">
 												<%-- <c:out value="${prompt.instructions}" /> --%>
 											</div>
-											<c:if test="${customerTask.docStsTyp.docStsTypCde!='CMPLD'}">
+											<c:if test="${customerTask.docStsTyp.docStsTypCde!='CMPLD' && task.activeTask}">
 											<c:if test="${prompt.media!='video'}">  	
 												<div id="editor_buttons${prompt.promptId}">	
 												       	<input type="button"  class="promptbutton" style="margin-left: 2.2px;" value="Character Count"  id="wordCount${prompt.promptId}" />										
@@ -2451,7 +2451,7 @@ margin-bottom:25px;
 										  
 												<input type="hidden" id="existingEssayContent${prompt.promptId}"
 												value="<c:out value="${promptResponses[prompt.promptId]}"/>" /> 
-											   <div id="cteditor${prompt.promptId}" spellcheck="true" class="ctclasseditor" contenteditable='<c:choose><c:when test="${customerTask.docStsTyp.docStsTypCde!='CMPLD'}">true</c:when><c:when test="${customerTask.docStsTyp.docStsTypCde=='CMPLD'}">false</c:when></c:choose>'>
+											   <div id="cteditor${prompt.promptId}" spellcheck="true" class="ctclasseditor" contenteditable='<c:choose><c:when test="${customerTask.docStsTyp.docStsTypCde!='CMPLD' && task.activeTask}">true</c:when><c:when test="${customerTask.docStsTyp.docStsTypCde=='CMPLD' || !task.activeTask}">false</c:when></c:choose>'>
 											 
 											    </div>
 																					
@@ -2474,7 +2474,7 @@ margin-bottom:25px;
 				</div>	
 
 			
-	<c:if test="${customerTask.docStsTyp.docStsTypCde!='CMPLD'}">  
+	<c:if test="${customerTask.docStsTyp.docStsTypCde!='CMPLD' && task.activeTask}">  
 		<div id="taskButtonsDiv" class="taskbuttonsdiv">
 			<a class="submit" id="saveDraft" >Save Draft</a>
 			<!-- <input type=button id="saveDraft"  value="Save Draft" /> -->
@@ -2492,7 +2492,7 @@ margin-bottom:25px;
 		</div>
 	</c:if>
 	
-	
+	<br>
 	
 	<!--<c:out value="${customerTask.docStsTyp.docStsTypCde}" />-->
 	

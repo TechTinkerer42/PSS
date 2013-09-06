@@ -11,6 +11,8 @@ public class TaskDTO extends BaseDTO {
 	private String instructions;
 	private String title;
 	private String title2;
+	private boolean activeTask;
+	
 	/**
 	 * @return the title2
 	 */
@@ -100,5 +102,12 @@ public class TaskDTO extends BaseDTO {
 		this.stepDTOs = stepDTOs;
 	}
 
+	public boolean isActiveTask() {
+		return activeTask;
+	}
+
+	public void setActiveTask(boolean activeTask) {
+		this.activeTask = activeTask;
+	}
 	
 }

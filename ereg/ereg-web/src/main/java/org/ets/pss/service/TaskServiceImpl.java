@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -897,6 +898,7 @@ public class TaskServiceImpl implements TaskService {
        // System.out.println("the title is "+task.getTitle2());
         taskDTO.setTitle2(task.getTitle2());
         taskDTO.setInstructions(task.getInstructions());
+		taskDTO.setActiveTask(isActiveTask(task.getTaskOpenDate(), task.getTaskCloseDate()));
         Test test = task.getTest();
         taskDTO.setTestName(test.getTstNam());
         
@@ -1105,6 +1107,22 @@ public class TaskServiceImpl implements TaskService {
 		return customerPromptDAO.getCustomerPromptsForTask(customerId, taskId);
 	}
 
-
+	/**
+	 * Returns true if todays date is between openDate and closeDate, ignoring the timestamp.
+	 * 
+	 * @param openDate - task open date
+	 * @param closeDate - task close date
+	 * @return
+	 */
+	private boolean isActiveTask(Date openDate, Date closeDate) {
+		
+		Calendar todayCalendar = Calendar.getInstance();
+		todayCalendar.set(Calendar.HOUR_OF_DAY, 0);
+		todayCalendar.set(Calendar.MINUTE, 0);
+		todayCalendar.set(Calendar.SECOND, 0);
+		todayCalendar.set(Calendar.MILLISECOND, 0);
+		Date today = todayCalendar.getTime();
+		return ((openDate.compareTo(today) <= 0) && (today.compareTo(closeDate) <= 0));
+	}
 
 }
