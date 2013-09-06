@@ -257,7 +257,8 @@ $(document).ready(function() {
 			
 					<span class="homePageh2" style="color: black;"  >Pre-Service Teacher Assessments: Exit Assessments</span>
 				</div> -->
-				 	
+				<br>
+				<spring:message code="myassessments.tasks.instructions"/>
 				<p><a href="/ereg-web/pss/artifact/">Upload/Manage My Artifacts</a></p>	
 				<table style="border: 1px solid black; width: 98%; text-align:center;">
 				<thead>
