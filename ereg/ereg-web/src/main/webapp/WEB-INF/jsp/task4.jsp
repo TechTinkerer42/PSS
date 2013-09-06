@@ -1449,7 +1449,6 @@ $.extend({ alert: function (message, title) {
 								
 							});
 							
-						
 							$("#reviewhidden").css("display", "block");							
 							$("#reviewhidden").css({position:'absolute',
 							  top:'45%',
@@ -1459,6 +1458,7 @@ $.extend({ alert: function (message, title) {
 							  zIndex:1000,
 							  marginTop:'-150px',           
 							  marginLeft:'-300px' }); 
+							$("#reviewhidden").focus();
 							    //$("#reviewfile").html('<b>'+name+'</b>');
 		                		//$("#reviewfile").css("display", "block");  			
 							//$("#reviewhidden").css({top:windowHeight/2 - dHeight/2, left:windowWidth/2 - dWidth/2}).show();
@@ -2269,6 +2269,7 @@ margin-bottom:25px;
 	%>
 	
 	<t:base title="Home Page">
+	
    <div id="breadcrumb">
    	<p class="hide">Site Path:</p>
 	<a href="/ereg-web/secure/home">Home</a> <span aria-hidden="true">&gt;</span>
