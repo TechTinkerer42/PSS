@@ -93,6 +93,9 @@ form[id="searchFormHome"] input[type="text"] {
 .create_form select.dobDay {max-width:70px; width:100%; *width:70px; float:left;}
 .create_form select.dobDay:required {padding-right:15px;}
 
+.create_form select.dobYears {max-width:80px; width:100%; *width:80px; float:left;}
+.create_form select.dobYears:required {padding-right:15px;}
+
 
 .create_form input.smalltext, .smalltext {
 	height:20px; 

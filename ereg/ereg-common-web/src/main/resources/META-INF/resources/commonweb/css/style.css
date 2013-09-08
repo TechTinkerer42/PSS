@@ -659,6 +659,7 @@ input[type="checkbox"] {width:30px !important;}
 
 .editAccomodationTable select.dobMonth, .accomodationTable select.dobMonth {max-width:110px; *width:110px; width:100%;}
 .editAccomodationTable select.dobDay,  .accomodationTable select.dobDay {max-width:60px; *width:100px; width:100%;}
+.editAccomodationTable select.dobYears,  .accomodationTable select.dobYears {max-width:80px; *width:100px; width:100%;}
 .editAccomodationTable select.accYear,  .accomodationTable select.accYear {max-width:80px; *width:80px; width:100%;}
 .editAccomodationTable td:nth-child(1) {width:15%;}
 .editAccomodationTable td:nth-child(2) {width:15%;}
