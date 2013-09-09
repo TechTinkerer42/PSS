@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang.time.DateUtils;
 import org.ets.ereg.security.user.ERegUser;
@@ -547,16 +548,20 @@ public class TaskServiceImpl implements TaskService {
 				
 		AsgndTskPK asgndTskPK = new AsgndTskPK();
 		asgndTskPK.setCustomerId(custId);
-		asgndTskPK.setTskId(taskId);
-		
+		asgndTskPK.setTskId(taskId);		
 		AsgndTsk asgndTsk = asgndTskDao.get(AsgndTsk.class, asgndTskPK);
 		
-		TaskStatusType completedTskStsTyp = taskStatusTypeDAO.get(TaskStatusType.class,"CMPLD");
+		TaskStatusType completedTskStsTyp = taskStatusTypeDAO.get(TaskStatusType.class,"CMPLD");		
 		asgndTsk.setDocStsTyp(completedTskStsTyp);
 		asgndTsk.setSbmtDte(new Date());//ashwin fix for Admin Tasks Screen
 		
-		asgndTskDao.update(asgndTsk);
 		
+		try {
+			asgndTskDao.update(asgndTsk);
+			TimeUnit.MILLISECONDS.sleep(1000);
+		} catch(InterruptedException ex) {
+		    Thread.currentThread().interrupt();
+		}
 		return "success";
 
 	}

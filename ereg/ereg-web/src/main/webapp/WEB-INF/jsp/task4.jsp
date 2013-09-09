@@ -1144,15 +1144,21 @@ $.extend({ alert: function (message, title) {
 								//dataType: 'json',
 								success : function(data) {
 									    if($.trim(trigger) == 'autosave')
-									    $.alert("Task Auto Saved Successfully", "Task Auto Save Status");
+									    $.alert("Task Auto Saved Successfully", "Task Auto Save Status");//submittask
 										
+									    else if  ($.trim(trigger) == 'submittask')
+									    {//$.alert("Task Saved Successfully", "Task Save Status");//submittask
+										  //return true;
+									    }
 									//console.log(data);
 									else
 									$.alert("Task Draft is Saved Successfully", "Task Draft Save Status");
 									//$('#submitTask').prop('disabled', false);
 								},
 								error: function(XMLHttpRequest, textStatus, errorThrown) { 
-								   alert("Status: " + textStatus); alert("Error: " + errorThrown);
+								  //alert("Status: " + textStatus); 
+								   //alert("Error: " + errorThrown);
+								  //return false;
 								}
 							});
 							
@@ -1248,6 +1254,7 @@ $.extend({ alert: function (message, title) {
 						          "Yes, Submit Now": function() {						        	
 						            if($('#confirmSubmit').is(":checked"))
 						            {
+						                $('#saveDraft').trigger('click',['submittask'])
 						            	$( this ).dialog( "close" );
 										var myTaskId = $("#taskId").val();							
 										$.ajax({
@@ -1257,7 +1264,7 @@ $.extend({ alert: function (message, title) {
 												taskId : myTaskId,
 											},
 											success : function(data) {
-												//console.log(data);
+												 
 												$('div[id^="editor_buttons"]').each(function(index){										
 													$(this).empty();										
 												});
