@@ -2,10 +2,13 @@ package org.ets.pss.persistence.dto;
 
 import java.util.Map;
 
+/**
+ * @author asampath
+ *
+ */
+
 public class PromptDTO extends BaseDTO implements Comparable<PromptDTO> {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 3123943076827877335L;
 	private Long promptId;
 	private String title;

@@ -4,7 +4,7 @@
 package org.ets.pss.persistence.dto;
 
 /**
- * @author SSINGH007
+ * @author asampath
  *
  */
 public class Prompt {

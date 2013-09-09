@@ -9,7 +9,10 @@ import org.ets.ereg.web.util.KalturaServiceUtil;
 import org.ets.pss.persistence.dto.ContentManagementDTO;
 
 import com.kaltura.client.KalturaApiException;
-
+/**
+ * @author asampath
+ *
+ */
 public class CRSContentUploadUtilServiceImpl {
 	Logger log = Logger.getLogger(CRSContentUploadUtilServiceImpl.class);
 	private KalturaServiceUtil kalturaServiceUtil;	

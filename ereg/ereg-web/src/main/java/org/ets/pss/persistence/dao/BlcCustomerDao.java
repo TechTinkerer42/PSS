@@ -6,7 +6,7 @@ package org.ets.pss.persistence.dao;
 import org.ets.pss.persistence.model.BlcCustomer;
 
 /**
- * @author SSINGH007
+ * @author asampath
  *
  */
 public interface BlcCustomerDao extends GenericDao<BlcCustomer> {

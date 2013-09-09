@@ -15,7 +15,7 @@ import org.ets.pss.persistence.dto.Prompt;
 import org.ets.pss.persistence.model.UserTask;
 
 /**
- * @author SSINGH007
+ * @author asampath
  *
  */
 public interface ArtifactService {

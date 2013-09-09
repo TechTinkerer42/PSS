@@ -13,7 +13,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-
+/**
+ * @author asampath
+ *
+ */
 public class AsgndTskAdapter implements JsonSerializer<AsgndTsk> {
 	@Override
     public JsonElement serialize(AsgndTsk message, Type type, JsonSerializationContext jsc) {

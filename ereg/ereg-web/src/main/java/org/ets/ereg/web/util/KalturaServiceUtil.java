@@ -17,7 +17,10 @@ import com.kaltura.client.enums.KalturaMediaType;
 import com.kaltura.client.enums.KalturaSessionType;
 
 import com.kaltura.client.types.KalturaMediaEntry;
-
+/**
+ * @author asampath
+ *
+ */
 public class KalturaServiceUtil {
 	
 	

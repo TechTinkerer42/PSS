@@ -34,7 +34,10 @@ import com.kaltura.client.KalturaApiException;
 import com.kaltura.client.enums.KalturaEntryStatus;
 import com.kaltura.client.types.KalturaMediaEntry;
 
-
+/**
+ * @author asampath
+ *
+ */
 public class CRSContentUploadThread implements Runnable {
 	private static Logger log = LoggerFactory.getLogger(CRSContentUploadThread.class);
 

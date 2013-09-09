@@ -70,9 +70,10 @@ import com.kaltura.client.enums.KalturaMediaType;
 import com.kaltura.client.types.KalturaMediaEntry;
 
 /**
- * @author ashwin sampath->asampath@ets.org
+ * @author asampath asampath@ets.org
  *
  */
+
 @Service("taskService")
 @Transactional(propagation= Propagation.REQUIRED, readOnly=true)
 public class TaskServiceImpl implements TaskService {
@@ -152,28 +153,31 @@ public class TaskServiceImpl implements TaskService {
 	} 
 	
 	@Transactional(propagation= Propagation.REQUIRED, readOnly=false)
-	public String getVideoEntryKey(long customerId,long tskId, long promptId) {		
+	public List<String> getVideoEntryKey(long customerId,long tskId, long promptId) {		
 		
     	
-    	
-    	 List<String>videoEntries = custBlbDao.getCurrentVideoEntriesForPrompt(promptId, tskId,customerId);
-    	
-    	String entry=null;
+		List<String>videoEntries=null;
+    	 videoEntries = custBlbDao.getCurrentVideoEntriesForPrompt(promptId, tskId,customerId);
+    	 String entries[]={};
+    	 String entry=null;
     		         if(videoEntries != null && videoEntries.size()>0)
     			{
-    				   for(String videoEntry:videoEntries)
-    				{
-    						System.out.println("the video entry name is "+videoEntry);
-    						entry=videoEntry;
-    						
+    				   //for(String videoEntry:videoEntries)
+    				//{
+    		        	 System.out.println("at good spot at service class *************");
+    						//entry=videoEntry;
+    						//entries[0]=videoEntries.get(0);
+    						System.out.println("the video entry name at review video is "+videoEntries.get(0));
+   		        		    //entries[1]=videoEntries.get(1);
+   		        		   System.out.println("the video file name at review video is "+videoEntries.get(1));
     						
     			
-    		     	 }//end for
+    		     	 //}//end for
     				  
-    				   return entry;
+    				   
     			}//end if
     	 
-    		         else return "";
+    		         return videoEntries;
 	}
 
 	
@@ -191,19 +195,19 @@ public class TaskServiceImpl implements TaskService {
     	
     		         if(videoEntries != null && videoEntries.size()>0)
     			{
-    				   for(String videoEntry:videoEntries)
-    				{
+    				  // for(String videoEntry:videoEntries)
+    				//{
     						KalturaMediaEntry entry = new KalturaMediaEntry();
     						entry.name = dto.getEntryName();
     						entry.mediaType = KalturaMediaType.VIDEO;
     						entry.referenceId =  dto.getReferenceID();
     						//entry.categories = "Portfolio Pilot";
-    						entry.categoriesIds = "12683521";
-    						
-    						entry.id=videoEntry;
+    						entry.categoriesIds = "12683521";    						
+    						entry.id=videoEntries.get(0);
+    						//entry.id=videoEntry;
     						dto.setMediaEntry(entry);
     			
-    		     	 }//end for
+    		     	 //}//end for
     				  
     				   return true;
     			}//end if
@@ -214,16 +218,17 @@ public class TaskServiceImpl implements TaskService {
 	
 	
 	@Transactional(propagation= Propagation.REQUIRED, readOnly=false)
-	  public void saveVideoEntry(String entryID,long customerId,long tskId, long promptId) {		
+	  public void saveVideoEntry(String entryID,long customerId,long tskId, long promptId,String fileName) {		
 		
     	CustCrPK custCrPk = new CustCrPK();
     	custCrPk.setCustomerId(customerId);
     	custCrPk.setTskId(tskId);
     	custCrPk.setPrmptId(promptId);
-    	
+    	System.out.println("the incoming file name is "+fileName + "  "+tskId+ "  "+promptId+ "  "+entryID);
     	CustCr custCr = custCrDao.get(CustCr.class, custCrPk);
     	if(custCr!=null)
     	{
+    	
     		Set<CrBlb> crBlbs = custCr.getCrBlbs();
     		
     		if(crBlbs.size()>0)
@@ -235,16 +240,19 @@ public class TaskServiceImpl implements TaskService {
     				 crBlb.setMediaId(entryID);
     			     crBlb.setMdaTypCde("video");
     		    	 crBlb.setMdaFrmtTypCde("video");
+    		    	 crBlb.setRspSrcLctnNam(fileName);//new stuff ashwin 
     			//}
     		 }
     		   custCr.setCrBlbs(crBlbs);
     		}
           else
        {
+        	 
     	  CrBlb crBlb = new CrBlb();
     	  crBlb.setCrBlb(null);
     	  crBlb.setMediaId(entryID);
     	 //crBlb.setRspBlbLctnAdr(entryID);
+    	 crBlb.setRspSrcLctnNam(fileName);//new stuff ashwin 
     	    	
     	 //TODO: Fill up not null values with default values. we will need to change these values to more appropriate values.
     	 crBlb.setCrPrtId(new BigDecimal(1));
@@ -261,6 +269,7 @@ public class TaskServiceImpl implements TaskService {
     	
     	else if(custCr == null)
     	{	
+    		
 			EtsCust customer = customerDaoImpl.get(EtsCust.class, customerId);
 			
 			AsgndTskPK asgndTskPK = new AsgndTskPK();
@@ -293,6 +302,7 @@ public class TaskServiceImpl implements TaskService {
 	    	crBlb.setPgmCde(taskPrompt.getProgramCode());
 	    	crBlb.setMdaTypCde("video");
 	    	crBlb.setMdaFrmtTypCde("video");
+	    	crBlb.setRspSrcLctnNam(fileName);//new stuff ashwin 
 
 	    	custCr = new CustCr();
 	    	custCr.setId(custCrPk);	  

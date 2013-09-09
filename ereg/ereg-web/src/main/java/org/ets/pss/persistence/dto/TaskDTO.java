@@ -2,10 +2,13 @@ package org.ets.pss.persistence.dto;
 
 import java.util.Set;
 
+/**
+ * @author asampath
+ *
+ */
+
 public class TaskDTO extends BaseDTO {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 6700955423413537197L;
 	private Long taskId;
 	private String instructions;

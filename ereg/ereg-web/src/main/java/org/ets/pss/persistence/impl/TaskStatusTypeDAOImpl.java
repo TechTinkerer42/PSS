@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 /**
- * @author VSHANMUGAM
+ * @author asampath
  *
  */
 @Repository

@@ -1,7 +1,10 @@
 package org.ets.pss.persistence.dto;
 
 import java.util.List;
-
+/**
+ * @author asampath
+ *
+ */
 public class ArtifactResponse {
 	
 	String message;

@@ -34,6 +34,13 @@ public class CustBlbDaoImpl extends GenericDaoImpl<CrBlb> implements CustBlbDao 
 				CrBlb video=(CrBlb)videos.get(i);
 			
 				videoList.add( video.getMediaId());
+				
+				
+				if(video.getRspSrcLctnNam()!=null)
+				{
+					
+				videoList.add(video.getRspSrcLctnNam());//new stuff ashwin 
+				}
 			}
 		}
 

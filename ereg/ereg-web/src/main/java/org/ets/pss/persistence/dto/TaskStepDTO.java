@@ -2,10 +2,13 @@ package org.ets.pss.persistence.dto;
 
 import java.util.Set;
 
+/**
+ * @author asampath
+ *
+ */
+
 public class TaskStepDTO extends BaseDTO implements Comparable<TaskStepDTO> {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -4850105791053218438L;
 	private Long stepID;
 	private String title;

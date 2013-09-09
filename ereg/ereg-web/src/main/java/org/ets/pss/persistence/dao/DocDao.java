@@ -10,7 +10,7 @@ import org.ets.pss.persistence.dto.Artifact;
 import org.ets.pss.persistence.model.Doc;
 
 /**
- * @author SSINGH007
+ * @author asampath
  *
  */
 public interface DocDao extends GenericDao<Doc> {

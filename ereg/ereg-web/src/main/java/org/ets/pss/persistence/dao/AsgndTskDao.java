@@ -9,7 +9,7 @@ import org.ets.ereg.security.user.ERegUser;
 import org.ets.pss.persistence.model.AsgndTsk;
 
 /**
- * @author SSINGH007
+ * @author asampath
  *
  */
 public interface AsgndTskDao extends GenericDao<AsgndTsk> {

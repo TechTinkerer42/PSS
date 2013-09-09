@@ -8,7 +8,7 @@ import org.ets.pss.persistence.model.PSSTask;
 import org.ets.pss.persistence.model.Task;
 
 /**
- * @author SSINGH007
+ * @author asampath
  *
  */
 public interface TskDao extends GenericDao<Task> {

@@ -1385,8 +1385,10 @@ $.extend({ alert: function (message, title) {
 										                	 //console.log('the filename is '+name);
 										                	 $(".alert-error").closest('div').remove();
 										                	 if (responseJSON.success) {
-										                		// $("#reviewfile").html('<b>'+name+'</b>');
-										                		//$("#reviewfile").css("display", "block");
+										                		 $("#reviewfile").html('<b> The File Uploaded was :  '+name+'</b>');
+																 $("#reviewfile").css('text-align','left');
+										                		 $("#reviewfile").css("display", "block");
+										                	
 										                		 //$(this).fineUploader('setParams', {'param1': 'val1'});
 										                		 //console.log('coming here succes'+ name+ element);
 										                		// location.reload();
@@ -1419,7 +1421,7 @@ $.extend({ alert: function (message, title) {
 						});//end $('#uploadVideo').click function
 						
 						$('#reviewVideo').click(function(){
-							
+							var fileName="";
 							$.ajax({
 								
 								url : '/ereg-web/pss/task/review/video',
@@ -1438,6 +1440,9 @@ $.extend({ alert: function (message, title) {
 		                                      'flashvars': {"akamaiHD.loadingPolicy":"preInitialize","akamaiHD.asyncInit":true,"streamerType":"rtmp"}
 		                                });
 		                                })();
+							      		fileName=data[1];
+							      		  $("#reviewfile").html('<b> The File to be reviewed is :  '+fileName+'</b>');
+										  $("#reviewfile").css('text-align','left');  	
 									
 								},
 								error : function(data)
@@ -1459,8 +1464,7 @@ $.extend({ alert: function (message, title) {
 							  marginTop:'-150px',           
 							  marginLeft:'-300px' }); 
 							$("#reviewhidden").focus();
-							    //$("#reviewfile").html('<b>'+name+'</b>');
-		                		//$("#reviewfile").css("display", "block");  			
+							$("#reviewfile").css("display", "block");
 							//$("#reviewhidden").css({top:windowHeight/2 - dHeight/2, left:windowWidth/2 - dWidth/2}).show();
 						});
 						
@@ -2402,7 +2406,7 @@ margin-bottom:25px;
 												</c:if>
 												<input type=button id="reviewVideo" class="uploadVideobutton" value="Review Video" />
 												<input type=button id="closeVideo" class="uploadVideobutton" value="Close Video" />
-												<!-- <div id="reviewfile" class="video" style="display: none"></div> -->
+												 <div id="reviewfile" class="video" style="display: none"></div>
 												<div id="reviewtext" class="video"><p><b>Make sure you review your video upload before submitting Task 4.</b></p></div>
 												<div id="videodialog" title="Upload Video" style="display: none"></div>				
 											    </div>											

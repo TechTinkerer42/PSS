@@ -8,7 +8,7 @@ import java.util.List;
 import org.ets.pss.persistence.model.CustCrAsgndTskDoc;
 
 /**
- * @author SSINGH007
+ * @author asampath
  *
  */
 public interface CustCrAsgndTskDocDao extends GenericDao<CustCrAsgndTskDoc> {

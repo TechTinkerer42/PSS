@@ -6,7 +6,7 @@ package org.ets.pss.persistence.dao;
 import java.util.List;
 
 /**
- * @author SSINGH007
+ * @author asampath
  *
  */
 public interface GenericDao<E> {

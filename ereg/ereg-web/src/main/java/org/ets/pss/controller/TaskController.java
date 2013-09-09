@@ -42,7 +42,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * @author ashwin sampath->asampath@ets.org
+ * @author asampath
  *
  */
 
@@ -140,13 +140,13 @@ public class TaskController {
     
     
     @RequestMapping(value = "/review/video", method = RequestMethod.POST)
-    public  @ResponseBody String reviewVideo(@RequestParam String promptId,@RequestParam String taskId,@LoggedInUser ERegUser loggedInUser) {
-    	System.out.println("coming here for reviewing video");
+    public  @ResponseBody List<String> reviewVideo(@RequestParam String promptId,@RequestParam String taskId,@LoggedInUser ERegUser loggedInUser) {
+    	//System.out.println("coming here for reviewing video");
     	long lTaskId = Long.parseLong(taskId);
     	long lpromptId = Long.parseLong(promptId);
     	long customerId = loggedInUser.getId();
-    	String entry = taskServiceImpl.getVideoEntryKey(customerId,lTaskId,lpromptId);
-    	return entry;
+    	List<String> videoEntries = taskServiceImpl.getVideoEntryKey(customerId,lTaskId,lpromptId);
+    	return videoEntries;
 		 
         
     }
@@ -325,8 +325,8 @@ public class TaskController {
     		  //yyyyMMddhhmm
     		  String directoryName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
     		  //System.out.println("directory name is: " + directoryName);
-    		 // File theDir=new File("c:\\ash\\temp\\"+directoryName);
-    		  File theDir=new File("/export/Apps/tomcat/upload/"+directoryName);
+    		   File theDir=new File("c:\\ash\\temp\\"+directoryName);
+    		  //File theDir=new File("/export/Apps/tomcat/upload/"+directoryName);
     		  if (!theDir.exists())
     		  {
     		    //System.out.println("creating directory: " + directoryName);
@@ -335,8 +335,8 @@ public class TaskController {
     		       System.out.println("DIR created");  
     		     
     		  //Unix file format
-    		   // File tempfile=new File("c:\\ash\\temp\\"+directoryName+"\\"+fileName);
-    		    File tempfile=new File("/export/Apps/tomcat/upload/"+directoryName+"/"+fileName);
+    		      File tempfile=new File("c:\\ash\\temp\\"+directoryName+"\\"+fileName);
+    		    //File tempfile=new File("/export/Apps/tomcat/upload/"+directoryName+"/"+fileName);
     		  
     		  file.transferTo(tempfile);
     		  
@@ -371,8 +371,8 @@ public class TaskController {
 		}
     	if(contentManagementVO != null && contentManagementVO.getEntryName()!=null)
     	{
-    		model.addAttribute("entryName",contentManagementVO.getMediaEntry().id);
-    		taskServiceImpl.saveVideoEntry(contentManagementVO.getMediaEntry().id,loggedInUser.getId(), Long.parseLong(taskId),Long.parseLong(promptId));
+    		model.addAttribute("entryName",contentManagementVO.getMediaEntry().id);    		
+    		taskServiceImpl.saveVideoEntry(contentManagementVO.getMediaEntry().id,loggedInUser.getId(), Long.parseLong(taskId),Long.parseLong(promptId),fileName);
     		return "{\"success\":true}";
     		
     	}

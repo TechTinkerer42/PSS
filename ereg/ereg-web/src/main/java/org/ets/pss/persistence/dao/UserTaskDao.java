@@ -8,7 +8,7 @@ import java.util.List;
 import org.ets.pss.persistence.model.UserTask;
 
 /**
- * @author SSINGH007
+ * @author asampath
  *
  */
 public interface UserTaskDao {

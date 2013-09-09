@@ -21,14 +21,14 @@ import org.ets.pss.persistence.dto.Prompt;
 import org.ets.pss.persistence.model.UserTask;
 
 /**
- * @author SSINGH007
+ * @author asampath
  *
  */
 public interface TaskService {
 	
 	void saveDoc(Doc doc);
 	void saveEssay(String s,long customerId,long tskId, long promptId);
-	void saveVideoEntry(String entryID,long customerId,long tskId, long promptId);
+	void saveVideoEntry(String entryID,long customerId,long tskId, long promptId,String fileName);
 	boolean getVideoEntries(ContentManagementDTO dto,long customerId,long tskId, long promptId);
 	String saveDraft(TaskDraft taskDraft,long custId);
 	String submitTask(long taskId,long custId);
@@ -44,7 +44,7 @@ public interface TaskService {
 	TaskDTO getTask(Long taskId);
 	
 	 Map<Long, String> getCustomerPromptsForTask(Long customerId, Long taskId);
-	String getVideoEntryKey(long customerId,long tskId, long promptId);
+	 List<String> getVideoEntryKey(long customerId,long tskId, long promptId);
 	 Map<String, String> getVideosForTask(long customerId,long lTaskId);
 	ContentManagementDTO uploadContent(boolean exists,ContentManagementDTO contentManagementVO);
 	String getAdminTasks();

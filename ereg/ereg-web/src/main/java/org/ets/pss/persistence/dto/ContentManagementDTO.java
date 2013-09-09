@@ -7,7 +7,10 @@ import java.io.InputStream;
 
 import com.kaltura.client.KalturaClient;
 import com.kaltura.client.types.KalturaMediaEntry;
-
+/**
+ * @author asampath
+ *
+ */
 public class ContentManagementDTO {
 	private File fileToUpload;
 	

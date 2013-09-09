@@ -1,7 +1,10 @@
 package org.ets.pss.persistence.dto;
 
 import java.util.Map;
-
+/**
+ * @author asampath
+ *
+ */
 public class TaskDraft {
 	
 	String hasLinks;

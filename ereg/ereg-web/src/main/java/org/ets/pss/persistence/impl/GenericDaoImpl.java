@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @author Sarabdeep Singh
+ * @author asampath
  *
  */
 public class GenericDaoImpl<E> implements GenericDao<E> {

@@ -6,7 +6,7 @@ package org.ets.pss.persistence.dao;
 import org.ets.pss.persistence.model.EtsCust;
 
 /**
- * @author SSINGH007
+ * @author asampath
  *
  */
 public interface EtsCustDao extends GenericDao<EtsCust> {

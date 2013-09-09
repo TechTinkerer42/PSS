@@ -9,7 +9,7 @@ import org.ets.pss.persistence.model.CustCr;
 import org.ets.pss.persistence.model.Doc;
 
 /**
- * @author SSINGH007
+ * @author asampath
  *
  */
 public interface CustCrDao extends GenericDao<CustCr> {
