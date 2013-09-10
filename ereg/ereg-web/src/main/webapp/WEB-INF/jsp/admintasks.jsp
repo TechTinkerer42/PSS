@@ -358,7 +358,7 @@ text-overflow: ellipsis;
                                  }
                              }
                          },
-                         pageSize: 15,
+                         pageSize: 7,
                        
                          schema: {                            
                              data: "data",
