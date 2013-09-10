@@ -165,12 +165,12 @@ public class TaskServiceImpl implements TaskService {
     			{
     				   //for(String videoEntry:videoEntries)
     				//{
-    		        	 System.out.println("at good spot at service class *************");
+    		        	
     						//entry=videoEntry;
     						//entries[0]=videoEntries.get(0);
-    						System.out.println("the video entry name at review video is "+videoEntries.get(0));
+    						//System.out.println("the video entry name at review video is "+videoEntries.get(0));
    		        		    //entries[1]=videoEntries.get(1);
-   		        		   System.out.println("the video file name at review video is "+videoEntries.get(1));
+   		        		   //System.out.println("the video file name at review video is "+videoEntries.get(1));
     						
     			
     		     	 //}//end for
@@ -558,7 +558,7 @@ public class TaskServiceImpl implements TaskService {
 		
 		try {
 			asgndTskDao.update(asgndTsk);
-			TimeUnit.MILLISECONDS.sleep(1000);
+			TimeUnit.MILLISECONDS.sleep(1250);
 		} catch(InterruptedException ex) {
 		    Thread.currentThread().interrupt();
 		}

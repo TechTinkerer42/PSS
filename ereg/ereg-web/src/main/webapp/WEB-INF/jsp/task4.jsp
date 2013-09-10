@@ -65,8 +65,8 @@ $.extend({ alert: function (message, title) {
 	                                                   jQuery.migrateMute = true;
                                                                          }
 						  t = setTimeout(function() {
-							   autosave(600000);
-                             },600000);  
+							   autosave(5400000);
+                             },5400000);  
 						rangy.init();						
 						var accordicons = {
 							      header: "ui-icon-circle-arrow-e",
@@ -82,7 +82,7 @@ $.extend({ alert: function (message, title) {
 							 t =setTimeout(function() {
 								 if($("#alertdialog").dialog( "isOpen" ))
 									 $("#alertdialog").dialog( "close" );
-								  autosave(600000);
+								  autosave(5400000);
                              },last
 						      ); 
 						}
@@ -1158,7 +1158,7 @@ $.extend({ alert: function (message, title) {
 								error: function(XMLHttpRequest, textStatus, errorThrown) { 
 								  //alert("Status: " + textStatus); 
 								   //alert("Error: " + errorThrown);
-								  //return false;
+								    return false;
 								}
 							});
 							
@@ -1392,7 +1392,7 @@ $.extend({ alert: function (message, title) {
 										                	 //console.log('the filename is '+name);
 										                	 $(".alert-error").closest('div').remove();
 										                	 if (responseJSON.success) {
-										                		 $("#reviewfile").html('<b> The File Uploaded was :  '+name+'</b>');
+										                		 $("#reviewfile").html('<b> Uploaded video file name:  '+name+'</b>');
 																 $("#reviewfile").css('text-align','left');
 										                		 $("#reviewfile").css("display", "block");
 										                	
@@ -1443,12 +1443,12 @@ $.extend({ alert: function (message, title) {
 		                                kWidget.embed('reviewhidden', {
 		                                      'wid': '_958691',
 		                                      'uiconf_id' : '15210901',
-		                                      'entry_id':data,
+		                                      'entry_id':data[0],
 		                                      'flashvars': {"akamaiHD.loadingPolicy":"preInitialize","akamaiHD.asyncInit":true,"streamerType":"rtmp"}
 		                                });
 		                                })();
 							      		fileName=data[1];
-							      		  $("#reviewfile").html('<b> The File to be reviewed is :  '+fileName+'</b>');
+							      		  $("#reviewfile").html('<b> Uploaded video file name:  '+fileName+'</b>');
 										  $("#reviewfile").css('text-align','left');  	
 									
 								},
@@ -2373,8 +2373,7 @@ margin-bottom:25px;
    		<p style="font-size:9pt;font-weight:bold;color:red"><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Are you Sure you want to submit your task including all essay responses and artifacts associated with this task?</p>
    		<p style="font-size:11pt;font-weight:bold;">Once you submit your task, you will not be able to make any modifications to the essay responses or the artifacts associated with task</p>
 		<p> <div style="font-size:8pt;white-space:wrap;width:450;">
-   			<input type="checkbox" id="confirmSubmit" value="true"/>By checking this box, I understand that I am submitting my own responses and artifacts associated with this task.I understand the role of professional ethics and that my ability to earn a Missouri Teacher's Certificate will be jeopardized if I violate the privacy of my students and/or co-workers by posting any responses, artifacts, and videos without appropriate permission from students, parents, and co-workers.I certify that the submission represents the work that I completed and that I have acquired and possess all signed Student and Adult Release forms required by the assessment. I understand that the responses, artifacts, and video that I submit will be evaluated by educators, raters, or other appropriate individuals, and I understand that I will not be able to make any modifications once I click Submit.I further give permission for all parts of my submission to be used by the Missouri Department of Elementary and Secondary Education (DESE) for the development of exemplars, improvement of the assessment, establishing effective state policy or other appropriate and necessary official state business.
-   			</div>
+   			<input type="checkbox" id="confirmSubmit" value="true"/>By checking this box, I understand that I am submitting my own responses and artifacts associated with this task. I understand the role of professional ethics and that my ability to earn a Missouri Teacher's Certificate will be jeopardized if I violate the privacy of my students and/or co-workers by posting any responses, artifacts, and videos without appropriate permission from students, parents, and co-workers. I certify that the submission represents the work that I completed and that I have acquired and possess all signed Student and Adult Release forms required by the assessment. I understand that the responses, artifacts, and video that I submit will be evaluated by educators, raters, or other appropriate individuals, and I understand that I will not be able to make any modifications once I click Submit. I further give permission for all parts of my submission including my image and teaching activities contained in my video to be used by the Missouri Department of Elementary and Secondary Education (DESE) for the development of exemplars, research, improvement of the assessment, establishment of state policy or other appropriate and necessary official state business.   			</div>
    		</p>
 	</div>
 	<input type="hidden" id="taskId" value="${task.taskId}" />	
