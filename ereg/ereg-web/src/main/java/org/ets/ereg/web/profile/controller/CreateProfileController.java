@@ -352,7 +352,7 @@ public class CreateProfileController {
 						return getAccountInfoStepView();
 					}
 					else{
-						if(!profileBusinessService.isUsernameAvailable(profileForm.getProfile().getCustomer().getUsername())){
+						if(!profileBusinessService.isUsernameAvailable(profileForm.getProfile().getCustomer().getUsername().toLowerCase())){
 							profileForm.setStatusCode(ProfileForm.STATUS_OK);
 							return getReviewInfoStepRedirect();
 						}
@@ -502,7 +502,7 @@ public class CreateProfileController {
 					}
 
 					// to check if the ldap username is duplicate at the last step again
-					if(profileBusinessService.isUsernameAvailable(profileForm.getProfile().getCustomer().getUsername())){
+					if(profileBusinessService.isUsernameAvailable(profileForm.getProfile().getCustomer().getUsername().toLowerCase())){
 						errors.rejectValue(ProfileForm.USERNAME, "profile.create.validation.usernameUsed");
 						setGenericValidationError(profileForm);
 						return getAccountInfoStepRedirect();
