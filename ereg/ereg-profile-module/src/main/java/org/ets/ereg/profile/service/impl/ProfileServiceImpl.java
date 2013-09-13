@@ -389,7 +389,7 @@ public class ProfileServiceImpl implements ProfileService, InitializingBean {
 				} catch (Exception e) {
 					LOG.debug(e.getMessage());
 				}
-		
+		customerFromUI.setUsername(customerFromUI.getUsername().toLowerCase());
 		ETSCustomer customer = (ETSCustomer)customerService.saveCustomer(customerFromUI, customerFromUI.isRegistered());
 		if( !profile.getCustomer().isRegistered()){
 			ProgramType programType = programService
